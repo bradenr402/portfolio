@@ -1,5 +1,5 @@
 <nav class="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-lg">
-  <div class="container mx-auto w-full px-4">
+  <div class="mx-auto w-full px-4">
     <div class="relative flex h-20 w-full items-center justify-between">
       <!-- Logo -->
       <div class="group relative whitespace-nowrap">
@@ -16,22 +16,37 @@
 
       <!-- Hamburger Menu Button -->
       <button
-        class="block rounded-lg p-2 text-primary-500 hover:bg-primary-100 focus:outline-none md:hidden"
+        class="block rounded-lg p-2 text-primary-500 hover:bg-primary-500/10 focus:outline-none md:hidden"
         id="mobile-menu-button"
         aria-label="Toggle navigation"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          class="size-6"
         >
           <path
+            d="M20 5L8 5"
+            stroke="currentColor"
+            stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16m-7 6h7"
+          />
+          <path
+            d="M20 12L4 12"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M20 19L12 19"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           />
         </svg>
       </button>
@@ -39,7 +54,7 @@
       <!-- Navigation Links -->
       <div
         id="mobile-menu"
-        class="absolute left-0 top-20 z-40 hidden w-full bg-white/90 shadow-lg md:static md:flex md:items-center md:space-x-8 md:bg-transparent md:shadow-none"
+        class="absolute left-0 top-20 z-40 hidden w-full rounded-lg bg-white/90 shadow-lg md:static md:flex md:items-center md:space-x-8 md:bg-transparent md:shadow-none"
       >
         <div class="flex flex-col space-y-4 p-4 md:ml-auto md:flex-row md:space-y-0 md:p-0">
           <div class="group relative grid place-items-center">

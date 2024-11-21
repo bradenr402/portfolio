@@ -37,9 +37,14 @@ module.exports = {
           '60%': { transform: 'rotate(0.0deg)' },
           '100%': { transform: 'rotate(0.0deg)' },
         },
+        slide: {
+          '0%, 100%': { transform: 'translate(0, -5px)' },
+          '50%': { transform: 'translate(0, 10px)' },
+        },
       },
       animation: {
         wave: 'wave 2s linear infinite',
+        slide: 'slide 1s ease-in-out infinite',
       },
     },
   },

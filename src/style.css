@@ -43,3 +43,21 @@
     font-display: swap;
   }
 }
+
+@layer components {
+  .nav-link-text {
+    @apply px-4 py-1.5 font-semibold text-stone-800 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-500 group-hover:active:scale-95;
+  }
+
+  .nav-link-bg {
+    @apply absolute inset-0 -z-10 scale-0 rounded-lg bg-primary-500/10 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 peer-active:scale-90;
+  }
+
+  .nav-link-text-active {
+    @apply scale-100 text-primary-500;
+  }
+
+  .nav-link-bg-active {
+    @apply scale-90 opacity-100;
+  }
+}

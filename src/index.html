@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Braden Roth</title>
   </head>
-  <body class="bg-stone-200 dark:bg-stone-800">
+  <body class="bg-white selection:bg-primary-500/10">
     <div id="nav"></div>
-    <main class="container mx-auto mt-16 px-4 py-16">
-      <div
-        class="space-y-3 text-pretty text-center text-5xl font-semibold text-stone-700 dark:text-stone-300"
-      >
-        <p>Hey there! I’m Braden.</p>
-        <p>
-          Full-Stack
-          <span class="group relative">
-            <span
-              class="bg-primary-500 absolute -inset-x-4 -inset-y-1 rounded-xl opacity-0 blur transition-opacity duration-300 group-hover:opacity-15"
-            ></span>
-            <a
-              href="https://rubyonrails.org"
-              class="text-primary-500 relative font-extrabold"
-            >
-              Ruby on Rails
-            </a>
-          </span>
-          Developer.
-        </p>
+    <main class="container mx-auto px-4">
+      <div class="grid h-screen place-items-center text-stone-800">
+        <div class="text-balance text-center font-semibold text-stone-800 text-5xl">
+          <p>Hey there! I&#8217;m Braden.</p>
+          <p>
+            Full-Stack
+            <span class="group relative whitespace-nowrap">
+              <a
+                href="https://rubyonrails.org"
+                class="group-hover:active-scale-95 peer relative font-extrabold text-primary-500 transition-all duration-300 group-hover:scale-110"
+              >
+                Ruby on Rails
+              </a>
+              <span
+                class="absolute -inset-x-4 -inset-y-1 -z-10 scale-0 rounded-lg bg-primary-500/10 opacity-0 blur transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 peer-active:scale-90"
+              ></span>
+            </span>
+            Developer.
+          </p>
+        </div>
       </div>
     </main>
+    <div id="footer"></div>
   </body>
 </html>

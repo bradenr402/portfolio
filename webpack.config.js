@@ -5,25 +5,37 @@ module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
-    filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
     clean: true,
   },
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'dist'),
     },
-    port: 3000,
-    open: true,
+    port: 8080,
+    open: false,
     hot: true,
     compress: true,
     historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'index.html',
       template: './src/index.html',
+      filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/about.html',
+      filename: 'about.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/projects.html',
+      filename: 'projects.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/contact.html',
+      filename: 'contact.html',
     }),
   ],
   module: {

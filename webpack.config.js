@@ -26,12 +26,12 @@ module.exports = {
       filename: 'index.html',
     }),
     new HtmlWebpackPlugin({
-      template: './src/about.html',
-      filename: 'about.html',
-    }),
-    new HtmlWebpackPlugin({
       template: './src/projects.html',
       filename: 'projects.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/skills.html',
+      filename: 'skills.html',
     }),
     new HtmlWebpackPlugin({
       template: './src/contact.html',

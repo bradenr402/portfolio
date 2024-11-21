@@ -38,13 +38,13 @@ module.exports = {
           '100%': { transform: 'rotate(0.0deg)' },
         },
         slide: {
-          '0%, 100%': { transform: 'translate(0, -5px)' },
-          '50%': { transform: 'translate(0, 10px)' },
+          '0%, 100%': { transform: 'translate(0, -2px)' },
+          '50%': { transform: 'translate(0, 8px)' },
         },
       },
       animation: {
         wave: 'wave 2s linear infinite',
-        slide: 'slide 1s ease-in-out infinite',
+        slide: 'slide 1.2s ease-in-out infinite',
       },
     },
   },

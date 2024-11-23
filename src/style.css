@@ -60,4 +60,8 @@
   .nav-link-bg-active {
     @apply scale-90 opacity-100;
   }
+
+  .mobile-menu-hidden {
+    @apply opacity-0 scale-75;
+  }
 }

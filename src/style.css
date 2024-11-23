@@ -62,6 +62,6 @@
   }
 
   .mobile-menu-hidden {
-    @apply opacity-0 scale-75;
+    @apply max-md:opacity-0 max-md:scale-75;
   }
 }

@@ -4,12 +4,12 @@ import './style.css';
 
 const parseHTML = (html) => new DOMParser().parseFromString(html, 'text/html').body.firstChild;
 
-const addNavToDOM = () => {
+const addNav = () => {
   const element = document.getElementById('nav');
   if (element) element.replaceWith(parseHTML(nav));
 };
 
-const addFooterToDOM = () => {
+const addFooter = () => {
   const element = document.getElementById('footer');
   if (element) element.replaceWith(parseHTML(footer));
 };
@@ -36,8 +36,8 @@ const setupMobileMenu = () => {
 };
 
 const init = () => {
-  addNavToDOM();
-  addFooterToDOM();
+  addNav();
+  addFooter();
   activateCurrentNavLink();
   setupMobileMenu();
 };

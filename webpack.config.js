@@ -24,18 +24,22 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
+      favicon: './src/images/BR_logo.svg',
     }),
     new HtmlWebpackPlugin({
       template: './src/projects.html',
       filename: 'projects.html',
+      favicon: './src/images/BR_logo.svg',
     }),
     new HtmlWebpackPlugin({
       template: './src/skills.html',
       filename: 'skills.html',
+      favicon: './src/images/BR_logo.svg',
     }),
     new HtmlWebpackPlugin({
       template: './src/contact.html',
       filename: 'contact.html',
+      favicon: './src/images/BR_logo.svg',
     }),
   ],
   module: {
@@ -48,6 +52,13 @@ module.exports = {
       {
         test: /\.html$/i,
         use: ['html-loader'],
+      },
+      {
+        test: /\.svg$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name][ext]',
+        },
       },
     ],
   },

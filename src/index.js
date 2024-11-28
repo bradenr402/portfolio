@@ -17,10 +17,11 @@ const addFooter = () => {
 
 const activateCurrentNavLink = () => {
   const links = document.querySelectorAll('a.nav-link-text');
-  const currentUrl = window.location.href;
+  const currentUrl = window.location.href.replace(/\/$/, '');
 
   links.forEach((link) => {
-    if (link.href === currentUrl) {
+    const linkUrl = link.href.replace(/\/$/, '');
+    if (linkUrl === currentUrl) {
       link.classList.add('nav-link-text-active');
       link.nextElementSibling.classList.add('nav-link-bg-active');
     }

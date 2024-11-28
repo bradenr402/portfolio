@@ -1,5 +1,6 @@
 import footer from './components/footer.html';
 import nav from './components/nav.html';
+import setupModals from './setup-modals';
 import './style.css';
 
 const parseHTML = (html) => new DOMParser().parseFromString(html, 'text/html').body.firstChild;
@@ -40,6 +41,7 @@ const init = () => {
   addFooter();
   activateCurrentNavLink();
   setupMobileMenu();
+  setupModals();
 };
 
 document.addEventListener('DOMContentLoaded', () => init());

@@ -12,7 +12,8 @@
         <div class="text-center font-semibold text-stone-800 text-5xl">
           <p class="mb-12 max-w-4xl text-pretty">The digital toolbox that powers my work.</p>
           <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
-            I&#8217;ve used a number of different technologies and tools in my work. Take a look!
+            I&#8217;ve used a number of different technologies and tools in my work. Tap on each
+            skill to learn more!
             <span class="inline-flex animate-slide">👇</span>
           </p>
         </div>
@@ -27,7 +28,7 @@
               height="24"
               color="currentColor"
               fill="none"
-              class="size-12"
+              class="size-12 shrink-0"
             >
               <path
                 d="M17 8L18.8398 9.85008C19.6133 10.6279 20 11.0168 20 11.5C20 11.9832 19.6133 12.3721 18.8398 13.1499L17 15"
@@ -53,15 +54,16 @@
             </svg>
             <p class="text-center font-medium text-stone-800 text-3xl">My Languages</p>
           </div>
-          <div
-            class="mx-auto grid max-w-max grid-cols-2 gap-x-12 gap-y-8 md:grid-cols-4 md:gap-x-24"
-          >
-            <div class="flex flex-col items-center gap-1">
+          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 md:gap-x-24">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="html"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 role="img"
                 viewBox="0 0 512 512"
-                class="size-12"
+                class="size-12 shrink-0"
               >
                 <path fill="#e34f26" d="M71 460L30 0h451l-41 460-185 52" />
                 <path fill="#ef652a" d="M256 472l149-41 35-394H256" />
@@ -76,8 +78,11 @@
               </svg>
               <span class="font-semibold text-[#e34f26] text-lg">HTML</span>
             </div>
-            <div class="flex flex-col items-center gap-1">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="size-12">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="css"
+            >
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="size-12 shrink-0">
                 <polygon
                   points="5.902 27.201 3.656 2 28.344 2 26.095 27.197 15.985 30 5.902 27.201"
                   style="fill: #1572b6"
@@ -109,12 +114,15 @@
               </svg>
               <span class="font-semibold text-[#1572b6] text-lg">CSS</span>
             </div>
-            <div class="flex flex-col items-center gap-1">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="ruby"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 role="img"
                 viewBox="0 0 512 512"
-                class="size-12"
+                class="size-12 shrink-0"
               >
                 <rect rx="15%" fill="transparent" />
                 <path
@@ -137,14 +145,17 @@
               </svg>
               <span class="font-semibold text-[#b11205] text-lg">Ruby</span>
             </div>
-            <div class="flex flex-col items-center gap-1">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="js"
+            >
               <svg
                 viewBox="0 0 256 256"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 preserveAspectRatio="xMidYMid"
-                class="size-12"
+                class="size-12 shrink-0"
               >
                 <g>
                   <path d="M0,0 L256,0 L256,256 L0,256 L0,0 Z" fill="#f7df1e"></path>
@@ -173,7 +184,7 @@
               height="24"
               color="currentColor"
               fill="none"
-              class="size-12"
+              class="size-12 shrink-0"
             >
               <path
                 d="M2 19.5C2 18.3215 2 17.7322 2.43934 17.3661C2.87868 17 3.58579 17 5 17C6.41421 17 7.12132 17 7.56066 17.3661C8 17.7322 8 18.3215 8 19.5C8 20.6785 8 21.2678 7.56066 21.6339C7.12132 22 6.41421 22 5 22C3.58579 22 2.87868 22 2.43934 21.6339C2 21.2678 2 20.6785 2 19.5Z"
@@ -201,8 +212,11 @@
             </svg>
             <p class="text-center font-medium text-stone-800 text-3xl">My Frameworks</p>
           </div>
-          <div class="mx-auto grid max-w-max grid-cols-2 gap-x-12 gap-y-8 md:gap-x-24">
-            <div class="flex flex-col items-center">
+          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 md:gap-8 md:gap-x-24">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="rails"
+            >
               <svg viewBox="0 -6 32 32" xmlns="http://www.w3.org/2000/svg" class="-mb-2 size-16">
                 <g fill="none" fill-rule="evenodd">
                   <path d="M0-6h32v32H0z" />
@@ -213,16 +227,19 @@
                   />
                 </g>
               </svg>
-              <span class="font-semibold text-[#c00] text-lg">Ruby on Rails</span>
+              <span class="font-semibold text-[#c00] text-lg">Rails</span>
             </div>
-            <div class="flex flex-col items-center gap-1">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="tailwind"
+            >
               <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="-mb-2 size-16">
                 <path
                   d="M9,13.7q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q11.1,10.9,9,13.7ZM2,22.1q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q4.1,19.3,2,22.1Z"
                   style="fill: #44a8b3"
                 />
               </svg>
-              <span class="font-semibold text-[#44a8b3] text-lg">Tailwind CSS</span>
+              <span class="font-semibold text-[#44a8b3] text-lg">Tailwind</span>
             </div>
           </div>
         </div>
@@ -236,7 +253,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-12"
+              class="size-12 shrink-0"
             >
               <path
                 stroke-linecap="round"
@@ -246,15 +263,16 @@
             </svg>
             <p class="text-center font-medium text-stone-800 text-3xl">My Dev Tools</p>
           </div>
-          <div
-            class="mx-auto grid max-w-max grid-cols-2 gap-x-12 gap-y-8 md:grid-cols-4 md:gap-x-24"
-          >
-            <div class="flex flex-col items-center gap-1">
+          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 md:gap-x-24">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="git"
+            >
               <svg
                 viewBox="0 0 32 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="size-12"
+                class="size-12 shrink-0"
               >
                 <path
                   d="M2.58536 17.4132C1.80488 16.6327 1.80488 15.3673 2.58536 14.5868L14.5868 2.58536C15.3673 1.80488 16.6327 1.80488 17.4132 2.58536L29.4146 14.5868C30.1951 15.3673 30.1951 16.6327 29.4146 17.4132L17.4132 29.4146C16.6327 30.1951 15.3673 30.1951 14.5868 29.4146L2.58536 17.4132Z"
@@ -267,13 +285,16 @@
               </svg>
               <span class="font-semibold text-[#EE513B] text-lg">Git</span>
             </div>
-            <div class="flex flex-col items-center gap-1">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="github"
+            >
               <svg
                 viewBox="0 0 20 20"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                class="size-12"
+                class="size-12 shrink-0"
               >
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g
@@ -292,12 +313,15 @@
               </svg>
               <span class="font-semibold text-black text-lg">GitHub</span>
             </div>
-            <div class="flex flex-col items-center gap-1">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="vscode"
+            >
               <svg
                 viewBox="0 0 32 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="size-12"
+                class="size-12 shrink-0"
               >
                 <path
                   d="M21.0016 3.11679C21.0016 2.23783 20.0175 2.23782 19.5801 2.34769C20.1924 1.86426 20.9105 1.98147 21.1656 2.12796L27.079 5.02747C27.6424 5.30375 27.9998 5.8786 27.9998 6.50857V25.5831C27.9998 26.2215 27.6329 26.8025 27.058 27.0743L21.4937 29.7054C21.1109 29.8701 20.2799 30.2767 19.5801 29.7053C20.4549 29.8702 20.9287 29.2476 21.0016 28.8264V3.11679Z"
@@ -353,8 +377,11 @@
               </svg>
               <span class="font-semibold text-[#1279B7] text-lg">VS Code</span>
             </div>
-            <div class="flex flex-col items-center gap-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 68" class="size-12">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="arc"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 68" class="size-12 shrink-0">
                 <g>
                   <g transform="translate(143 148)">
                     <g fill-rule="evenodd" clip-rule="evenodd">
@@ -459,7 +486,7 @@
               viewBox="0 0 24 24"
               color="currentColor"
               fill="none"
-              class="size-12"
+              class="size-12 shrink-0"
             >
               <path
                 d="M16.6127 16.0846C13.9796 17.5677 12.4773 20.6409 12 21.5V8C12.4145 7.25396 13.602 5.11646 15.6317 3.66368C16.4868 3.05167 16.9143 2.74566 17.4572 3.02468C18 3.30371 18 3.91963 18 5.15146V13.9914C18 14.6568 18 14.9895 17.8634 15.2233C17.7267 15.4571 17.3554 15.6663 16.6127 16.0846L16.6127 16.0846Z"
@@ -478,18 +505,19 @@
             </svg>
             <p class="max-w-4xl text-center font-medium text-stone-800 text-3xl">Learning</p>
             <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-xl">
-              I love to learn, and I&#8217;m always working on something new! Here&#8217;s some
-              stuff I haven&#8217;t learned yet, but am planning to learn soon:
+              I love to learn, and I&#8217;m always working on something new! Here are some tools
+              and frameworks on my learning roadmap:
             </p>
           </div>
-          <div
-            class="mx-auto grid max-w-max grid-cols-3 gap-x-12 gap-y-8 md:grid-cols-3 md:gap-x-24"
-          >
-            <div class="flex flex-col items-center gap-1">
+          <div class="mx-auto grid max-w-max grid-cols-3 gap-4 md:grid-cols-3 md:gap-8 md:gap-x-24">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="react"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="-11.5 -10.23174 23 20.46348"
-                class="size-12"
+                class="size-12 shrink-0"
               >
                 <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
                 <g stroke="#61dafb" stroke-width="1" fill="none">
@@ -500,14 +528,17 @@
               </svg>
               <p class="font-semibold text-[#61dafb] text-lg">React</p>
             </div>
-            <div class="flex flex-col items-center gap-1">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="figma"
+            >
               <svg
                 viewBox="-64 0 384 384"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 preserveAspectRatio="xMidYMid"
-                class="size-12"
+                class="size-12 shrink-0"
               >
                 <g>
                   <path
@@ -534,11 +565,14 @@
               </svg>
               <p class="font-semibold text-[#A259FF] text-lg">Figma</p>
             </div>
-            <div class="flex flex-col items-center gap-1">
+            <div
+              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              data-modal="swift"
+            >
               <svg
                 viewBox="-252 343.9 106.1 106.1"
                 xmlns="http://www.w3.org/2000/svg"
-                class="size-12"
+                class="size-12 shrink-0"
               >
                 <path
                   fill="#F05138"
@@ -560,5 +594,580 @@
       ></div>
       <div id="footer"></div>
     </main>
+
+    <div class="modal-backdrop modal-backdrop-hidden"></div>
+
+    <!-- HTML Description Modal -->
+    <div
+      id="html"
+      role="dialog"
+      aria-label="HTML Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">HTML</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Hypertext Markup Language.</span> The standard markup language
+        for web content, defining its content and structure. HTML allows developers to create and
+        structure content on the web, including text, images, links, and multimedia. It is often
+        used with technologies like CSS and JavaScript for styling and scripting.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- CSS Description Modal -->
+    <div
+      id="css"
+      role="dialog"
+      aria-label="CSS Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">CSS</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Cascading Style Sheets.</span> A cornerstone technology of the
+        World Wide Web which separates content from presentation, including layout, colors, and
+        fonts. CSS is used to style documents written in markup languages like HTML or XML.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- Ruby Description Modal -->
+    <div
+      id="ruby"
+      role="dialog"
+      aria-label="Ruby Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">Ruby</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Ruby.</span>
+        <span class="italic"> &#8220;A Programmer&#8217;s best friend.&#8221; </span> An
+        interpreted, high-level, object-oriented programming language designed with a focus on
+        programming simplicity and productivity. It has an elegant syntax that is natural to read
+        and easy to write.
+      </p>
+
+      <div class="my-6 h-px w-full rounded-full bg-stone-200"></div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        Visit
+        <a
+          href="https://www.ruby-lang.org/en/about/"
+          class="font-semibold text-primary-500 transition-all duration-300 hover:text-primary-600"
+        >
+          Ruby-Lang.org
+        </a>
+        to learn more about Ruby and the philosophy behind the language.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- JavaScript Description Modal -->
+    <div
+      id="js"
+      role="dialog"
+      aria-label="JavaScript Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">JavaScript</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">JavaScript.</span> A programming language and core technology of
+        the World Wide Web, alongside HTML and CSS. It is a dynamic, interpreted language with
+        first-class functions and a prototype-based object-oriented model. It is widely used for
+        both client-side scripting and server-side development.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- Rails Description Modal -->
+    <div
+      id="rails"
+      role="dialog"
+      aria-label="Rails Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">Rails</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Ruby on Rails.</span> A powerful web application framework that
+        is &#8220;optimized for happiness&#8221; and designed to &#8220;compress the complexity of
+        modern web apps,&#8221; based on a wide set of heretical thoughts about the nature of
+        programming and programmers. Emphasizing Convention over Configuration (CoC) and the
+        Don&#8217;t Repeat Yourself (DRY) principle, Rails helps developers write clean, efficient
+        code. It includes essential tools for rapid prototyping like scaffolding generators, a
+        built-in development web server for testing, and seamless database integration through
+        Active Record ORM.
+      </p>
+
+      <div class="my-6 h-px w-full rounded-full bg-stone-200"></div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        Visit
+        <a
+          href="https://rubyonrails.org/"
+          class="font-semibold text-primary-500 transition-all duration-300 hover:text-primary-600"
+          >RubyOnRails.org</a
+        >
+        to find out more about what Rails has to offer, or read the
+        <a
+          href="https://rubyonrails.org/doctrine"
+          class="font-semibold text-primary-500 transition-all duration-300 hover:text-primary-600"
+          >Rails Doctrine</a
+        >
+        to learn more about the philosophy behind Rails.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- Tailwind Description Modal -->
+    <div
+      id="tailwind"
+      role="dialog"
+      aria-label="Tailwind Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">Tailwind</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Tailwind CSS.</span> A utility-first CSS framework that allows
+        developers to build custom user interfaces directly in their HTML. Instead of pre-designed
+        components, it offers utility classes like
+        <code class="font-mono text-xs">.bg-red-500</code> and
+        <code class="font-mono text-xs">.text-center</code> for precise, efficient design. This
+        approach speeds up development and ensures consistent styling, making it ideal for projects
+        needing flexibility and scalability. With extensive configuration options, Tailwind enables
+        easy customization and theming, allowing developers to create unique, visually appealing
+        designs without writing extensive custom CSS.
+      </p>
+
+      <div class="my-6 h-px w-full rounded-full bg-stone-200"></div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        Visit
+        <a
+          href="https://tailwindcss.com/"
+          class="font-semibold text-[#44a8b3] transition-all duration-300 hover:text-[#248893]"
+          >TailwindCSS.com</a
+        >
+        to learn more about Tailwind.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- Git Description Modal -->
+    <div
+      id="git"
+      role="dialog"
+      aria-label="Git Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">Git</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Git.</span> A distributed version control system designed to
+        track changes in source code during software development. It enables developers to
+        collaborate seamlessly by managing code versions, branches, and merge workflows. With
+        powerful features like fast branching, stashing, and conflict resolution, Git ensures
+        reliable version management and facilitates scalable collaboration for projects of any size.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- GitHub Description Modal -->
+    <div
+      id="github"
+      role="dialog"
+      aria-label="GitHub Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">GitHub</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">GitHub.</span> A web-based platform for version control and
+        collaboration built on Git. It allows developers to host repositories, manage projects, and
+        review code efficiently. Features like pull requests, issue tracking, and integrations with
+        CI/CD tools streamline the software development lifecycle, making GitHub essential for
+        open-source projects and professional teams alike.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- Visual Studio Code Description Modal -->
+    <div
+      id="vscode"
+      role="dialog"
+      aria-label="Visual Studio Code Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">VS Code</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Visual Studio Code.</span> A lightweight yet powerful code
+        editor developed by Microsoft. Known for its speed and versatility, it supports a wide range
+        of programming languages and frameworks. Features like IntelliSense, syntax highlighting,
+        debugging, built-in Git integration, and an extensive marketplace of extensions and themes
+        make it a favorite tool for developers seeking productivity and customization.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- Arc Description Modal -->
+    <div
+      id="arc"
+      role="dialog"
+      aria-label="Arc Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">Arc</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Arc by the Browser Company.</span> Dubbed
+        <span class="italic">
+          &#8220;the Chrome replacement you&#8217;ve been waiting for&#8221;
+        </span>
+        by <span class="italic">The Verge</span>, Arc is a modern browser that anticipates your
+        needs and streamlines your workflow. Features like Spaces for easy organization, Profiles
+        for seamless context switching, and Split View for effortless multitasking redefine how you
+        browse. With customizable Themes, Boosts, native ad-blocking, and secure syncing across
+        devices, Arc prioritizes privacy, security, and personalization. Its clean, innovative
+        design creates a browsing experience that&#8217;s both functional and delightful, inviting
+        you to &#82220;enter <span class="italic">your</span> new home on the internet.&#8221;
+      </p>
+
+      <div class="my-6 h-px w-full rounded-full bg-stone-200"></div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        Check out
+        <a
+          href="https://arc.net/"
+          class="font-semibold text-[#ff536a] transition-all duration-300 hover:text-[#df334a]"
+          >arc.net</a
+        >
+        to learn more, or visit
+        <a
+          href="https://thebrowser.company/"
+          class="font-semibold text-[#0f2cc0] transition-all duration-300 hover:text-[#3f5cf0]"
+          >thebrowser.company</a
+        >
+        to explore the Browser Company&#8217;s mission to build &#8220;a better way to use the
+        internet.&#8221;
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- React Description Modal -->
+    <div
+      id="react"
+      role="dialog"
+      aria-label="React Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">React</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">React.</span> A declarative JavaScript library for building
+        dynamic and interactive user interfaces. Developed by Facebook, it uses a component-based
+        architecture and a virtual DOM for efficient rendering. React&#8217;s flexibility, strong
+        ecosystem, and compatibility with tools like Redux and Next.js make it a popular choice for
+        developing scalable, high-performance web applications.
+      </p>
+
+      <div class="my-6 h-px w-full rounded-full bg-stone-200"></div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Why I want to learn React:</span>
+        Coming from a background in Ruby on Rails and JavaScript, I see React as a great way to
+        expand my front-end expertise. Its component-based approach aligns with my preference for
+        modular code, and I&#8217;m drawn to how it improves performance and user experience.
+        I&#8217;m eager to dive into React and leverage its capabilities for building modern web
+        applications.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- Figma Description Modal -->
+    <div
+      id="figma"
+      role="dialog"
+      aria-label="Figma Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">Figma</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Figma.</span> A collaborative, cloud-based design tool for
+        creating user interfaces, prototypes, and vector graphics. Figma&#8217;s real-time
+        collaboration, version control, and intuitive interface make it a top choice for design
+        teams. Its powerful design and prototyping features streamline workflows, making it an
+        essential tool for product design and UX development.
+      </p>
+
+      <div class="my-6 h-px w-full rounded-full bg-stone-200"></div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Why I want to learn Figma:</span>
+        Understanding design is essential for building exceptional user experiences. As a developer,
+        learning Figma would help me collaborate more effectively with designers and contribute to
+        the creative process. I&#8217;m particularly interested in its prototyping capabilities,
+        which would allow me to test and iterate on ideas before diving into code. By mastering
+        Figma, I hope to bridge the gap between development and design, creating applications that
+        are not only functional but also visually stunning and user-friendly.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
+
+    <!-- Swift Description Modal -->
+    <div
+      id="swift"
+      role="dialog"
+      aria-label="Swift Description"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold leading-none tracking-tight text-lg">Swift</h2>
+      </div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Swift.</span> A modern programming language developed by Apple
+        for building apps across iOS, iPadOS, macOS, watchOS, tvOS, and visionOS. Swift emphasizes
+        performance, safety, and clean syntax, making it ideal for creating robust, user-friendly
+        applications. With features like optional types and powerful error handling, Swift enables
+        developers to write concise, expressive, and reliable code.
+      </p>
+
+      <div class="my-6 h-px w-full rounded-full bg-stone-200"></div>
+
+      <p class="text-pretty text-stone-700 text-base">
+        <span class="font-semibold">Why I want to learn Swift:</span>
+        Learning Swift appeals to me because I want to explore the world of mobile development and
+        build apps that integrate seamlessly into Apple&#8217;s ecosystem. I&#8217;m excited about
+        the creative potential Swift offers for crafting polished, intuitive applications. Expanding
+        into mobile and desktop development with Swift will allow me to create impactful apps while
+        broadening my abilities as a developer.
+      </p>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
   </body>
 </html>

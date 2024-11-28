@@ -62,6 +62,34 @@
   }
 
   .mobile-menu-hidden {
-    @apply max-md:opacity-0 max-md:scale-75;
+    @apply max-md:scale-75 max-md:opacity-0;
+  }
+
+  .modal {
+    @apply fixed left-1/2 top-1/2 z-50 mx-4 mb-10 mt-0 max-h-[calc(100svh-10rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-[calc(50%+1rem)] -translate-y-1/2 gap-4 overflow-y-auto rounded-2xl border bg-stone-50 p-6 shadow-md transition duration-200 ease-in-out sm:mx-0 sm:mb-0 sm:max-h-none sm:w-full sm:-translate-x-1/2;
+  }
+
+  .modal-hidden {
+    @apply pointer-events-none scale-75 opacity-0;
+  }
+
+  .modal-backdrop {
+    @apply fixed inset-0 z-50 h-screen w-screen bg-black/50 backdrop-blur-sm transition-all duration-200 ease-in-out;
+  }
+
+  .modal-backdrop-hidden {
+    @apply pointer-events-none opacity-0;
+  }
+
+  .modal-x-btn {
+    @apply absolute right-2 top-2 rounded-lg p-2 opacity-70 transition-opacity hover:bg-stone-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .modal-trigger {
+    @apply h-[125px] w-[125px] rounded-2xl border border-stone-300 bg-stone-50/60 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-white hover:shadow active:scale-95 active:shadow-sm cursor-pointer;
+  }
+
+  [class*='bg-stone-200'] .modal-trigger {
+    @apply border-stone-300 bg-stone-100 hover:bg-white;
   }
 }

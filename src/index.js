@@ -17,12 +17,13 @@ const addFooter = () => {
 
 const activateCurrentNavLink = () => {
   const links = document.querySelectorAll('a.nav-link-text');
-  const currentUrl = window.location.href.replace(/\.html$/, '').replace(/^\//, '');
-  const normalizedCurrentUrl = currentUrl === '' ? 'index' : currentUrl;
+  const currentPath = window.location.pathname.replace(/\.html$/, '');
+  const normalizedCurrentPath = currentPath === '/' ? '/index' : currentPath;
 
   links.forEach((link) => {
-    const linkUrl = link.href.replace(/\.html$/, '').replace(/^\//, '');
-    if (linkUrl === normalizedCurrentUrl) {
+    const linkPath = new URL(link.href).pathname.replace(/\.html$/, '');
+
+    if (linkPath === normalizedCurrentPath) {
       link.classList.add('nav-link-text-active');
       link.nextElementSibling.classList.add('nav-link-bg-active');
     }

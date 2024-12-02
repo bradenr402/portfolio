@@ -62,7 +62,7 @@
   }
 
   .mobile-menu-hidden {
-    @apply max-md:scale-75 max-md:opacity-0;
+    @apply max-md:scale-75 max-md:opacity-0 max-md:pointer-events-none;
   }
 
   .modal {

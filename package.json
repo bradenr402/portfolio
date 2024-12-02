@@ -5,9 +5,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "dev": "webpack serve",
-    "predeploy": "npm run build",
-    "deploy": "git subtree push --prefix dist origin gh-pages"
+    "dev": "webpack serve"
   },
   "author": "",
   "license": "ISC",

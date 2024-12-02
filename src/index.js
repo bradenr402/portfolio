@@ -39,9 +39,25 @@ const setupMobileMenu = () => {
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('mobile-menu-hidden');
+  if (!mobileMenuButton || !mobileMenu) return;
+
+  const toggleMenu = () => mobileMenu.classList.toggle('mobile-menu-hidden');
+  const closeMenu = () => mobileMenu.classList.add('mobile-menu-hidden');
+
+  const handleClickOutside = (event) => {
+    const isClickInsideMenu = mobileMenu.contains(event.target);
+    const isClickOnButton = mobileMenuButton.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnButton) closeMenu();
+  };
+
+  mobileMenuButton.addEventListener('mousedown', (event) => {
+    event.stopPropagation();
+    toggleMenu();
   });
+
+  document.addEventListener('keydown', (event) => event.key === 'Escape' && closeMenu());
+  document.addEventListener('mousedown', handleClickOutside);
 };
 
 const init = () => {

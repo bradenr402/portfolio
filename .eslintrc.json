@@ -10,6 +10,7 @@
   },
   "rules": {
     "implicit-arrow-linebreak": "off",
-    "max-len": ["error", { "code": 100 }]
+    "max-len": ["error", { "code": 100 }],
+    "operator-linebreak": "off"
   }
 }

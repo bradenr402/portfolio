@@ -48,7 +48,7 @@ export default function setupModals() {
     closeBtn?.addEventListener('click', () => handleCloseBtnClick(modal, modalBackdrop));
   });
 
-  modalBackdrop.addEventListener('click', () => handleBackdropClick(modals, modalBackdrop));
+  modalBackdrop?.addEventListener('click', () => handleBackdropClick(modals, modalBackdrop));
 
   window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeAllModals(modals, modalBackdrop);

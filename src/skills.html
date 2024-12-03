@@ -54,7 +54,8 @@
             </svg>
             <p class="text-center font-medium text-stone-800 text-3xl">My Languages</p>
           </div>
-          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 md:gap-x-24">
+          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 md:grid-cols-4 md:gap-8">
+            <!-- HTML -->
             <div
               class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
               data-modal="html"
@@ -63,7 +64,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 role="img"
                 viewBox="0 0 512 512"
-                class="size-12 shrink-0"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
                 <path fill="#e34f26" d="M71 460L30 0h451l-41 460-185 52" />
                 <path fill="#ef652a" d="M256 472l149-41 35-394H256" />
@@ -76,13 +77,19 @@
                   d="M255 208v57h70l-7 73-63 17v59l116-32 16-174zm0-114v56h137l5-56z"
                 />
               </svg>
-              <span class="font-semibold text-[#e34f26] text-lg">HTML</span>
+              <span class="font-semibold text-[#e34f26] md:text-lg lg:text-xl">HTML</span>
             </div>
+
+            <!-- CSS -->
             <div
               class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
               data-modal="css"
             >
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="size-12 shrink-0">
+              <svg
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
+              >
                 <polygon
                   points="5.902 27.201 3.656 2 28.344 2 26.095 27.197 15.985 30 5.902 27.201"
                   style="fill: #1572b6"
@@ -112,8 +119,10 @@
                   style="fill: #ebebeb"
                 />
               </svg>
-              <span class="font-semibold text-[#1572b6] text-lg">CSS</span>
+              <span class="font-semibold text-[#1572b6] md:text-lg lg:text-xl">CSS</span>
             </div>
+
+            <!-- JavaScript -->
             <div
               class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
               data-modal="ruby"
@@ -122,7 +131,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 role="img"
                 viewBox="0 0 512 512"
-                class="size-12 shrink-0"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
                 <rect rx="15%" fill="transparent" />
                 <path
@@ -143,8 +152,10 @@
                 <path d="M192 282l54 103c32-17 57-38 79-61z" fill="#900e04" />
                 <path d="M103 302l-8 91c14 20 34 21 55 20-15-37-45-112-47-111z" fill="#8b1104" />
               </svg>
-              <span class="font-semibold text-[#b11205] text-lg">Ruby</span>
+              <span class="font-semibold text-[#b11205] md:text-lg lg:text-xl">Ruby</span>
             </div>
+
+            <!-- Ruby -->
             <div
               class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
               data-modal="js"
@@ -155,7 +166,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 preserveAspectRatio="xMidYMid"
-                class="size-12 shrink-0"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
                 <g>
                   <path d="M0,0 L256,0 L256,256 L0,256 L0,0 Z" fill="#f7df1e"></path>
@@ -169,7 +180,7 @@
                   ></path>
                 </g>
               </svg>
-              <span class="font-semibold text-[#efd715] text-lg">JavaScript</span>
+              <span class="font-semibold text-[#efd715] md:text-lg lg:text-xl">JavaScript</span>
             </div>
           </div>
         </div>
@@ -212,12 +223,17 @@
             </svg>
             <p class="text-center font-medium text-stone-800 text-3xl">My Frameworks</p>
           </div>
-          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 md:gap-8 md:gap-x-24">
+          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 md:gap-8">
+            <!-- Rails -->
             <div
               class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
               data-modal="rails"
             >
-              <svg viewBox="0 -6 32 32" xmlns="http://www.w3.org/2000/svg" class="-mb-2 size-16">
+              <svg
+                viewBox="0 -6 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-12 sm:size-14 md:size-16"
+              >
                 <g fill="none" fill-rule="evenodd">
                   <path d="M0-6h32v32H0z" />
                   <path
@@ -227,19 +243,25 @@
                   />
                 </g>
               </svg>
-              <span class="font-semibold text-[#c00] text-lg">Rails</span>
+              <span class="-mt-2 font-semibold text-[#c00] md:text-lg lg:text-xl">Rails</span>
             </div>
+
+            <!-- Tailwind -->
             <div
               class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
               data-modal="tailwind"
             >
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="-mb-2 size-16">
+              <svg
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-12 sm:size-14 md:size-16"
+              >
                 <path
                   d="M9,13.7q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q11.1,10.9,9,13.7ZM2,22.1q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q4.1,19.3,2,22.1Z"
                   style="fill: #44a8b3"
                 />
               </svg>
-              <span class="font-semibold text-[#44a8b3] text-lg">Tailwind</span>
+              <span class="-mt-2 font-semibold text-[#44a8b3] md:text-lg lg:text-xl">Tailwind</span>
             </div>
           </div>
         </div>
@@ -263,16 +285,17 @@
             </svg>
             <p class="text-center font-medium text-stone-800 text-3xl">My Dev Tools</p>
           </div>
-          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 md:gap-x-24">
+          <div class="mx-auto grid max-w-max grid-cols-12 gap-4 md:gap-8">
+            <!-- Git -->
             <div
-              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              class="modal-trigger col-span-6 ml-auto flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 md:col-span-3"
               data-modal="git"
             >
               <svg
                 viewBox="0 0 32 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="size-12 shrink-0"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
                 <path
                   d="M2.58536 17.4132C1.80488 16.6327 1.80488 15.3673 2.58536 14.5868L14.5868 2.58536C15.3673 1.80488 16.6327 1.80488 17.4132 2.58536L29.4146 14.5868C30.1951 15.3673 30.1951 16.6327 29.4146 17.4132L17.4132 29.4146C16.6327 30.1951 15.3673 30.1951 14.5868 29.4146L2.58536 17.4132Z"
@@ -283,10 +306,12 @@
                   fill="white"
                 />
               </svg>
-              <span class="font-semibold text-[#EE513B] text-lg">Git</span>
+              <span class="font-semibold text-[#EE513B] md:text-lg lg:text-xl">Git</span>
             </div>
+
+            <!-- GitHub -->
             <div
-              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              class="modal-trigger col-span-6 flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 max-md:mr-auto md:col-span-3"
               data-modal="github"
             >
               <svg
@@ -294,7 +319,7 @@
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                class="size-12 shrink-0"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g
@@ -311,17 +336,19 @@
                   </g>
                 </g>
               </svg>
-              <span class="font-semibold text-black text-lg">GitHub</span>
+              <span class="font-semibold text-black md:text-lg lg:text-xl">GitHub</span>
             </div>
+
+            <!-- VS Code -->
             <div
-              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              class="modal-trigger col-span-4 flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 max-md:ml-auto md:col-span-3"
               data-modal="vscode"
             >
               <svg
                 viewBox="0 0 32 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="size-12 shrink-0"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
                 <path
                   d="M21.0016 3.11679C21.0016 2.23783 20.0175 2.23782 19.5801 2.34769C20.1924 1.86426 20.9105 1.98147 21.1656 2.12796L27.079 5.02747C27.6424 5.30375 27.9998 5.8786 27.9998 6.50857V25.5831C27.9998 26.2215 27.6329 26.8025 27.058 27.0743L21.4937 29.7054C21.1109 29.8701 20.2799 30.2767 19.5801 29.7053C20.4549 29.8702 20.9287 29.2476 21.0016 28.8264V3.11679Z"
@@ -375,13 +402,19 @@
                   </linearGradient>
                 </defs>
               </svg>
-              <span class="font-semibold text-[#1279B7] text-lg">VS Code</span>
+              <span class="font-semibold text-[#1279B7] md:text-lg lg:text-xl">VS Code</span>
             </div>
+
+            <!-- Arc -->
             <div
-              class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
+              class="modal-trigger col-span-4 mr-auto flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 max-md:ml-auto md:col-span-3"
               data-modal="arc"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 68" class="size-12 shrink-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 82 68"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
+              >
                 <g>
                   <g transform="translate(143 148)">
                     <g fill-rule="evenodd" clip-rule="evenodd">
@@ -473,420 +506,422 @@
                   />
                 </g>
               </svg>
-              <span class="font-semibold text-[#ff536a] text-lg">Arc</span>
+              <span class="font-semibold text-[#ff536a] md:text-lg lg:text-xl">Arc</span>
             </div>
+
+            <!-- npm -->
             <div
-              class="col-span-2 grid grid-cols-2 gap-4 md:col-span-4 md:mx-auto md:grid-cols-3 md:gap-8 md:gap-x-24"
+              class="modal-trigger col-span-4 flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 max-md:mr-auto md:col-span-4 md:ml-auto"
+              data-modal="npm"
             >
-              <div
-                class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
-                data-modal="npm"
+              <svg
+                viewBox="0 -173.5 512 512"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                preserveAspectRatio="xMidYMid"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
-                <svg
-                  viewBox="0 -173.5 512 512"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  preserveAspectRatio="xMidYMid"
-                  class="size-12 shrink-0"
-                >
-                  <g>
-                    <path
-                      d="M157.538462,164.102564 L223.179487,164.102564 L223.179487,131.282051 L288.820513,131.282051 L288.820513,0 L157.538462,0 L157.538462,164.102564 Z M223.179487,32.8205128 L256,32.8205128 L256,98.4615385 L223.179487,98.4615385 L223.179487,32.8205128 Z M315.076923,0 L315.076923,131.282051 L380.717949,131.282051 L380.717949,32.8205128 L413.538462,32.8205128 L413.538462,131.282051 L446.358974,131.282051 L446.358974,32.8205128 L479.179487,32.8205128 L479.179487,131.282051 L512,131.282051 L512,0 L315.076923,0 Z M0,131.282051 L65.6410256,131.282051 L65.6410256,32.8205128 L98.4615385,32.8205128 L98.4615385,131.282051 L131.282051,131.282051 L131.282051,0 L0,0 L0,131.282051 Z"
-                      fill="#C12127"
-                    ></path>
-                  </g>
-                </svg>
-                <span class="font-semibold text-[#C12127] text-lg">npm</span>
-              </div>
-              <div
-                class="modal-trigger ml-auto flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
-                data-modal="eslint"
+                <g>
+                  <path
+                    d="M157.538462,164.102564 L223.179487,164.102564 L223.179487,131.282051 L288.820513,131.282051 L288.820513,0 L157.538462,0 L157.538462,164.102564 Z M223.179487,32.8205128 L256,32.8205128 L256,98.4615385 L223.179487,98.4615385 L223.179487,32.8205128 Z M315.076923,0 L315.076923,131.282051 L380.717949,131.282051 L380.717949,32.8205128 L413.538462,32.8205128 L413.538462,131.282051 L446.358974,131.282051 L446.358974,32.8205128 L479.179487,32.8205128 L479.179487,131.282051 L512,131.282051 L512,0 L315.076923,0 Z M0,131.282051 L65.6410256,131.282051 L65.6410256,32.8205128 L98.4615385,32.8205128 L98.4615385,131.282051 L131.282051,131.282051 L131.282051,0 L0,0 L0,131.282051 Z"
+                    fill="#C12127"
+                  ></path>
+                </g>
+              </svg>
+              <span class="font-semibold text-[#C12127] md:text-lg lg:text-xl">npm</span>
+            </div>
+
+            <!-- ESLint -->
+            <div
+              class="modal-trigger col-span-6 ml-auto flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 md:col-span-4 md:mr-auto"
+              data-modal="eslint"
+            >
+              <svg
+                viewBox="0 -15.5 256 256"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                preserveAspectRatio="xMidYMid"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
-                <svg
-                  viewBox="0 -15.5 256 256"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  preserveAspectRatio="xMidYMid"
-                  class="size-12 shrink-0"
-                >
-                  <g>
-                    <path
-                      d="M77.9645944,80.5683518 L126.534904,52.5264993 C127.750365,51.8245002 129.248632,51.8245002 130.464093,52.5264993 L179.035406,80.5683518 C180.249864,81.2703508 181,82.5670433 181,83.9710413 L181,140.054746 C181,141.457742 180.249864,142.755437 179.035406,143.458439 L130.464093,171.500291 C129.248632,172.20229 127.750365,172.20229 126.534904,171.500291 L77.9645944,143.458439 C76.7491332,142.75644 76,141.458744 76,140.054746 L76,83.9710413 C76.0010029,82.5670433 76.7501361,81.2703508 77.9645944,80.5683518"
-                      fill="#8080F2"
-                    ></path>
-                    <path
-                      d="M254.4167,107.416596 L196.323141,6.34980392 C194.212911,2.69552941 190.314709,-1.42108547e-14 186.095253,-1.42108547e-14 L69.9061271,-1.42108547e-14 C65.6856677,-1.42108547e-14 61.7864612,2.69552941 59.6762315,6.34980392 L1.58267227,107.193725 C-0.527557422,110.849004 -0.527557422,115.462024 1.58267227,119.117302 L59.6762315,219.355859 C61.7864612,223.010133 65.6856677,224.878431 69.9061271,224.878431 L186.094249,224.878431 C190.313705,224.878431 194.212911,223.066353 196.322137,219.411075 L254.415696,119.008878 C256.527934,115.355608 256.527934,111.070871 254.4167,107.416596 L254.4167,107.416596 Z M206.312097,156.016439 C206.312097,157.502243 205.417609,158.876612 204.129585,159.620518 L130.130998,202.31429 C128.843979,203.057192 127.231691,203.057192 125.944672,202.31429 L51.8888615,159.620518 C50.6018422,158.876612 49.7013303,157.503247 49.7013303,156.016439 L49.7013303,70.6278902 C49.7013303,69.1410824 50.5887913,67.7677176 51.8768145,67.0238118 L125.87239,24.3300392 C127.159409,23.5861333 128.769689,23.5861333 130.056708,24.3300392 L204.117538,67.0238118 C205.405562,67.7677176 206.312097,69.1410824 206.312097,70.6278902 L206.312097,156.016439 L206.312097,156.016439 Z"
-                      fill="#4B32C3"
-                    ></path>
-                  </g>
-                </svg>
-                <span class="font-semibold text-[#4B32C3] text-lg">ESLint</span>
-              </div>
-              <div
-                class="modal-trigger mx-auto flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 max-md:col-span-2"
-                data-modal="prettier"
+                <g>
+                  <path
+                    d="M77.9645944,80.5683518 L126.534904,52.5264993 C127.750365,51.8245002 129.248632,51.8245002 130.464093,52.5264993 L179.035406,80.5683518 C180.249864,81.2703508 181,82.5670433 181,83.9710413 L181,140.054746 C181,141.457742 180.249864,142.755437 179.035406,143.458439 L130.464093,171.500291 C129.248632,172.20229 127.750365,172.20229 126.534904,171.500291 L77.9645944,143.458439 C76.7491332,142.75644 76,141.458744 76,140.054746 L76,83.9710413 C76.0010029,82.5670433 76.7501361,81.2703508 77.9645944,80.5683518"
+                    fill="#8080F2"
+                  ></path>
+                  <path
+                    d="M254.4167,107.416596 L196.323141,6.34980392 C194.212911,2.69552941 190.314709,-1.42108547e-14 186.095253,-1.42108547e-14 L69.9061271,-1.42108547e-14 C65.6856677,-1.42108547e-14 61.7864612,2.69552941 59.6762315,6.34980392 L1.58267227,107.193725 C-0.527557422,110.849004 -0.527557422,115.462024 1.58267227,119.117302 L59.6762315,219.355859 C61.7864612,223.010133 65.6856677,224.878431 69.9061271,224.878431 L186.094249,224.878431 C190.313705,224.878431 194.212911,223.066353 196.322137,219.411075 L254.415696,119.008878 C256.527934,115.355608 256.527934,111.070871 254.4167,107.416596 L254.4167,107.416596 Z M206.312097,156.016439 C206.312097,157.502243 205.417609,158.876612 204.129585,159.620518 L130.130998,202.31429 C128.843979,203.057192 127.231691,203.057192 125.944672,202.31429 L51.8888615,159.620518 C50.6018422,158.876612 49.7013303,157.503247 49.7013303,156.016439 L49.7013303,70.6278902 C49.7013303,69.1410824 50.5887913,67.7677176 51.8768145,67.0238118 L125.87239,24.3300392 C127.159409,23.5861333 128.769689,23.5861333 130.056708,24.3300392 L204.117538,67.0238118 C205.405562,67.7677176 206.312097,69.1410824 206.312097,70.6278902 L206.312097,156.016439 L206.312097,156.016439 Z"
+                    fill="#4B32C3"
+                  ></path>
+                </g>
+              </svg>
+              <span class="font-semibold text-[#4B32C3] md:text-lg lg:text-xl">ESLint</span>
+            </div>
+
+            <!-- Prettier -->
+            <div
+              class="modal-trigger col-span-6 mr-auto flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 md:col-span-4"
+              data-modal="prettier"
+            >
+              <svg
+                viewBox="0 0 256 256"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                preserveAspectRatio="xMidYMid"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
-                <svg
-                  viewBox="0 0 256 256"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  preserveAspectRatio="xMidYMid"
-                  class="size-12 shrink-0"
-                >
-                  <g>
-                    <rect
-                      fill="#56B3B4"
-                      x="182.857143"
-                      y="48.7619048"
-                      width="24.3809524"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#EA5E5E"
-                      x="0"
-                      y="243.809524"
-                      width="73.1428571"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#BF85BF"
-                      x="146.285714"
-                      y="146.285714"
-                      width="48.7619048"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#EA5E5E"
-                      x="73.1428571"
-                      y="146.285714"
-                      width="60.952381"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#56B3B4"
-                      x="0"
-                      y="146.285714"
-                      width="60.952381"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#BF85BF"
-                      x="0"
-                      y="195.047619"
-                      width="73.1428571"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#BF85BF"
-                      x="0"
-                      y="97.5238095"
-                      width="73.1428571"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#F7BA3E"
-                      x="60.952381"
-                      y="24.3809524"
-                      width="134.095238"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#EA5E5E"
-                      x="0"
-                      y="24.3809524"
-                      width="48.7619048"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#F7BA3E"
-                      x="48.7619048"
-                      y="219.428571"
-                      width="24.3809524"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#56B3B4"
-                      x="48.7619048"
-                      y="73.1428571"
-                      width="24.3809524"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#56B3B4"
-                      x="0"
-                      y="219.428571"
-                      width="36.5714286"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#F7BA3E"
-                      x="0"
-                      y="73.1428571"
-                      width="36.5714286"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="158.47619"
-                      y="219.428571"
-                      width="24.3809524"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="85.3333333"
-                      y="219.428571"
-                      width="60.952381"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="195.047619"
-                      y="219.428571"
-                      width="60.952381"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#56B3B4"
-                      x="97.5238095"
-                      y="121.904762"
-                      width="109.714286"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#F7BA3E"
-                      x="36.5714286"
-                      y="121.904762"
-                      width="48.7619048"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#EA5E5E"
-                      x="0"
-                      y="121.904762"
-                      width="24.3809524"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#BF85BF"
-                      x="109.714286"
-                      y="48.7619048"
-                      width="60.952381"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#56B3B4"
-                      x="0"
-                      y="48.7619048"
-                      width="97.5238095"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#F7BA3E"
-                      x="36.5714286"
-                      y="170.666667"
-                      width="121.904762"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#BF85BF"
-                      x="0"
-                      y="170.666667"
-                      width="24.3809524"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#EA5E5E"
-                      x="146.285714"
-                      y="73.1428571"
-                      width="73.1428571"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#F7BA3E"
-                      x="146.285714"
-                      y="97.5238095"
-                      width="73.1428571"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#56B3B4"
-                      x="0"
-                      y="0"
-                      width="158.47619"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="170.666667"
-                      y="0"
-                      width="85.3333333"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="170.666667"
-                      y="170.666667"
-                      width="36.5714286"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="219.428571"
-                      y="170.666667"
-                      width="36.5714286"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="207.238095"
-                      y="146.285714"
-                      width="48.7619048"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="207.238095"
-                      y="24.3809524"
-                      width="48.7619048"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="219.428571"
-                      y="121.904762"
-                      width="36.5714286"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="219.428571"
-                      y="48.7619048"
-                      width="36.5714286"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="231.619048"
-                      y="73.1428571"
-                      width="24.3809524"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="231.619048"
-                      y="97.5238095"
-                      width="24.3809524"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="134.095238"
-                      y="195.047619"
-                      width="121.904762"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="85.3333333"
-                      y="195.047619"
-                      width="36.5714286"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="182.857143"
-                      y="243.809524"
-                      width="73.1428571"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="85.3333333"
-                      y="243.809524"
-                      width="85.3333333"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="85.3333333"
-                      y="73.1428571"
-                      width="48.7619048"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                    <rect
-                      fill="#D0D4D8"
-                      opacity="0.5"
-                      x="85.3333333"
-                      y="97.5238095"
-                      width="48.7619048"
-                      height="12.1904762"
-                      rx="5"
-                    ></rect>
-                  </g>
-                </svg>
-                <span class="font-semibold text-[#56B3B4] text-lg">Prettier</span>
-              </div>
+                <g>
+                  <rect
+                    fill="#56B3B4"
+                    x="182.857143"
+                    y="48.7619048"
+                    width="24.3809524"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#EA5E5E"
+                    x="0"
+                    y="243.809524"
+                    width="73.1428571"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#BF85BF"
+                    x="146.285714"
+                    y="146.285714"
+                    width="48.7619048"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#EA5E5E"
+                    x="73.1428571"
+                    y="146.285714"
+                    width="60.952381"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#56B3B4"
+                    x="0"
+                    y="146.285714"
+                    width="60.952381"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#BF85BF"
+                    x="0"
+                    y="195.047619"
+                    width="73.1428571"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#BF85BF"
+                    x="0"
+                    y="97.5238095"
+                    width="73.1428571"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#F7BA3E"
+                    x="60.952381"
+                    y="24.3809524"
+                    width="134.095238"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#EA5E5E"
+                    x="0"
+                    y="24.3809524"
+                    width="48.7619048"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#F7BA3E"
+                    x="48.7619048"
+                    y="219.428571"
+                    width="24.3809524"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#56B3B4"
+                    x="48.7619048"
+                    y="73.1428571"
+                    width="24.3809524"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#56B3B4"
+                    x="0"
+                    y="219.428571"
+                    width="36.5714286"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#F7BA3E"
+                    x="0"
+                    y="73.1428571"
+                    width="36.5714286"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="158.47619"
+                    y="219.428571"
+                    width="24.3809524"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="85.3333333"
+                    y="219.428571"
+                    width="60.952381"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="195.047619"
+                    y="219.428571"
+                    width="60.952381"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#56B3B4"
+                    x="97.5238095"
+                    y="121.904762"
+                    width="109.714286"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#F7BA3E"
+                    x="36.5714286"
+                    y="121.904762"
+                    width="48.7619048"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#EA5E5E"
+                    x="0"
+                    y="121.904762"
+                    width="24.3809524"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#BF85BF"
+                    x="109.714286"
+                    y="48.7619048"
+                    width="60.952381"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#56B3B4"
+                    x="0"
+                    y="48.7619048"
+                    width="97.5238095"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#F7BA3E"
+                    x="36.5714286"
+                    y="170.666667"
+                    width="121.904762"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#BF85BF"
+                    x="0"
+                    y="170.666667"
+                    width="24.3809524"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#EA5E5E"
+                    x="146.285714"
+                    y="73.1428571"
+                    width="73.1428571"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#F7BA3E"
+                    x="146.285714"
+                    y="97.5238095"
+                    width="73.1428571"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#56B3B4"
+                    x="0"
+                    y="0"
+                    width="158.47619"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="170.666667"
+                    y="0"
+                    width="85.3333333"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="170.666667"
+                    y="170.666667"
+                    width="36.5714286"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="219.428571"
+                    y="170.666667"
+                    width="36.5714286"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="207.238095"
+                    y="146.285714"
+                    width="48.7619048"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="207.238095"
+                    y="24.3809524"
+                    width="48.7619048"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="219.428571"
+                    y="121.904762"
+                    width="36.5714286"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="219.428571"
+                    y="48.7619048"
+                    width="36.5714286"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="231.619048"
+                    y="73.1428571"
+                    width="24.3809524"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="231.619048"
+                    y="97.5238095"
+                    width="24.3809524"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="134.095238"
+                    y="195.047619"
+                    width="121.904762"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="85.3333333"
+                    y="195.047619"
+                    width="36.5714286"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="182.857143"
+                    y="243.809524"
+                    width="73.1428571"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="85.3333333"
+                    y="243.809524"
+                    width="85.3333333"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="85.3333333"
+                    y="73.1428571"
+                    width="48.7619048"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                  <rect
+                    fill="#D0D4D8"
+                    opacity="0.5"
+                    x="85.3333333"
+                    y="97.5238095"
+                    width="48.7619048"
+                    height="12.1904762"
+                    rx="5"
+                  ></rect>
+                </g>
+              </svg>
+              <span class="font-semibold text-[#56B3B4] md:text-lg lg:text-xl">Prettier</span>
             </div>
           </div>
         </div>
@@ -922,7 +957,8 @@
               and frameworks on my learning roadmap:
             </p>
           </div>
-          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 md:gap-x-24">
+          <div class="mx-auto grid max-w-max grid-cols-2 gap-4 sm:grid-cols-3 md:gap-8">
+            <!-- React -->
             <div
               class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
               data-modal="react"
@@ -930,7 +966,7 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="-11.5 -10.23174 23 20.46348"
-                class="size-12 shrink-0"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
                 <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
                 <g stroke="#61dafb" stroke-width="1" fill="none">
@@ -939,8 +975,10 @@
                   <ellipse rx="11" ry="4.2" transform="rotate(120)" />
                 </g>
               </svg>
-              <p class="font-semibold text-[#61dafb] text-lg">React</p>
+              <p class="font-semibold text-[#61dafb] md:text-lg lg:text-xl">React</p>
             </div>
+
+            <!-- Figma -->
             <div
               class="modal-trigger flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4"
               data-modal="figma"
@@ -951,7 +989,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 preserveAspectRatio="xMidYMid"
-                class="size-12 shrink-0"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
                 <g>
                   <path
@@ -976,16 +1014,18 @@
                   ></path>
                 </g>
               </svg>
-              <p class="font-semibold text-[#A259FF] text-lg">Figma</p>
+              <p class="font-semibold text-[#A259FF] md:text-lg lg:text-xl">Figma</p>
             </div>
+
+            <!-- Swift -->
             <div
-              class="modal-trigger mx-auto flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 max-md:col-span-2"
+              class="modal-trigger mx-auto flex flex-col items-center justify-center gap-1 px-2 pb-2 pt-4 max-sm:col-span-2"
               data-modal="swift"
             >
               <svg
                 viewBox="-252 343.9 106.1 106.1"
                 xmlns="http://www.w3.org/2000/svg"
-                class="size-12 shrink-0"
+                class="size-8 shrink-0 sm:size-10 md:size-12"
               >
                 <path
                   fill="#F05138"
@@ -996,7 +1036,7 @@
                   d="M-168 409.4l.3-1.2c4.4-17.5-6.3-38.3-24.5-49.2 8 10.8 11.5 23.9 8.4 35.3-.3 1-.6 2-1 3-.4-.3-.9-.6-1.6-.9 0 0-18.1-11.2-37.7-30.9-.5-.5 10.5 15.7 22.9 28.8-5.9-3.3-22.2-15.2-32.6-24.6 1.3 2.1 2.8 4.2 4.4 6.1 8.6 11 19.9 24.5 33.4 34.9-9.5 5.8-22.9 6.3-36.2 0-3.3-1.5-6.4-3.4-9.3-5.5 5.6 9 14.3 16.8 24.9 21.4 12.6 5.4 25.2 5.1 34.5.1 0 0 .1 0 .1-.1.4-.2.8-.5 1.2-.7 4.5-2.3 13.3-4.6 18.1 4.6 1.4 2.1 3.9-9.9-5.3-21.1z"
                 />
               </svg>
-              <p class="font-semibold text-[#F05138] text-lg">Swift</p>
+              <p class="font-semibold text-[#F05138] md:text-lg lg:text-xl">Swift</p>
             </div>
           </div>
         </div>

@@ -88,8 +88,4 @@
   .modal-trigger {
     @apply size-[75px] sm:size-[100px] md:size-[125px] lg:size-[150px] rounded-xl sm:rounded-2xl lg:rounded-3xl border border-stone-300 bg-stone-50/60 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-white hover:shadow active:scale-95 active:shadow-sm cursor-pointer;
   }
-
-  [class*='bg-stone-200'] .modal-trigger {
-    @apply border-stone-300 bg-stone-100 hover:bg-white;
-  }
 }

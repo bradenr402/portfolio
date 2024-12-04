@@ -1,4 +1,6 @@
-<nav class="fixed top-0 z-50 w-full bg-gradient-to-b from-stone-100 via-stone-100/75 to-transparent">
+<nav
+  class="fixed top-0 z-50 w-full snap-start bg-gradient-to-b from-stone-100 via-stone-100/75 to-transparent"
+>
   <div class="mx-auto w-full px-4">
     <div class="relative flex h-20 w-full items-center justify-between">
       <!-- Logo -->
@@ -14,9 +16,34 @@
         ></span>
       </div>
 
-      <!-- Hamburger Menu Button -->
+      <!-- Navigation Links -->
+      <div
+        id="mobile-menu"
+        class="mobile-menu-hidden peer fixed inset-x-0 bottom-0 z-40 flex h-screen w-screen justify-end transition-all duration-300 ease-in-out max-md:flex-col max-md:bg-gradient-to-b max-md:from-transparent max-md:via-white/50 max-md:to-white/75 max-md:pb-20 max-md:backdrop-blur-md md:static md:items-center md:space-x-8 md:bg-transparent"
+      >
+        <div class="flex flex-col space-y-2 p-4 md:ml-auto md:flex-row md:space-y-0 md:p-0">
+          <div class="group relative mx-auto grid place-items-center">
+            <a href="index.html" class="nav-link-text peer">About</a>
+            <span class="nav-link-bg"></span>
+          </div>
+          <div class="group relative mx-auto grid place-items-center">
+            <a href="projects.html" class="nav-link-text peer">Projects</a>
+            <span class="nav-link-bg"></span>
+          </div>
+          <div class="group relative mx-auto grid place-items-center">
+            <a href="skills.html" class="nav-link-text peer">Skills</a>
+            <span class="nav-link-bg"></span>
+          </div>
+          <div class="group relative mx-auto grid place-items-center">
+            <a href="contact.html" class="nav-link-text peer">Contact</a>
+            <span class="nav-link-bg"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Button -->
       <button
-        class="block rounded-lg p-2 text-primary-500 transition-all duration-300 ease-in-out hover:bg-primary-500/10 focus:outline-none md:hidden"
+        class="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-primary-500/10 px-5 py-2 font-semibold text-primary-500 backdrop-blur transition-all duration-300 ease-in-out focus:outline-none peer-[:not(.mobile-menu-hidden)]:scale-150 peer-[.mobile-menu-hidden]:*:-rotate-45 md:hidden"
         id="mobile-menu-button"
         aria-label="Toggle navigation"
       >
@@ -24,57 +51,13 @@
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
+          stroke-width="2"
           stroke="currentColor"
-          class="size-6"
+          class="size-5 transition-all duration-300 ease-in-out"
         >
-          <path
-            d="M20 5L8 5"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M20 12L4 12"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M20 19L12 19"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
       </button>
-
-      <!-- Navigation Links -->
-      <div
-        id="mobile-menu"
-        class="mobile-menu-hidden absolute left-0 top-20 z-40 w-full origin-top-right rounded-2xl bg-white bg-opacity-80 drop-shadow-xl transition-all duration-300 ease-in-out max-md:backdrop-blur-md md:static md:flex md:items-center md:space-x-8 md:bg-transparent md:bg-opacity-90 md:shadow-none"
-      >
-        <div class="flex flex-col space-y-2 p-4 md:ml-auto md:flex-row md:space-y-0 md:p-0">
-          <div class="group relative grid place-items-stretch text-center">
-            <a href="index.html" class="nav-link-text peer">About</a>
-            <span class="nav-link-bg"></span>
-          </div>
-          <div class="group relative grid place-items-stretch text-center">
-            <a href="projects.html" class="nav-link-text peer">Projects</a>
-            <span class="nav-link-bg"></span>
-          </div>
-          <div class="group relative grid place-items-stretch text-center">
-            <a href="skills.html" class="nav-link-text peer">Skills</a>
-            <span class="nav-link-bg"></span>
-          </div>
-          <div class="group relative grid place-items-stretch text-center">
-            <a href="contact.html" class="nav-link-text peer">Contact</a>
-            <span class="nav-link-bg"></span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </nav>

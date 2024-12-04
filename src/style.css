@@ -46,11 +46,11 @@
 
 @layer components {
   .nav-link-text {
-    @apply px-4 py-1.5 font-semibold text-stone-800 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-500 group-hover:active:scale-95;
+    @apply px-4 py-1.5 font-semibold text-stone-800 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-500 group-hover:active:scale-95 max-md:text-lg;
   }
 
   .nav-link-bg {
-    @apply absolute inset-0 -z-10 scale-0 rounded-lg bg-primary-500/10 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 peer-active:scale-90;
+    @apply max-md:hidden absolute inset-0 -z-10 scale-0 rounded-lg bg-primary-500/10 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 peer-active:scale-90;
   }
 
   .nav-link-text-active {
@@ -62,7 +62,7 @@
   }
 
   .mobile-menu-hidden {
-    @apply max-md:scale-75 max-md:opacity-0 max-md:pointer-events-none;
+    @apply max-md:opacity-0 max-md:pointer-events-none max-md:translate-y-4;
   }
 
   .modal {

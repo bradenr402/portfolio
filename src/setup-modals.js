@@ -1,4 +1,4 @@
-const toggleScroll = (show) => document.body.classList.toggle('overflow-hidden', show);
+import toggleScroll from './toggle-scroll';
 
 const toggleModal = (modal, modalBackdrop, show) => {
   modal.classList.toggle('modal-hidden', !show);

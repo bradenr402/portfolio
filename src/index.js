@@ -1,5 +1,6 @@
 import footer from './components/footer.html';
 import nav from './components/nav.html';
+import setupMobileMenu from './setup-mobile-menu';
 import setupModals from './setup-modals';
 import './style.css';
 
@@ -33,31 +34,6 @@ const activateCurrentNavLink = () => {
       link.nextElementSibling.classList.add('nav-link-bg-active');
     }
   });
-};
-
-const setupMobileMenu = () => {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  if (!mobileMenuButton || !mobileMenu) return;
-
-  const toggleMenu = () => mobileMenu.classList.toggle('mobile-menu-hidden');
-  const closeMenu = () => mobileMenu.classList.add('mobile-menu-hidden');
-
-  const handleClickOutside = (event) => {
-    const isClickInsideMenu = mobileMenu.contains(event.target);
-    const isClickOnButton = mobileMenuButton.contains(event.target);
-
-    if (!isClickInsideMenu && !isClickOnButton) closeMenu();
-  };
-
-  mobileMenuButton.addEventListener('mousedown', (event) => {
-    event.stopPropagation();
-    toggleMenu();
-  });
-
-  document.addEventListener('keydown', (event) => event.key === 'Escape' && closeMenu());
-  document.addEventListener('mousedown', handleClickOutside);
 };
 
 const init = () => {

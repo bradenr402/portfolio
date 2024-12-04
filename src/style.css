@@ -50,7 +50,7 @@
   }
 
   .nav-link-bg {
-    @apply max-md:hidden absolute inset-0 -z-10 scale-0 rounded-lg bg-primary-500/10 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 peer-active:scale-90;
+    @apply absolute inset-0 -z-10 scale-0 rounded-lg bg-primary-500/10 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 peer-active:scale-90 max-md:hidden;
   }
 
   .nav-link-text-active {
@@ -62,7 +62,7 @@
   }
 
   .mobile-menu-hidden {
-    @apply max-md:opacity-0 max-md:pointer-events-none max-md:translate-y-4;
+    @apply max-md:pointer-events-none max-md:translate-y-4 max-md:opacity-0;
   }
 
   .modal {
@@ -86,6 +86,6 @@
   }
 
   .modal-trigger {
-    @apply size-[75px] sm:size-[100px] md:size-[125px] lg:size-[150px] rounded-xl sm:rounded-2xl lg:rounded-3xl border border-stone-300 bg-stone-50/60 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-white hover:shadow active:scale-95 active:shadow-sm cursor-pointer;
+    @apply size-[75px] cursor-pointer rounded-xl border border-stone-300 bg-stone-50/60 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-white hover:shadow active:scale-95 active:shadow-sm sm:size-[100px] sm:rounded-2xl md:size-[125px] lg:size-[150px] lg:rounded-3xl;
   }
 }

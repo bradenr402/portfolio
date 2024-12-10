@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="h-screen overflow-hidden">
+<html lang="en" class="h-screen overflow-hidden scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +8,9 @@
   <body class="flex h-screen flex-col bg-white selection:bg-primary-500/10">
     <div id="nav"></div>
     <main class="flex-1 snap-y snap-mandatory overflow-y-scroll">
-      <div class="grid min-h-screen snap-start place-items-center px-4">
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
         <div class="text-center font-semibold text-stone-800 text-5xl">
-          <p class="mb-12">
+          <p class="mb-8">
             <span class="-ml-6 mr-2 inline-flex origin-bottom-right animate-wave">👋</span>
             Hey there! I&#8217;m Braden.
           </p>
@@ -97,43 +97,106 @@
           </p>
         </div>
       </div>
-      <div class="grid min-h-screen snap-start place-items-center bg-stone-200/60 px-4">
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
         <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
-          As a self-taught <span class="font-bold text-primary-500">Ruby on Rails</span> developer,
-          I&#8217;ve honed my skills through hands-on
-          <a
-            href="projects.html"
-            class="underline decoration-primary-500 transition-all duration-300 hover:text-primary-500"
-            >projects</a
-          >
-          and continuous
-          <a
-            href="skills.html"
-            class="underline decoration-primary-500 transition-all duration-300 hover:text-primary-500"
-            >learning</a
-          >. I&#8217;m dedicated to creating efficient, scalable, and user-friendly web
-          applications.
+          In June of 2023, I decided to dive into coding. I started with
+          <span class="group relative whitespace-nowrap">
+            <a
+              href="https://theodinproject.com/"
+              class="group-hover:active-scale-95 peer relative font-bold text-primary-500 transition-all duration-300 group-hover:scale-110"
+            >
+              The Odin Project</a
+            ><span
+              class="absolute -inset-x-4 -inset-y-1 -z-10 scale-0 rounded-lg bg-primary-500/10 opacity-0 blur transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 peer-active:scale-90"
+            ></span></span
+          >, learning the basics of HTML, CSS, and JavaScript. From the start, I loved turning ideas
+          into something real and functional.
         </p>
       </div>
-      <div class="grid min-h-screen snap-start place-items-center px-4">
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
         <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
-          Check out my
+          By September, I began learning Ruby, and it instantly clicked. Its simplicity and elegance
+          drew me in, making coding feel natural. It wasn&#8217;t long before I was ready for the
+          next step:
+          <span class="group relative whitespace-nowrap">
+            <a
+              href="https://rubyonrails.org/"
+              class="group-hover:active-scale-95 peer relative font-bold text-primary-500 transition-all duration-300 group-hover:scale-110"
+            >
+              Ruby on Rails</a
+            ><span
+              class="absolute -inset-x-4 -inset-y-1 -z-10 scale-0 rounded-lg bg-primary-500/10 opacity-0 blur transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 peer-active:scale-90"
+            ></span></span
+          >.
+        </p>
+      </div>
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
+        <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
+          Rails wasn&#8217;t just a tool&mdash;it was a game changer. Its philosophy of
+          <a
+            href="https://rubyonrails.org/doctrine#convention-over-configuration"
+            class="underline decoration-primary-500 transition-all duration-300 hover:text-primary-500"
+          >
+            Convention over Configuration</a
+          >
+          let me focus on solving problems and delivering real value fast. That efficiency continues
+          to inspire my work.
+        </p>
+      </div>
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
+        <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
+          Teaching myself to code has been as much about persistence as it has been about
+          creativity. I&#8217;ve learned to tackle challenges head-on, adapt quickly, and
+          continuously improve. These lessons shape how I build efficient, scalable, and
+          user-friendly applications.
+        </p>
+      </div>
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
+        <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
+          Great apps start with understanding users. Whether it&#8217;s a small feature or a
+          full-stack project, I approach every challenge with a user-centric mindset and a drive to
+          create seamless, enjoyable experiences.
+        </p>
+      </div>
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
+        <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
+          One project that I&#8217;m particularly proud of is
+          <a
+            href="projects.html#pace-maker"
+            class="underline decoration-primary-500 transition-all duration-300 hover:text-primary-500"
+            >PaceMaker</a
+          >, a web app I built alongside my dad, a cross-country coach. It&#8217;s transforming how
+          his team tracks their performance and meets their goals. By collaborating closely with
+          him, I turned his feedback into features, creating a tool with real-world impact.
+        </p>
+      </div>
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
+        <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
+          Rails has taught me to embrace iteration, whether I&#8217;m refactoring code or refining
+          ideas. Each
           <a
             href="projects.html"
             class="underline decoration-primary-500 transition-all duration-300 hover:text-primary-500"
-            >projects</a
-          >, take a look at my
+            >project</a
+          >
+          is a chance to learn and grow, and I&#8217;ve learned many valuable
           <a
             href="skills.html"
             class="underline decoration-primary-500 transition-all duration-300 hover:text-primary-500"
             >skills</a
-          >, and feel free to
+          >
+          along the way.
+        </p>
+      </div>
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
+        <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
+          Great software starts with collaboration. If you&#8217;re building something exciting,
           <a
             href="contact.html"
             class="underline decoration-primary-500 transition-all duration-300 hover:text-primary-500"
-            >contact</a
+            >let&#8217;s connect</a
           >
-          me if you would like to know more about my work or discuss a potential project.
+          and create something extraordinary together.
         </p>
       </div>
       <div id="footer"></div>

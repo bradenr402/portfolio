@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="h-screen overflow-hidden">
+<html lang="en" class="h-screen overflow-hidden scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,14 +8,17 @@
   <body class="flex h-screen flex-col bg-white selection:bg-primary-500/10">
     <div id="nav"></div>
     <main class="flex-1 snap-y overflow-y-scroll">
-      <div class="grid min-h-screen snap-start place-items-center px-4">
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
         <div class="text-center font-semibold text-stone-800 text-5xl">
           <p class="">
             Check out some of my projects! <span class="inline-flex animate-slide">👇</span>
           </p>
         </div>
       </div>
-      <div class="grid min-h-screen snap-start scroll-mt-8 place-items-center bg-stone-200/60 px-4">
+      <div
+        class="grid min-h-screen snap-start scroll-mt-8 place-items-center px-4 even:bg-stone-200/60"
+        id="pace-maker"
+      >
         <div class="mb-4 mt-8 flex w-full justify-start md:hidden">
           <p class="font-bold italic text-3xl">PaceMaker</p>
         </div>
@@ -387,7 +390,7 @@
           </div>
         </div>
       </div>
-      <div class="grid min-h-screen snap-start place-items-center px-4">
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
         <div class="mb-4 mt-8 flex w-full justify-start md:hidden">
           <p class="font-bold italic text-3xl">Weather App</p>
         </div>
@@ -567,7 +570,7 @@
           </div>
         </div>
       </div>
-      <div class="grid min-h-screen snap-start place-items-center bg-stone-200/60 px-4">
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
         <div class="mb-4 mt-8 flex w-full justify-start md:hidden">
           <p class="font-bold italic text-3xl">Todo!</p>
         </div>
@@ -733,7 +736,7 @@
           </div>
         </div>
       </div>
-      <div class="grid min-h-screen snap-start place-items-center px-4">
+      <div class="grid min-h-screen snap-start place-items-center px-4 even:bg-stone-200/60">
         <div>
           <p class="max-w-4xl text-pretty text-center font-medium text-stone-700 text-2xl">
             Looking for more? Visit my

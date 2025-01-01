@@ -16,6 +16,11 @@ const addFooter = () => {
   if (element) element.replaceWith(parseHTML(footer));
 };
 
+const setFooterYear = () => {
+  const year = new Date().getFullYear() || 2025;
+  document.getElementById('footer-year').textContent = year;
+};
+
 const activateCurrentNavLink = () => {
   const links = document.querySelectorAll('a.nav-link-text');
   const currentPath = window.location.pathname.replace(/\.html$/, '');
@@ -39,6 +44,7 @@ const activateCurrentNavLink = () => {
 const init = () => {
   addNav();
   addFooter();
+  setFooterYear();
   activateCurrentNavLink();
   setupMobileMenu();
   setupModals();

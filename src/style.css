@@ -66,7 +66,7 @@
   }
 
   .modal {
-    @apply fixed left-1/2 top-1/2 z-50 mx-4 mb-10 mt-0 max-h-[calc(100svh-10rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-[calc(50%+1rem)] -translate-y-1/2 gap-4 overflow-y-auto rounded-2xl border bg-stone-50 p-6 shadow-md transition duration-200 ease-in-out sm:mx-0 sm:mb-0 sm:max-h-none sm:w-full sm:-translate-x-1/2;
+    @apply fixed left-1/2 top-1/2 z-50 mx-4 my-0 max-h-[90svh] w-[calc(100%-2rem)] max-w-2xl -translate-x-[calc(50%+1rem)] -translate-y-1/2 gap-4 overflow-scroll overflow-y-auto rounded-2xl border bg-stone-50 p-6 shadow-md transition duration-200 ease-in-out sm:mx-0 sm:mb-0 sm:max-h-none sm:w-full sm:-translate-x-1/2;
   }
 
   .modal-hidden {
@@ -85,7 +85,15 @@
     @apply absolute right-2 top-2 rounded-lg p-2 opacity-70 transition-opacity hover:bg-stone-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
-  .modal-trigger {
-    @apply size-[75px] cursor-pointer rounded-xl border border-stone-300 bg-stone-50/60 transition-all duration-200 ease-in-out hover:scale-105 hover:bg-white hover:shadow active:scale-95 active:shadow-sm sm:size-[100px] sm:rounded-2xl md:size-[125px] lg:size-[150px] lg:rounded-3xl;
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-lg py-1.5 pl-4 pr-3.5 font-semibold transition-all duration-300 hover:scale-105 active:scale-95;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-primary-500/10 text-primary-500;
   }
 }

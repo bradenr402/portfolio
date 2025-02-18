@@ -241,13 +241,13 @@
                 using the Strava API and Strava Webhook Events API to provide real-time updates and
                 synchronization of running activities.
               </p>
-              <div class="mb-8 flex items-center gap-2">
+              <div class="mb-8 flex flex-wrap items-center gap-2">
                 <a
                   href="https://pace-maker.onrender.com"
                   target="_blank"
-                  class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-primary-500 py-1.5 pl-4 pr-3.5 font-semibold text-white transition-all duration-300 hover:scale-105 active:scale-95 max-md:w-full"
+                  class="btn btn-primary max-md:grow"
                 >
-                  <span>Live Preview</span>
+                  <span class="whitespace-nowrap">Live Preview</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -276,9 +276,9 @@
                 <a
                   href="https://github.com/bradenr402/pace-maker"
                   target="_blank"
-                  class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-primary-500/10 py-1.5 pl-4 pr-3.5 font-semibold text-primary-500 transition-all duration-300 hover:scale-105 active:scale-95 max-md:w-full"
+                  class="btn btn-secondary max-md:grow"
                 >
-                  <span>View on GitHub</span>
+                  <span class="whitespace-nowrap">View on GitHub</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -304,6 +304,44 @@
                     />
                   </svg>
                 </a>
+                <button
+                  class="modal-trigger btn btn-secondary max-md:grow"
+                  data-modal="pacemakerTestimonials"
+                >
+                  <span class="whitespace-nowrap">Read Testimonials</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    color="currentColor"
+                    fill="none"
+                    class="size-4"
+                  >
+                    <path
+                      d="M10 8C10 9.88562 10 10.8284 9.41421 11.4142C8.82843 12 7.88562 12 6 12C4.11438 12 3.17157 12 2.58579 11.4142C2 10.8284 2 9.88562 2 8C2 6.11438 2 5.17157 2.58579 4.58579C3.17157 4 4.11438 4 6 4C7.88562 4 8.82843 4 9.41421 4.58579C10 5.17157 10 6.11438 10 8Z"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    />
+                    <path
+                      d="M10 7L10 11.4821C10 15.4547 7.48429 18.8237 4 20"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M22 8C22 9.88562 22 10.8284 21.4142 11.4142C20.8284 12 19.8856 12 18 12C16.1144 12 15.1716 12 14.5858 11.4142C14 10.8284 14 9.88562 14 8C14 6.11438 14 5.17157 14.5858 4.58579C15.1716 4 16.1144 4 18 4C19.8856 4 20.8284 4 21.4142 4.58579C22 5.17157 22 6.11438 22 8Z"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    />
+                    <path
+                      d="M22 7L22 11.4821C22 15.4547 19.4843 18.8237 16 20"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </button>
               </div>
               <div class="max-md:mb-8">
                 <div class="mt-4 flex flex-wrap gap-2">
@@ -595,7 +633,7 @@
                 <a
                   href="https://bradenr402.github.io/weather-app/"
                   target="_blank"
-                  class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-primary-500 py-1.5 pl-4 pr-3.5 font-semibold text-white transition-all duration-300 hover:scale-105 active:scale-95 max-md:w-full"
+                  class="btn btn-primary max-md:grow"
                 >
                   <span>Live Preview</span>
                   <svg
@@ -626,7 +664,7 @@
                 <a
                   href="https://github.com/bradenr402/weather-app"
                   target="_blank"
-                  class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-primary-500/10 py-1.5 pl-4 pr-3.5 font-semibold text-primary-500 transition-all duration-300 hover:scale-105 active:scale-95 max-md:w-full"
+                  class="btn btn-secondary max-md:grow"
                 >
                   <span>View on GitHub</span>
                   <svg
@@ -811,7 +849,7 @@
                 <a
                   href="https://bradenr402.github.io/todo-list/"
                   target="_blank"
-                  class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-primary-500 py-1.5 pl-4 pr-3.5 font-semibold text-white transition-all duration-300 hover:scale-105 active:scale-95 max-md:w-full"
+                  class="btn btn-primary max-md:grow"
                 >
                   <span>Live Preview</span>
                   <svg
@@ -842,7 +880,7 @@
                 <a
                   href="https://github.com/bradenr402/todo-list"
                   target="_blank"
-                  class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-primary-500/10 py-1.5 pl-4 pr-3.5 font-semibold text-primary-500 transition-all duration-300 hover:scale-105 active:scale-95 max-md:w-full"
+                  class="btn btn-secondary max-md:grow"
                 >
                   <span>View on GitHub</span>
                   <svg
@@ -957,5 +995,175 @@
       </div>
       <div id="footer"></div>
     </main>
+    <div class="modal-backdrop modal-backdrop-hidden"></div>
+
+    <!-- PaceMaker Testimonials Modal -->
+    <div
+      id="pacemakerTestimonials"
+      role="dialog"
+      aria-label="PaceMaker Testimonials"
+      tabindex="-1"
+      class="modal modal-hidden"
+    >
+      <div class="mb-6 flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 class="font-semibold text-lg/none">PaceMaker Testimonials</h2>
+      </div>
+
+      <div
+        class="-mx-3 -mb-3 -mr-6 -mt-3 max-h-[80vh] space-y-12 overflow-auto p-3 pr-6 sm:-mx-1 sm:-mb-1 sm:-mr-4"
+      >
+        <div class="relative rounded-lg bg-stone-100 p-6 shadow-inner">
+          <blockquote class="">
+            <p class="mb-3.5 border-b border-stone-200 pb-3.5 font-semibold text-base/6">
+              FAR exceeded my original hopes and expectations.
+            </p>
+            <div class="mb-4 space-y-4 pr-4">
+              <p class="text-pretty text-stone-700">
+                As a college cross country coach, I am always looking for ways to stay in touch with
+                my athletes (especially in the offseason when they all go home over the summer) and
+                have a convenient way of sharing our data and progress that everyone can quickly and
+                easily enter and view. I asked Braden to create a program that would allow my team
+                to do that. Of course, I had no idea how much work it would prove to be, nor how
+                good of a product he would ultimately end up designing. It has FAR exceeded my
+                original hopes and expectations for the project.
+              </p>
+              <p class="text-pretty text-stone-700">
+                Braden poured his heart and soul into designing the web app &#8220;<span
+                  class="font-semibold italic"
+                  >Pacemaker</span
+                >.&#8221; Working with him was extremely satisfying and productive. While I would
+                sometimes ask for new features or changes, and he was quick to incorporate them, I
+                was much more impressed with how often he would recommend various revisions and new
+                functionality. Even though he is not a runner at all, I could tell that he had
+                really put a lot of thought into his suggestions beforehand. Not only was he often
+                able to correctly predict things that coaches and athletes would like and use, he
+                also anticipated how some of those changes would require redesigning some of the
+                framework so that it would remain user-friendly and intuitive to navigate. He was
+                always thinking about and aware of potential problems that adding new features might
+                cause app users to encounter, and has a very good eye for choosing defaults that
+                make the most sense.
+              </p>
+              <p class="text-pretty text-stone-700">
+                Although there is much more that I could say, let me just highlight two
+                illustrations of how Braden&#8217;s &#8220;customer service&#8221; (even though he
+                did all of this work for free) and attention to detail benefits those he works with.
+                First, he volunteered an hour of his time to come meet with my team and demonstrate
+                the app&#8217;s features. This consisted of showing some of the features, as well as
+                explaining the structure of how it was designed and the logic behind how to navigate
+                in it, and included a question and answer session at the end which he handled very
+                smoothly and clearly. His understanding and command of his work is obvious.
+              </p>
+              <p class="text-pretty text-stone-700">
+                Finally, many of my athletes already use a free fitness app called Strava when they
+                run. Several of them had asked if it was possible to adapt Pacemaker to integrate
+                and automatically sync with and pull data from Strava, so they would not have to
+                manually enter it. I hesitated to even ask Braden to do this, as I felt that it
+                might be too much of a demand of his time (donated for free, I might add) and might
+                not even be possible. However, he did not balk at a challenge. I expected this to be
+                a significant amount of work that could take weeks. He did it in one day! To say
+                that I was pleased with this outcome would be a gross understatement&mdash;I am
+                ecstatic!! I am confident that whoever hires him will also be thrilled with their
+                decision and return on investment.
+              </p>
+            </div>
+            <footer class="mt-4 text-right">
+              <cite class="block italic">
+                <span class="block font-semibold text-stone-800">Trenton Roth</span>
+                <span class="block text-stone-500/80 text-sm">
+                  Head Coach, Florida College Cross Country
+                </span>
+              </cite>
+            </footer>
+          </blockquote>
+          <div
+            class="absolute left-0 top-0 -translate-x-3 -translate-y-3 transform text-stone-300 opacity-50"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              role="img"
+              color="currentColor"
+              class="size-8"
+            >
+              <path
+                d="M18.052 11.25C18.9505 11.25 19.6997 11.2499 20.2945 11.3299C20.9223 11.4143 21.4891 11.6 21.9445 12.0555C22.4 12.5109 22.5857 13.0777 22.6701 13.7055C22.7501 14.3003 22.75 15.0495 22.75 15.948V15.948V16.052V16.052C22.75 16.9505 22.7501 17.6997 22.6701 18.2945C22.5857 18.9223 22.4 19.4891 21.9445 19.9445C21.4891 20.4 20.9223 20.5857 20.2945 20.6701C19.6997 20.7501 18.9505 20.75 18.052 20.75H18.052H17.948H17.948C17.0495 20.75 16.3003 20.7501 15.7055 20.6701C15.0777 20.5857 14.5109 20.4 14.0555 19.9445C13.6 19.4891 13.4143 18.9223 13.3299 18.2945C13.2499 17.6997 13.25 16.9505 13.25 16.052V16.052V15.948V15.948C13.25 15.0495 13.2499 14.3003 13.3299 13.7055C13.4143 13.0777 13.6 12.5109 14.0555 12.0555C14.5109 11.6 15.0777 11.4143 15.7055 11.3299C16.3003 11.2499 17.0495 11.25 17.948 11.25H17.948H18.052H18.052Z"
+                fill="currentColor"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M21.2047 3.95262C21.369 4.47989 21.0748 5.04054 20.5475 5.20486C17.4399 6.17333 15.25 8.92522 15.25 12.1128V16.2501C15.25 16.8024 14.8023 17.2501 14.25 17.2501C13.6977 17.2501 13.25 16.8024 13.25 16.2501V12.1128C13.25 7.96645 16.0916 4.49864 19.9525 3.29543C20.4797 3.13111 21.0404 3.42535 21.2047 3.95262Z"
+                fill="currentColor"
+              ></path>
+              <path
+                d="M6.05203 11.25C6.9505 11.25 7.69971 11.2499 8.29448 11.3299C8.92228 11.4143 9.48908 11.6 9.94455 12.0555C10.4 12.5109 10.5857 13.0777 10.6701 13.7055C10.7501 14.3003 10.75 15.0495 10.75 15.948V15.948V16.052V16.052C10.75 16.9505 10.7501 17.6997 10.6701 18.2945C10.5857 18.9223 10.4 19.4891 9.94455 19.9445C9.48908 20.4 8.92228 20.5857 8.29448 20.6701C7.69971 20.7501 6.9505 20.75 6.05203 20.75H6.052H5.94801H5.94798C5.04951 20.75 4.3003 20.7501 3.70552 20.6701C3.07773 20.5857 2.51093 20.4 2.05546 19.9445C1.59999 19.4891 1.41432 18.9223 1.32991 18.2945C1.24995 17.6997 1.24997 16.9505 1.25 16.052V16.052V15.948V15.948C1.24997 15.0495 1.24995 14.3003 1.32991 13.7055C1.41432 13.0777 1.59999 12.5109 2.05546 12.0555C2.51093 11.6 3.07773 11.4143 3.70552 11.3299C4.3003 11.2499 5.04951 11.25 5.94797 11.25H5.948H6.052H6.05203Z"
+                fill="currentColor"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.20471 3.95262C9.36903 4.47989 9.0748 5.04054 8.54753 5.20486C5.43986 6.17333 3.25 8.92522 3.25 12.1128V16.2501C3.25 16.8024 2.80228 17.2501 2.25 17.2501C1.69772 17.2501 1.25 16.8024 1.25 16.2501V12.1128C1.25 7.96645 4.09156 4.49864 7.95247 3.29543C8.47975 3.13111 9.04039 3.42535 9.20471 3.95262Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+          <div
+            class="absolute bottom-0 right-0 translate-x-3 translate-y-3 transform text-stone-300 opacity-50"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              role="img"
+              color="currentColor"
+              class="size-8"
+            >
+              <path
+                d="M5.94797 12.7499C5.0495 12.7499 4.30029 12.7499 3.70552 12.67C3.07772 12.5856 2.51092 12.3999 2.05545 11.9444C1.59998 11.4889 1.41431 10.9221 1.32991 10.2944C1.24994 9.69958 1.24997 8.95037 1.25 8.0519L1.25 8.05187L1.25 7.94788L1.25 7.94785C1.24997 7.04938 1.24994 6.30017 1.32991 5.7054C1.41431 5.0776 1.59998 4.5108 2.05546 4.05533C2.51093 3.59986 3.07772 3.41419 3.70552 3.32979C4.30029 3.24982 5.04951 3.24985 5.94797 3.24987L5.948 3.24987L6.05199 3.24987L6.05202 3.24987C6.95049 3.24985 7.6997 3.24982 8.29448 3.32979C8.92227 3.41419 9.48907 3.59986 9.94454 4.05533C10.4 4.5108 10.5857 5.0776 10.6701 5.7054C10.7501 6.30017 10.75 7.04938 10.75 7.94784L10.75 7.94788L10.75 8.05188L10.75 8.05191C10.75 8.95037 10.7501 9.69958 10.6701 10.2944C10.5857 10.9221 10.4 11.4889 9.94454 11.9444C9.48907 12.3999 8.92227 12.5856 8.29448 12.67C7.6997 12.7499 6.95049 12.7499 6.05203 12.7499L6.052 12.7499L5.948 12.7499L5.94797 12.7499Z"
+                fill="currentColor"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M2.79529 20.0473C2.63097 19.52 2.9252 18.9593 3.45247 18.795C6.56014 17.8265 8.75 15.0747 8.75 11.8871L8.75 7.74973C8.75 7.19745 9.19772 6.74973 9.75 6.74973C10.3023 6.74973 10.75 7.19745 10.75 7.74973L10.75 11.8871C10.75 16.0334 7.90844 19.5012 4.04753 20.7044C3.52025 20.8688 2.95961 20.5745 2.79529 20.0473Z"
+                fill="currentColor"
+              />
+              <path
+                d="M17.948 12.7499C17.0495 12.7499 16.3003 12.7499 15.7055 12.67C15.0777 12.5856 14.5109 12.3999 14.0555 11.9444C13.6 11.4889 13.4143 10.9221 13.3299 10.2944C13.2499 9.69958 13.25 8.95037 13.25 8.0519L13.25 8.05187L13.25 7.94788L13.25 7.94785C13.25 7.04938 13.2499 6.30017 13.3299 5.7054C13.4143 5.0776 13.6 4.5108 14.0555 4.05533C14.5109 3.59986 15.0777 3.41419 15.7055 3.32979C16.3003 3.24982 17.0495 3.24985 17.948 3.24987L17.948 3.24987L18.052 3.24987L18.052 3.24987C18.9505 3.24985 19.6997 3.24982 20.2945 3.32979C20.9223 3.41419 21.4891 3.59986 21.9445 4.05533C22.4 4.5108 22.5857 5.0776 22.6701 5.7054C22.7501 6.30017 22.75 7.04938 22.75 7.94784L22.75 7.94788L22.75 8.05188L22.75 8.05191C22.75 8.95037 22.7501 9.69958 22.6701 10.2944C22.5857 10.9221 22.4 11.4889 21.9445 11.9444C21.4891 12.3999 20.9223 12.5856 20.2945 12.67C19.6997 12.7499 18.9505 12.7499 18.052 12.7499L18.052 12.7499L17.948 12.7499L17.948 12.7499Z"
+                fill="currentColor"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M14.7953 20.0473C14.631 19.52 14.9252 18.9593 15.4525 18.795C18.5601 17.8265 20.75 15.0747 20.75 11.8871L20.75 7.74973C20.75 7.19745 21.1977 6.74973 21.75 6.74973C22.3023 6.74973 22.75 7.19745 22.75 7.74973L22.75 11.8871C22.75 16.0334 19.9084 19.5012 16.0475 20.7044C15.5203 20.8688 14.9596 20.5745 14.7953 20.0473Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Add more testimonials here -->
+      </div>
+
+      <!-- Close button -->
+      <button type="button" class="modal-x-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span class="sr-only">Close Modal</span>
+      </button>
+    </div>
   </body>
 </html>

@@ -1,5 +1,6 @@
+import parseHTML from './parse-html';
+
 const requireIcons = require.context('./images/icons', false, /\.svg$/);
-const parseHTML = (html) => new DOMParser().parseFromString(html, 'text/html').body.firstChild;
 
 export default function setupIcons() {
   document.querySelectorAll('[data-icon]').forEach((element) => {

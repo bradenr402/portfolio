@@ -1,11 +1,10 @@
 import footer from './components/footer.html';
 import nav from './components/nav.html';
+import parseHTML from './parse-html';
 import setupIcons from './setup-icons';
 import setupMobileMenu from './setup-mobile-menu';
 import setupModals from './setup-modals';
 import './style.css';
-
-const parseHTML = (html) => new DOMParser().parseFromString(html, 'text/html').body.firstChild;
 
 const addNav = () => {
   const element = document.getElementById('nav');

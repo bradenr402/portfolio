@@ -15,8 +15,6 @@ export default function setupIcons() {
       svgElement.classList.add(...element.classList);
 
       element.replaceWith(svgElement);
-    } else {
-      console.error(`SVG icon "${iconName}" not found`);
     }
   });
 }

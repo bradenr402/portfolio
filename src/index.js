@@ -1,5 +1,6 @@
 import footer from './components/footer.html';
 import nav from './components/nav.html';
+import setupIcons from './setup-icons';
 import setupMobileMenu from './setup-mobile-menu';
 import setupModals from './setup-modals';
 import './style.css';
@@ -48,6 +49,7 @@ const init = () => {
   activateCurrentNavLink();
   setupMobileMenu();
   setupModals();
+  setupIcons();
 };
 
 document.addEventListener('DOMContentLoaded', () => init());

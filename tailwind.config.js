@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
-const fluidType = require('tailwindcss-fluid-type');
-
 module.exports = {
   darkMode: 'class',
-  mode: 'jit',
   content: ['./dist/*.html', './src/**/*.{html,js}'],
   theme: {
     extend: {
@@ -48,11 +45,5 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
-  corePlugins: {
-    fontSize: false,
-  },
-  plugins: [fluidType],
+  plugins: [],
 };

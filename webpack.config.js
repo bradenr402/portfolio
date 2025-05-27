@@ -26,29 +26,6 @@ module.exports = {
       filename: 'index.html',
       favicon: './src/images/BR_logo.svg',
     }),
-    new HtmlWebpackPlugin({
-      template: './src/projects.html',
-      filename: 'projects.html',
-      favicon: './src/images/BR_logo.svg',
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/skills.html',
-      filename: 'skills.html',
-      favicon: './src/images/BR_logo.svg',
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/contact.html',
-      filename: 'contact.html',
-      favicon: './src/images/BR_logo.svg',
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/components/footer.html',
-      filename: 'components/footer.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/components/nav.html',
-      filename: 'components/nav.html',
-    }),
   ],
   module: {
     rules: [

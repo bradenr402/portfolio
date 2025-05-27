@@ -19,44 +19,8 @@
   --color-primary-900: #5a0001;
   --color-primary-950: #330000;
 
-  --animate-wave: wave 2s linear infinite;
-  --animate-slide: slide 1.2s ease-in-out infinite;
-
-  @keyframes wave {
-    0% {
-      transform: rotate(0deg);
-    }
-    10% {
-      transform: rotate(14deg);
-    }
-    20% {
-      transform: rotate(-8deg);
-    }
-    30% {
-      transform: rotate(14deg);
-    }
-    40% {
-      transform: rotate(-4deg);
-    }
-    50% {
-      transform: rotate(10deg);
-    }
-    60% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-  @keyframes slide {
-    0%,
-    100% {
-      transform: translate(0, -2px);
-    }
-    50% {
-      transform: translate(0, 8px);
-    }
-  }
+  --breakpoint-xs: 30rem;
+  --text-xxs: 0.625rem;
 }
 
 /*
@@ -75,61 +39,7 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
-}
 
-@utility nav-link-text {
-  @apply px-4 py-1.5 font-semibold text-stone-800 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-500 active:group-hover:scale-95 max-sm:text-lg;
-}
-
-@utility nav-link-bg {
-  @apply absolute inset-0 -z-10 scale-0 rounded-lg bg-primary-500/10 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 peer-active:scale-90 max-sm:hidden;
-}
-
-@utility nav-link-text-active {
-  @apply scale-100 text-primary-500;
-}
-
-@utility nav-link-bg-active {
-  @apply scale-90 opacity-100;
-}
-
-@utility mobile-menu-hidden {
-  @apply max-sm:pointer-events-none max-sm:translate-y-4 max-sm:opacity-0;
-}
-
-@utility modal {
-  @apply fixed left-1/2 top-1/2 z-50 mx-4 my-0 max-h-[90svh] w-[calc(100%-2rem)] max-w-2xl -translate-x-[calc(50%+1rem)] -translate-y-1/2 gap-4 overflow-y-auto rounded-2xl border bg-stone-50 p-6 shadow-md transition duration-200 ease-in-out sm:mx-0 sm:mb-0 sm:max-h-none sm:w-full sm:-translate-x-1/2;
-}
-
-@utility modal-hidden {
-  @apply pointer-events-none scale-75 opacity-0;
-}
-
-@utility modal-backdrop {
-  @apply fixed inset-0 z-50 h-screen w-screen bg-black/50 backdrop-blur-xs transition-all duration-200 ease-in-out;
-}
-
-@utility modal-backdrop-hidden {
-  @apply pointer-events-none opacity-0;
-}
-
-@utility modal-x-btn {
-  @apply absolute right-2 top-2 rounded-lg p-2 opacity-70 transition-opacity hover:bg-stone-200 hover:opacity-100 focus:outline-hidden focus:ring-2 focus:ring-offset-2;
-}
-
-@utility btn {
-  @apply inline-flex items-center justify-center gap-2.5 rounded-lg py-1.5 pl-4 pr-3.5 font-semibold transition-all duration-300 hover:scale-105 active:scale-95;
-}
-
-@utility btn-primary {
-  @apply bg-primary-500 text-white;
-}
-
-@utility btn-secondary {
-  @apply bg-primary-500/10 text-primary-500;
-}
-
-@layer base {
   @font-face {
     font-family: 'Calibre';
     font-style: normal;
@@ -169,4 +79,16 @@
     src: url('./fonts/calibre-bold.woff2') format('woff2');
     font-display: swap;
   }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2.5 rounded-md py-1.5 pr-3.5 pl-4 font-semibold transition-all duration-300 active:scale-95;
+}
+
+@utility btn-primary {
+  @apply bg-primary-500 text-white hover:bg-primary-600;
+}
+
+@utility btn-secondary {
+  @apply bg-primary-500/10 text-primary-500 hover:bg-primary-500/20;
 }

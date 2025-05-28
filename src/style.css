@@ -86,9 +86,9 @@
 }
 
 @utility btn-primary {
-  @apply bg-primary-500 text-white hover:bg-primary-600;
+  @apply bg-primary-500 text-white hover:bg-primary-600 dark:bg-primary-400 dark:hover:bg-primary-500;
 }
 
 @utility btn-secondary {
-  @apply bg-primary-500/10 text-primary-500 hover:bg-primary-500/20;
+  @apply bg-primary-500/10 text-primary-500 hover:bg-primary-500/20 dark:bg-primary-400/15 dark:text-primary-100 dark:hover:bg-primary-400/25;
 }

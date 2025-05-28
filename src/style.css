@@ -82,7 +82,7 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2.5 rounded-md py-1.5 pr-3.5 pl-4 font-semibold transition-all duration-300 active:scale-95;
+  @apply inline-flex items-center justify-center gap-2.5 rounded-md py-1.5 pr-4.5 pl-5 font-semibold transition-all duration-300 active:scale-95;
 }
 
 @utility btn-primary {

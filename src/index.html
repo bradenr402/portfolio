@@ -7,23 +7,28 @@
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   </head>
-  <body class="bg-white text-stone-800 selection:bg-primary-500/10">
+  <body
+    class="bg-white text-stone-800 selection:bg-primary-500/10 dark:bg-zinc-900 dark:text-stone-100"
+  >
     <!-- About Me Section -->
-    <section id="about" class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20">
+    <section
+      id="about"
+      class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
+    >
       <h1 class="mb-8 text-center text-4xl font-extrabold md:text-5xl">Hey! I&#8217;m Braden.</h1>
       <div class="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
         <div class="space-y-6 text-lg/relaxed">
-          <p class="text-pretty text-stone-600">
+          <p class="text-pretty text-stone-600 dark:text-stone-200">
             I&#8217;m a <span class="underline decoration-primary-500">self-taught</span> full-stack
             web developer based in Temple Terrace, FL. I specalize in
             <a
               href="https://rubyonrails.org/"
-              class="font-bold text-primary-500 transition-all duration-150 hover:text-primary-600 hover:underline"
+              class="font-bold text-primary-500 transition-all duration-150 hover:text-primary-600 hover:underline dark:text-primary-400 dark:hover:text-primary-500"
             >
               Ruby on Rails</a
             >, and I love turning ideas into dynamic, responsive, and delightful web applications.
           </p>
-          <p class="text-pretty text-stone-600">
+          <p class="text-pretty text-stone-600 dark:text-stone-200">
             Outside of coding, I&#8217;m a husband and a proud dad to a wonderful
             daughter&mdash;with another on the way! I enjoy solving puzzles (Rubik&#8217;s cubes,
             logic puzzles, anything that makes me think), reading good books, and watching movies
@@ -32,15 +37,15 @@
           </p>
         </div>
         <div
-          class="flex flex-col items-center justify-center rounded-[1.375rem] border-[0.5px] border-stone-200 bg-stone-100 px-6 pt-6 pb-4 text-center"
+          class="flex flex-col items-center justify-center rounded-[1.375rem] border-[0.7px] border-stone-200 bg-stone-100 px-6 pt-6 pb-4 text-center dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <img
             src="images/family.jpeg"
             alt="Braden (left), Ami (middle), and Emily (right)"
-            class="mx-auto mb-6 aspect-square size-48 rounded-full border-3 border-white object-cover shadow-lg outline-[0.5px] outline-stone-700/5 md:size-68 md:border-5"
+            class="mx-auto mb-6 aspect-square size-48 rounded-full border-3 border-white object-cover shadow-lg outline-[0.5px] outline-stone-700/5 md:size-68 md:border-5 dark:border-zinc-300"
           />
-          <span class="mb-1 font-semibold text-stone-700">My Family</span>
-          <span class="text-xs text-pretty text-stone-500">
+          <span class="mb-1 font-semibold text-stone-700 dark:text-stone-300">My Family</span>
+          <span class="text-xs text-pretty text-stone-500 dark:text-stone-400">
             From left to right: Me, Aminata (my wife), & Emily (our daughter)
           </span>
         </div>
@@ -48,22 +53,29 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20">
-      <h2 class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl">Projects</h2>
+    <section
+      id="projects"
+      class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
+    >
+      <h2
+        class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
+      >
+        Projects
+      </h2>
       <div class="grid gap-4 md:grid-cols-2">
         <!-- PaceMaker Project Card -->
         <div
-          class="@container flex flex-col rounded-[1.375rem] border-[0.5px] border-stone-200 bg-stone-100 p-4 md:col-span-2"
+          class="@container flex flex-col rounded-[1.375rem] border-[0.7px] border-stone-200 bg-stone-100 p-4 md:col-span-2 dark:border-zinc-700 dark:bg-zinc-800/65"
         >
-          <h3 class="mb-2 text-2xl font-bold text-primary-500">PaceMaker</h3>
+          <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">PaceMaker</h3>
           <div class="mb-4 space-y-2 leading-snug">
-            <p class="text-stone-700">
+            <p class="text-stone-700 dark:text-stone-200">
               A Ruby on Rails application that empowers cross country athletes and coaches to track
               their progress and achieve both personal and team goals. It features intuitive team
               management, comprehensive run and streak tracking, and goal-setting to cultivate a
               supportive and competitive environment.
             </p>
-            <p class="text-stone-700">
+            <p class="text-stone-700 dark:text-stone-200">
               Secure authentication is handled with Devise and Google OAuth 2.0, and Strava API
               integration enables real-time synchronization of running activities. To facilitate
               team communication, PaceMaker includes built-in team messaging with topic-driven
@@ -76,7 +88,7 @@
             <a
               href="https://rubyonrails.org/"
               target="_blank"
-              class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-primary-500/30 bg-primary-500/15 px-1.75 py-0.5 text-xs font-semibold text-primary-500 transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1.5 rounded-full border-[0.7px] border-primary-500/30 bg-primary-500/15 px-1.75 py-0.5 text-xs font-semibold text-primary-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-primary-400/30 dark:bg-primary-400/15 dark:text-primary-400"
             >
               <span data-icon="rails" class="size-3.75"></span>
               <span>Ruby on Rails</span>
@@ -84,7 +96,7 @@
             <a
               href="https://www.postgresql.org/"
               target="_blank"
-              class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-[#336791]/30 bg-[#336791]/15 px-1.75 py-0.5 text-xs font-semibold text-[#336791] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1.5 rounded-full border-[0.7px] border-[#336791]/30 bg-[#336791]/15 px-1.75 py-0.5 text-xs font-semibold text-[#336791] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#336791]/40 dark:bg-[#336791]/25 dark:text-[#7db0e6]"
             >
               <span data-icon="postgresql" class="size-3"></span>
               <span>PostgreSQL</span>
@@ -92,7 +104,7 @@
             <a
               href="https://stimulus.hotwired.dev/"
               target="_blank"
-              class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-[#67d8a9]/30 bg-[#67d8a9]/15 px-1.75 py-0.5 text-xs font-semibold text-[#67d8a9] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1.5 rounded-full border-[0.7px] border-[#67d8a9]/30 bg-[#67d8a9]/15 px-1.75 py-0.5 text-xs font-semibold text-[#67d8a9] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#67d8a9]/40 dark:bg-[#67d8a9]/25 dark:text-[#a7f3d0]"
             >
               <span data-icon="stimulus" class="size-3"></span>
               <span>Stimulus</span>
@@ -100,7 +112,7 @@
             <a
               href="https://turbo.hotwired.dev/"
               target="_blank"
-              class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-[#6ec5d3]/30 bg-[#6ec5d3]/15 px-1.75 py-0.5 text-xs font-semibold text-[#6ec5d3] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1.5 rounded-full border-[0.7px] border-[#6ec5d3]/30 bg-[#6ec5d3]/15 px-1.75 py-0.5 text-xs font-semibold text-[#6ec5d3] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#6ec5d3]/40 dark:bg-[#6ec5d3]/25 dark:text-[#a5f3fc]"
             >
               <span data-icon="turbo" class="size-3"></span>
               <span>Turbo</span>
@@ -108,7 +120,7 @@
             <a
               href="https://developers.google.com/identity/protocols/oauth2"
               target="_blank"
-              class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-red-500/30 bg-red-500/15 py-0.5 pr-1.75 pl-1.25 text-xs font-semibold text-red-500 transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1.5 rounded-full border-[0.7px] border-red-500/30 bg-red-500/15 py-0.5 pr-1.75 pl-1.25 text-xs font-semibold text-red-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-red-400/30 dark:bg-red-400/15 dark:text-red-300"
             >
               <span data-icon="google" class="size-3"></span>
               <span>Google OAuth 2.0</span>
@@ -116,7 +128,7 @@
             <a
               href="https://developers.strava.com/"
               target="_blank"
-              class="inline-flex items-center gap-1 rounded-full border-[0.5px] border-[#fc4c02]/30 bg-[#fc4c02]/15 py-0.5 pr-1.75 pl-1 text-xs font-semibold text-[#fc4c02] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1 rounded-full border-[0.7px] border-[#fc4c02]/30 bg-[#fc4c02]/15 py-0.5 pr-1.75 pl-1 text-xs font-semibold text-[#fc4c02] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#fc4c02]/40 dark:bg-[#fc4c02]/25 dark:text-[#fc7345]"
             >
               <span data-icon="strava" class="size-3.5"></span>
               <span class="whitespace-nowrap">Strava API</span>
@@ -124,7 +136,7 @@
             <a
               href="https://tailwindcss.com/"
               target="_blank"
-              class="inline-flex items-center gap-1 rounded-full border-[0.5px] border-[#38bdf8]/30 bg-[#38bdf8]/15 py-0.5 pr-1.75 pl-1.5 text-xs font-semibold text-[#38bdf8] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1 rounded-full border-[0.7px] border-[#38bdf8]/30 bg-[#38bdf8]/15 py-0.5 pr-1.75 pl-1.5 text-xs font-semibold text-[#38bdf8] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#38bdf8]/40 dark:bg-[#38bdf8]/25 dark:text-[#7dd3fc]"
             >
               <span data-icon="tailwindcss" class="size-4"></span>
               <span>Tailwind CSS</span>
@@ -132,14 +144,14 @@
             <a
               href="https://github.com/heartcombo/devise"
               target="_blank"
-              class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-indigo-500/30 bg-indigo-500/15 px-1.75 py-0.5 text-xs font-semibold text-indigo-500 transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1.5 rounded-full border-[0.7px] border-indigo-500/30 bg-indigo-500/15 px-1.75 py-0.5 text-xs font-semibold text-indigo-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-indigo-400/30 dark:bg-indigo-400/15 dark:text-indigo-400"
             >
               <span>Devise</span>
             </a>
             <a
               href="https://chartkick.com/"
               target="_blank"
-              class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-blue-500/30 bg-blue-500/15 px-1.75 py-0.5 text-xs font-semibold text-blue-500 transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1.5 rounded-full border-[0.7px] border-blue-500/30 bg-blue-500/15 px-1.75 py-0.5 text-xs font-semibold text-blue-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-blue-400/30 dark:bg-blue-400/15 dark:text-blue-400"
             >
               <span>Chartkick</span>
             </a>
@@ -174,11 +186,11 @@
 
         <!-- Weather Project Card -->
         <div
-          class="@container flex flex-col rounded-[1.375rem] border-[0.5px] border-stone-200 bg-stone-100 p-4"
+          class="@container flex flex-col rounded-[1.375rem] border-[0.7px] border-stone-200 bg-stone-100 p-4 dark:border-zinc-700 dark:bg-zinc-800/65"
         >
-          <h3 class="mb-2 text-2xl font-bold text-primary-500">Weather</h3>
+          <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">Weather</h3>
           <div class="mb-4 space-y-2 leading-snug">
-            <p class="text-stone-700">
+            <p class="text-stone-700 dark:text-stone-200">
               A dynamic weather application built with Webpack and styled using Tailwind CSS. It
               integrates with WeatherAPI to provide accurate weather data for any city worldwide,
               including current conditions, hourly and daily forecasts. Users can search for
@@ -190,7 +202,7 @@
             <a
               href="https://webpack.js.org/"
               target="_blank"
-              class="inline-flex items-center gap-1 rounded-full border-[0.5px] border-[#1C78C0]/30 bg-[#1C78C0]/15 py-0.5 pr-1.75 pl-1 text-xs font-semibold text-[#1C78C0] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1 rounded-full border-[0.7px] border-[#1C78C0]/30 bg-[#1C78C0]/15 py-0.5 pr-1.75 pl-1 text-xs font-semibold text-[#1C78C0] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#1C78C0]/40 dark:bg-[#1C78C0]/25 dark:text-[#60a5fa]"
             >
               <spsn data-icon="webpack" class="size-4.25"></spsn>
               <span>Webpack</span>
@@ -198,7 +210,7 @@
             <a
               href="https://www.weatherapi.com/"
               target="_blank"
-              class="inline-flex items-center gap-1.25 rounded-full border-[0.5px] border-[#7db747]/30 bg-[#7db747]/15 px-1.75 py-0.5 text-xs font-semibold text-[#7db747] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1.25 rounded-full border-[0.7px] border-[#7db747]/30 bg-[#7db747]/15 px-1.75 py-0.5 text-xs font-semibold text-[#7db747] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#7db747]/40 dark:bg-[#7db747]/25 dark:text-[#bbf7d0]"
             >
               <img
                 src="images/WeatherAPI_logo.webp"
@@ -211,7 +223,7 @@
             <a
               href="https://tailwindcss.com/"
               target="_blank"
-              class="inline-flex items-center gap-1 rounded-full border-[0.5px] border-[#38bdf8]/30 bg-[#38bdf8]/15 py-0.5 pr-1.75 pl-1.5 text-xs font-semibold text-[#38bdf8] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1 rounded-full border-[0.7px] border-[#38bdf8]/30 bg-[#38bdf8]/15 py-0.5 pr-1.75 pl-1.5 text-xs font-semibold text-[#38bdf8] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#38bdf8]/40 dark:bg-[#38bdf8]/25 dark:text-[#7dd3fc]"
             >
               <span data-icon="tailwindcss" class="size-4"></span>
               <span>Tailwind CSS</span>
@@ -239,11 +251,11 @@
 
         <!-- Todo! Project Card -->
         <div
-          class="@container flex flex-col rounded-[1.375rem] border-[0.5px] border-stone-200 bg-stone-100 p-4"
+          class="@container flex flex-col rounded-[1.375rem] border-[0.7px] border-stone-200 bg-stone-100 p-4 dark:border-zinc-700 dark:bg-zinc-800/65"
         >
-          <h3 class="mb-2 text-2xl font-bold text-primary-500">Todo!</h3>
+          <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">Todo!</h3>
           <div class="mb-4 space-y-2 leading-snug">
-            <p class="text-stone-700">
+            <p class="text-stone-700 dark:text-stone-200">
               A sleek and minimalist to-do list application for simple task management. Users can
               create, edit, complete, and delete tasks, organize them into lists, and use
               drag-and-drop (powered by SortableJS) to rearrange tasks and lists. All data is saved
@@ -255,7 +267,7 @@
             <a
               href="https://webpack.js.org/"
               target="_blank"
-              class="inline-flex items-center gap-1 rounded-full border-[0.5px] border-[#1C78C0]/30 bg-[#1C78C0]/15 py-0.5 pr-1.75 pl-1 text-xs font-semibold text-[#1C78C0] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1 rounded-full border-[0.7px] border-[#1C78C0]/30 bg-[#1C78C0]/15 py-0.5 pr-1.75 pl-1 text-xs font-semibold text-[#1C78C0] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#1C78C0]/40 dark:bg-[#1C78C0]/25 dark:text-[#60a5fa]"
             >
               <spsn data-icon="webpack" class="size-4.25"></spsn>
               <span>Webpack</span>
@@ -263,7 +275,7 @@
             <a
               href="https://sortablejs.github.io/Sortable/"
               target="_blank"
-              class="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-[#709dd8]/30 bg-[#709dd8]/15 px-1.75 py-0.5 text-xs font-semibold text-[#709dd8] transition-transform duration-300 hover:scale-110 active:scale-95"
+              class="inline-flex items-center gap-1.5 rounded-full border-[0.7px] border-[#709dd8]/30 bg-[#709dd8]/15 px-1.75 py-0.5 text-xs font-semibold text-[#709dd8] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#709dd8]/40 dark:bg-[#709dd8]/25 dark:text-[#bfdbfe]"
             >
               <img src="images/SortableJS_logo.png" alt="SortableJS logo" class="size-3.25" />
               <span>SortableJS</span>
@@ -292,60 +304,65 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20">
-      <h2 class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl">
+    <section
+      id="skills"
+      class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
+    >
+      <h2
+        class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
+      >
         Skills &amp; Technologies
       </h2>
 
       <!-- Languages -->
       <div
-        class="mt-12 mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3"
+        class="mt-12 mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3 dark:border-zinc-700/75"
       >
         <span data-icon="code" class="size-5 shrink-0"></span>
         <h3 class="text-xl font-semibold">Languages</h3>
       </div>
       <div class="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-4">
         <div
-          class="relative h-full rounded-[1.375rem] border-[0.5px] border-stone-100 bg-white p-5 shadow-sm"
+          class="relative h-full rounded-[1.375rem] border-[0.7px] border-stone-100 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <div class="flex h-full flex-col">
             <span data-icon="html" class="mb-8 size-7 shrink-0"></span>
-            <p class="font-semibold text-stone-900">HTML</p>
-            <p class="text-sm/tight text-stone-500">
+            <p class="font-semibold text-stone-900 dark:text-stone-100">HTML</p>
+            <p class="text-sm/tight text-stone-500 dark:text-stone-400">
               The standard markup language for web content, defining its content and structure.
             </p>
           </div>
         </div>
         <div
-          class="relative h-full rounded-[1.375rem] border-[0.5px] border-stone-100 bg-white p-5 shadow-sm"
+          class="relative h-full rounded-[1.375rem] border-[0.7px] border-stone-100 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <div class="flex h-full flex-col">
             <span data-icon="css" class="mb-8 size-7 shrink-0"></span>
-            <p class="font-semibold text-stone-900">CSS</p>
-            <p class="text-sm/tight text-stone-500">
+            <p class="font-semibold text-stone-900 dark:text-stone-100">CSS</p>
+            <p class="text-sm/tight text-stone-500 dark:text-stone-400">
               The language used to control the visual appearance and layout of web pages.
             </p>
           </div>
         </div>
         <div
-          class="relative h-full rounded-[1.375rem] border-[0.5px] border-stone-100 bg-white p-5 shadow-sm"
+          class="relative h-full rounded-[1.375rem] border-[0.7px] border-stone-100 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <div class="flex h-full flex-col">
             <span data-icon="ruby" class="mb-8 size-7 shrink-0"></span>
-            <p class="font-semibold text-stone-900">Ruby</p>
-            <p class="text-sm/tight text-stone-500">
+            <p class="font-semibold text-stone-900 dark:text-stone-100">Ruby</p>
+            <p class="text-sm/tight text-stone-500 dark:text-stone-400">
               A dynamic, open source programming language with a focus on simplicity and
               productivity.
             </p>
           </div>
         </div>
         <div
-          class="relative h-full rounded-[1.375rem] border-[0.5px] border-stone-100 bg-white p-5 shadow-sm"
+          class="relative h-full rounded-[1.375rem] border-[0.7px] border-stone-100 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <div class="flex h-full flex-col">
             <span data-icon="javascript" class="mb-8 size-7 shrink-0"></span>
-            <p class="font-semibold text-stone-900">JavaScript</p>
-            <p class="text-sm/tight text-stone-500">
+            <p class="font-semibold text-stone-900 dark:text-stone-100">JavaScript</p>
+            <p class="text-sm/tight text-stone-500 dark:text-stone-400">
               The scripting language for the web that brings dynamic content and interactivity to
               web applications.
             </p>
@@ -355,19 +372,19 @@
 
       <!-- Frameworks -->
       <div
-        class="mt-16 mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3"
+        class="mt-16 mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3 dark:border-zinc-700/75"
       >
         <span data-icon="framework" class="size-5 shrink-0"></span>
         <h3 class="text-xl font-semibold">Frameworks</h3>
       </div>
       <div class="grid grid-cols-1 gap-4 xs:grid-cols-2">
         <div
-          class="relative h-full rounded-[1.375rem] border-[0.5px] border-stone-100 bg-white p-5 shadow-sm"
+          class="relative h-full rounded-[1.375rem] border-[0.7px] border-stone-100 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <div class="flex h-full flex-col">
             <span data-icon="rails" class="mb-8 size-8 shrink-0"></span>
-            <p class="font-semibold text-stone-900">Ruby on Rails</p>
-            <p class="text-sm/tight text-stone-500">
+            <p class="font-semibold text-stone-900 dark:text-stone-100">Ruby on Rails</p>
+            <p class="text-sm/tight text-stone-500 dark:text-stone-400">
               A powerful web application framework that optimizes for programmer happiness and
               emphasizes convention over configuration, enabling rapid development of robust,
               maintainable, scalable web apps.
@@ -375,12 +392,12 @@
           </div>
         </div>
         <div
-          class="relative h-full rounded-[1.375rem] border-[0.5px] border-stone-100 bg-white p-5 shadow-sm"
+          class="relative h-full rounded-[1.375rem] border-[0.7px] border-stone-100 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <div class="flex h-full flex-col">
             <span data-icon="tailwindcss" class="mb-8 size-8 shrink-0"></span>
-            <p class="font-semibold text-stone-900">Tailwind CSS</p>
-            <p class="text-sm/tight text-stone-500">
+            <p class="font-semibold text-stone-900 dark:text-stone-100">Tailwind CSS</p>
+            <p class="text-sm/tight text-stone-500 dark:text-stone-400">
               A utility-first CSS framework for rapidly building custom user interfaces directly in
               your markup, offering flexibility and efficiency without leaving your HTML.
             </p>
@@ -390,43 +407,47 @@
 
       <!-- Tools -->
       <div
-        class="mt-16 mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3"
+        class="mt-16 mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3 dark:border-zinc-700/75"
       >
         <span data-icon="tools" class="size-5 shrink-0"></span>
         <h3 class="text-xl font-semibold">Tools</h3>
       </div>
       <div class="grid grid-cols-1 gap-4 xs:grid-cols-2 sm:grid-cols-3">
         <div
-          class="relative h-full rounded-[1.375rem] border-[0.5px] border-stone-100 bg-white p-5 shadow-sm"
+          class="relative h-full rounded-[1.375rem] border-[0.7px] border-stone-100 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <div class="flex h-full flex-col">
             <span data-icon="git" class="mb-8 size-7 shrink-0"></span>
-            <p class="font-semibold text-stone-900">Git</p>
-            <p class="text-sm/tight text-stone-500">
+            <p class="font-semibold text-stone-900 dark:text-stone-100">Git</p>
+            <p class="text-sm/tight text-stone-500 dark:text-stone-400">
               A distributed version control system designed to track changes in source code during
               software development, enabling developers to collaborate seamlessly.
             </p>
           </div>
         </div>
         <div
-          class="relative h-full rounded-[1.375rem] border-[0.5px] border-stone-100 bg-white p-5 shadow-sm"
+          class="relative h-full rounded-[1.375rem] border-[0.7px] border-stone-100 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <div class="flex h-full flex-col">
-            <span data-icon="github-filled" class="mb-8 size-7 shrink-0"></span>
-            <p class="font-semibold text-stone-900">GitHub</p>
-            <p class="text-sm/tight text-stone-500">
+            <span data-icon="github-filled" class="mb-8 size-7 shrink-0 dark:hidden"></span>
+            <span
+              data-icon="github-filled-dark"
+              class="mb-8 size-7 shrink-0 not-dark:hidden"
+            ></span>
+            <p class="font-semibold text-stone-900 dark:text-stone-100">GitHub</p>
+            <p class="text-sm/tight text-stone-500 dark:text-stone-400">
               A web-based platform for version control and collaboration built on Git, allowing
               developers to host repositories, manage projects, and review code efficiently.
             </p>
           </div>
         </div>
         <div
-          class="relative h-full rounded-[1.375rem] border-[0.5px] border-stone-100 bg-white p-5 shadow-sm"
+          class="relative h-full rounded-[1.375rem] border-[0.7px] border-stone-100 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800/65"
         >
           <div class="flex h-full flex-col">
             <span data-icon="vscode" class="mb-8 size-7 shrink-0"></span>
-            <p class="font-semibold text-stone-900">Visual Studio Code</p>
-            <p class="text-sm/tight text-stone-500">
+            <p class="font-semibold text-stone-900 dark:text-stone-100">Visual Studio Code</p>
+            <p class="text-sm/tight text-stone-500 dark:text-stone-400">
               A free, open-source code editor from Microsoft with smart code completion, debugging,
               Git integration, and a rich ecosystem of extensions.
             </p>
@@ -438,10 +459,14 @@
     <!-- Contact Section -->
     <section id="contact" class="flex min-h-[60vh] items-center justify-center px-8 py-20">
       <div class="max-w-3xl text-center">
-        <h2 class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl">
+        <h2
+          class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
+        >
           Let&#8217;s get in touch!
         </h2>
-        <p class="max-w-4xl text-center text-lg/relaxed text-pretty text-stone-600">
+        <p
+          class="max-w-4xl text-center text-lg/relaxed text-pretty text-stone-600 dark:text-stone-200"
+        >
           Have a project, an opportunity, or just want to connect? I&#8217;d love to hear from you!
           You can reach me via email, check out my GitHub profile for more projects, or connect with
           me on LinkedIn.
@@ -452,25 +477,25 @@
           <a
             href="mailto:me@bradenroth.com"
             target="_blank"
-            class="flex items-center gap-1.5 text-primary-500 transition-all duration-150 hover:text-primary-600 hover:underline"
+            class="flex items-center gap-1.5 text-primary-500 transition-all duration-150 hover:text-primary-600 hover:underline dark:text-primary-400 dark:hover:text-primary-500"
           >
             <span data-icon="email" class="mt-0.5 size-5 shrink-0"></span>
             <span>me@bradenroth.com</span>
           </a>
-          <span class="hidden h-6 w-px bg-stone-200/75 md:inline-block"></span>
+          <span class="hidden h-6 w-px bg-stone-200/75 md:inline-block dark:bg-zinc-700/75"></span>
           <a
             href="https://github.com/bradenr402"
             target="_blank"
-            class="flex items-center gap-1.5 text-primary-500 transition-all duration-150 hover:text-primary-600 hover:underline"
+            class="flex items-center gap-1.5 text-primary-500 transition-all duration-150 hover:text-primary-600 hover:underline dark:text-primary-400 dark:hover:text-primary-500"
           >
             <span data-icon="github-circle" class="size-5 shrink-0"></span>
             <span>GitHub</span>
           </a>
-          <span class="hidden h-6 w-px bg-stone-200/75 md:inline-block"></span>
+          <span class="hidden h-6 w-px bg-stone-200/75 md:inline-block dark:bg-zinc-700/75"></span>
           <a
             href="https://linkedin.com/in/braden-roth"
             target="_blank"
-            class="flex items-center gap-1.5 text-primary-500 transition-all duration-150 hover:text-primary-600 hover:underline"
+            class="flex items-center gap-1.5 text-primary-500 transition-all duration-150 hover:text-primary-600 hover:underline dark:text-primary-400 dark:hover:text-primary-500"
           >
             <span data-icon="linkedin" class="size-5 shrink-0"></span>
             <span>LinkedIn</span>
@@ -478,15 +503,29 @@
         </div>
       </div>
     </section>
-    <footer class="bg-stone-100">
+    <footer class="bg-stone-100 dark:bg-zinc-800/65">
       <div
-        class="mx-auto flex max-w-4xl items-center justify-center gap-1.5 px-6 pt-10 pb-6 text-sm text-stone-500/80"
+        class="relative mx-auto flex max-w-4xl items-center justify-center gap-1.5 px-6 pt-10 pb-6 text-sm text-stone-500/80 dark:text-stone-400/80"
       >
+        <div class="absolute left-4 flex h-full items-center">
+          <button
+            type="button"
+            class="cursor-pointer rounded-full bg-transparent p-1.5 backdrop-blur-sm transition-all duration-300 hover:bg-stone-200/75 dark:hover:bg-zinc-800/75"
+            aria-label="Toggle Theme"
+            id="toggle-theme"
+          >
+            <span class="sr-only">Toggle Theme</span>
+            <span
+              data-icon="dark-mode"
+              class="text-black-500 size-5.5 transition-transform duration-600 dark:rotate-180"
+            ></span>
+          </button>
+        </div>
         <span>&copy;</span>
         <span id="footer-year">2025</span>
         <span>Braden Roth</span>
       </div>
-      <p class="mb-px text-center text-xxs text-stone-400">Hi there! ;)</p>
+      <p class="mb-px text-center text-xxs text-stone-400 dark:text-stone-600">Hi there! ;)</p>
     </footer>
   </body>
 </html>

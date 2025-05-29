@@ -92,3 +92,18 @@
 @utility btn-secondary {
   @apply bg-primary-500/10 text-primary-500 hover:bg-primary-500/20 dark:bg-primary-400/15 dark:text-primary-100 dark:hover:bg-primary-400/25;
 }
+
+@keyframes fade-in {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.fade-in-animation {
+  animation: fade-in 700ms ease-out;
+}

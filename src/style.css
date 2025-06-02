@@ -104,7 +104,7 @@
   }
 }
 
-.fade-in-animation {
+@utility fade-in-animation {
   animation: fade-in 700ms ease-out;
 }
 

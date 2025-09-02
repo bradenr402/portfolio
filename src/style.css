@@ -7,17 +7,17 @@
 @theme {
   --font-sans: Calibre, sans-serif;
 
-  --color-primary-50: #fde8e8;
-  --color-primary-100: #f9c7c7;
-  --color-primary-200: #f39999;
-  --color-primary-300: #ec6b6b;
-  --color-primary-400: #e43d3d;
-  --color-primary-500: #d30002;
-  --color-primary-600: #b80002;
-  --color-primary-700: #9e0002;
-  --color-primary-800: #7c0002;
-  --color-primary-900: #5a0001;
-  --color-primary-950: #330000;
+  --color-primary-50: oklch(0.98 0.01 29.1);
+  --color-primary-100: oklch(0.95 0.025 29.1);
+  --color-primary-200: oklch(0.85 0.081 29.1);
+  --color-primary-300: oklch(0.75 0.149 29.1);
+  --color-primary-400: oklch(0.65 0.233 29.1);
+  --color-primary-500: oklch(0.55 0.223 29.1);
+  --color-primary-600: oklch(0.45 0.182 29.1);
+  --color-primary-700: oklch(0.35 0.142 29.1);
+  --color-primary-800: oklch(0.25 0.101 29.1);
+  --color-primary-900: oklch(0.15 0.061 29.1);
+  --color-primary-950: oklch(0.08 0.02 29.1);
 
   --breakpoint-xs: 30rem;
   --text-xxs: 0.625rem;

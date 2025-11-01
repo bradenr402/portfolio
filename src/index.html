@@ -141,131 +141,6 @@
         Projects
       </h2>
       <div class="grid gap-4 md:grid-cols-2">
-        <!-- PaceMaker Project Card -->
-        <div
-          class="@container flex flex-col rounded-[1.375rem] border-[0.7px] border-stone-200 bg-stone-100 p-4 md:col-span-2 dark:border-zinc-700 dark:bg-zinc-800/65"
-        >
-          <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">PaceMaker</h3>
-          <div class="mb-4 space-y-2 leading-snug">
-            <p class="text-stone-700 dark:text-stone-200">
-              A Ruby on Rails application that empowers cross country athletes and coaches to track
-              their progress and achieve both personal and team goals. It features intuitive team
-              management, comprehensive run and streak tracking, and goal-setting to cultivate a
-              supportive and competitive environment.
-            </p>
-            <p class="text-stone-700 dark:text-stone-200">
-              Secure authentication is handled with Devise and Google OAuth 2.0, and Strava API
-              integration enables real-time synchronization of running activities. To facilitate
-              team communication, PaceMaker includes built-in team messaging with topic-driven
-              discussions, delivering real-time updates via Turbo Streams and ActionCable. PaceMaker
-              also offers PWA capability for enhanced user-friendliness.
-            </p>
-          </div>
-
-          <div class="mb-4 flex flex-wrap gap-1.5">
-            <a
-              href="https://rubyonrails.org/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-primary-500/30 bg-primary-500/15 px-1 py-0.5 text-xs font-semibold text-primary-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-primary-400/30 dark:bg-primary-400/15 dark:text-primary-400"
-            >
-              <span data-icon="rails" class="size-3.75"></span>
-              <span>Ruby on Rails</span>
-            </a>
-            <a
-              href="https://www.postgresql.org/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#336791]/30 bg-[#336791]/15 px-1 py-0.5 text-xs font-semibold text-[#336791] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#336791]/40 dark:bg-[#336791]/25 dark:text-[#7db0e6]"
-            >
-              <span data-icon="postgresql" class="size-3.25"></span>
-              <span>PostgreSQL</span>
-            </a>
-            <a
-              href="https://stimulus.hotwired.dev/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#67d8a9]/30 bg-[#67d8a9]/15 px-1 py-0.5 text-xs font-semibold text-[#67d8a9] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#67d8a9]/40 dark:bg-[#67d8a9]/25 dark:text-[#a7f3d0]"
-            >
-              <span data-icon="stimulus" class="size-3"></span>
-              <span>Stimulus</span>
-            </a>
-            <a
-              href="https://turbo.hotwired.dev/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#6ec5d3]/30 bg-[#6ec5d3]/15 px-1 py-0.5 text-xs font-semibold text-[#6ec5d3] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#6ec5d3]/40 dark:bg-[#6ec5d3]/25 dark:text-[#a5f3fc]"
-            >
-              <span data-icon="turbo" class="size-3"></span>
-              <span>Turbo</span>
-            </a>
-            <a
-              href="https://tailwindcss.com/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#00bcff]/30 bg-[#00bcff]/15 px-1 py-0.5 text-xs font-semibold text-[#00bcff] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#00bcff]/40 dark:bg-[#00bcff]/25"
-            >
-              <span data-icon="tailwindcss" class="size-4"></span>
-              <span>Tailwind CSS</span>
-            </a>
-            <a
-              href="https://developers.google.com/identity/protocols/oauth2"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-red-500/30 bg-red-500/15 px-1 py-0.5 text-xs font-semibold text-red-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-red-400/30 dark:bg-red-400/15 dark:text-red-300"
-            >
-              <span data-icon="google" class="size-3"></span>
-              <span>Google OAuth 2.0</span>
-            </a>
-            <a
-              href="https://developers.strava.com/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#fc4c02]/30 bg-[#fc4c02]/15 px-1 py-0.5 text-xs font-semibold text-[#fc4c02] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#fc4c02]/40 dark:bg-[#fc4c02]/25 dark:text-[#fc7345]"
-            >
-              <span data-icon="strava" class="-ml-0.5 size-3.5"></span>
-              <span class="whitespace-nowrap">Strava API</span>
-            </a>
-            <a
-              href="https://github.com/heartcombo/devise"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-indigo-500/30 bg-indigo-500/15 px-1 py-0.5 text-xs font-semibold text-indigo-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-indigo-400/30 dark:bg-indigo-400/15 dark:text-indigo-400"
-            >
-              <span>Devise</span>
-            </a>
-            <a
-              href="https://chartkick.com/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-blue-500/30 bg-blue-500/15 px-1 py-0.5 text-xs font-semibold text-blue-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-blue-400/30 dark:bg-blue-400/15 dark:text-blue-400"
-            >
-              <span>Chartkick</span>
-            </a>
-          </div>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <a
-              href="https://pace-maker.onrender.com/landing"
-              target="_blank"
-              class="btn grow-[1.25] btn-primary @max-lg:w-full"
-            >
-              <span class="whitespace-nowrap">Try Now</span>
-              <span data-icon="external-link" class="size-4"></span>
-            </a>
-            <a
-              href="https://github.com/bradenr402/pace-maker"
-              target="_blank"
-              class="btn grow btn-secondary"
-            >
-              <span class="whitespace-nowrap"
-                ><span class="@max-sm:hidden">View on</span> GitHub</span
-              >
-              <span data-icon="github" class="size-4"></span>
-            </a>
-            <a
-              href="https://pace-maker.onrender.com/landing#testimonials"
-              target="_blank"
-              class="btn grow btn-secondary"
-            >
-              <span class="whitespace-nowrap"
-                ><span class="@max-sm:hidden">Read</span> Testimonials</span
-              >
-              <span data-icon="quote-end" class="size-4"></span>
-            </a>
-          </div>
-        </div>
-
         <!-- JobJournal Project Card -->
         <div
           class="@container flex flex-col rounded-[1.375rem] border-[0.7px] border-stone-200 bg-stone-100 p-4 md:col-span-2 dark:border-zinc-700 dark:bg-zinc-800/65"
@@ -374,6 +249,130 @@
             >
               <span class="whitespace-nowrap">Learn More</span>
               <span data-icon="arrow-right" class="size-4.5"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- PaceMaker Project Card -->
+        <div
+          class="@container flex flex-col rounded-[1.375rem] border-[0.7px] border-stone-200 bg-stone-100 p-4 md:col-span-2 dark:border-zinc-700 dark:bg-zinc-800/65"
+        >
+          <h3
+            class="mb-1 flex items-center gap-3 text-2xl font-bold text-primary-500 dark:text-primary-400"
+          >
+            PaceMaker
+          </h3>
+          <span
+            class="mb-2 w-max items-center gap-1 rounded-md border-[0.7px] border-amber-500/30 bg-amber-500/15 px-1 py-0.5 text-xs font-semibold text-amber-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-amber-500/30 dark:bg-amber-400/15 dark:text-amber-500"
+          >
+            Temporarily Unavailable
+          </span>
+          <div class="mb-4 space-y-2 leading-snug">
+            <p class="text-stone-700 dark:text-stone-200">
+              A Ruby on Rails application that empowers cross country athletes and coaches to track
+              their progress and achieve both personal and team goals. It features intuitive team
+              management, comprehensive run and streak tracking, and goal-setting to cultivate a
+              supportive and competitive environment.
+            </p>
+            <p class="text-stone-700 dark:text-stone-200">
+              Secure authentication is handled with Devise and Google OAuth 2.0, and Strava API
+              integration enables real-time synchronization of running activities. To facilitate
+              team communication, PaceMaker includes built-in team messaging with topic-driven
+              discussions, delivering real-time updates via Turbo Streams and ActionCable. PaceMaker
+              also offers PWA capability for enhanced user-friendliness.
+            </p>
+          </div>
+
+          <div class="mb-4 flex flex-wrap gap-1.5">
+            <a
+              href="https://rubyonrails.org/"
+              target="_blank"
+              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-primary-500/30 bg-primary-500/15 px-1 py-0.5 text-xs font-semibold text-primary-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-primary-400/30 dark:bg-primary-400/15 dark:text-primary-400"
+            >
+              <span data-icon="rails" class="size-3.75"></span>
+              <span>Ruby on Rails</span>
+            </a>
+            <a
+              href="https://www.postgresql.org/"
+              target="_blank"
+              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#336791]/30 bg-[#336791]/15 px-1 py-0.5 text-xs font-semibold text-[#336791] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#336791]/40 dark:bg-[#336791]/25 dark:text-[#7db0e6]"
+            >
+              <span data-icon="postgresql" class="size-3.25"></span>
+              <span>PostgreSQL</span>
+            </a>
+            <a
+              href="https://stimulus.hotwired.dev/"
+              target="_blank"
+              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#67d8a9]/30 bg-[#67d8a9]/15 px-1 py-0.5 text-xs font-semibold text-[#67d8a9] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#67d8a9]/40 dark:bg-[#67d8a9]/25 dark:text-[#a7f3d0]"
+            >
+              <span data-icon="stimulus" class="size-3"></span>
+              <span>Stimulus</span>
+            </a>
+            <a
+              href="https://turbo.hotwired.dev/"
+              target="_blank"
+              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#6ec5d3]/30 bg-[#6ec5d3]/15 px-1 py-0.5 text-xs font-semibold text-[#6ec5d3] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#6ec5d3]/40 dark:bg-[#6ec5d3]/25 dark:text-[#a5f3fc]"
+            >
+              <span data-icon="turbo" class="size-3"></span>
+              <span>Turbo</span>
+            </a>
+            <a
+              href="https://tailwindcss.com/"
+              target="_blank"
+              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#00bcff]/30 bg-[#00bcff]/15 px-1 py-0.5 text-xs font-semibold text-[#00bcff] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#00bcff]/40 dark:bg-[#00bcff]/25"
+            >
+              <span data-icon="tailwindcss" class="size-4"></span>
+              <span>Tailwind CSS</span>
+            </a>
+            <a
+              href="https://developers.google.com/identity/protocols/oauth2"
+              target="_blank"
+              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-red-500/30 bg-red-500/15 px-1 py-0.5 text-xs font-semibold text-red-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-red-400/30 dark:bg-red-400/15 dark:text-red-300"
+            >
+              <span data-icon="google" class="size-3"></span>
+              <span>Google OAuth 2.0</span>
+            </a>
+            <a
+              href="https://developers.strava.com/"
+              target="_blank"
+              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#fc4c02]/30 bg-[#fc4c02]/15 px-1 py-0.5 text-xs font-semibold text-[#fc4c02] transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-[#fc4c02]/40 dark:bg-[#fc4c02]/25 dark:text-[#fc7345]"
+            >
+              <span data-icon="strava" class="-ml-0.5 size-3.5"></span>
+              <span class="whitespace-nowrap">Strava API</span>
+            </a>
+            <a
+              href="https://github.com/heartcombo/devise"
+              target="_blank"
+              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-indigo-500/30 bg-indigo-500/15 px-1 py-0.5 text-xs font-semibold text-indigo-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-indigo-400/30 dark:bg-indigo-400/15 dark:text-indigo-400"
+            >
+              <span>Devise</span>
+            </a>
+            <a
+              href="https://chartkick.com/"
+              target="_blank"
+              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-blue-500/30 bg-blue-500/15 px-1 py-0.5 text-xs font-semibold text-blue-500 transition-transform duration-300 hover:scale-110 active:scale-95 dark:border-blue-400/30 dark:bg-blue-400/15 dark:text-blue-400"
+            >
+              <span>Chartkick</span>
+            </a>
+          </div>
+          <div class="mt-auto flex flex-wrap gap-2">
+            <btn
+              class="btn grow-[1.25] btn-primary @max-lg:w-full"
+              aria-disabled="true"
+              tabindex="-1"
+            >
+              <span class="whitespace-nowrap">Try Now</span>
+              <span data-icon="external-link" class="size-4"></span>
+            </btn>
+            <a
+              href="https://github.com/bradenr402/pace-maker"
+              target="_blank"
+              class="btn grow btn-secondary"
+            >
+              <span class="whitespace-nowrap"
+                ><span class="@max-sm:hidden">View on</span> GitHub</span
+              >
+              <span data-icon="github" class="size-4"></span>
             </a>
           </div>
         </div>
@@ -669,8 +668,8 @@
         <p
           class="max-w-prose text-lg/relaxed text-pretty text-stone-600 sm:text-center dark:text-stone-200"
         >
-          You can reach me via email, check out my GitHub profile to see more of my projects, or connect with
-          me on LinkedIn. I&#8217;d love to hear from you!
+          You can reach me via email, check out my GitHub profile to see more of my projects, or
+          connect with me on LinkedIn. I&#8217;d love to hear from you!
         </p>
         <div
           class="mt-8 flex justify-center text-lg font-semibold *:py-1 max-xs:flex-col xs:items-center xs:gap-6 sm:text-xl"

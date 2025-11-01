@@ -83,6 +83,11 @@
 
 @utility btn {
   @apply inline-flex items-center justify-center gap-2.5 rounded-md py-1.5 pr-4.5 pl-5 font-semibold transition-all duration-300 active:scale-95;
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    @apply pointer-events-none cursor-not-allowed opacity-50;
+  }
 }
 
 @utility btn-primary {

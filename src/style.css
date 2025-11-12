@@ -4,6 +4,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Custom variant: supports-squircle */
+@variant supports-squircle {
+  @supports (corner-shape: squircle) {
+    @slot;
+  }
+}
+
 @theme {
   --font-sans: Calibre, sans-serif;
 
@@ -81,8 +88,14 @@
   }
 }
 
+@utility squircle {
+  @supports (corner-shape: squircle) {
+    corner-shape: squircle;
+  }
+}
+
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2.5 rounded-md py-1.5 pr-4.5 pl-5 font-semibold transition-all duration-300 active:scale-95;
+  @apply inline-flex items-center justify-center gap-2.5 rounded-lg py-1.5 pr-4.5 pl-5 font-semibold transition-all duration-300 squircle active:scale-95 supports-squircle:rounded-3xl;
 
   &:disabled,
   &[aria-disabled='true'] {

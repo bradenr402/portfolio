@@ -4,752 +4,791 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Braden Roth</title>
-    <link rel="stylesheet" href="style.css" />
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   </head>
   <body
-    class="fade-in-animation bg-white text-stone-800 selection:bg-primary-500/20 dark:bg-zinc-900 dark:text-stone-100 dark:selection:bg-primary-500/40"
+    data-page="home"
+    class="bg-white text-stone-800 selection:bg-primary-500/20 dark:bg-zinc-900 dark:text-stone-100 dark:selection:bg-primary-500/40"
   >
-    <!-- Introduction Section -->
-    <section
-      id="introduction"
-      class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
-    >
-      <h1 class="mb-8 text-center text-4xl font-extrabold md:text-5xl">Hey! I&#8217;m Braden.</h1>
-      <div class="mb-4 grid grid-cols-1 items-center gap-6 sm:grid-cols-2 sm:gap-4">
-        <div class="space-y-6 text-lg/relaxed sm:mr-4">
-          <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-            I&#8217;m a full-stack web developer based in Temple Terrace, FL. I specialize in
-            <a
-              href="https://rubyonrails.org/"
-              target="_blank"
-              class="font-bold text-primary-500 transition-colors duration-150 hover:underline dark:text-primary-400"
-            >
-              <span data-icon="rails" class="inline size-4 -translate-y-px"></span>
-              Ruby on Rails</a
-            >, and I love turning ideas into useful, meaningful, and delightful web applications.
-          </p>
-          <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-            More importantly, I&#8217;m a husband to my lovely wife and a proud dad to our two
-            beautiful daughters. Whether I&#8217;m crafting a feature for users or making memories
-            with my family, I want to build lasting things that matter.
-          </p>
-        </div>
-        <div
-          class="flex flex-col items-center justify-center self-stretch rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-6 text-center squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
+    <div id="wrapper">
+      <main id="main">
+        <!-- Introduction Section -->
+        <section
+          id="introduction"
+          class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
         >
-          <img
-            src="images/family.webp"
-            alt="Ami (left), Emily (middle), and Braden (right)"
-            class="mx-auto mb-6 aspect-square size-48 rounded-full border-3 border-white object-cover shadow-lg outline-[0.5px] outline-stone-700/5 md:size-68 md:border-5 dark:border-zinc-300"
-          />
-          <span class="font-semibold text-stone-700 dark:text-stone-300">My Family</span>
-          <span class="text-xs text-pretty text-stone-500 dark:text-stone-400">
-            Aminata (left), Emily (center), Braden (right), Sophia (not pictured)
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section
-      id="about"
-      class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
-    >
-      <h2
-        class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
-      >
-        About Me
-      </h2>
-
-      <div
-        class="grid grid-cols-1 items-stretch gap-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-6"
-      >
-        <div
-          class="group order-1 flex flex-col justify-center rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 text-base/snug text-pretty text-stone-700 squircle xs:col-span-2 xs:text-center md:col-span-4 dark:border-zinc-700 dark:bg-zinc-800/65 dark:text-stone-300 supports-squircle:rounded-[2.5rem]"
-        >
-          <p class="text-stone-700 dark:text-stone-300">
-            I&#8217;m
-            <span class="font-semibold text-nowrap text-primary-500 dark:text-primary-400">
-              <span data-icon="laptop-coding" class="inline size-3.5 -translate-y-0.5"></span>
-              self-taught</span
-            >&mdash;no bootcamp, no internship, no CS degree. Everything I know about coding and web
-            development, I learned by building.
-          </p>
-        </div>
-        <div
-          class="group order-1 flex flex-col justify-center rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 text-base/snug text-pretty text-stone-700 squircle xs:text-center sm:row-span-2 md:col-span-2 dark:border-zinc-700 dark:bg-zinc-800/65 dark:text-stone-300 supports-squircle:rounded-[2.5rem]"
-        >
-          <p class="text-stone-700 dark:text-stone-300">
-            I love
-            <span class="font-semibold text-nowrap text-emerald-500 dark:text-emerald-400">
-              <span data-icon="book-filled" class="inline size-3.5 -translate-y-0.5"></span>
-              reading</span
-            >, especially fantasy and <span class="whitespace-nowrap">sci-fi</span>. My favorite
-            authors include Orson Scott Card, Dean Koontz, and Andy Weir.
-          </p>
-        </div>
-        <div
-          class="group order-1 flex flex-col justify-center rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 text-base/snug text-pretty text-stone-700 squircle xs:text-center sm:row-span-2 md:col-span-2 md:row-span-1 dark:border-zinc-700 dark:bg-zinc-800/65 dark:text-stone-300 supports-squircle:rounded-[2.5rem]"
-        >
-          <p class="text-stone-700 dark:text-stone-300">
-            I collect and speed-solve
-            <span aria-hidden="true" class="font-semibold whitespace-nowrap"
-              ><span class="inline-block rubik-animate">R</span
-              ><span class="inline-block rubik-animate">u</span
-              ><span class="inline-block rubik-animate">b</span
-              ><span class="inline-block rubik-animate">i</span
-              ><span class="inline-block rubik-animate">k</span
-              ><span class="inline-block rubik-animate">&#8217;</span
-              ><span class="inline-block rubik-animate">s</span>
-            </span>
-            <span class="sr-only select-none">Rubik's</span>
-            cubes and other twisty puzzles.
-          </p>
-        </div>
-        <div
-          class="group order-1 flex flex-col justify-center rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 text-base/snug text-pretty text-stone-700 squircle max-sm:order-2 xs:text-center sm:row-span-2 md:col-span-2 md:row-span-1 dark:border-zinc-700 dark:bg-zinc-800/65 dark:text-stone-300 supports-squircle:rounded-[2.5rem]"
-        >
-          <p class="text-stone-700 dark:text-stone-300">
-            I like designing interfaces directly in code, with nothing but HTML and
-            <a
-              href="https://tailwindcss.com/"
-              class="font-semibold text-nowrap text-[#00bcff] hover:underline"
-            >
-              <span data-icon="tailwindcss" class="mr-1 inline size-3.75 -translate-y-0.5"></span
-              >Tailwind CSS</a
-            >.
-          </p>
-        </div>
-        <div
-          class="group order-1 flex flex-col justify-center rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 text-base/snug text-pretty text-stone-700 squircle xs:text-center md:col-span-6 dark:border-zinc-700 dark:bg-zinc-800/65 dark:text-stone-300 supports-squircle:rounded-[2.5rem]"
-        >
-          <p class="text-stone-700 dark:text-stone-300">
-            I care a lot about writing clean, thoughtful
-            <span class="font-semibold text-nowrap text-orange-500 dark:text-orange-400">
-              <span data-icon="code-filled" class="inline size-3.5 -translate-y-0.25"></span>
-              code</span
-            >. It&#8217;s part craftsmanship, part courtesy to whoever reads it next (often future
-            me).
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section
-      id="projects"
-      class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
-    >
-      <h2
-        class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
-      >
-        Projects
-      </h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <!-- JobJournal Project Card -->
-        <div
-          class="@container flex flex-col rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 squircle md:col-span-2 dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-        >
-          <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">JobJournal</h3>
-          <div class="mb-4 space-y-2 leading-snug">
-            <p class="text-stone-700 dark:text-stone-200">
-              Searching for jobs is often overwhelming, chaotic, and emotionally
-              draining&mdash;especially when juggling multiple applications, deadlines, and
-              interview processes. Spreadsheets have long been the default tool for job hunters
-              wanting to keep track of their job search. Every
-              <a
-                href="https://www.jobscan.co/blog/job-search-spreadsheet-and-job-tracker/"
-                target="_blank"
-                class="font-semibold text-primary-500 transition-colors duration-150 hover:underline dark:text-primary-400"
-                >career blog</a
-              >,
-              <a
-                href="https://www.linkedin.com/advice/3/youre-struggling-keep-track-job-applications-hjlbc"
-                target="_blank"
-                class="font-semibold text-primary-500 transition-colors duration-150 hover:underline dark:text-primary-400"
-                >coaching platform</a
-              >, and
-              <a
-                href="https://www.reddit.com/r/jobsearchhacks/comments/1jlmckp/the_tip_that_helped_me_secure_3_offers_in_two/"
-                target="_blank"
-                class="font-semibold text-primary-500 transition-colors duration-150 hover:underline dark:text-primary-400"
-                >Reddit advice thread</a
-              >
-              seems to preach this same gospel: &#8220;just open Excel or Google Sheets and log
-              every lead.&#8221;
-            </p>
-            <p class="text-stone-700 dark:text-stone-200">
-              JobJournal flips that script, offering a privacy-first web app to help job seekers
-              stay organized, track every lead, application, and interview, and gain insight into
-              their job search journey&mdash;all in one place. No messy spreadsheets. No recruiter
-              dashboards. Just your personal job search HQ.
-            </p>
-          </div>
-
-          <div class="mb-4 flex flex-wrap gap-1.5">
-            <a
-              href="https://rubyonrails.org/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-primary-500/30 bg-primary-500/15 px-1 py-0.5 text-xs font-semibold text-primary-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-primary-400/30 dark:bg-primary-400/15 dark:text-primary-400 supports-squircle:rounded-2xl"
-            >
-              <span data-icon="rails" class="size-3.75"></span>
-              <span>Ruby on Rails</span>
-            </a>
-            <a
-              href="https://www.sqlite.org/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#0f80cc]/30 bg-[#0f80cc]/15 px-1.75 py-0.5 text-xs font-semibold text-[#0f80cc] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#336791]/40 dark:bg-[#336791]/25 dark:text-[#7db0e6] supports-squircle:rounded-2xl"
-            >
-              <span data-icon="sqlite" class="-mr-1 -ml-0.75 size-3.75"></span>
-              <span>SQLite</span>
-            </a>
-            <a
-              href="https://stimulus.hotwired.dev/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#67d8a9]/30 bg-[#67d8a9]/15 px-1 py-0.5 text-xs font-semibold text-[#67d8a9] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#67d8a9]/40 dark:bg-[#67d8a9]/25 dark:text-[#a7f3d0] supports-squircle:rounded-2xl"
-            >
-              <span data-icon="stimulus" class="size-3"></span>
-              <span>Stimulus</span>
-            </a>
-            <a
-              href="https://turbo.hotwired.dev/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#6ec5d3]/30 bg-[#6ec5d3]/15 px-1 py-0.5 text-xs font-semibold text-[#6ec5d3] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#6ec5d3]/40 dark:bg-[#6ec5d3]/25 dark:text-[#a5f3fc] supports-squircle:rounded-2xl"
-            >
-              <span data-icon="turbo" class="size-3"></span>
-              <span>Turbo</span>
-            </a>
-            <a
-              href="https://tailwindcss.com/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#00bcff]/30 bg-[#00bcff]/15 px-1 py-0.5 text-xs font-semibold text-[#00bcff] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#00bcff]/40 dark:bg-[#00bcff]/25 supports-squircle:rounded-2xl"
-            >
-              <span data-icon="tailwindcss" class="size-4"></span>
-              <span>Tailwind CSS</span>
-            </a>
-          </div>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <a
-              href="https://job-journal.fly.dev"
-              target="_blank"
-              class="btn grow-[1.25] btn-primary @max-lg:w-full"
-            >
-              <span class="whitespace-nowrap">Try Now</span>
-              <span data-icon="external-link" class="size-4"></span>
-            </a>
-            <a
-              href="https://github.com/bradenr402/job-journal"
-              target="_blank"
-              class="btn grow btn-secondary"
-            >
-              <span class="whitespace-nowrap"
-                ><span class="@max-sm:hidden">View on</span> GitHub</span
-              >
-              <span data-icon="github" class="size-4"></span>
-            </a>
-            <a
-              href="https://github.com/bradenr402/job-journal/#overview"
-              target="_blank"
-              class="btn grow btn-secondary"
-            >
-              <span class="whitespace-nowrap">Learn More</span>
-              <span data-icon="arrow-right" class="size-4.5"></span>
-            </a>
-          </div>
-        </div>
-
-        <!-- PaceMaker Project Card -->
-        <div
-          class="@container flex flex-col rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 squircle md:col-span-2 dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-        >
-          <div class="mb-2">
-            <h3
-              class="flex items-center gap-3 text-2xl font-bold text-primary-500 dark:text-primary-400"
-            >
-              PaceMaker
-            </h3>
-            <span
-              class="w-max rounded-md border-[0.7px] border-amber-500/30 bg-amber-500/15 px-1 py-0.5 text-xs font-semibold text-amber-500 squircle dark:border-amber-500/30 dark:bg-amber-400/15 dark:text-amber-500 supports-squircle:rounded-2xl"
-            >
-              Temporarily Unavailable
-            </span>
-          </div>
-          <div class="mb-4 space-y-2 leading-snug">
-            <p class="text-stone-700 dark:text-stone-200">
-              A Ruby on Rails application that empowers cross country athletes and coaches to track
-              their progress and achieve both personal and team goals. It features intuitive team
-              management, comprehensive run and streak tracking, and goal-setting to cultivate a
-              supportive and competitive environment.
-            </p>
-            <p class="text-stone-700 dark:text-stone-200">
-              Secure authentication is handled with Devise and Google OAuth 2.0, and Strava API
-              integration enables real-time synchronization of running activities. To facilitate
-              team communication, PaceMaker includes built-in team messaging with topic-driven
-              discussions, delivering real-time updates via Turbo Streams and ActionCable. PaceMaker
-              also offers PWA capability for enhanced user-friendliness.
-            </p>
-          </div>
-
-          <div class="mb-4 flex flex-wrap gap-1.5">
-            <a
-              href="https://rubyonrails.org/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-primary-500/30 bg-primary-500/15 px-1 py-0.5 text-xs font-semibold text-primary-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-primary-400/30 dark:bg-primary-400/15 dark:text-primary-400 supports-squircle:rounded-2xl"
-            >
-              <span data-icon="rails" class="size-3.75"></span>
-              <span>Ruby on Rails</span>
-            </a>
-            <a
-              href="https://www.postgresql.org/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#336791]/30 bg-[#336791]/15 px-1 py-0.5 text-xs font-semibold text-[#336791] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#336791]/40 dark:bg-[#336791]/25 dark:text-[#7db0e6] supports-squircle:rounded-2xl"
-            >
-              <span data-icon="postgresql" class="size-3.25"></span>
-              <span>PostgreSQL</span>
-            </a>
-            <a
-              href="https://stimulus.hotwired.dev/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#67d8a9]/30 bg-[#67d8a9]/15 px-1 py-0.5 text-xs font-semibold text-[#67d8a9] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#67d8a9]/40 dark:bg-[#67d8a9]/25 dark:text-[#a7f3d0] supports-squircle:rounded-2xl"
-            >
-              <span data-icon="stimulus" class="size-3"></span>
-              <span>Stimulus</span>
-            </a>
-            <a
-              href="https://turbo.hotwired.dev/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#6ec5d3]/30 bg-[#6ec5d3]/15 px-1 py-0.5 text-xs font-semibold text-[#6ec5d3] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#6ec5d3]/40 dark:bg-[#6ec5d3]/25 dark:text-[#a5f3fc] supports-squircle:rounded-2xl"
-            >
-              <span data-icon="turbo" class="size-3"></span>
-              <span>Turbo</span>
-            </a>
-            <a
-              href="https://tailwindcss.com/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#00bcff]/30 bg-[#00bcff]/15 px-1 py-0.5 text-xs font-semibold text-[#00bcff] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#00bcff]/40 dark:bg-[#00bcff]/25 supports-squircle:rounded-2xl"
-            >
-              <span data-icon="tailwindcss" class="size-4"></span>
-              <span>Tailwind CSS</span>
-            </a>
-            <a
-              href="https://developers.google.com/identity/protocols/oauth2"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-red-500/30 bg-red-500/15 px-1 py-0.5 text-xs font-semibold text-red-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-red-400/30 dark:bg-red-400/15 dark:text-red-300 supports-squircle:rounded-2xl"
-            >
-              <span data-icon="google" class="size-3"></span>
-              <span>Google OAuth 2.0</span>
-            </a>
-            <a
-              href="https://developers.strava.com/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#fc4c02]/30 bg-[#fc4c02]/15 px-1 py-0.5 text-xs font-semibold text-[#fc4c02] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#fc4c02]/40 dark:bg-[#fc4c02]/25 dark:text-[#fc7345] supports-squircle:rounded-2xl"
-            >
-              <span data-icon="strava" class="-ml-0.5 size-3.5"></span>
-              <span class="whitespace-nowrap">Strava API</span>
-            </a>
-            <a
-              href="https://github.com/heartcombo/devise"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-indigo-500/30 bg-indigo-500/15 px-1 py-0.5 text-xs font-semibold text-indigo-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-indigo-400/30 dark:bg-indigo-400/15 dark:text-indigo-400 supports-squircle:rounded-2xl"
-            >
-              <span>Devise</span>
-            </a>
-            <a
-              href="https://chartkick.com/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-blue-500/30 bg-blue-500/15 px-1 py-0.5 text-xs font-semibold text-blue-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-blue-400/30 dark:bg-blue-400/15 dark:text-blue-400 supports-squircle:rounded-2xl"
-            >
-              <span>Chartkick</span>
-            </a>
-          </div>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <btn class="btn grow btn-primary" aria-disabled="true" tabindex="-1">
-              <span class="whitespace-nowrap">Try Now</span>
-              <span data-icon="external-link" class="size-4"></span>
-            </btn>
-            <a
-              href="https://github.com/bradenr402/pace-maker"
-              target="_blank"
-              class="btn grow btn-secondary"
-            >
-              <span><span class="@max-sm:hidden">View on</span> GitHub</span>
-              <span data-icon="github" class="size-4"></span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Weather Project Card -->
-        <div
-          class="@container flex flex-col rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-        >
-          <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">Weather</h3>
-          <div class="mb-4 space-y-2 leading-snug">
-            <p class="text-stone-700 dark:text-stone-200">
-              A dynamic weather application built with Webpack and styled using Tailwind CSS. It
-              integrates with WeatherAPI to provide accurate weather data for any city worldwide,
-              including current conditions, hourly and daily forecasts. Users can search for
-              locations or use geolocation, and customize their preferred units, all saved in local
-              storage for their next visit.
-            </p>
-          </div>
-          <div class="mb-4 flex flex-wrap gap-1.5">
-            <a
-              href="https://webpack.js.org/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#1C78C0]/30 bg-[#1C78C0]/15 px-1 py-0.5 text-xs font-semibold text-[#1C78C0] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#1C78C0]/40 dark:bg-[#1C78C0]/25 dark:text-[#60a5fa] supports-squircle:rounded-2xl"
-            >
-              <span data-icon="webpack" class="size-3.5"></span>
-              <span>Webpack</span>
-            </a>
-            <a
-              href="https://www.weatherapi.com/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#7db747]/30 bg-[#7db747]/15 px-1 py-0.5 text-xs font-semibold text-[#7db747] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#7db747]/40 dark:bg-[#7db747]/25 dark:text-[#bbf7d0] supports-squircle:rounded-2xl"
+          <h1 class="mb-8 text-center text-4xl font-extrabold md:text-5xl">
+            Hey! I&#8217;m Braden.
+          </h1>
+          <div class="mb-4 grid grid-cols-1 items-center gap-6 sm:grid-cols-2 sm:gap-4">
+            <div class="space-y-6 text-lg/relaxed sm:mr-4">
+              <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
+                I&#8217;m a full-stack web developer based in Temple Terrace, FL. I specialize in
+                <a
+                  href="https://rubyonrails.org/"
+                  target="_blank"
+                  class="font-bold text-primary-500 transition-colors duration-150 hover:underline dark:text-primary-400"
+                >
+                  <span data-icon="rails" class="inline size-4 -translate-y-px"></span>
+                  Ruby on Rails</a
+                >, and I love turning ideas into useful, meaningful, and delightful web
+                applications.
+              </p>
+              <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
+                More importantly, I&#8217;m a husband to my lovely wife and a proud dad to our two
+                beautiful daughters. Whether I&#8217;m crafting a feature for users or making
+                memories with my family, I want to build lasting things that matter.
+              </p>
+            </div>
+            <div
+              class="flex flex-col items-center justify-center self-stretch rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-6 text-center squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
             >
               <img
-                src="images/WeatherAPI_logo.webp"
-                alt="Weather data by WeatherAPI.com"
-                class="h-3.5"
-                border="0"
+                src="images/family.webp"
+                alt="Ami (left), Emily (middle), and Braden (right)"
+                class="mx-auto mb-6 aspect-square size-48 rounded-full border-3 border-white object-cover shadow-lg outline-[0.5px] outline-stone-700/5 md:size-68 md:border-5 dark:border-zinc-300"
               />
-              <span>Weather API</span>
-            </a>
-            <a
-              href="https://tailwindcss.com/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#00bcff]/30 bg-[#00bcff]/15 px-1 py-0.5 text-xs font-semibold text-[#00bcff] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#00bcff]/40 dark:bg-[#00bcff]/25 supports-squircle:rounded-2xl"
-            >
-              <span data-icon="tailwindcss" class="size-4"></span>
-              <span>Tailwind CSS</span>
-            </a>
+              <span class="font-semibold text-stone-700 dark:text-stone-300">My Family</span>
+              <span class="text-xs text-pretty text-stone-500 dark:text-stone-400">
+                Aminata (left), Emily (center), Braden (right), Sophia (not pictured)
+              </span>
+            </div>
           </div>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <a
-              href="https://bradenr402.github.io/weather-app/"
-              target="_blank"
-              class="btn grow btn-primary"
-            >
-              <span class="whitespace-nowrap">Try Now</span>
-              <span data-icon="external-link" class="size-4"></span>
-            </a>
-            <a
-              href="https://github.com/bradenr402/weather-app"
-              target="_blank"
-              class="btn grow btn-secondary"
-            >
-              <span><span class="@max-sm:hidden">View on</span> GitHub</span>
-              <span data-icon="github" class="size-4"></span>
-            </a>
-          </div>
-        </div>
+        </section>
 
-        <!-- Todo! Project Card -->
-        <div
-          class="@container flex flex-col rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
+        <!-- About Section -->
+        <section
+          id="about"
+          class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
         >
-          <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">Todo!</h3>
-          <div class="mb-4 space-y-2 leading-snug">
-            <p class="text-stone-700 dark:text-stone-200">
-              A sleek and minimalist to-do list application for simple task management. Users can
-              create, edit, complete, and delete tasks, organize them into lists, and use
-              drag-and-drop (powered by SortableJS) to rearrange tasks and lists. All data is saved
-              in local storage, and a custom, replayable onboarding flow introduces new users to the
-              app.
-            </p>
-          </div>
-          <div class="mb-4 flex flex-wrap gap-1.5">
-            <a
-              href="https://webpack.js.org/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#1C78C0]/30 bg-[#1C78C0]/15 px-1 py-0.5 text-xs font-semibold text-[#1C78C0] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#1C78C0]/40 dark:bg-[#1C78C0]/25 dark:text-[#60a5fa] supports-squircle:rounded-2xl"
-            >
-              <span data-icon="webpack" class="size-3.5"></span>
-              <span>Webpack</span>
-            </a>
-            <a
-              href="https://sortablejs.github.io/Sortable/"
-              target="_blank"
-              class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#709dd8]/30 bg-[#709dd8]/15 px-1 py-0.5 text-xs font-semibold text-[#709dd8] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#709dd8]/40 dark:bg-[#709dd8]/25 dark:text-[#bfdbfe] supports-squircle:rounded-2xl"
-            >
-              <img src="images/SortableJS_logo.png" alt="SortableJS logo" class="size-3.25" />
-              <span>SortableJS</span>
-            </a>
-          </div>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <a
-              href="https://bradenr402.github.io/todo-list/"
-              target="_blank"
-              class="btn grow btn-primary"
-            >
-              <span class="whitespace-nowrap">Try Now</span>
-              <span data-icon="external-link" class="size-4"></span>
-            </a>
-            <a
-              href="https://github.com/bradenr402/todo-list"
-              target="_blank"
-              class="btn grow btn-secondary"
-            >
-              <span><span class="@max-sm:hidden">View on</span> GitHub</span>
-              <span data-icon="github" class="size-4"></span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section
-      id="skills"
-      class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
-    >
-      <h2
-        class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
-      >
-        Skills &amp; Technologies
-      </h2>
-
-      <div class="space-y-16">
-        <!-- Languages -->
-        <div>
-          <div
-            class="mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3 dark:border-zinc-700/75"
+          <h2
+            class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
           >
-            <span data-icon="code" class="size-5 shrink-0"></span>
-            <h3 class="text-xl font-semibold">Languages</h3>
-          </div>
-          <div class="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-4">
-            <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-            >
-              <div class="flex h-full flex-col">
-                <span data-icon="html" class="mb-8 size-7 shrink-0"></span>
-                <p class="font-semibold text-stone-900 dark:text-stone-100">HTML</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  The standard markup language for web content, defining its content and structure.
-                </p>
-              </div>
-            </div>
-            <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-            >
-              <div class="flex h-full flex-col">
-                <span data-icon="css" class="mb-8 size-7 shrink-0"></span>
-                <p class="font-semibold text-stone-900 dark:text-stone-100">CSS</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  The language used to control the visual appearance and layout of web pages.
-                </p>
-              </div>
-            </div>
-            <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-            >
-              <div class="flex h-full flex-col">
-                <img
-                  src="images/icons/ruby.webp"
-                  height="56"
-                  width="56"
-                  alt="Ruby programming language logo"
-                  class="mb-8 size-7 shrink-0"
-                />
-                <p class="font-semibold text-stone-900 dark:text-stone-100">Ruby</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  A dynamic, open source programming language with a focus on simplicity and
-                  productivity.
-                </p>
-              </div>
-            </div>
-            <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-            >
-              <div class="flex h-full flex-col">
-                <span data-icon="javascript" class="mb-8 size-7 shrink-0"></span>
-                <p class="font-semibold text-stone-900 dark:text-stone-100">JavaScript</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  The scripting language for the web that brings dynamic content and interactivity
-                  to web applications.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+            About Me
+          </h2>
 
-        <!-- Frameworks -->
-        <div>
           <div
-            class="mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3 dark:border-zinc-700/75"
+            class="text-stone grid grid-cols-1 items-stretch gap-2 *:flex *:flex-col *:justify-center *:rounded-3xl *:border-[0.7px] *:border-stone-200 *:bg-stone-100 *:p-4 *:text-base/snug *:text-pretty *:squircle xs:grid-cols-2 *:xs:text-center *:nth-1:xs:col-span-2 *:nth-2:xs:row-span-2 *:nth-4:xs:max-sm:order-2 *:nth-5:xs:max-sm:row-span-2 sm:grid-cols-3 *:nth-3:sm:max-md:row-span-2 *:nth-4:sm:max-md:row-span-2 md:grid-cols-6 *:nth-1:md:col-span-4 *:nth-2:md:col-span-2 *:nth-3:md:col-span-2 *:nth-4:md:col-span-2 *:nth-5:md:col-span-6 dark:text-stone-300 *:dark:border-zinc-700 *:dark:bg-zinc-800/65 *:supports-squircle:rounded-5xl"
           >
-            <span data-icon="framework" class="size-5 shrink-0"></span>
-            <h3 class="text-xl font-semibold">Frameworks</h3>
-          </div>
-          <div class="grid grid-cols-1 gap-4 xs:grid-cols-2">
-            <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-            >
-              <div class="flex h-full flex-col">
-                <span data-icon="rails" class="mb-8 size-8 shrink-0"></span>
-                <p class="font-semibold text-stone-900 dark:text-stone-100">Ruby on Rails</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  A powerful web application framework that optimizes for programmer happiness and
-                  emphasizes convention over configuration, enabling rapid development of robust,
-                  maintainable, &amp; scalable web apps.
-                </p>
-              </div>
+            <div class="group">
+              <p>
+                I&#8217;m
+                <span class="font-semibold text-nowrap text-primary-500 dark:text-primary-400">
+                  <span data-icon="laptop-coding" class="inline size-3.5 -translate-y-0.5"></span>
+                  self-taught</span
+                >&mdash;no bootcamp, no internship, no CS degree. Everything I know about coding and
+                web development, I learned by building.
+              </p>
             </div>
-            <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-            >
-              <div class="flex h-full flex-col">
-                <span data-icon="tailwindcss" class="mb-8 size-8 shrink-0"></span>
-                <p class="font-semibold text-stone-900 dark:text-stone-100">Tailwind CSS</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  A utility-first CSS framework for rapidly building custom user interfaces directly
-                  in your markup, offering flexibility and efficiency without leaving your HTML.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Tools -->
-        <div>
-          <div
-            class="mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3 dark:border-zinc-700/75"
-          >
-            <span data-icon="tools" class="size-5 shrink-0"></span>
-            <h3 class="text-xl font-semibold">Tools</h3>
+            <div class="group">
+              <p>
+                I love
+                <span class="font-semibold text-nowrap text-emerald-500 dark:text-emerald-400">
+                  <span data-icon="book-filled" class="inline size-3.5 -translate-y-0.5"></span>
+                  reading</span
+                >, especially fantasy and <span class="whitespace-nowrap">sci-fi</span>. My favorite
+                authors include Orson Scott Card, Dean Koontz, and Andy Weir.
+              </p>
+            </div>
+
+            <div class="group">
+              <p>
+                I collect and speed-solve
+                <span aria-hidden="true" class="font-semibold whitespace-nowrap"
+                  ><span class="inline-block rubik-animate">R</span
+                  ><span class="inline-block rubik-animate">u</span
+                  ><span class="inline-block rubik-animate">b</span
+                  ><span class="inline-block rubik-animate">i</span
+                  ><span class="inline-block rubik-animate">k</span
+                  ><span class="inline-block rubik-animate">&#8217;</span
+                  ><span class="inline-block rubik-animate">s</span>
+                </span>
+                <span class="sr-only select-none">Rubik's</span>
+                cubes and other twisty puzzles.
+              </p>
+            </div>
+
+            <div class="group">
+              <p>
+                I like designing interfaces directly in code, with nothing but HTML and
+                <a
+                  href="https://tailwindcss.com/"
+                  class="font-semibold text-nowrap text-[#00bcff] hover:underline"
+                >
+                  <span
+                    data-icon="tailwindcss"
+                    class="mr-1 inline size-3.75 -translate-y-0.5"
+                  ></span
+                  >Tailwind CSS</a
+                >.
+              </p>
+            </div>
+
+            <div class="group">
+              <p>
+                I care a lot about writing clean, thoughtful
+                <span class="font-semibold text-nowrap text-orange-500 dark:text-orange-400">
+                  <span data-icon="code-filled" class="inline size-3.5 -translate-y-0.25"></span>
+                  code</span
+                >. It&#8217;s part craftsmanship, part courtesy to whoever reads it next (often
+                future me).
+              </p>
+            </div>
           </div>
-          <div class="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-4">
+        </section>
+
+        <!-- Projects Section -->
+        <section
+          id="projects"
+          class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
+        >
+          <h2
+            class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
+          >
+            Projects
+          </h2>
+          <div class="grid gap-4 md:grid-cols-2">
+            <!-- JobJournal Project Card -->
             <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
+              class="@container flex flex-col rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 squircle md:col-span-2 dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
             >
-              <div class="flex h-full flex-col">
-                <span data-icon="git" class="mb-8 size-7 shrink-0"></span>
-                <p class="font-semibold text-stone-900 dark:text-stone-100">Git</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  A distributed version control system designed to track changes in source code
-                  during software development.
+              <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">
+                JobJournal
+              </h3>
+              <div class="mb-4 space-y-2 leading-snug">
+                <p class="text-stone-700 dark:text-stone-200">
+                  Searching for jobs is often overwhelming, chaotic, and emotionally
+                  draining&mdash;especially when juggling multiple applications, deadlines, and
+                  interview processes. Spreadsheets have long been the default tool for job hunters
+                  wanting to keep track of their job search. Every
+                  <a
+                    href="https://www.jobscan.co/blog/job-search-spreadsheet-and-job-tracker/"
+                    target="_blank"
+                    class="font-semibold text-primary-500 transition-colors duration-150 hover:underline dark:text-primary-400"
+                    >career blog</a
+                  >,
+                  <a
+                    href="https://www.linkedin.com/advice/3/youre-struggling-keep-track-job-applications-hjlbc"
+                    target="_blank"
+                    class="font-semibold text-primary-500 transition-colors duration-150 hover:underline dark:text-primary-400"
+                    >coaching platform</a
+                  >, and
+                  <a
+                    href="https://www.reddit.com/r/jobsearchhacks/comments/1jlmckp/the_tip_that_helped_me_secure_3_offers_in_two/"
+                    target="_blank"
+                    class="font-semibold text-primary-500 transition-colors duration-150 hover:underline dark:text-primary-400"
+                    >Reddit advice thread</a
+                  >
+                  seems to preach this same gospel: &#8220;just open Excel or Google Sheets and log
+                  every lead.&#8221;
+                </p>
+                <p class="text-stone-700 dark:text-stone-200">
+                  JobJournal flips that script, offering a privacy-first web app to help job seekers
+                  stay organized, track every lead, application, and interview, and gain insight
+                  into their job search journey&mdash;all in one place. No messy spreadsheets. No
+                  recruiter dashboards. Just your personal job search HQ.
                 </p>
               </div>
+
+              <div class="mb-4 flex flex-wrap gap-1.5">
+                <a
+                  href="https://rubyonrails.org/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-primary-500/30 bg-primary-500/15 px-1 py-0.5 text-xs font-semibold text-primary-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-primary-400/30 dark:bg-primary-400/15 dark:text-primary-400 supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="rails" class="size-3.75"></span>
+                  <span>Ruby on Rails</span>
+                </a>
+                <a
+                  href="https://www.sqlite.org/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#0f80cc]/30 bg-[#0f80cc]/15 px-1.75 py-0.5 text-xs font-semibold text-[#0f80cc] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#336791]/40 dark:bg-[#336791]/25 dark:text-[#7db0e6] supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="sqlite" class="-mr-1 -ml-0.75 size-3.75"></span>
+                  <span>SQLite</span>
+                </a>
+                <a
+                  href="https://stimulus.hotwired.dev/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#67d8a9]/30 bg-[#67d8a9]/15 px-1 py-0.5 text-xs font-semibold text-[#67d8a9] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#67d8a9]/40 dark:bg-[#67d8a9]/25 dark:text-[#a7f3d0] supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="stimulus" class="size-3"></span>
+                  <span>Stimulus</span>
+                </a>
+                <a
+                  href="https://turbo.hotwired.dev/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#6ec5d3]/30 bg-[#6ec5d3]/15 px-1 py-0.5 text-xs font-semibold text-[#6ec5d3] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#6ec5d3]/40 dark:bg-[#6ec5d3]/25 dark:text-[#a5f3fc] supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="turbo" class="size-3"></span>
+                  <span>Turbo</span>
+                </a>
+                <a
+                  href="https://tailwindcss.com/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#00bcff]/30 bg-[#00bcff]/15 px-1 py-0.5 text-xs font-semibold text-[#00bcff] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#00bcff]/40 dark:bg-[#00bcff]/25 supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="tailwindcss" class="size-4"></span>
+                  <span>Tailwind CSS</span>
+                </a>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <a
+                  href="https://job-journal.fly.dev"
+                  target="_blank"
+                  class="group/external-link btn grow-[1.25] btn-primary @max-lg:w-full"
+                >
+                  <span class="whitespace-nowrap">Try Now</span>
+                  <span data-icon="external-link" class="size-4"></span>
+                </a>
+                <a
+                  href="https://github.com/bradenr402/job-journal"
+                  target="_blank"
+                  class="btn grow btn-secondary"
+                >
+                  <span class="whitespace-nowrap"
+                    ><span class="@max-sm:hidden">View on</span> GitHub</span
+                  >
+                  <span data-icon="github-mark" class="size-4"></span>
+                </a>
+                <a
+                  href="https://github.com/bradenr402/job-journal/#overview"
+                  target="_blank"
+                  class="group/arrow-right btn grow btn-secondary"
+                >
+                  <span class="whitespace-nowrap">Learn More</span>
+                  <span data-icon="arrow-right" class="size-4.5"></span>
+                </a>
+              </div>
             </div>
+
+            <!-- PaceMaker Project Card -->
             <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
+              class="@container flex flex-col rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 squircle md:col-span-2 dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
             >
-              <div class="flex h-full flex-col">
-                <span data-icon="github-filled" class="mb-8 size-7 shrink-0 dark:hidden"></span>
+              <div class="mb-2">
+                <h3
+                  class="flex items-center gap-3 text-2xl font-bold text-primary-500 dark:text-primary-400"
+                >
+                  PaceMaker
+                </h3>
                 <span
-                  data-icon="github-filled-dark"
-                  class="mb-8 size-7 shrink-0 not-dark:hidden"
-                ></span>
-                <p class="font-semibold text-stone-900 dark:text-stone-100">GitHub</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  A web-based platform built on Git, allowing developers to host repositories,
-                  manage projects, and review code efficiently.
+                  class="w-max rounded-md border-[0.7px] border-amber-500/30 bg-amber-500/15 px-1 py-0.5 text-xs font-semibold text-amber-500 squircle dark:border-amber-500/30 dark:bg-amber-400/15 dark:text-amber-500 supports-squircle:rounded-2xl"
+                >
+                  Temporarily Unavailable
+                </span>
+              </div>
+              <div class="mb-4 space-y-2 leading-snug">
+                <p class="text-stone-700 dark:text-stone-200">
+                  A Ruby on Rails application that empowers cross country athletes and coaches to
+                  track their progress and achieve both personal and team goals. It features
+                  intuitive team management, comprehensive run and streak tracking, and goal-setting
+                  to cultivate a supportive and competitive environment.
+                </p>
+                <p class="text-stone-700 dark:text-stone-200">
+                  Secure authentication is handled with Devise and Google OAuth 2.0, and Strava API
+                  integration enables real-time synchronization of running activities. To facilitate
+                  team communication, PaceMaker includes built-in team messaging with topic-driven
+                  discussions, delivering real-time updates via Turbo Streams and ActionCable.
+                  PaceMaker also offers PWA capability for enhanced user-friendliness.
                 </p>
               </div>
-            </div>
-            <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
-            >
-              <div class="flex h-full flex-col">
-                <span data-icon="vscode" class="mb-8 size-7 shrink-0"></span>
-                <p class="font-semibold text-stone-900 dark:text-stone-100">Visual Studio Code</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  My code editor of choice, offering smart code completion, built-in Git
-                  integration, and a rich ecosystem of extensions.
-                </p>
+
+              <div class="mb-4 flex flex-wrap gap-1.5">
+                <a
+                  href="https://rubyonrails.org/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-primary-500/30 bg-primary-500/15 px-1 py-0.5 text-xs font-semibold text-primary-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-primary-400/30 dark:bg-primary-400/15 dark:text-primary-400 supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="rails" class="size-3.75"></span>
+                  <span>Ruby on Rails</span>
+                </a>
+                <a
+                  href="https://www.postgresql.org/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#336791]/30 bg-[#336791]/15 px-1 py-0.5 text-xs font-semibold text-[#336791] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#336791]/40 dark:bg-[#336791]/25 dark:text-[#7db0e6] supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="postgresql" class="size-3.25"></span>
+                  <span>PostgreSQL</span>
+                </a>
+                <a
+                  href="https://stimulus.hotwired.dev/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#67d8a9]/30 bg-[#67d8a9]/15 px-1 py-0.5 text-xs font-semibold text-[#67d8a9] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#67d8a9]/40 dark:bg-[#67d8a9]/25 dark:text-[#a7f3d0] supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="stimulus" class="size-3"></span>
+                  <span>Stimulus</span>
+                </a>
+                <a
+                  href="https://turbo.hotwired.dev/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#6ec5d3]/30 bg-[#6ec5d3]/15 px-1 py-0.5 text-xs font-semibold text-[#6ec5d3] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#6ec5d3]/40 dark:bg-[#6ec5d3]/25 dark:text-[#a5f3fc] supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="turbo" class="size-3"></span>
+                  <span>Turbo</span>
+                </a>
+                <a
+                  href="https://tailwindcss.com/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#00bcff]/30 bg-[#00bcff]/15 px-1 py-0.5 text-xs font-semibold text-[#00bcff] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#00bcff]/40 dark:bg-[#00bcff]/25 supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="tailwindcss" class="size-4"></span>
+                  <span>Tailwind CSS</span>
+                </a>
+                <a
+                  href="https://developers.google.com/identity/protocols/oauth2"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-red-500/30 bg-red-500/15 px-1 py-0.5 text-xs font-semibold text-red-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-red-400/30 dark:bg-red-400/15 dark:text-red-300 supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="google" class="size-3"></span>
+                  <span>Google OAuth 2.0</span>
+                </a>
+                <a
+                  href="https://developers.strava.com/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#fc4c02]/30 bg-[#fc4c02]/15 px-1 py-0.5 text-xs font-semibold text-[#fc4c02] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#fc4c02]/40 dark:bg-[#fc4c02]/25 dark:text-[#fc7345] supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="strava" class="-ml-0.5 size-3.5"></span>
+                  <span class="whitespace-nowrap">Strava API</span>
+                </a>
+                <a
+                  href="https://github.com/heartcombo/devise"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-indigo-500/30 bg-indigo-500/15 px-1 py-0.5 text-xs font-semibold text-indigo-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-indigo-400/30 dark:bg-indigo-400/15 dark:text-indigo-400 supports-squircle:rounded-2xl"
+                >
+                  <span>Devise</span>
+                </a>
+                <a
+                  href="https://chartkick.com/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-blue-500/30 bg-blue-500/15 px-1 py-0.5 text-xs font-semibold text-blue-500 transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-blue-400/30 dark:bg-blue-400/15 dark:text-blue-400 supports-squircle:rounded-2xl"
+                >
+                  <span>Chartkick</span>
+                </a>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <btn
+                  class="group/external-link btn hidden grow btn-primary"
+                  aria-disabled="true"
+                  tabindex="-1"
+                >
+                  <span class="whitespace-nowrap">Try Now</span>
+                  <span data-icon="external-link" class="size-4"></span>
+                </btn>
+                <a
+                  href="https://github.com/bradenr402/pace-maker"
+                  target="_blank"
+                  class="btn grow btn-secondary"
+                >
+                  <span>View on GitHub</span>
+                  <span data-icon="github-mark" class="size-4"></span>
+                </a>
               </div>
             </div>
+
+            <!-- Weather Project Card -->
             <div
-              class="relative h-full rounded-3xl border-[0.7px] border-stone-100 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-[2.5rem]"
+              class="@container flex flex-col rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
             >
-              <div class="flex h-full flex-col">
-                <img
-                  src="images/icons/mymind.webp"
-                  alt="mymind app icon"
-                  class="mb-8 size-7 shrink-0"
-                />
-                <p class="font-semibold text-stone-900 dark:text-stone-100">mymind</p>
-                <p class="text-sm/tight text-stone-500 dark:text-stone-400">
-                  A private, AI-powered personal knowledge management tool to save all your digital
-                  content and inspiration in a single place.
+              <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">
+                Weather
+              </h3>
+              <div class="mb-4 space-y-2 leading-snug">
+                <p class="text-stone-700 dark:text-stone-200">
+                  A dynamic weather application built with Webpack and styled using Tailwind CSS. It
+                  integrates with WeatherAPI to provide accurate weather data for any city
+                  worldwide, including current conditions, hourly and daily forecasts. Users can
+                  search for locations or use geolocation, and customize their preferred units, all
+                  saved in local storage for their next visit.
                 </p>
+              </div>
+              <div class="mb-4 flex flex-wrap gap-1.5">
+                <a
+                  href="https://webpack.js.org/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#1C78C0]/30 bg-[#1C78C0]/15 px-1 py-0.5 text-xs font-semibold text-[#1C78C0] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#1C78C0]/40 dark:bg-[#1C78C0]/25 dark:text-[#60a5fa] supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="webpack" class="size-3.5"></span>
+                  <span>Webpack</span>
+                </a>
+                <a
+                  href="https://www.weatherapi.com/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#7db747]/30 bg-[#7db747]/15 px-1 py-0.5 text-xs font-semibold text-[#7db747] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#7db747]/40 dark:bg-[#7db747]/25 dark:text-[#bbf7d0] supports-squircle:rounded-2xl"
+                >
+                  <img
+                    src="images/WeatherAPI_logo.webp"
+                    alt="Weather data by WeatherAPI.com"
+                    class="h-3.5"
+                    border="0"
+                  />
+                  <span>Weather API</span>
+                </a>
+                <a
+                  href="https://tailwindcss.com/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#00bcff]/30 bg-[#00bcff]/15 px-1 py-0.5 text-xs font-semibold text-[#00bcff] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#00bcff]/40 dark:bg-[#00bcff]/25 supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="tailwindcss" class="size-4"></span>
+                  <span>Tailwind CSS</span>
+                </a>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <a
+                  href="https://bradenr402.github.io/weather-app/"
+                  target="_blank"
+                  class="group/external-link btn grow btn-primary"
+                >
+                  <span class="whitespace-nowrap">Try Now</span>
+                  <span data-icon="external-link" class="size-4"></span>
+                </a>
+                <a
+                  href="https://github.com/bradenr402/weather-app"
+                  target="_blank"
+                  class="btn grow btn-secondary"
+                >
+                  <span><span class="@max-sm:hidden">View on</span> GitHub</span>
+                  <span data-icon="github-mark" class="size-4"></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Todo! Project Card -->
+            <div
+              class="@container flex flex-col rounded-3xl border-[0.7px] border-stone-200 bg-stone-100 p-4 squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+            >
+              <h3 class="mb-2 text-2xl font-bold text-primary-500 dark:text-primary-400">Todo!</h3>
+              <div class="mb-4 space-y-2 leading-snug">
+                <p class="text-stone-700 dark:text-stone-200">
+                  A sleek and minimalist to-do list application for simple task management. Users
+                  can create, edit, complete, and delete tasks, organize them into lists, and use
+                  drag-and-drop (powered by SortableJS) to rearrange tasks and lists. All data is
+                  saved in local storage, and a custom, replayable onboarding flow introduces new
+                  users to the app.
+                </p>
+              </div>
+              <div class="mb-4 flex flex-wrap gap-1.5">
+                <a
+                  href="https://webpack.js.org/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#1C78C0]/30 bg-[#1C78C0]/15 px-1 py-0.5 text-xs font-semibold text-[#1C78C0] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#1C78C0]/40 dark:bg-[#1C78C0]/25 dark:text-[#60a5fa] supports-squircle:rounded-2xl"
+                >
+                  <span data-icon="webpack" class="size-3.5"></span>
+                  <span>Webpack</span>
+                </a>
+                <a
+                  href="https://sortablejs.github.io/Sortable/"
+                  target="_blank"
+                  class="inline-flex items-center gap-1 rounded-md border-[0.7px] border-[#709dd8]/30 bg-[#709dd8]/15 px-1 py-0.5 text-xs font-semibold text-[#709dd8] transition-transform duration-300 squircle hover:scale-110 active:scale-95 dark:border-[#709dd8]/40 dark:bg-[#709dd8]/25 dark:text-[#bfdbfe] supports-squircle:rounded-2xl"
+                >
+                  <img src="images/SortableJS_logo.png" alt="SortableJS logo" class="size-3.25" />
+                  <span>SortableJS</span>
+                </a>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <a
+                  href="https://bradenr402.github.io/todo-list/"
+                  target="_blank"
+                  class="group/external-link btn grow btn-primary"
+                >
+                  <span class="whitespace-nowrap">Try Now</span>
+                  <span data-icon="external-link" class="size-4"></span>
+                </a>
+                <a
+                  href="https://github.com/bradenr402/todo-list"
+                  target="_blank"
+                  class="btn grow btn-secondary"
+                >
+                  <span><span class="@max-sm:hidden">View on</span> GitHub</span>
+                  <span data-icon="github-mark" class="size-4"></span>
+                </a>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="flex min-h-[60vh] items-center justify-center px-4 py-20">
-      <div class="max-w-3xl">
-        <h2
-          class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
+        <!-- Skills Section -->
+        <section
+          id="skills"
+          class="mx-auto max-w-4xl border-b border-stone-200/75 px-4 py-20 dark:border-zinc-700/75"
         >
-          Let&#8217;s get in touch!
-        </h2>
-        <p
-          class="max-w-prose text-lg/relaxed text-pretty text-stone-600 sm:text-center dark:text-stone-200"
-        >
-          You can reach me via email, check out my GitHub profile to see more of my projects, or
-          connect with me on LinkedIn. I&#8217;d love to hear from you!
-        </p>
-        <div
-          class="mt-8 flex justify-center text-lg font-semibold *:py-1 max-xs:flex-col xs:items-center xs:gap-6 sm:text-xl"
-        >
-          <a
-            href="mailto:me@bradenroth.com"
-            target="_blank"
-            class="flex items-center gap-1.5 text-primary-500 hover:underline dark:text-primary-400"
+          <h2
+            class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
           >
-            <span data-icon="email" class="mt-0.5 size-5 shrink-0"></span>
-            <span>me@bradenroth.com</span>
-          </a>
-          <span class="h-4 w-px bg-stone-200/75 max-xs:hidden xs:h-6 dark:bg-zinc-700/75"></span>
-          <a
-            href="https://github.com/bradenr402"
-            target="_blank"
-            class="flex items-center gap-1.5 text-primary-500 hover:underline dark:text-primary-400"
-          >
-            <span data-icon="github-circle" class="size-5 shrink-0"></span>
-            <span>GitHub</span>
-          </a>
-          <span class="h-4 w-px bg-stone-200/75 max-xs:hidden xs:h-6 dark:bg-zinc-700/75"></span>
-          <a
-            href="https://linkedin.com/in/braden-roth"
-            target="_blank"
-            class="flex items-center gap-1.5 text-primary-500 hover:underline dark:text-primary-400"
-          >
-            <span data-icon="linkedin" class="size-5 shrink-0"></span>
-            <span>LinkedIn</span>
-          </a>
-        </div>
-      </div>
-    </section>
-    <footer class="bg-stone-100 dark:bg-zinc-800/65">
-      <div
-        class="relative mx-auto flex max-w-4xl items-center justify-center gap-1.5 px-6 pt-10 pb-6 text-sm text-stone-500/80 dark:text-stone-400/80"
-      >
-        <div class="absolute left-4 flex h-full items-center">
-          <button
-            type="button"
-            class="cursor-pointer rounded-full bg-transparent p-1.5 backdrop-blur-sm transition-all duration-300 hover:bg-stone-200/75 dark:hover:bg-zinc-800/75"
-            aria-label="Toggle Theme"
-            id="toggle-theme"
-          >
-            <span class="sr-only">Toggle Theme</span>
-            <span
-              data-icon="dark-mode"
-              class="text-black-500 size-5.5 transition-transform duration-600 dark:rotate-180"
-            ></span>
-          </button>
-        </div>
-        <span>&copy;</span>
-        <span id="footer-year">2025</span>
-        <span>Braden Roth</span>
-      </div>
-      <p class="mb-px text-center text-xxs/none text-stone-300 dark:text-stone-600">Hi there! ;)</p>
-    </footer>
+            Skills &amp; Technologies
+          </h2>
+
+          <div class="space-y-16">
+            <!-- Languages -->
+            <div>
+              <div
+                class="mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3 dark:border-zinc-700/75"
+              >
+                <span data-icon="code" class="size-5 shrink-0"></span>
+                <h3 class="text-xl font-semibold">Languages</h3>
+              </div>
+              <div class="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-4">
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <span data-icon="html" class="mb-8 size-7 shrink-0"></span>
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">HTML</p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      The standard markup language for web content, defining its content and
+                      structure.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <span data-icon="css" class="mb-8 size-7 shrink-0"></span>
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">CSS</p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      The language used to control the visual appearance and layout of web pages.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <img
+                      src="images/icons/ruby.webp"
+                      height="56"
+                      width="56"
+                      alt="Ruby programming language logo"
+                      class="mb-8 size-7 shrink-0"
+                    />
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">Ruby</p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      A dynamic, open source programming language with a focus on simplicity and
+                      productivity.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <span data-icon="javascript" class="mb-8 size-7 shrink-0"></span>
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">JavaScript</p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      The scripting language for the web that brings dynamic content and
+                      interactivity to web applications.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Frameworks -->
+            <div>
+              <div
+                class="mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3 dark:border-zinc-700/75"
+              >
+                <span data-icon="framework" class="size-5 shrink-0"></span>
+                <h3 class="text-xl font-semibold">Frameworks</h3>
+              </div>
+              <div class="grid grid-cols-1 gap-4 xs:grid-cols-2">
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <span data-icon="rails" class="mb-8 size-8 shrink-0"></span>
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">Ruby on Rails</p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      A powerful web application framework that optimizes for programmer happiness
+                      and emphasizes convention over configuration, enabling rapid development of
+                      robust, maintainable, &amp; scalable web apps.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <span data-icon="tailwindcss" class="mb-8 size-8 shrink-0"></span>
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">Tailwind CSS</p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      A utility-first CSS framework for rapidly building custom user interfaces
+                      directly in your markup, offering flexibility and efficiency without leaving
+                      your HTML.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div>
+              <div
+                class="mb-5 flex items-center justify-center gap-2 border-b border-stone-200/75 pb-3 dark:border-zinc-700/75"
+              >
+                <span data-icon="tools" class="size-5 shrink-0"></span>
+                <h3 class="text-xl font-semibold">Tools</h3>
+              </div>
+              <div class="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-4">
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <span data-icon="git" class="mb-8 size-7 shrink-0"></span>
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">Git</p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      A distributed version control system designed to track changes in source code
+                      during software development.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <span data-icon="github" class="mb-8 size-7 shrink-0 dark:hidden"></span>
+                    <span
+                      data-icon="github-dark"
+                      class="mb-8 size-7 shrink-0 not-dark:hidden"
+                    ></span>
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">GitHub</p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      A web-based platform built on Git, allowing developers to host repositories,
+                      manage projects, and review code efficiently.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <span data-icon="vscode" class="mb-8 size-7 shrink-0"></span>
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">
+                      Visual Studio Code
+                    </p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      My code editor of choice, offering smart code completion, built-in Git
+                      integration, and a rich ecosystem of extensions.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="relative h-full rounded-3xl border-[0.7px] border-stone-200 bg-white p-5 shadow-sm squircle dark:border-zinc-700 dark:bg-zinc-800/65 supports-squircle:rounded-5xl"
+                >
+                  <div class="flex h-full flex-col">
+                    <img
+                      src="images/icons/mymind.webp"
+                      alt="mymind app icon"
+                      class="mb-8 size-7 shrink-0"
+                    />
+                    <p class="font-semibold text-stone-900 dark:text-stone-100">mymind</p>
+                    <p class="text-sm/tight text-stone-500 dark:text-stone-400">
+                      A private, AI-powered personal knowledge management tool to save all your
+                      digital content and inspiration in a single place.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="flex min-h-[60vh] items-center justify-center px-4 py-20">
+          <div class="max-w-3xl">
+            <h2
+              class="mb-8 text-center text-3xl font-bold text-stone-900 md:text-4xl dark:text-stone-100"
+            >
+              Let&#8217;s get in touch!
+            </h2>
+            <p
+              class="max-w-prose text-center text-lg/relaxed text-pretty text-stone-600 dark:text-stone-200"
+            >
+              Send me an email, check out my GitHub profile, or connect with me on LinkedIn.
+            </p>
+            <div class="mt-8 flex items-center justify-center font-semibold *:px-6 *:py-3">
+              <a
+                href="mailto:me@bradenroth.com"
+                target="_blank"
+                class="group relative flex items-center justify-center"
+                aria-label="Email me@bradenroth.com"
+              >
+                <span data-icon="gmail" class="size-8 shrink-0"></span>
+
+                <span
+                  aria-hidden="true"
+                  class="absolute -top-8 left-1/2 isolate -translate-x-1/2 translate-y-1 overflow-hidden rounded-lg px-2 py-0.75 whitespace-nowrap text-white opacity-0 transition-all duration-150 ease-out will-change-transform squircle group-hover:translate-y-0 group-hover:opacity-100 supports-squircle:rounded-full"
+                >
+                  Email &middot; me@bradenroth.com
+
+                  <!-- Blurred SVG background -->
+                  <div
+                    class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center [clip-path:inset(0_round_0.5rem)]"
+                  >
+                    <span
+                      data-icon="gmail"
+                      class="w-[100%] opacity-50 blur-md dark:opacity-90"
+                    ></span>
+                  </div>
+                </span>
+              </a>
+
+              <a
+                href="https://github.com/bradenr402"
+                target="_blank"
+                class="group relative flex items-center justify-center"
+                aria-label="GitHub profile"
+              >
+                <span data-icon="github" class="size-8 shrink-0 dark:hidden"></span>
+                <span data-icon="github-dark" class="size-8 shrink-0 not-dark:hidden"></span>
+
+                <span
+                  aria-hidden="true"
+                  class="absolute -top-8 left-1/2 -translate-x-1/2 translate-y-1 rounded-lg bg-black px-2 py-0.75 whitespace-nowrap text-white opacity-0 transition-all duration-150 ease-out will-change-transform squircle group-hover:translate-y-0 group-hover:opacity-100 dark:bg-white dark:text-black supports-squircle:rounded-full"
+                >
+                  GitHub &middot; bradenr402
+                </span>
+              </a>
+
+              <a
+                href="https://linkedin.com/in/braden-roth"
+                target="_blank"
+                class="group relative flex items-center justify-center"
+                aria-label="LinkedIn profile"
+              >
+                <span data-icon="linkedin" class="size-8 shrink-0"></span>
+
+                <span
+                  aria-hidden="true"
+                  class="absolute -top-8 left-1/2 -translate-x-1/2 translate-y-1 rounded-lg bg-[#0a66c2] px-2 py-0.75 whitespace-nowrap text-white opacity-0 transition-all duration-150 ease-out will-change-transform squircle group-hover:translate-y-0 group-hover:opacity-100 supports-squircle:rounded-full"
+                >
+                  LinkedIn &middot; braden-roth
+                </span>
+              </a>
+
+              <a
+                href="https://x.com/BradenRoth02"
+                target="_blank"
+                class="group relative flex items-center justify-center"
+                aria-label="X account"
+              >
+                <span data-icon="x" class="size-8 shrink-0"></span>
+
+                <span
+                  aria-hidden="true"
+                  class="absolute -top-8 left-1/2 -translate-x-1/2 translate-y-1 rounded-lg bg-black px-2 py-0.75 whitespace-nowrap text-white opacity-0 transition-all duration-150 ease-out will-change-transform squircle group-hover:translate-y-0 group-hover:opacity-100 dark:bg-white dark:text-black supports-squircle:rounded-full"
+                >
+                  𝕏 &middot; @BradenRoth02
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div id="nav"></div>
+      <div id="footer"></div>
+    </div>
   </body>
 </html>

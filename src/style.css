@@ -1,8 +1,11 @@
 @import 'tailwindcss';
 
-@source '../dist/*.html';
+@import './theme.css';
+@import './fonts.css';
 
-@custom-variant dark (&:is(.dark *));
+@source '../src';
+
+/* @custom-variant dark (&:is(.dark *)); */
 
 /* Custom variant: supports-squircle */
 @variant supports-squircle {
@@ -11,81 +14,29 @@
   }
 }
 
-@theme {
-  --font-sans: Calibre, sans-serif;
-
-  --color-primary-50: oklch(0.98 0.01 29.1);
-  --color-primary-100: oklch(0.95 0.025 29.1);
-  --color-primary-200: oklch(0.85 0.081 29.1);
-  --color-primary-300: oklch(0.75 0.149 29.1);
-  --color-primary-400: oklch(0.65 0.233 29.1);
-  --color-primary-500: oklch(0.55 0.223 29.1);
-  --color-primary-600: oklch(0.45 0.182 29.1);
-  --color-primary-700: oklch(0.35 0.142 29.1);
-  --color-primary-800: oklch(0.25 0.101 29.1);
-  --color-primary-900: oklch(0.15 0.061 29.1);
-  --color-primary-950: oklch(0.08 0.02 29.1);
-
-  --breakpoint-xs: 30rem;
-  --text-xxs: 0.625rem;
+@view-transition {
+  navigation: auto;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+  html,
+  body {
+    height: 100%;
   }
 
-  @font-face {
-    font-family: 'Calibre';
-    font-style: normal;
-    font-weight: 400;
-    src: url('./fonts/calibre-regular.woff2') format('woff2');
-    font-display: swap;
+  #wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
-  @font-face {
-    font-family: 'Calibre';
-    font-style: italic;
-    font-weight: 400;
-    src: url('./fonts/calibre-regular-italic.woff2') format('woff2');
-    font-display: swap;
+  #main {
+    flex: 1; /* Pushes footer to the bottom */
   }
+}
 
-  @font-face {
-    font-family: 'Calibre';
-    font-style: normal;
-    font-weight: 600;
-    src: url('./fonts/calibre-semibold.woff2') format('woff2');
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Calibre';
-    font-style: italic;
-    font-weight: 600;
-    src: url('./fonts/calibre-semibold-italic.woff2') format('woff2');
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Calibre';
-    font-style: normal;
-    font-weight: 700;
-    src: url('./fonts/calibre-bold.woff2') format('woff2');
-    font-display: swap;
-  }
+@utility ease-spring {
+  transition: var(--ease-spring);
 }
 
 @utility squircle {
@@ -95,7 +46,7 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2.5 rounded-lg py-1.5 pr-4.5 pl-5 font-semibold transition-all duration-300 squircle active:scale-95 supports-squircle:rounded-3xl;
+  @apply inline-flex items-center justify-center gap-2.5 rounded-lg py-1.5 pr-4.5 pl-5 font-semibold transition-all duration-150 squircle active:scale-97 supports-squircle:rounded-3xl;
 
   &:disabled,
   &[aria-disabled='true'] {
@@ -120,10 +71,6 @@
     transform: translateY(0%);
     opacity: 1;
   }
-}
-
-@utility fade-in-animation {
-  animation: fade-in 700ms ease-out;
 }
 
 @utility rubik-animate {

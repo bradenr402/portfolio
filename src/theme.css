@@ -1,0 +1,55 @@
+@theme {
+  --font-sans: Calibre, sans-serif;
+  --font-mono: 'Monaspace Neon', monospace;
+  --font-serif: 'Crimson Pro', serif;
+
+  --color-primary-50: oklch(0.98 0.01 29.1);
+  --color-primary-100: oklch(0.95 0.025 29.1);
+  --color-primary-200: oklch(0.85 0.081 29.1);
+  --color-primary-300: oklch(0.75 0.149 29.1);
+  --color-primary-400: oklch(0.65 0.233 29.1);
+  --color-primary-500: oklch(0.55 0.223 29.1);
+  --color-primary-600: oklch(0.45 0.182 29.1);
+  --color-primary-700: oklch(0.35 0.142 29.1);
+  --color-primary-800: oklch(0.25 0.101 29.1);
+  --color-primary-900: oklch(0.15 0.061 29.1);
+  --color-primary-950: oklch(0.08 0.02 29.1);
+
+  --color-zinc-850: oklch(24% 0.006 286.033);
+
+  --breakpoint-xs: 30rem;
+  --text-xxs: 0.625rem;
+
+  --radius-5xl: 2.5rem;
+
+  --spring: linear(
+    0,
+    0.009,
+    0.035 2.1%,
+    0.141,
+    0.281 6.7%,
+    0.723 12.9%,
+    0.938 16.7%,
+    1.017,
+    1.077,
+    1.121,
+    1.149 24.3%,
+    1.159,
+    1.163,
+    1.161,
+    1.154 29.9%,
+    1.129 32.8%,
+    1.051 39.6%,
+    1.017 43.1%,
+    0.991,
+    0.977 51%,
+    0.974 53.8%,
+    0.975 57.1%,
+    0.997 69.8%,
+    1.003 76.9%,
+    1.004 83.8%,
+    1
+  );
+
+  --ease-spring: 600ms var(--spring);
+}

@@ -1,0 +1,7 @@
+/* Default (light) */
+@import 'highlight.js/styles/github.min.css';
+
+@variant dark {
+  /* Override with a dark theme when the user prefers dark mode */
+  @import 'highlight.js/styles/github-dark.min.css';
+}

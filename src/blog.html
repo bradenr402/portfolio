@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog • Braden Roth</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/blog.css" />
+    <link rel="stylesheet" href="/blog/blog-post-card.css" />
+  </head>
+  <body
+    data-page="blog-index"
+    class="bg-white text-stone-800 selection:bg-primary-500/20 dark:bg-zinc-900 dark:text-stone-100 dark:selection:bg-primary-500/40"
+  >
+    <div id="wrapper">
+      <main id="main" class="blog blog--index">
+        <div class="blog-layout">
+          <div class="blog-layout__content">
+            <div class="blog-header-wrapper">
+              <header class="blog-index__header">
+                <div class="blog-index__header-content">
+                  <h1>Blog</h1>
+                  <p>
+                    Thoughts, blog posts, notes, and writings about building software, things
+                    I&#8217;m learning, and whatever else I&#8217;m thinking about. Feel free to
+                    send me an email at <a href="mailto:me@bradenroth.com">me@bradenroth.com</a>.
+                  </p>
+                </div>
+                <button
+                  class="blog-index__layout-toggle"
+                  type="button"
+                  aria-label="Switch to collapsed layout"
+                  data-layout="expanded"
+                >
+                  <span
+                    data-icon="expanded-layout"
+                    class="layout-expanded-icon layout-toggle__icon layout-toggle__icon--hidden size-4"
+                  ></span>
+                  <span
+                    data-icon="collapsed-layout"
+                    class="layout-collapsed-icon layout-toggle__icon size-4"
+                  ></span>
+                  <span aria-hidden="true" class="layout-toggle__label">Toggle Layout</span>
+                </button>
+              </header>
+            </div>
+
+            <section>
+              <ul class="blog-post-list">
+                {{postList}}
+              </ul>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <div id="nav"></div>
+      <div id="footer"></div>
+    </div>
+  </body>
+</html>

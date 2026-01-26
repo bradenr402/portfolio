@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{title}} • Braden Roth</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/blog.css" />
+    <link rel="stylesheet" href="/blog/blog-toc.css" />
+    <link rel="stylesheet" href="/blog/blog-post-card.css" />
+  </head>
+  <body
+    data-page="blog-post"
+    class="bg-white text-stone-800 selection:bg-primary-500/20 dark:bg-zinc-900 dark:text-stone-100 dark:selection:bg-primary-500/40"
+  >
+    <div id="wrapper">
+      <main id="main" class="blog">
+        <div class="blog-layout">
+          <div class="blog-layout__content">
+            <div class="blog-header-wrapper">
+              <header>
+                {{headerImage}}
+                <h1>{{title}}</h1>
+                <div class="blog-header__meta">
+                  <time datetime="{{datetime}}" class="blog-header__date">{{displayDate}}</time>
+                  <span class="blog-header__reading-time">{{readingTime}}</span>
+                </div>
+                {{tags}}
+              </header>
+            </div>
+            <!-- content will be wrapped in an <article> -->
+            {{content}}
+
+            {{actions}}
+          </div>
+
+          <aside class="blog-layout__aside">
+            <nav class="blog-toc" aria-label="Table of contents" hidden="true">
+              <h2 class="blog-toc__title">Contents</h2>
+              <ol class="blog-toc__list">
+                {{toc}}
+              </ol>
+            </nav>
+          </aside>
+        </div>
+      </main>
+
+      <div id="nav"></div>
+      <div id="footer"></div>
+    </div>
+  </body>
+</html>

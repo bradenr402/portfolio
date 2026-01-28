@@ -9,7 +9,7 @@ Until now.
 
 This is the first post on my new blog: a blog post about starting a blog, on a blog that just started. What better way to kick things off?
 
-Everything starts somewhere. This is the simplest possible beginning: an introductory post that exists purely to remove the friction of publishing the next one. I put in enough work to add the blog to my site that it made sense to ship it with at least one post.
+Everything starts somewhere. This is the simplest possible beginning: an introductory post that exists primarily to remove the friction of publishing the next one.
 
 I don’t have a grand vision for this space. I just want a place to share thoughts, ideas, and lessons I’ve learned. Sometimes that might include topics related to coding, design, or technology. Other times it might include parts of my life—or anything else that piques my interest. I’m not trying to force it into anything specific. I don’t have a schedule either. I’ll post when I have something to say.
 

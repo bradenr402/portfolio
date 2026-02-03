@@ -68,19 +68,19 @@
   }
 
   .blog-toc__item--level-3 {
-    padding-right: 1.25rem;
+    padding-right: 1rem;
   }
 
   .blog-toc__item--level-4 {
-    padding-right: 2.5rem;
+    padding-right: 2rem;
   }
 
   .blog-toc__item--level-5 {
-    padding-right: 3.75rem;
+    padding-right: 3rem;
   }
 
   .blog-toc__item--level-6 {
-    padding-right: 5rem;
+    padding-right: 4rem;
   }
 
   @media (prefers-color-scheme: dark) {

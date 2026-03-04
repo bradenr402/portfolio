@@ -5,7 +5,9 @@
 
 @source '../src';
 
-/* @custom-variant dark (&:is(.dark *)); */
+:root {
+  color-scheme: light dark;
+}
 
 /* Custom variant: supports-squircle */
 @variant supports-squircle {

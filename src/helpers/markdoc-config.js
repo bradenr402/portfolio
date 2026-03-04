@@ -23,7 +23,7 @@ function domNodeToTag(node) {
       attributes[attr.name] = attr.value;
     }
     const children = [];
-    node.childNodes.forEach(child => {
+    node.childNodes.forEach((child) => {
       const res = domNodeToTag(child);
       if (res !== null) children.push(res);
     });
@@ -53,31 +53,31 @@ export default {
       },
     },
     // Custom link node to automatically open external links in a new tab
-    // Supports 'newtab:' and 'sametab:' prefixes for override behavior
     link: {
       render: 'a',
       attributes: {
         href: { type: String },
         title: { type: String },
-        target: { type: String },
       },
       transform(node, config) {
         const attributes = node.transformAttributes(config);
         const children = node.transformChildren(config);
 
-        if (attributes.href?.startsWith('newtab:')) {
-          attributes.href = attributes.href.replace(/^newtab:/, '');
-          attributes.target = '_blank';
-          attributes.rel = 'noopener noreferrer';
-        } else if (attributes.href.startsWith('sametab:')) {
-          attributes.href = attributes.href.replace(/^sametab:/, '');
-        } else if (attributes.href.startsWith('http')) {
+        const href = attributes.href || '';
+
+        const isNewTab = href.startsWith('newtab:');
+        const isSameTab = href.startsWith('sametab:');
+        const isExternal = href.startsWith('http');
+
+        if (isNewTab || (!isSameTab && isExternal)) {
           attributes.target = '_blank';
           attributes.rel = 'noopener noreferrer';
         }
 
+        attributes.href = href.replace(/^(new|same)tab:/, '');
+
         return new Tag('a', attributes, children);
-      }
+      },
     },
     // Custom table node to wrap tables in a div container for responsive styling
     table: {
@@ -85,20 +85,17 @@ export default {
       transform(node, config) {
         const attributes = node.transformAttributes(config);
         const children = node.transformChildren(config);
-        return new Tag('div', { class: 'table-wrapper' }, [
-          new Tag('table', attributes, children)
-        ]);
-      }
+        return new Tag('div', { class: 'table-wrapper' }, [new Tag('table', attributes, children)]);
+      },
     },
+    // Custom list item node to wrap content in a div for better styling
     item: {
       render: 'li',
       transform(node, config) {
         const attributes = node.transformAttributes(config);
         const children = node.transformChildren(config);
-        return new Tag('li', attributes, [
-          new Tag('div', {}, children)
-        ]);
-      }
+        return new Tag('li', attributes, [new Tag('div', {}, children)]);
+      },
     },
     // Custom code fence node to add language class for syntax highlighting
     fence: {
@@ -166,9 +163,12 @@ export default {
             ? `<div class="blog-post__tags">
               ${tags.map((t) => `<span class="blog-post__tag">${t}</span>`).join('')}
             </div>`
-          : '';
+            : '';
 
-        let template = fs.readFileSync(path.resolve(__dirname, '../components/_blog-post-card.html'), 'utf8');
+        let template = fs.readFileSync(
+          path.resolve(__dirname, '../components/_blog-post-card.html'),
+          'utf8',
+        );
 
         const renderedHtml = renderTemplate(template, {
           href: `/blog/${normalizedSrc}`,
@@ -178,7 +178,7 @@ export default {
           readingTime,
           image: image || '',
           alt,
-          tags: tagsHtml
+          tags: tagsHtml,
         });
 
         const fragment = JSDOM.fragment(renderedHtml);
@@ -187,13 +187,13 @@ export default {
 
         const outputTags = [];
 
-        fragment.childNodes.forEach(node => {
+        fragment.childNodes.forEach((node) => {
           const tag = domNodeToTag(node);
           if (tag) outputTags.push(tag);
         });
 
         return outputTags;
-      }
+      },
     },
   },
 };

@@ -12,7 +12,7 @@ function moveMarker(item, marker) {
   const navRect = nav.getBoundingClientRect();
   const itemRect = item.getBoundingClientRect();
   const offset = 2;
-  marker.style.top = `${itemRect.top - navRect.top + offset}px`;
+  marker.style.top = `${itemRect.top - navRect.top + nav.scrollTop + offset}px`;
   marker.style.height = `${itemRect.height - (offset * 2)}px`;
 }
 

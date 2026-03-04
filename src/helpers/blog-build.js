@@ -137,8 +137,16 @@ function processMarkdown(content, filepath) {
   const date = extractDateFromPath(filepath);
   const readingTime = calculateReadingTime(markdownBody);
 
+  // Inject frontmatter as variables for use within blog posts
+  const markdocConfigWithFrontmatter = {
+    variables: {
+      frontmatter: { ...frontmatter, readingTime, date },
+    },
+    ...markdocConfig,
+  };
+
   const ast = Markdoc.parse(markdownBody);
-  const markdocContent = Markdoc.transform(ast, markdocConfig);
+  const markdocContent = Markdoc.transform(ast, markdocConfigWithFrontmatter);
 
   const headings = collectHeadings(markdocContent);
 

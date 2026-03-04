@@ -1,17 +1,17 @@
 <div
-  class="pointer-events-none z-50 flex gap-2 max-lg:sticky max-lg:bottom-2 max-lg:justify-center lg:fixed lg:top-1/2 lg:left-2 lg:-translate-y-1/2 lg:flex-col"
+  class="pointer-events-none z-50 flex gap-2 max-md:sticky max-md:bottom-2 max-md:justify-center md:fixed md:top-1/2 md:left-2 md:-translate-y-1/2 md:flex-col"
 >
   <a
     href="javascript:history.back()"
     aria-label="Back"
-    class="group pointer-events-auto rounded-full border-[0.7px] border-stone-200 bg-white/65 p-3 text-stone-400 shadow-stone-800/10 backdrop-blur-xs transition-all duration-150 not-in-data-[page^=blog]:hidden not-dark:shadow-md hover:text-stone-900 active:scale-97 dark:border-zinc-700 dark:bg-zinc-800/65 dark:text-zinc-500 dark:hover:text-white"
     style="view-transition-name: nav-back-link"
+    class="group pointer-events-auto rounded-full border-[0.7px] border-stone-200 bg-white/65 p-3 text-stone-400 shadow-stone-800/10 backdrop-blur-xs transition-[colors,scale] duration-100 not-in-data-[page^=blog]:hidden not-dark:shadow-md hover:text-stone-900 active:scale-97 dark:border-zinc-800 dark:bg-zinc-900/65 dark:text-zinc-500 dark:hover:text-white"
   >
     <span class="relative flex items-center justify-center">
       <span data-icon="arrow-left" class="-m-0.25 size-6.5"></span>
       <span
         aria-hidden="true"
-        class="pointer-events-none absolute self-start justify-self-start rounded-lg bg-black px-2 py-0.75 text-white opacity-0 transition-all duration-150 ease-out squircle group-hover:opacity-100 max-lg:-top-8 max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:translate-y-1 max-lg:group-hover:translate-y-0 lg:left-[calc(100%+1.25rem)] lg:-translate-x-1 lg:group-hover:translate-x-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
+        class="pointer-events-none absolute self-start justify-self-start rounded-lg bg-black px-2 py-0.75 text-white opacity-0 transition-all duration-100 ease-out squircle group-hover:opacity-100 max-md:-top-8 max-md:left-1/2 max-md:-translate-x-1/2 max-md:translate-y-1 max-md:group-hover:translate-y-0 md:left-[calc(100%+1.25rem)] md:-translate-x-1 md:group-hover:translate-x-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
       >
         Back
       </span>
@@ -20,19 +20,19 @@
 
   <nav
     aria-label="Primary"
-    class="pointer-events-auto flex items-center justify-center rounded-full border-[0.7px] border-stone-200 bg-white/65 shadow-stone-800/10 backdrop-blur-xs not-dark:shadow-md max-lg:px-3.5 max-lg:py-3 max-lg:*:px-3 max-lg:*:first:pl-0 max-lg:*:last:pr-0 lg:flex-col lg:px-3 lg:py-3.5 lg:*:py-3 lg:*:first:pt-0 lg:*:last:pb-0 dark:border-zinc-700 dark:bg-zinc-800/65"
     style="view-transition-name: nav"
+    class="pointer-events-auto flex items-center justify-center rounded-full border-[0.7px] border-stone-200 bg-white/65 shadow-stone-800/10 backdrop-blur-xs not-dark:shadow-md max-md:px-3.5 max-md:py-3 max-md:*:px-3 max-md:*:first:pl-0 max-md:*:last:pr-0 md:flex-col md:px-3 md:py-3.5 md:*:py-3 md:*:first:pt-0 md:*:last:pb-0 dark:border-zinc-800 dark:bg-zinc-900/65"
   >
     <a
       href="/"
       aria-label="Home"
-      class="group text-stone-400 transition-colors duration-150 hover:text-stone-900 in-data-[page=home]:text-stone-900 dark:text-zinc-500 dark:hover:text-white dark:in-data-[page=home]:text-white"
+      class="group text-stone-400 transition-colors duration-100 hover:text-stone-900 in-data-[page=home]:text-stone-900 dark:text-zinc-500 dark:hover:text-white dark:in-data-[page=home]:text-white"
     >
       <span class="relative flex items-center justify-center">
         <span data-icon="home-filled" class="size-6"></span>
         <span
           aria-hidden="true"
-          class="pointer-events-none absolute self-start justify-self-start rounded-lg bg-black px-2 py-0.75 text-white opacity-0 transition-all duration-150 ease-out squircle group-hover:opacity-100 max-lg:-top-8 max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:translate-y-1 max-lg:group-hover:translate-y-0 lg:left-[calc(100%+1.25rem)] lg:-translate-x-1 lg:group-hover:translate-x-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
+          class="pointer-events-none absolute self-start justify-self-start rounded-lg bg-black px-2 py-0.75 text-white opacity-0 transition-all duration-100 ease-out squircle group-hover:opacity-100 max-md:-top-8 max-md:left-1/2 max-md:-translate-x-1/2 max-md:translate-y-1 max-md:group-hover:translate-y-0 md:left-[calc(100%+1.25rem)] md:-translate-x-1 md:group-hover:translate-x-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
         >
           Home
         </span>
@@ -42,13 +42,13 @@
     <a
       href="/blog"
       aria-label="Blog"
-      class="group text-stone-400 transition-colors duration-150 hover:text-stone-900 in-data-[page^=blog]:text-stone-900 dark:text-zinc-500 dark:hover:text-white dark:in-data-[page^=blog]:text-white"
+      class="group text-stone-400 transition-colors duration-100 hover:text-stone-900 in-data-[page^=blog]:text-stone-900 dark:text-zinc-500 dark:hover:text-white dark:in-data-[page^=blog]:text-white"
     >
       <span class="relative flex items-center justify-center">
         <span data-icon="blog-filled" class="size-6"></span>
         <span
           aria-hidden="true"
-          class="pointer-events-none absolute self-start justify-self-start rounded-lg bg-black px-2 py-0.75 text-white opacity-0 transition-all duration-150 ease-out squircle group-hover:opacity-100 max-lg:-top-8 max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:translate-y-1 max-lg:group-hover:translate-y-0 lg:left-[calc(100%+1.25rem)] lg:-translate-x-1 lg:group-hover:translate-x-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
+          class="pointer-events-none absolute self-start justify-self-start rounded-lg bg-black px-2 py-0.75 text-white opacity-0 transition-all duration-100 ease-out squircle group-hover:opacity-100 max-md:-top-8 max-md:left-1/2 max-md:-translate-x-1/2 max-md:translate-y-1 max-md:group-hover:translate-y-0 md:left-[calc(100%+1.25rem)] md:-translate-x-1 md:group-hover:translate-x-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
         >
           Blog
         </span>

@@ -22,7 +22,7 @@ export default function initCodeCopyButtons() {
     if (pre.parentElement.classList.contains('code-block-wrapper')) return;
 
     const wrapper = document.createElement('div');
-    wrapper.className = 'code-block-wrapper relative group';
+    wrapper.className = 'code-block-wrapper';
 
     pre.parentNode.insertBefore(wrapper, pre);
     wrapper.appendChild(pre);

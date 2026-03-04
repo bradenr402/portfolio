@@ -220,7 +220,7 @@ function collectBlogPostsMeta(blogDir) {
 }
 
 function buildBlogTocListHtml(headings) {
-  if (!headings || headings.length < 2) return '';
+  if (!headings || headings.length < 3) return '';
 
   return headings
     .map((h) =>

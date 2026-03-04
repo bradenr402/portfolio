@@ -22,6 +22,7 @@ function readLocalTemplate(name) {
 
 const BLOG_TOC_ITEM_TEMPLATE = readLocalTemplate('_blog-toc-item.html');
 const BLOG_POST_CARD_TEMPLATE = readLocalTemplate('_blog-post-card.html');
+const BLOG_POST_ITEM_TEMPLATE = readLocalTemplate('_blog-post-item.html');
 const BLOG_ACTIONS_TEMPLATE = readLocalTemplate('_blog-actions.html');
 
 function getTextContent(node) {
@@ -48,7 +49,7 @@ function extractDateFromPath(pathStr) {
 function renderTagsHtml(tags) {
   if (!tags || tags.length === 0) return '';
 
-  return tags.map(tag => `<span class="blog-post-card__tag">${tag}</span>`).join('');
+  return tags.map((tag) => `<span class="blog-post__tag">${tag}</span>`).join('');
 }
 
 function resolveBlogImage(src, contextPath) {
@@ -291,15 +292,19 @@ function renderBlogPostCardHtml(post) {
   return html;
 }
 
+function renderBlogPostItemHtml(post) {
+  return renderTemplate(BLOG_POST_ITEM_TEMPLATE, { ...post });
+}
+
 function buildBlogIndexListHtml(posts) {
   const dom = new JSDOM('');
   const doc = dom.window.document;
   const container = doc.createElement('div');
 
-  posts.forEach(post => {
+  posts.forEach((post) => {
     const li = doc.createElement('li');
     li.className = 'blog-post-item';
-    li.innerHTML = renderBlogPostCardHtml(post);
+    li.innerHTML = renderBlogPostItemHtml(post);
     container.appendChild(li);
   });
 

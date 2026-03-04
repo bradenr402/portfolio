@@ -102,8 +102,8 @@ export const blogCard = {
 
       let tags = frontmatter.tags || [];
       const tagsHtml = tags.length > 0
-        ? `<div class="blog-post-card__tags">
-          ${tags.map(t => `<span class="blog-post-card__tag">${t}</span>`).join('')}
+        ? `<div class="blog-post__tags">
+          ${tags.map(t => `<span class="blog-post__tag">${t}</span>`).join('')}
         </div>`
         : '';
 

@@ -44,7 +44,7 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2.5 rounded-lg py-1.5 pr-4.5 pl-5 font-semibold transition-all duration-150 squircle active:scale-97 supports-squircle:rounded-3xl;
+  @apply inline-flex items-center justify-center gap-2.5 rounded-lg py-1.5 pr-4.5 pl-5 font-semibold transition-all duration-100 squircle active:scale-97 supports-squircle:rounded-3xl;
 
   &:disabled,
   &[aria-disabled='true'] {

@@ -25,6 +25,8 @@ const BLOG_POST_CARD_TEMPLATE = readLocalTemplate('_blog-post-card.html');
 const BLOG_POST_ITEM_TEMPLATE = readLocalTemplate('_blog-post-item.html');
 const BLOG_ACTIONS_TEMPLATE = readLocalTemplate('_blog-actions.html');
 
+const WORDS_PER_MINUTE = 250;
+
 function getTextContent(node) {
   if (typeof node === 'string') return node;
   if (node && node.children) return node.children.map(getTextContent).join('');
@@ -34,7 +36,7 @@ function getTextContent(node) {
 
 function calculateReadingTime(text) {
   const words = text.trim().split(/\s+/).length;
-  const minutes = Math.ceil(words / 250);
+  const minutes = Math.ceil(words / WORDS_PER_MINUTE);
   return `${minutes} min read`;
 }
 
@@ -107,7 +109,7 @@ function processHtmlOutput(html) {
 
   const parts = html.split(codeRegex);
 
-  const processedParts = parts.map(part => {
+  const processedParts = parts.map((part) => {
     if (/^<(pre|code)/i.test(part)) return part;
 
     const unescaped = part
@@ -194,10 +196,7 @@ function collectBlogPostsMeta(blogDir) {
       if (!(entry.isFile() && entry.name.endsWith('.md'))) continue;
 
       const relativePath = path.relative(blogDir, entryPath);
-      const slug = relativePath
-        .replace(/\.md$/, '')
-        .split(path.sep)
-        .join('/');
+      const slug = relativePath.replace(/\.md$/, '').split(path.sep).join('/');
 
       let rawContent = fs.readFileSync(entryPath, 'utf8');
 
@@ -210,7 +209,7 @@ function collectBlogPostsMeta(blogDir) {
         href: `/blog/${slug}`,
         sortValue: slug,
         filePath: entryPath,
-        ...meta
+        ...meta,
       });
     }
   }
@@ -235,7 +234,10 @@ function buildBlogTocListHtml(headings) {
 }
 
 function buildBlogPostPage(partial, template, metadata = null) {
-  const { title, datetime, displayDate, image, alt, readingTime, tags } = normalizePostMetadata('', metadata);
+  const { title, datetime, displayDate, image, alt, readingTime, tags } = normalizePostMetadata(
+    '',
+    metadata,
+  );
 
   // Headings come from metadata (from processMarkdown)
   const headings = metadata?.headings || [];

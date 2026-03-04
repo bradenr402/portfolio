@@ -51,7 +51,7 @@
     1
   );
 
-  --ease-spring: 600ms var(--spring);
+  --ease-spring: 500ms var(--spring);
 
   --gentler-spring: linear(
     0,

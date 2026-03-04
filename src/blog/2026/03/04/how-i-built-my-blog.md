@@ -399,18 +399,18 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
   <div class="blog-reset">
     <section id="introduction" class="mx-auto max-w-4xl p-4">
       <h1 class="mb-8 text-center text-4xl font-extrabold md:text-5xl">
-        Hey! I&#8217;m Braden.
+        Hey! I’m Braden.
       </h1>
       <div class="mb-4 grid grid-cols-1 items-center gap-6 sm:grid-cols-2 sm:gap-4">
         <div class="space-y-6 text-lg/relaxed sm:mr-4">
           <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-            I&#8217;m a full-stack web developer based in Temple Terrace, FL. I specialize in
+            I’m a full-stack web developer based in Temple Terrace, FL. I specialize in
             <a href="https://rubyonrails.org/" target="_blank" class="font-bold text-primary-500 hover:underline dark:text-primary-400"> <span data-icon="rails" class="inline size-4 -translate-y-px mr-0.5"></span>Ruby on Rails</a>,
             and I love turning ideas into useful, meaningful, and delightful web applications.
           </p>
           <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-            More importantly, I&#8217;m a husband to my lovely wife and a proud dad to our two
-            beautiful daughters. Whether I&#8217;m crafting a feature for users or making
+            More importantly, I’m a husband to my lovely wife and a proud dad to our two
+            beautiful daughters. Whether I’m crafting a feature for users or making
             memories with my family, I want to build lasting things that matter.
           </p>
         </div>
@@ -433,18 +433,18 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
 <div class="border border-stone-200 dark:border-zinc-900">
   <section id="introduction" class="mx-auto max-w-4xl p-4">
     <h1 class="mb-8 text-center text-4xl font-extrabold md:text-5xl">
-      Hey! I&#8217;m Braden.
+      Hey! I’m Braden.
     </h1>
     <div class="mb-4 grid grid-cols-1 items-center gap-6 sm:grid-cols-2 sm:gap-4">
       <div class="space-y-6 text-lg/relaxed sm:mr-4">
         <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-          I&#8217;m a full-stack web developer based in Temple Terrace, FL. I specialize in
+          I’m a full-stack web developer based in Temple Terrace, FL. I specialize in
           <a href="https://rubyonrails.org/" target="_blank" class="font-bold text-primary-500 hover:underline dark:text-primary-400"> <span data-icon="rails" class="inline size-4 -translate-y-px mr-0.5"></span>Ruby on Rails</a>,
           and I love turning ideas into useful, meaningful, and delightful web applications.
         </p>
         <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-          More importantly, I&#8217;m a husband to my lovely wife and a proud dad to our two
-          beautiful daughters. Whether I&#8217;m crafting a feature for users or making
+          More importantly, I’m a husband to my lovely wife and a proud dad to our two
+          beautiful daughters. Whether I’m crafting a feature for users or making
           memories with my family, I want to build lasting things that matter.
         </p>
       </div>

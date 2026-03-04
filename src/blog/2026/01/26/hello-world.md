@@ -1,5 +1,8 @@
 ---
 title: Hello, World
+image:
+  src: "hello-world.png"
+  alt: "Hello, World"
 skip_actions: true
 ---
 

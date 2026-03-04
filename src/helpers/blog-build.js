@@ -264,6 +264,9 @@ function buildBlogPostPage(partial, template, metadata = null) {
     actions: actionsHtml,
     content: partial,
     toc: tocHtml,
+    metaImage: image
+      ? `https://bradenroth.com${image}`
+      : 'https://bradenroth.com/images/family.webp',
   };
 
   const templateWithData = renderTemplate(template, data);

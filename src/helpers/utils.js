@@ -12,6 +12,7 @@ export function textToSlug(text) {
     .toLowerCase()
     .trim()
     .replace(/\s*&\s*/g, '--')
+    .replace(/\./, '-')
     .replace(/[^\w\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/^-+|-+$/g, '');

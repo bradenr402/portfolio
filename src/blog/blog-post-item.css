@@ -12,6 +12,27 @@
     isolation: isolate;
   }
 
+  .blog-post-highlight {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+
+    background: light-dark(var(--color-surface-alt), var(--color-surface));
+
+    border-radius: 0.5rem;
+    @supports (corner-shape: squircle) {
+      corner-shape: squircle;
+      border-radius: 1rem;
+    }
+
+    transition: top var(--hover-transition) ease;
+
+    top: anchor(--hovered-item top);
+    left: anchor(--hovered-item left);
+    width: anchor-size(--hovered-item width);
+    height: anchor-size(--hovered-item height);
+  }
+
   .blog-post-item {
     margin: 0;
     transition: opacity var(--hover-transition);
@@ -37,8 +58,13 @@
       color: inherit;
     }
 
+    /* Stack on top of hover highlight */
+    position: relative;
+    z-index: 1;
+
+    /* Apply anchor-name on hover to make highlight element follow cursor */
     &:hover {
-      background: light-dark(var(--color-surface-alt), var(--color-surface));
+      anchor-name: --hovered-item;
     }
 
     .blog-post-list:has(&:hover) &:not(:hover) {

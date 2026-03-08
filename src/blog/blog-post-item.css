@@ -4,6 +4,14 @@
     --card-breakpoint: 28rem;
   }
 
+  .blog-post-list {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    isolation: isolate;
+  }
+
   .blog-post-item {
     margin: 0;
     transition: opacity var(--hover-transition);

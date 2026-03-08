@@ -169,7 +169,7 @@
     font-weight: 700;
     text-wrap: balance;
 
-    /* --lh is defined on the headings below */
+    /* --lh is defined per heading below */
     line-height: var(--lh);
     margin-top: calc(var(--lh) * 1.25em);
   }

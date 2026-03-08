@@ -124,7 +124,10 @@
     padding: 1.25rem;
 
     box-shadow: var(--shadow-sm);
-    background: light-dark(var(--color-bg), color-mix(in oklch, var(--color-surface) 50%, var(--color-bg)));
+    background: light-dark(
+      var(--color-bg),
+      color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))
+    );
 
     border-radius: 1.5rem;
     @supports (corner-shape: squircle) {
@@ -157,7 +160,7 @@
       display: flex;
       align-items: center;
 
-      &>*:not(:first-child)::before {
+      & > *:not(:first-child)::before {
         content: '·';
         margin: 0 0.5rem;
       }
@@ -215,3 +218,4 @@
     }
   }
 }
+

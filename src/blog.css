@@ -772,12 +772,6 @@
     flex-direction: column;
   }
 
-  &.blog--index .blog-post-list {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0 0;
-  }
-
   /* Blog post item styles in blog/blog-post-item.css */
 
   /* Blockquotes */

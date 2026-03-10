@@ -62,4 +62,12 @@
     src: url('./fonts/CrimsonPro-VariableFont_wght.ttf') format('truetype');
     font-display: swap;
   }
+
+  @font-face {
+    font-family: 'Gloria Hallelujah';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./fonts/GloriaHallelujah-Regular.ttf') format('truetype');
+    font-display: swap;
+  }
 }

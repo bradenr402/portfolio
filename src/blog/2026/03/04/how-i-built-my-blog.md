@@ -2,6 +2,9 @@
 title: How I Built My Blog
 updates:
   - date: 2026-03-14
+    description: Updated component example in <a href="#scoped-styles">Scoped Styles</a>.
+
+  - date: 2026-03-14
     description: Updated description of mail links in <a href="#clear--intuitive-links">Clear & Intuitive Links</a>.
 ---
 
@@ -398,71 +401,121 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
 
 #### Example of a section wrapped in `.blog-reset`:
 
-<div class="border border-stone-200 dark:border-zinc-900">
-  <div class="blog-reset">
-    <section id="introduction" class="mx-auto max-w-4xl p-4">
-      <h1 class="mb-8 text-center text-4xl font-extrabold md:text-5xl">
-        Hey! I’m Braden.
-      </h1>
-      <div class="mb-4 grid grid-cols-1 items-center gap-6 sm:grid-cols-2 sm:gap-4">
-        <div class="space-y-6 text-lg/relaxed sm:mr-4">
-          <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-            I’m a full-stack web developer based in Temple Terrace, FL. I specialize in
-            <a href="https://rubyonrails.org/" target="_blank" class="font-bold text-primary-500 hover:underline dark:text-primary-400"> <span data-icon="rails" class="inline size-4 -translate-y-px mr-0.5"></span>Ruby on Rails</a>,
-            and I love turning ideas into useful, meaningful, and delightful web applications.
-          </p>
-          <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-            More importantly, I’m a husband to my lovely wife and a proud dad to our two
-            beautiful daughters. Whether I’m crafting a feature for users or making
-            memories with my family, I want to build lasting things that matter.
-          </p>
-        </div>
-        <div class="mt-4 mx-4">
-          <img
-            src="family.webp"
-            alt="A photo of myself, my wife, and our two daughters."
-            class="rotate-3 mx-auto aspect-square rounded-xs border-5 border-white object-cover shadow-lg outline-[0.5px] outline-stone-700/5 dark:border-zinc-100"
-          />
-        </div>
+<div class="blog-reset p-6 border border-(--color-border)">
+  <div class="photo-gallery">
+    <figure class="photo-card sm:z-1 sm:translate-y-3" style="--rotation: -9deg">
+      <div class="photo-card-img-wrapper">
+        <img
+          src="/images/wedding.webp"
+          alt="Braden and his wife on their wedding day"
+          class="photo-card-img"
+        />
       </div>
-    </section>
-   </div>
- </div>
+      <figcaption class="photo-card-caption">Our Wedding</figcaption>
+    </figure>
+    <figure class="photo-card sm:z-4 sm:-translate-y-2" style="--rotation: 1deg">
+      <div class="photo-card-img-wrapper">
+        <img
+          src="/images/emily.webp"
+          alt="Braden holding his newborn daughter Emily"
+          class="photo-card-img"
+        />
+      </div>
+      <figcaption class="photo-card-caption">Welcome, Emily!</figcaption>
+    </figure>
+    <figure class="photo-card sm:z-2 sm:translate-y-3" style="--rotation: 7deg">
+      <div class="photo-card-img-wrapper">
+        <img
+          src="/images/emily-first-christmas.webp"
+          alt="The family celebrating their first Christmas together"
+          class="photo-card-img"
+        />
+      </div>
+      <figcaption class="photo-card-caption">Emily’s First Xmas</figcaption>
+    </figure>
+    <figure class="photo-card sm:z-5 sm:-translate-y-2" style="--rotation: -5deg">
+      <div class="photo-card-img-wrapper">
+        <img
+          src="/images/sophia.webp"
+          alt="Braden holding his newborn daughter Sophia"
+          class="photo-card-img"
+        />
+      </div>
+      <figcaption class="photo-card-caption">Welcome, Sophia!</figcaption>
+    </figure>
+    <figure class="photo-card max-sm:translate-y-2 sm:z-3 sm:translate-x-2 sm:-translate-y-1" style="--rotation: 9deg">
+      <div class="photo-card-img-wrapper">
+        <img
+          src="/images/sophia-first-christmas.webp"
+          alt="Braden holding his newborn daughter Sophia"
+          class="photo-card-img"
+        />
+      </div>
+      <figcaption class="photo-card-caption">Sophia’s First Xmas</figcaption>
+    </figure>
+  </div>
+</div>
 
-Without `@scope`, the styles from the blog would bleed into this section, causing visual inconsistencies. You can see the difference below if I remove the `blog-reset` wrapper.
+Without `@scope`, the styles from the blog would bleed into this section, causing visual inconsistencies. The difference  is quite obvious if I remove the `blog-reset` wrapper.
 
 #### Example of a section without `.blog-reset`:
 
-<div class="border border-stone-200 dark:border-zinc-900">
-  <section id="introduction" class="mx-auto max-w-4xl p-4">
-    <h1 class="mb-8 text-center text-4xl font-extrabold md:text-5xl">
-      Hey! I’m Braden.
-    </h1>
-    <div class="mb-4 grid grid-cols-1 items-center gap-6 sm:grid-cols-2 sm:gap-4">
-      <div class="space-y-6 text-lg/relaxed sm:mr-4">
-        <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-          I’m a full-stack web developer based in Temple Terrace, FL. I specialize in
-          <a href="https://rubyonrails.org/" target="_blank" class="font-bold text-primary-500 hover:underline dark:text-primary-400"> <span data-icon="rails" class="inline size-4 -translate-y-px mr-0.5"></span>Ruby on Rails</a>,
-          and I love turning ideas into useful, meaningful, and delightful web applications.
-        </p>
-        <p class="max-w-prose text-pretty text-stone-600 dark:text-stone-200">
-          More importantly, I’m a husband to my lovely wife and a proud dad to our two
-          beautiful daughters. Whether I’m crafting a feature for users or making
-          memories with my family, I want to build lasting things that matter.
-        </p>
-      </div>
-      <div class="mt-4 mx-4">
+<div class="p-6 border border-(--color-border)">
+  <div class="photo-gallery">
+    <figure class="photo-card sm:z-1 sm:translate-y-3" style="--rotation: -9deg">
+      <div class="photo-card-img-wrapper">
         <img
-          src="family.webp"
-          alt="A photo of myself, my wife, and our two daughters."
-          class="rotate-3 mx-auto aspect-square rounded-xs border-5 border-white object-cover shadow-lg outline-[0.5px] outline-stone-700/5 dark:border-zinc-100"
+          src="/images/wedding.webp"
+          alt="Braden and his wife on their wedding day"
+          class="photo-card-img"
         />
       </div>
-    </div>
-  </section>
+      <figcaption class="photo-card-caption">Our Wedding</figcaption>
+    </figure>
+    <figure class="photo-card sm:z-4 sm:-translate-y-2" style="--rotation: 1deg">
+      <div class="photo-card-img-wrapper">
+        <img
+          src="/images/emily.webp"
+          alt="Braden holding his newborn daughter Emily"
+          class="photo-card-img"
+        />
+      </div>
+      <figcaption class="photo-card-caption">Welcome, Emily!</figcaption>
+    </figure>
+    <figure class="photo-card sm:z-2 sm:translate-y-3" style="--rotation: 7deg">
+      <div class="photo-card-img-wrapper">
+        <img
+          src="/images/emily-first-christmas.webp"
+          alt="The family celebrating their first Christmas together"
+          class="photo-card-img"
+        />
+      </div>
+      <figcaption class="photo-card-caption">Emily’s First Xmas</figcaption>
+    </figure>
+    <figure class="photo-card sm:z-5 sm:-translate-y-2" style="--rotation: -5deg">
+      <div class="photo-card-img-wrapper">
+        <img
+          src="/images/sophia.webp"
+          alt="Braden holding his newborn daughter Sophia"
+          class="photo-card-img"
+        />
+      </div>
+      <figcaption class="photo-card-caption">Welcome, Sophia!</figcaption>
+    </figure>
+    <figure class="photo-card max-sm:translate-y-2 sm:z-3 sm:translate-x-2 sm:-translate-y-1" style="--rotation: 9deg">
+      <div class="photo-card-img-wrapper">
+        <img
+          src="/images/sophia-first-christmas.webp"
+          alt="Braden holding his newborn daughter Sophia"
+          class="photo-card-img"
+        />
+      </div>
+      <figcaption class="photo-card-caption">Sophia’s First Xmas</figcaption>
+    </figure>
+  </div>
 </div>
 
-Note the difference in spacing, typography, and text decorations between the two examples, particularly on the heading, the image, and the “Ruby on Rails” link. The first one (with `.blog-reset`) retains the intended design of that section, while the second one (without `.blog-reset`) has the blog’s styles bleeding into it, disrupting the intended design.
+The blog styles are leaking into the images in the component, messing up the image styles, spacing, and even the color of the captions. The first example (with `.blog-reset`) retains the intended design of that section, while the second example (without `.blog-reset`) is affected by the blog’s styles bleeding into it, disrupting the intended design.
 
 ### Heading Links & Table of Contents
 

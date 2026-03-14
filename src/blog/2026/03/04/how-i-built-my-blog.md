@@ -1,5 +1,8 @@
 ---
 title: How I Built My Blog
+updates:
+  - date: 2026-03-14
+    description: Updated description of mail links in <a href="#clear--intuitive-links">Clear & Intuitive Links</a>.
 ---
 
 If you’ve been thinking about building your own personal blog, the tooling choices can feel endless. There are so many frameworks, static site generators, and CMSes available today. There’s nothing wrong with any of these, but they can be limiting when it comes to design and functionality.
@@ -473,7 +476,7 @@ Links have different styles depending on their destination.
 
 - Internal links have a dotted underline and change color on hover: [Home](/)
 - External links have an arrow appended, which animates on hover: [Google](https://google.com)
-- Email links have a mail icon prepended: [Contact Me](mailto:me@bradenroth.com)
+- Email links have a mail icon prepended, which opens on hover: [Email](mailto:me@bradenroth.com)
 
 ### Custom Highlights
 

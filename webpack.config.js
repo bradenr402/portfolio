@@ -160,7 +160,19 @@ export default {
       },
       {
         test: /\.svg$/i,
-        type: 'asset/source',
+        oneOf: [
+          {
+            // SVGs referenced via CSS url() — emit as a file so the
+            // browser gets a real URL (asset/source would inline the
+            // raw markup, breaking mask-image / background-image).
+            dependency: 'url',
+            type: 'asset/resource',
+          },
+          {
+            // SVGs imported in JS — return the raw source string.
+            type: 'asset/source',
+          },
+        ],
       },
     ],
   },

@@ -1,88 +1,38 @@
 <footer
-  class="[&_svg]:transition-filter mt-2 mt-10 flex flex-col items-center justify-center gap-5 transition-opacity duration-100 ease-out not-hover:opacity-50 [&_svg]:duration-100 [&_svg]:ease-out not-hover:[&_svg]:grayscale"
+  class="[&_svg]:transition-filter flex w-full max-w-(--max-width(--max-width)) gap-2 py-4 pb-20 transition-opacity duration-100 ease-out [--social-link-padding:--spacing(3)] not-hover:opacity-50 max-sm:flex-col max-sm:justify-between max-sm:px-(--horizontal-padding) sm:mx-auto sm:items-center sm:justify-center sm:gap-8 [&_svg]:duration-100 [&_svg]:ease-out not-hover:[&_svg]:grayscale"
 >
-  <div class="flex items-center justify-center font-semibold *:px-3 *:py-1.5">
-    <a
-      href="mailto:me@bradenroth.com"
-      target="_blank"
-      class="group relative flex items-center justify-center"
-      aria-label="Email me@bradenroth.com"
-    >
-      <span data-icon="gmail" class="size-4 shrink-0"></span>
-
-      <span
-        aria-hidden="true"
-        class="pointer-events-none absolute -top-8 left-1/2 isolate -translate-x-1/2 translate-y-1 overflow-hidden rounded-lg px-2 py-0.75 whitespace-nowrap text-white opacity-0 transition-all duration-100 ease-out will-change-transform squircle group-hover:translate-y-0 group-hover:opacity-100 supports-squircle:rounded-full"
-      >
-        Email &middot; me@bradenroth.com
-
-        <!-- Blurred SVG background -->
-        <div
-          class="absolute inset-0 -z-10 flex items-center justify-center [clip-path:inset(0_round_0.5rem)]"
-        >
-          <span data-icon="gmail" class="w-[100%] opacity-90 blur-md"></span>
-        </div>
-      </span>
-    </a>
-
-    <a
-      href="https://github.com/bradenr402"
-      target="_blank"
-      class="group relative flex items-center justify-center"
-      aria-label="GitHub profile"
-    >
-      <span data-icon="github" class="size-4 shrink-0"></span>
-
-      <span
-        aria-hidden="true"
-        class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 translate-y-1 rounded-lg bg-black px-2 py-0.75 whitespace-nowrap text-white opacity-0 transition-all duration-100 ease-out will-change-transform squircle group-hover:translate-y-0 group-hover:opacity-100 dark:bg-white dark:text-black supports-squircle:rounded-full"
-      >
-        GitHub &middot; bradenr402
-      </span>
-    </a>
-
-    <a
-      href="https://linkedin.com/in/braden-roth"
-      target="_blank"
-      class="group relative flex items-center justify-center"
-      aria-label="LinkedIn profile"
-    >
-      <span data-icon="linkedin" class="size-4 shrink-0"></span>
-
-      <span
-        aria-hidden="true"
-        class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 translate-y-1 rounded-lg bg-[#0a66c2] px-2 py-0.75 whitespace-nowrap text-white opacity-0 transition-all duration-100 ease-out will-change-transform squircle group-hover:translate-y-0 group-hover:opacity-100 supports-squircle:rounded-full"
-      >
-        LinkedIn &middot; braden-roth
-      </span>
-    </a>
-
-    <a
-      href="https://x.com/BradenRoth02"
-      target="_blank"
-      class="group relative flex items-center justify-center"
-      aria-label="X account"
-    >
-      <span data-icon="x" class="size-4 shrink-0"></span>
-
-      <span
-        aria-hidden="true"
-        class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 translate-y-1 rounded-lg bg-black px-2 py-0.75 whitespace-nowrap text-white opacity-0 transition-all duration-100 ease-out will-change-transform squircle group-hover:translate-y-0 group-hover:opacity-100 dark:bg-white dark:text-black supports-squircle:rounded-full"
-      >
-        𝕏 &middot; @BradenRoth02
-      </span>
-    </a>
-  </div>
-
-  <div
-    class="relative flex items-center justify-center gap-1.5 text-sm text-stone-500/80 dark:text-stone-400/80"
-  >
+  <div class="relative flex items-center gap-1.5 text-sm whitespace-nowrap">
     <span>&copy;</span>
     <span id="footer-year">2026</span>
     <span>Braden Roth</span>
   </div>
 
-  <p class="-translate-y-1 text-center text-xxs/none text-stone-300 dark:text-stone-600">
-    Hi there! ;)
-  </p>
+  <span class="h-3 w-0 border-l-hairline border-faint max-sm:hidden"></span>
+
+  <!-- Social Links -->
+  <div class="flex gap-4 text-sm font-medium">
+    <a href="mailto:me@bradenroth.com" class="mail-link">Email</a>
+    <span class="text-stone-400 dark:text-zinc-500">&middot;</span>
+    <a
+      href="https://github.com/bradenr402"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group/arrow-up-right external-link"
+      >GitHub</a
+    >
+    <a
+      href="https://linkedin.com/in/braden-roth"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group/arrow-up-right external-link"
+      >LinkedIn</a
+    >
+    <a
+      href="https://x.com/BradenRoth02"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group/arrow-up-right external-link"
+      >𝕏</a
+    >
+  </div>
 </footer>

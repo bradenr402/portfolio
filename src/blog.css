@@ -21,27 +21,10 @@
 
   /* Variables + base styles */
   :scope {
-    /* Colors */
-    --color-text: light-dark(var(--color-stone-950), var(--color-zinc-100));
-    --color-bg: light-dark(white, var(--color-zinc-950));
-    --color-border: light-dark(var(--color-stone-300), var(--color-zinc-800));
-    --color-border-light: light-dark(var(--color-stone-200), var(--color-zinc-900));
+    /* Colors: defined in theme.css */
+    /* Surfaces & UI: defined in theme.css */
 
-    --color-accent: light-dark(var(--color-primary-500), var(--color-primary-400));
-    --color-soft: light-dark(var(--color-stone-600), var(--color-zinc-300));
-    --color-muted: light-dark(var(--color-stone-500), var(--color-zinc-400));
-    --color-faint: light-dark(var(--color-stone-400), var(--color-zinc-500));
-
-    --selection-color: light-dark(
-      oklch(from var(--color-primary-500) l c h / 5%),
-      oklch(from var(--color-primary-500) l c h / 15%)
-    );
-
-    /* Surfaces & UI */
-    --color-surface: light-dark(var(--color-stone-50), var(--color-zinc-900));
-    --color-surface-alt: light-dark(var(--color-stone-100), var(--color-zinc-800));
-    --color-surface-hover: light-dark(var(--color-stone-200), var(--color-zinc-700));
-
+    /* Blog-specific variables */
     --color-quote-mark: light-dark(var(--color-stone-300), var(--color-zinc-600));
     --color-blockquote-border: light-dark(var(--color-stone-200), var(--color-zinc-800));
 
@@ -55,12 +38,11 @@
 
     /* Sizes */
     --line-height: 1.5;
-    --webkit-font-smoothing: antialiased;
-    --max-width: 720px;
+    --max-width: 48rem;
 
     &:has(.blog-layout__aside) {
-      --max-width: 1100px;
-      --toc-width: 280px;
+      --max-width: 68rem;
+      --toc-width: 18rem;
     }
   }
 
@@ -592,12 +574,6 @@
   }
 
   /* Blog index header */
-  header.blog-index__header {
-    display: flex;
-    align-items: end;
-    gap: 1rem;
-  }
-
   .blog-header-wrapper:has(.blog-index__header) {
     margin-bottom: 1rem;
   }
@@ -621,6 +597,7 @@
 
   .blog-header__meta {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     color: var(--color-muted);
     font-size: 0.95rem;
@@ -1127,14 +1104,6 @@
 }
 
 /* Utility classes */
-.hidden {
-  display: none !important;
-}
-
-.inline {
-  display: inline !important;
-}
-
 .text-fade {
   background: linear-gradient(
     to right,
@@ -1145,8 +1114,4 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-}
-
-.small-caps {
-  font-variant: small-caps;
 }

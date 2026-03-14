@@ -24,6 +24,8 @@ const BLOG_TOC_ITEM_TEMPLATE = readLocalTemplate('_blog-toc-item.html');
 const BLOG_POST_CARD_TEMPLATE = readLocalTemplate('_blog-post-card.html');
 const BLOG_POST_ITEM_TEMPLATE = readLocalTemplate('_blog-post-item.html');
 const BLOG_ACTIONS_TEMPLATE = readLocalTemplate('_blog-actions.html');
+const BLOG_UPDATES_TEMPLATE = readLocalTemplate('_blog-updates.html');
+const BLOG_UPDATE_ITEM_TEMPLATE = readLocalTemplate('_blog-update-item.html');
 
 const WORDS_PER_MINUTE = 250;
 
@@ -174,6 +176,7 @@ function normalizePostMetadata(slug, metadata = {}) {
   const datetime = metadata.date || '';
   const displayDate = formatDate(datetime) || datetime;
   const tags = metadata.tags || [];
+  const updates = metadata.updates || [];
 
   return {
     title,
@@ -183,6 +186,7 @@ function normalizePostMetadata(slug, metadata = {}) {
     alt,
     readingTime,
     tags,
+    updates,
   };
 }
 
@@ -241,16 +245,57 @@ function buildBlogTocListHtml(headings) {
     .join('\n');
 }
 
-function buildBlogPostPage(partial, template, metadata = null) {
-  const { title, datetime, displayDate, image, alt, readingTime, tags } = normalizePostMetadata(
-    '',
-    metadata,
+function normalizeDate(value) {
+  return value instanceof Date
+    ? value.toISOString().slice(0, 10)
+    : String(value);
+}
+
+function buildUpdatesHtml(updates) {
+  if (!updates || updates.length === 0) return '';
+
+  // Sort by newest date first
+  const sorted = [...updates].sort((a, b) =>
+    normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
   );
+
+  const items = sorted
+    .map((update) => {
+      const dateStr = normalizeDate(update.date);
+      return renderTemplate(BLOG_UPDATE_ITEM_TEMPLATE, {
+        datetime: dateStr,
+        displayDate: formatDate(dateStr) || dateStr,
+        description: update.description,
+      });
+    })
+    .join('\n');
+
+  return renderTemplate(BLOG_UPDATES_TEMPLATE, { items });
+}
+
+function getLatestUpdateDate(updates) {
+  if (!updates || updates.length === 0) return null;
+
+  const sorted = [...updates].sort((a, b) =>
+    normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
+  );
+  return normalizeDate(sorted[0].date);
+}
+
+function buildBlogPostPage(partial, template, metadata = null) {
+  const { title, datetime, displayDate, image, alt, readingTime, tags, updates } =
+    normalizePostMetadata('', metadata);
 
   // Headings come from metadata (from processMarkdown)
   const headings = metadata?.headings || [];
   const tagsHtml = renderTagsHtml(tags);
   const actionsHtml = metadata?.skip_actions ? '' : BLOG_ACTIONS_TEMPLATE;
+  const updatesHtml = buildUpdatesHtml(updates);
+
+  const latestUpdateDate = getLatestUpdateDate(updates);
+  const updatedDateHtml = latestUpdateDate
+    ? formatDate(latestUpdateDate)
+    : '';
 
   const tocHtml = buildBlogTocListHtml(headings);
 
@@ -258,10 +303,13 @@ function buildBlogPostPage(partial, template, metadata = null) {
     title: title || '',
     displayDate: displayDate || '',
     datetime: datetime || '',
+    updatedDatetime: latestUpdateDate || '',
+    updatedDate: updatedDateHtml,
     headerImage: image ? `<img src="${image}" alt="${alt || ''}" />` : '',
     readingTime: readingTime || '',
     tags: tagsHtml,
     actions: actionsHtml,
+    updates: updatesHtml,
     content: partial,
     toc: tocHtml,
     metaImage: image

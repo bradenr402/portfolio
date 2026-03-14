@@ -34,11 +34,14 @@
                   <time datetime="{{datetime}}" class="blog-header__date">{{displayDate}}</time>
                   <span class="blog-header__reading-time">{{readingTime}}</span>
                 </div>
+                <time datetime="{{updatedDatetime}}" class="blog-header__updated">
+                  <a href="#blog-updates">Updated {{updatedDate}}</a>
+                </time>
                 <div class="blog-post__tags">{{tags}}</div>
               </header>
             </div>
             <!-- content will be wrapped in an <article> -->
-            {{content}} {{actions}}
+            {{content}} {{updates}} {{actions}}
           </div>
 
           <aside class="blog-layout__aside">

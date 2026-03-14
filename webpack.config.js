@@ -5,7 +5,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { fileURLToPath } from 'url';
 
 // Helper functions
-import { collectBlogPostsMeta, buildBlogPostPage, buildStandaloneBlogIndexPage, processMarkdown } from './src/helpers/blog-build.js';
+import { collectBlogPostsMeta, buildBlogPostPage, buildBlogIndexListHtml, buildStandaloneBlogIndexPage, processMarkdown } from './src/helpers/blog-build.js';
 import applyBaseLayout from './src/helpers/apply-base-layout.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -25,6 +25,7 @@ const BLOG_CSS_PATH = path.resolve(__dirname, 'src/blog.css');
 
 // Placeholders
 const BLOG_INDEX_PLACEHOLDER = '{{postList}}';
+const RECENT_POSTS_PLACEHOLDER = '{{recentPosts}}';
 
 // Collect all blog posts to generate HTML pages
 const blogPosts = collectBlogPostsMeta(BLOG_DIR);
@@ -94,7 +95,13 @@ export default {
       filename: 'index.html',
       favicon: FAVICON_PATH,
       templateContent: () => {
-        const html = fs.readFileSync(path.resolve(__dirname, 'src/index.html'), 'utf8');
+        let html = fs.readFileSync(path.resolve(__dirname, 'src/index.html'), 'utf8');
+
+        // Inject 5 most recent blog posts
+        const recentPosts = blogPosts.slice(0, 5);
+        const postsHtml = buildBlogIndexListHtml(recentPosts);
+        html = html.replace(RECENT_POSTS_PLACEHOLDER, postsHtml);
+
         return applyBaseLayout(html);
       },
     }),

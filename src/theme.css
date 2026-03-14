@@ -1,22 +1,49 @@
 @theme {
+  --left-col: 4rem;
+  --gutter: var(--hairline);
+  --max-width: calc(48rem + var(--left-col) + var(--gutter));
+  --main-gap: --spacing(6);
+  --horizontal-padding: --spacing(4);
+
   --font-sans: Calibre, sans-serif;
   --font-mono: 'Monaspace Neon', monospace;
   --font-serif: 'Crimson Pro', serif;
   --font-cursive: 'Gloria Hallelujah', cursive;
 
-  --color-primary-50: oklch(0.98 0.01 29.1);
-  --color-primary-100: oklch(0.95 0.025 29.1);
-  --color-primary-200: oklch(0.85 0.081 29.1);
-  --color-primary-300: oklch(0.75 0.149 29.1);
-  --color-primary-400: oklch(0.65 0.233 29.1);
-  --color-primary-500: oklch(0.55 0.223 29.1);
-  --color-primary-600: oklch(0.45 0.182 29.1);
-  --color-primary-700: oklch(0.35 0.142 29.1);
-  --color-primary-800: oklch(0.25 0.101 29.1);
-  --color-primary-900: oklch(0.15 0.061 29.1);
-  --color-primary-950: oklch(0.08 0.02 29.1);
+  --color-primary-50: var(--color-sky-50);
+  --color-primary-100: var(--color-sky-100);
+  --color-primary-200: var(--color-sky-200);
+  --color-primary-300: var(--color-sky-300);
+  --color-primary-400: var(--color-sky-400);
+  --color-primary-500: var(--color-sky-500);
+  --color-primary-600: var(--color-sky-600);
+  --color-primary-700: var(--color-sky-700);
+  --color-primary-800: var(--color-sky-800);
+  --color-primary-900: var(--color-sky-900);
+  --color-primary-950: var(--color-sky-950);
 
   --color-zinc-850: oklch(24% 0.006 286.033);
+
+  /* Colors */
+  --color-text: light-dark(var(--color-stone-950), var(--color-zinc-100));
+  --color-bg: light-dark(white, var(--color-zinc-950));
+  --color-border: light-dark(var(--color-stone-300), var(--color-zinc-800));
+  --color-border-light: light-dark(var(--color-stone-200), var(--color-zinc-900));
+
+  --color-accent: light-dark(var(--color-primary-500), var(--color-primary-400));
+  --color-soft: light-dark(var(--color-stone-600), var(--color-zinc-300));
+  --color-muted: light-dark(var(--color-stone-500), var(--color-zinc-400));
+  --color-faint: light-dark(var(--color-stone-400), var(--color-zinc-500));
+
+  --selection-color: light-dark(
+    oklch(from var(--color-primary-500) l c h / 5%),
+    oklch(from var(--color-primary-500) l c h / 15%)
+  );
+
+  /* Surfaces & UI */
+  --color-surface: light-dark(var(--color-stone-50), var(--color-zinc-900));
+  --color-surface-alt: light-dark(var(--color-stone-100), var(--color-zinc-800));
+  --color-surface-hover: light-dark(var(--color-stone-200), var(--color-zinc-700));
 
   --breakpoint-xs: 30rem;
   --text-xxs: 0.625rem;
@@ -80,4 +107,11 @@
   );
 
   --ease-gentler-spring: 1.2s var(--gentler-spring);
+
+  --hairline: 1px;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  @theme {
+    --hairline: 0.5px;
+  }
 }

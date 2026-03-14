@@ -6,9 +6,11 @@ import initCodeCopyButtons from './helpers/init-code-copy-buttons.js';
 import initCopyLinkButton from './helpers/init-copy-link-button.js';
 import initKeyPressListeners from './helpers/init-key-press-listeners.js';
 import initKonamiCode from './helpers/init-konami-code.js';
+import initPhotoGallery from './helpers/init-photo-gallery.js';
 
 const init = () => {
   initKonamiCode();
+  initPhotoGallery();
   if (document.body.dataset.page === 'blog-post') {
     initBlogToc();
     initCodeCopyButtons();

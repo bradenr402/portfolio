@@ -467,8 +467,6 @@ Every `h2`-`h6` gets an auto-generated ID and a small anchor icon on hover. Try 
 
 During the Markdoc parsing phase, a function traverses the AST and builds a tree of all the headings found in the document. This tree is then rendered as a nested list in the sidebar. If a post has fewer than three headings, the Table of Contents is automatically removed to keep the layout clean.
 
-<!-- I need to add an adjective to the below heading that makes it sound a little better... -->
-
 ### Clear & Intuitive Links
 
 Links have different styles depending on their destination.

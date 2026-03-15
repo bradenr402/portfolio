@@ -318,10 +318,27 @@ function buildBlogPostPage(partial, template, metadata = null) {
   };
 
   const templateWithData = renderTemplate(template, data);
-  if (!tocHtml) {
+  const needsDomRemoval = !tocHtml || !latestUpdateDate || !tagsHtml;
+
+  if (needsDomRemoval) {
     const dom = new JSDOM(templateWithData);
-    const aside = dom.window.document.querySelector('aside.blog-layout__aside');
-    if (aside) aside.remove();
+    const doc = dom.window.document;
+
+    if (!tocHtml) {
+      const aside = doc.querySelector('aside.blog-layout__aside');
+      if (aside) aside.remove();
+    }
+
+    if (!latestUpdateDate) {
+      const updated = doc.querySelector('time.blog-header__updated');
+      if (updated) updated.remove();
+    }
+
+    if (!tagsHtml) {
+      const tagsContainer = doc.querySelector('.blog-post__tags');
+      if (tagsContainer) tagsContainer.remove();
+    }
+
     return dom.serialize();
   }
 

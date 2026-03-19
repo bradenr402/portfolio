@@ -644,6 +644,11 @@
     margin-bottom: 0.5rem;
   }
 
+  /* Use pretty text-wrapping for blog post titles */
+  header h1 {
+    text-wrap: pretty;
+  }
+
   .blog-header__date {
     margin-block: 0;
     color: var(--color-muted);

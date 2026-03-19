@@ -195,27 +195,6 @@
         }
       }
     }
-
-    .blog-post__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.5rem;
-
-      &:not(:has(.blog-post__tag)) {
-        display: none;
-      }
-    }
-
-    .blog-post__tag {
-      font-size: 0.75rem;
-      line-height: 1;
-      padding: 0.2rem 0.4rem;
-      border: 1px solid var(--color-border);
-      border-radius: 9999px;
-      color: var(--color-soft);
-      background-color: transparent;
-    }
   }
 }
 

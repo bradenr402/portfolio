@@ -59,14 +59,13 @@ function formatDate(dateStr) {
   return dateStr;
 }
 
-
 export const blogCard = {
   attributes: { src: { type: String, required: true } },
   transform(node, config) {
     const src = node.attributes.src;
     if (!src) return [];
 
-    const blogDir = path.resolve(__dirname, '../blog');
+    const blogDir = path.resolve(__dirname, '../../blog');
     const normalizedSrc = src.replace(/^\/+|\/+$/g, '');
     const filePath = path.join(blogDir, `${normalizedSrc}.md`);
 
@@ -101,13 +100,9 @@ export const blogCard = {
       }
 
       let tags = frontmatter.tags || [];
-      const tagsHtml = tags.length > 0
-        ? `<div class="blog-post__tags">
-          ${tags.map(t => `<span class="blog-post__tag">${t}</span>`).join('')}
-        </div>`
-        : '';
+      const tagsHtml = tags.length > 0 ? tags.map(tag => `<span class="blog-post__tag">${tag}</span>`).join('') : '';
 
-      let template = fs.readFileSync(path.resolve(__dirname, '../components/_blog-post-card.html'), 'utf8');
+      let template = fs.readFileSync(path.resolve(__dirname, '../../components/_blog-post-card.html'), 'utf8');
 
       const renderedHtml = renderTemplate(template, {
         href: `/blog/${normalizedSrc}`,

@@ -1198,3 +1198,7 @@
   background-clip: text;
   -webkit-background-clip: text;
 }
+
+.inline {
+  display: inline;
+}

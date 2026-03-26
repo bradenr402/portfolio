@@ -1,7 +1,6 @@
 @scope (.blog) to (.blog-reset) {
   :scope {
     --hover-transition: 100ms;
-    --card-breakpoint: 28rem;
   }
 
   .blog-post-list {
@@ -107,7 +106,7 @@
     justify-content: space-between;
     gap: 1rem;
 
-    @media (max-width: 28rem) {
+    @media (max-width: 32rem) {
       flex-direction: column-reverse;
       align-items: start;
       gap: 1.75rem;
@@ -171,12 +170,20 @@
     }
 
     .blog-post-card__thumb {
-      width: auto;
-      max-width: 7.5rem;
-
-      @media (max-width: 28rem) {
-        max-width: none;
+      --max-width: 8rem;
+      @media (max-width: 32rem) {
+        --max-width: none;
       }
+
+      .blog-post-card:has(.blog-post__tag) & {
+        --max-width: 12rem;
+        @media (max-width: 32rem) {
+          --max-width: none;
+        }
+      }
+
+      width: auto;
+      max-width: var(--max-width);
 
       max-height: fit-content;
       overflow: hidden;

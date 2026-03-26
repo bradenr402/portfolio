@@ -556,6 +556,7 @@
   ul,
   ol {
     margin: 1rem 0 1rem 0.75rem;
+    text-wrap: pretty;
 
     /* Custom markers defined below */
     list-style: none;
@@ -568,7 +569,11 @@
   /* Nested lists */
   :is(ul, ol) :is(ul, ol) {
     margin-left: 0.5rem;
-    margin-block: 0;
+    margin-block: 0.5rem;
+
+    &:has(li:only-child) {
+      margin-top: 0;
+    }
   }
 
   li {

@@ -1084,6 +1084,7 @@
     position: relative;
     margin: 2rem 0;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
 
     /* Smooth scrolling on iOS */
     -webkit-overflow-scrolling: touch;

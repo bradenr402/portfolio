@@ -6,6 +6,9 @@ updates:
 
   - date: 2026-03-14
     description: Updated description of mail links in <a href="#clear--intuitive-links">Clear & Intuitive Links</a>.
+
+  - date: 2026-03-27
+    description: Fixed alt text for images in <a href="#scoped-styles">Scoped Styles</a>.
 ---
 
 If you’ve been thinking about building your own personal blog, the tooling choices can feel endless. There are so many frameworks, static site generators, and CMSes available today. There’s nothing wrong with any of these, but they can be limiting when it comes to design and functionality.
@@ -407,7 +410,7 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
       <div class="photo-card-img-wrapper">
         <img
           src="/images/wedding.webp"
-          alt="Braden and his wife on their wedding day"
+          alt="My wife and me on our wedding day"
           class="photo-card-img"
         />
       </div>
@@ -417,7 +420,7 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
       <div class="photo-card-img-wrapper">
         <img
           src="/images/emily.webp"
-          alt="Braden holding his newborn daughter Emily"
+          alt="Emily as a newborn"
           class="photo-card-img"
         />
       </div>
@@ -427,7 +430,7 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
       <div class="photo-card-img-wrapper">
         <img
           src="/images/emily-first-christmas.webp"
-          alt="The family celebrating their first Christmas together"
+          alt="Emily’s first Christmas"
           class="photo-card-img"
         />
       </div>
@@ -437,7 +440,7 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
       <div class="photo-card-img-wrapper">
         <img
           src="/images/sophia.webp"
-          alt="Braden holding his newborn daughter Sophia"
+          alt="Sophia as a newborn"
           class="photo-card-img"
         />
       </div>
@@ -447,7 +450,7 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
       <div class="photo-card-img-wrapper">
         <img
           src="/images/sophia-first-christmas.webp"
-          alt="Braden holding his newborn daughter Sophia"
+          alt="Sophia’s first Christmas"
           class="photo-card-img"
         />
       </div>
@@ -466,7 +469,7 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
       <div class="photo-card-img-wrapper">
         <img
           src="/images/wedding.webp"
-          alt="Braden and his wife on their wedding day"
+          alt="My wife and me on our wedding day"
           class="photo-card-img"
         />
       </div>
@@ -476,7 +479,7 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
       <div class="photo-card-img-wrapper">
         <img
           src="/images/emily.webp"
-          alt="Braden holding his newborn daughter Emily"
+          alt="Emily as a newborn"
           class="photo-card-img"
         />
       </div>
@@ -486,7 +489,7 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
       <div class="photo-card-img-wrapper">
         <img
           src="/images/emily-first-christmas.webp"
-          alt="The family celebrating their first Christmas together"
+          alt="Emily's first Christmas"
           class="photo-card-img"
         />
       </div>
@@ -496,7 +499,7 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
       <div class="photo-card-img-wrapper">
         <img
           src="/images/sophia.webp"
-          alt="Braden holding his newborn daughter Sophia"
+          alt="Sophia as a newborn"
           class="photo-card-img"
         />
       </div>
@@ -506,7 +509,7 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
       <div class="photo-card-img-wrapper">
         <img
           src="/images/sophia-first-christmas.webp"
-          alt="Braden holding his newborn daughter Sophia"
+          alt="Sophia's first Christmas"
           class="photo-card-img"
         />
       </div>

@@ -200,6 +200,9 @@
 
   /* Headings */
   :is(h1, h2, h3, h4, h5, h6) {
+    /* Ensures anchor-icon is positioned properly */
+    position: relative;
+
     --base: 1rem;
     --ratio: 1.25;
 
@@ -255,14 +258,19 @@
   }
 
   /* Anchor Links */
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    position: relative;
+  .heading-anchor {
+    color: var(--color-text);
 
-    .anchor-link {
+    &:hover {
+      text-decoration-thickness: 0.08em !important;
+      text-underline-offset: 0.15em !important;
+      text-decoration: dotted underline var(--color-faint);
+    }
+    &:hover :is(h2, h3, h4, h5, h6) {
+      color: var(--color-text);
+    }
+
+    .anchor-icon {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -274,16 +282,7 @@
       align-items: center;
       justify-content: center;
 
-      opacity: 0;
       color: var(--color-muted);
-      text-decoration: none;
-      transition: color 100ms;
-
-      &:focus-visible,
-      &:hover {
-        opacity: 1;
-        color: var(--color-text);
-      }
 
       &::after {
         content: '';
@@ -298,9 +297,10 @@
         mask-size: contain;
         mask-position: center;
       }
-    }
 
-    &:hover .anchor-link {
+      opacity: 0;
+    }
+    &:is(:focus-visible, :hover) .anchor-icon {
       opacity: 1;
     }
   }
@@ -336,11 +336,11 @@
   }
 
   /* Links */
-  a {
+  a:not(.heading-anchor) {
     --link-transition: 100ms;
     text-decoration: dotted underline var(--color-faint);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
+    text-decoration-thickness: 0.075em;
+    text-underline-offset: 0.12em;
 
     transition:
       color var(--link-transition),
@@ -350,6 +350,7 @@
       color: var(--color-accent);
       text-decoration-color: var(--color-accent);
       text-decoration-style: solid;
+      text-underline-offset: 0.1em;
     }
   }
 

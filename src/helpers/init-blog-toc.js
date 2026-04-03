@@ -108,12 +108,17 @@ export default function initBlogToc() {
   const headings = Array.from(article.querySelectorAll(':is(h2, h3, h4, h5, h6):not([data-toc-skip=true])'));
 
   headings.forEach((heading) => {
-    if (!heading.querySelector('.anchor-link')) {
+    if (!heading.parentElement?.classList.contains('heading-anchor')) {
       const anchor = document.createElement('a');
       anchor.href = `#${heading.id}`;
-      anchor.className = 'anchor-link';
+      anchor.className = 'heading-anchor';
       anchor.setAttribute('aria-label', `Link to ${heading.textContent}`);
-      heading.prepend(anchor);
+      heading.parentNode.insertBefore(anchor, heading);
+      anchor.appendChild(heading);
+
+      const icon = document.createElement('span');
+      icon.className = 'anchor-icon';
+      heading.prepend(icon);
     }
   });
 

@@ -336,7 +336,7 @@
   }
 
   /* Links */
-  a:not(.heading-anchor, .blog-post-card) {
+  a:not(.heading-anchor, .blog-post-card, .blog-toc a) {
     --link-transition: 100ms;
     text-decoration: dotted underline var(--color-faint);
     text-decoration-thickness: 0.075em;

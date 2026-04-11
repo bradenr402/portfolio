@@ -667,7 +667,7 @@ function highlightCodeBlocks(html) {
 
 #### Code Copy Buttons
 
-Have you ever been reading a blog post and had to manually select a code block with your mouse just to copy it, only to accidentally select some extra whitespace or miss a line? It’s frustrating! With these copy buttons, you can just click the button and the entire code block is copied to your clipboard. Try it out with the conveniently-placed code block below:
+Have you ever been reading a blog post and had to manually select a code block with your mouse to copy it, only to accidentally select some extra text or miss a few characters? It’s frustrating! With these copy buttons, you can just click the button and the entire code block is copied to your clipboard. Try it out with the conveniently-placed code block below:
 
 ```javascript
 // src/helpers/init-code-copy-buttons.js
@@ -693,7 +693,7 @@ For example, press <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>R</kbd> to force refre
 
 ### Smart Tables
 
-Tables scroll horizontally on small screens, and display scroll shadows as a visual cue when the table is scrollable (inspired by [this article](https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/) from CSS-Tricks). With some clever CSS, I can also make the first column sticky by adding a `.sticky` class to the corresponding `<th>` element. Here’s an example of a table with a sticky first column and scroll shadows:
+Tables scroll horizontally on small screens, and display scroll shadows as a visual cue when the table is scrollable (inspired by [this article](https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/) from CSS-Tricks). With some clever CSS, I can also make the first column sticky by adding a `.sticky` class to the first `<th>` element. Here’s an example of a table with a sticky first column and scroll shadows:
 
 {% table %}
 

@@ -689,7 +689,7 @@ codeBlocks.forEach((codeBlock) => {
 
 I like to use `<kbd>` tags to denote keyboard shortcuts. I designed custom styles for `<kbd>` elements adapted from [this post by Dylan Smith](https://dylanatsmith.com/wrote/styling-the-kbd-element) to make them look more like physical keys, with subtle hover and click effects. `<kbd>` elements also react to keypresses. When you press a key that matches the content of a `<kbd>`, it animates as if it were being pressed.
 
-For example, press <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>R</kbd> to force refresh the page. Or press <kbd>↑</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>←</kbd> <kbd>B</kbd> <kbd>A</kbd> in sequence for a suprise...
+For example, press <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>R</kbd> to force refresh the page. Or press <kbd>↑</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>←</kbd> <kbd>B</kbd> <kbd>A</kbd> in sequence for a surprise...
 
 ### Smart Tables
 

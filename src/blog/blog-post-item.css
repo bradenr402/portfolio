@@ -1,6 +1,6 @@
 @scope (.blog) to (.blog-reset) {
   :scope {
-    --hover-transition: 100ms;
+    --hover-transition: 50ms;
   }
 
   .blog-post-list {

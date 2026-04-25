@@ -2,6 +2,7 @@
 
 @import './theme.css';
 @import './fonts.css';
+@import './blog/blog-post-card.css';
 @import './blog/blog-post-item.css';
 @import './blog/blog-toc.css';
 

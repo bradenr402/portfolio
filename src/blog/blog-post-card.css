@@ -1,6 +1,6 @@
 @scope (.blog-layout__content) to (.blog-reset) {
   :scope {
-    --hover-transition: 50ms;
+    --hover-transition: 100ms;
   }
 
   .blog-post-card {

@@ -63,16 +63,18 @@
   }
 
   .blog-toc__item > a {
-    padding-block: 0.15rem;
-    text-decoration: none;
-    color: var(--color-faint);
-    transition: color var(--highlight-transition);
     display: block;
     width: 100%;
-  }
+    padding-block: 0.15rem;
+    text-decoration: none;
 
-  .blog-toc__item:not(.blog-toc__item--active) > a:hover {
-    color: var(--color-soft);
+    color: var(--color-faint);
+    transition: color calc(var(--highlight-transition) / 2);
+
+    &:hover {
+      color: var(--color-text);
+      transition: none;
+    }
   }
 
   .blog-toc__item--active > a {

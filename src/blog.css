@@ -39,10 +39,11 @@
 
     /* Sizes */
     --line-height: 1.5;
-    --max-width: 48rem;
+    --max-width: 56rem;
+
 
     &:has(.blog-layout__aside) {
-      --max-width: 68rem;
+      --max-width: 84rem;
       --toc-width: 18rem;
     }
   }
@@ -57,7 +58,7 @@
     width: 100%;
     max-width: var(--max-width);
     margin: 5rem auto;
-    padding: 0 1rem;
+    padding: 0 var(--horizontal-padding);
 
     -webkit-font-smoothing: antialiased;
   }
@@ -85,6 +86,7 @@
 
   .blog-layout__content {
     min-width: 0;
+    max-width: min(85ch, calc(100vw - var(--horizontal-padding) * 2));
   }
 
   .blog-layout__aside {
@@ -183,6 +185,7 @@
     .blog-layout {
       flex-direction: row;
       align-items: flex-start;
+      justify-content: space-between;
       gap: 4rem;
     }
 
@@ -331,7 +334,7 @@
   }
 
   /* Links */
-  :where(.blog-layout__content) a:not([class]) {
+  :where(.blog-layout__content, .blog-header) a:not([class]) {
     --link-transition: 100ms;
     text-decoration: dotted underline var(--color-faint);
     text-decoration-thickness: 0.075em;
@@ -617,17 +620,11 @@
   }
 
   /* Blog page header */
-  header {
-    padding-bottom: 1.5rem;
-  }
-
-  .blog-header-wrapper {
-    margin-bottom: 3rem;
-  }
-
   .blog-header-wrapper::after {
     content: '';
     display: block;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
     height: 1px;
     width: 100%;
     background: var(--color-border-light);
@@ -639,15 +636,50 @@
     margin-bottom: 1rem;
   }
 
-  /* If there's no image before the h1, reduce its top margin */
-  header:not(:has(img + h1)) h1 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+  /* Blog post header: optional full-width image above centered title and meta */
+  .blog-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    text-align: center;
   }
 
-  /* Use pretty text-wrapping for blog post titles */
-  header h1 {
-    text-wrap: pretty;
+  .blog-header__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    min-width: 0;
+  }
+
+  .blog-header__media {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .blog-header__media:empty {
+    display: none;
+  }
+
+  .blog-header__media img {
+    width: 100%;
+    max-width: clamp(20rem, 55vw, 52rem);
+    height: auto;
+    margin-inline: auto;
+  }
+
+  .blog-header__title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(3.25rem, 8vw, 10rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-wrap: balance;
+    hyphens: auto;
+    margin: 0 0 2rem;
   }
 
   .blog-header__date {
@@ -670,7 +702,6 @@
     align-items: center;
     color: var(--color-muted);
     font-size: 0.95rem;
-    margin-top: 0.25rem;
   }
 
   .blog-header__meta > *:not(:last-child)::after {

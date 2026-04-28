@@ -24,22 +24,25 @@
   >
     <div id="wrapper">
       <main id="main" class="blog">
+        <div class="blog-header-wrapper">
+          <header class="blog-header">
+            <div class="blog-header__media">{{headerImage}}</div>
+            <div class="blog-header__text">
+              <h1 class="blog-header__title">{{title}}</h1>
+              <div class="blog-header__meta">
+                <time datetime="{{datetime}}" class="blog-header__date">{{displayDate}}</time>
+                <span class="blog-header__reading-time">{{readingTime}}</span>
+              </div>
+              <time datetime="{{updatedDatetime}}" class="blog-header__updated">
+                <a href="#blog-updates">Updated {{updatedDate}}</a>
+              </time>
+              <div class="blog-post__tags">{{tags}}</div>
+            </div>
+          </header>
+        </div>
+
         <div class="blog-layout">
           <div class="blog-layout__content">
-            <div class="blog-header-wrapper">
-              <header>
-                {{headerImage}}
-                <h1>{{title}}</h1>
-                <div class="blog-header__meta">
-                  <time datetime="{{datetime}}" class="blog-header__date">{{displayDate}}</time>
-                  <span class="blog-header__reading-time">{{readingTime}}</span>
-                </div>
-                <time datetime="{{updatedDatetime}}" class="blog-header__updated">
-                  <a href="#blog-updates">Updated {{updatedDate}}</a>
-                </time>
-                <div class="blog-post__tags">{{tags}}</div>
-              </header>
-            </div>
             <!-- content will be wrapped in an <article> -->
             {{content}} {{updates}} {{actions}}
           </div>

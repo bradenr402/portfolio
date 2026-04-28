@@ -272,24 +272,16 @@
     }
 
     .anchor-icon {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: -1.5rem;
-      width: 1.5rem;
-      padding-right: 0.25rem;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
+      margin-left: 0.25rem;
       color: var(--color-muted);
 
       &::after {
         content: '';
         display: inline-block;
-        width: 1em;
-        height: 1em;
+        vertical-align: middle;
+        transform: translateY(-10%);
+        width: 0.85em;
+        height: 0.85em;
 
         /* Use SVG as mask, color comes from the link text color */
         background-color: currentColor;

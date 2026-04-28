@@ -113,12 +113,13 @@ export default function initBlogToc() {
       anchor.href = `#${heading.id}`;
       anchor.className = 'heading-anchor';
       anchor.setAttribute('aria-label', `Link to ${heading.textContent}`);
+
       heading.parentNode.insertBefore(anchor, heading);
       anchor.appendChild(heading);
 
       const icon = document.createElement('span');
       icon.className = 'anchor-icon';
-      heading.prepend(icon);
+      heading.appendChild(icon);
     }
   });
 

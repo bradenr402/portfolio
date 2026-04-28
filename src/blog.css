@@ -582,7 +582,7 @@
     }
 
     /* Shared styles for custom list markers */
-    &:is(:is(ol, ul):not(.blog-toc__list, .blog-post-list, .blog-updates__list) > li) {
+    &:is(:is(ol, ul):not([class]) > li) {
       display: flex;
       align-items: flex-start;
 
@@ -594,7 +594,7 @@
     }
 
     /* Custom numbering for ordered lists */
-    &:is(ol:not(.blog-toc__list, .blog-post-list, .blog-updates__list) > li) {
+    &:is(ol:not([class]) > li) {
       counter-increment: list-counter;
 
       &::before {
@@ -604,7 +604,7 @@
     }
 
     /* Custom markers for unordered lists */
-    &:is(ul:not(.blog-toc__list, .blog-post-list, .blog-updates__list) > li)::before {
+    &:is(ul:not([class]) > li)::before {
       content: '•';
     }
   }

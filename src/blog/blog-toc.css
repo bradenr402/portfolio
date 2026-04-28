@@ -11,9 +11,19 @@
     color: var(--color-muted);
     text-align: left;
 
-    max-height: calc(100vh - (2 * var(--toc-vertical-padding)));
+    max-height: calc(100vh - (3 * var(--toc-vertical-padding)));
     overflow-y: auto;
     overscroll-behavior: none;
+
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black var(--toc-fade-top, 0%),
+      black calc(100% - var(--toc-fade-bottom, 0%)),
+      transparent 100%
+    );
+    animation: blog-toc-scroll-mask linear;
+    animation-timeline: scroll(self);
 
     /* Hide scrollbar for IE and Edge */
     -ms-overflow-style: none;
@@ -43,11 +53,6 @@
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.03em;
-
-    position: sticky;
-    top: 0;
-    background: var(--color-bg);
-    z-index: 1;
     padding-bottom: 0.75rem;
   }
 
@@ -108,5 +113,33 @@
 
   .blog-toc__item--level-6 > a {
     padding-left: calc(var(--level-indent) * 4);
+  }
+}
+
+@property --toc-fade-top {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@property --toc-fade-bottom {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@keyframes blog-toc-scroll-mask {
+  0% {
+    --toc-fade-top: 0%;
+    --toc-fade-bottom: 5%;
+  }
+  5%,
+  95% {
+    --toc-fade-top: 5%;
+    --toc-fade-bottom: 5%;
+  }
+  100% {
+    --toc-fade-top: 5%;
+    --toc-fade-bottom: 0%;
   }
 }

@@ -329,7 +329,7 @@
   }
 
   /* Links */
-  :where(.blog-layout__content) a:not(.heading-anchor, .blog-post-card) {
+  :where(.blog-layout__content) a:not([class]) {
     --link-transition: 100ms;
     text-decoration: dotted underline var(--color-faint);
     text-decoration-thickness: 0.075em;

@@ -1022,11 +1022,11 @@
     /* Position in top right corner */
     grid-area: 1 / 1;
     position: sticky;
-    top: 0.5rem;
+    top: 0.4rem;
     z-index: 10;
     justify-self: end;
     align-self: start;
-    margin: 0.5rem;
+    margin: 0.4rem;
 
     /* Visual styling */
     padding: 0.4rem;

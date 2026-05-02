@@ -35,10 +35,7 @@
   --color-muted: light-dark(var(--color-stone-500), var(--color-zinc-400));
   --color-faint: light-dark(var(--color-stone-400), var(--color-zinc-500));
 
-  --selection-color: light-dark(
-    oklch(from var(--color-primary-500) l c h / 5%),
-    oklch(from var(--color-primary-500) l c h / 15%)
-  );
+  --selection-color: oklch(from var(--color-primary-500) l c h / 5%);
 
   /* Surfaces & UI */
   --color-surface: light-dark(var(--color-stone-50), var(--color-zinc-900));

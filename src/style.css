@@ -86,14 +86,11 @@
   margin-top: 0 !important;
 }
 
-/* Global selection styling (matches blog.css @scope selection) */
+/* Global selection styling */
 ::selection {
-  background: light-dark(
-    oklch(from var(--color-primary-500) l c h / 5%),
-    oklch(from var(--color-primary-500) l c h / 15%)
-  );
-  color: light-dark(var(--color-primary-500), var(--color-primary-400));
-  text-decoration: dotted underline light-dark(var(--color-primary-500), var(--color-primary-400));
+  background: var(--selection-color);
+  color: var(--color-accent);
+  text-decoration: dotted underline var(--color-accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }

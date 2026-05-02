@@ -70,14 +70,6 @@
     border-radius: 0.25rem;
   }
 
-  ::selection {
-    background: var(--selection-color);
-    color: var(--color-accent);
-    text-decoration: dotted underline var(--color-accent);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-  }
-
   /* Layout wrapper for post content + Table of Contents */
   .blog-layout {
     display: flex;

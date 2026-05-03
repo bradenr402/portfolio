@@ -50,6 +50,13 @@ function extractDateFromPath(pathStr) {
   }
 }
 
+function renderMarkdoc(content, config) {
+  const ast = Markdoc.parse(content);
+  const transformed = Markdoc.transform(ast, config);
+  const rendered = Markdoc.renderers.html(transformed);
+  return processHtmlOutput(rendered);
+}
+
 function renderTagsHtml(tags) {
   if (!tags || tags.length === 0) return '';
 
@@ -259,13 +266,17 @@ function buildUpdatesHtml(updates) {
     normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
   );
 
+
   const items = sorted
     .map((update) => {
-      const dateStr = normalizeDate(update.date);
+      const datetime = normalizeDate(update.date);
+      const displayDate = formatDate(datetime) || datetime;
+      const description = renderMarkdoc(update.description, markdocConfig);
+
       return renderTemplate(BLOG_UPDATE_ITEM_TEMPLATE, {
-        datetime: dateStr,
-        displayDate: formatDate(dateStr) || dateStr,
-        description: update.description,
+        datetime,
+        displayDate,
+        description,
       });
     })
     .join('\n');

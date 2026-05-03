@@ -2,13 +2,13 @@
 title: How I Built My Blog
 updates:
   - date: 2026-03-14
-    description: Updated component example in <a href="#scoped-styles">Scoped Styles</a>.
+    description: Updated component example in [Scoped Styles](#scoped-styles).
 
   - date: 2026-03-14
-    description: Updated description of mail links in <a href="#clear--intuitive-links">Clear & Intuitive Links</a>.
+    description: Updated description of mail links in [Clear & Intuitive Links](#clear--intuitive-links).
 
   - date: 2026-03-27
-    description: Fixed alt text for images in <a href="#scoped-styles">Scoped Styles</a>.
+    description: Fixed alt text for images in [Scoped Styles](#scoped-styles).
 ---
 
 If you’ve been thinking about building your own personal blog, the tooling choices can feel endless. There are so many frameworks, static site generators, and CMSes available today. There’s nothing wrong with any of these, but they can be limiting when it comes to design and functionality.

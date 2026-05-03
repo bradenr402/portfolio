@@ -1005,12 +1005,6 @@
 
     /* Smooth scrolling on iOS */
     -webkit-overflow-scrolling: touch;
-
-    border-radius: 0.75rem;
-    @supports (corner-shape: squircle) {
-      corner-shape: squircle;
-      border-radius: 1.5rem;
-    }
   }
 
   pre > code:is(.language-bash, .language-sh, .language-zsh)::before {
@@ -1023,6 +1017,12 @@
   pre > code {
     /* Space for copy button */
     padding-right: 3rem !important;
+
+    border-radius: 0.75rem;
+    @supports (corner-shape: squircle) {
+      corner-shape: squircle;
+      border-radius: 1.5rem;
+    }
   }
 
   .code-block-wrapper {

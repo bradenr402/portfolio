@@ -70,7 +70,8 @@
   .blog-toc__item > a {
     display: block;
     width: 100%;
-    padding-block: 0.15rem;
+    padding-block: 0.25rem;
+    line-height: 1.2;
     text-decoration: none;
 
     color: var(--color-faint);

@@ -153,6 +153,24 @@
       border-radius: 9999px;
       background: var(--color-accent);
     }
+
+    ul {
+      margin-block: 0.15rem !important;
+      margin-left: 0.3rem !important;
+    }
+
+    li {
+      &:not(:first-of-type) {
+        margin-top: 0.1rem !important;
+      }
+      &:not(:last-of-type) {
+        margin-bottom: 0.1rem !important;
+      }
+
+      &::before {
+        color: var(--color-faint) !important;
+      }
+    }
   }
 
   .blog-update time {

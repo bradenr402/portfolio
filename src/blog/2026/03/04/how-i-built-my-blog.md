@@ -9,6 +9,11 @@ updates:
 
   - date: 2026-03-27
     description: Fixed alt text for images in [Scoped Styles](#scoped-styles).
+
+  - date: 2026-05-01
+    description: |
+      - Added an example screenshot in [Text Selection](#text-selection).
+      - Revised the explanation to reflect that the `::selection` styles now live in the global stylesheet instead of the blog stylesheet.
 ---
 
 If you’ve been thinking about building your own personal blog, the tooling choices can feel endless. There are so many frameworks, static site generators, and CMSes available today. There’s nothing wrong with any of these, but they can be limiting when it comes to design and functionality.
@@ -546,21 +551,21 @@ Highlights use `box-decoration-break: clone` to ensure highlights that span mult
 
 ### Text Selection
 
-In the same vein as custom highlights, I also wanted to make the text selection experience a little nicer. By chance, I recently came across [History of Software Design](https://historyofsoftware.org/), which has a really nice text selection style that changes the color of the text and adds a dashed underline. I loved the effect and decided to implement something similar on my blog.
+In the same vein as custom highlights, I also wanted to make the text selection experience a little nicer. By chance, I recently came across [History of Software Design](https://historyofsoftware.org/), which has a really nice text selection style that changes the color of the text and adds a dashed underline:
 
-So I defined a custom selection style using the `::selection` pseudo-element:
+![History of Software Design text selection](history-of-software-text-selection.webp)
+
+I loved the effect and decided to implement something similar on my site.
+
+Since I wanted this to apply across my entire site (not just the blog), I defined a custom selection style in my global stylesheet using the `::selection` pseudo-element:
 
 ```css
-/* src/blog.css */
-:scope (.blog) to (.blog-reset) {
-  --selection-color: light-dark(
-    oklch(from var(--color-primary-500) l c h / 5%),
-    oklch(from var(--color-primary-500) l c h / 15%)
-  );
+/* src/theme.css */
+@theme {
+  --selection-color: oklch(from var(--color-primary-500) l c h / 5%);
 }
 
-/* ... */
-
+/* src/style.css */
 ::selection {
   background: var(--selection-color);
   color: var(--color-accent);
@@ -570,7 +575,7 @@ So I defined a custom selection style using the `::selection` pseudo-element:
 }
 ```
 
-I opted for a `dotted` underline instead of a dashed one to prevent the underline from shifting around too much as the selection changes. The color and underline alone still felt just a little too subtle, so I added a mostly-transparent background color to make it a bit more obvious when text is selected.
+I opted for a `dotted` underline instead of `dashed` to prevent the underline from shifting around too much as the selection changes. The color and underline alone still felt just a little too subtle, so I added a mostly-transparent background color to make it a bit more obvious when text is selected.
 
 ### Images & Figures
 

@@ -57,6 +57,16 @@ function renderMarkdoc(content, config) {
   return processHtmlOutput(rendered);
 }
 
+function renderMarkdocWithHeadings(content, config) {
+  const ast = Markdoc.parse(content);
+  const transformed = Markdoc.transform(ast, config);
+
+  const headings = collectHeadings(transformed);
+  const html = processHtmlOutput(Markdoc.renderers.html(transformed));
+
+  return { headings, html };
+}
+
 function renderTagsHtml(tags) {
   if (!tags || tags.length === 0) return '';
 
@@ -154,13 +164,7 @@ function processMarkdown(content, filepath) {
     ...markdocConfig,
   };
 
-  const ast = Markdoc.parse(markdownBody);
-  const markdocContent = Markdoc.transform(ast, markdocConfigWithFrontmatter);
-
-  const headings = collectHeadings(markdocContent);
-
-  let html = Markdoc.renderers.html(markdocContent);
-  html = processHtmlOutput(html);
+  const { headings, html } = renderMarkdocWithHeadings(markdownBody, markdocConfigWithFrontmatter);
 
   return {
     html,

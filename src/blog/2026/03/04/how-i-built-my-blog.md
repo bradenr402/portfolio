@@ -464,7 +464,7 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
   </div>
 </div>
 
-Without `@scope`, the styles from the blog would bleed into this section, causing visual inconsistencies. The difference  is quite obvious if I remove the `blog-reset` wrapper.
+Without `@scope`, the styles from the blog would bleed into this section, causing visual inconsistencies. The difference is quite obvious if I remove the `blog-reset` wrapper.
 
 #### Example of a section without `.blog-reset`:
 

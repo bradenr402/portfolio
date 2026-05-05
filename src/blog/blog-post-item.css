@@ -75,7 +75,7 @@
     &:not(:last-child)::after {
       content: '';
       display: block;
-      height: 0.5px;
+      height: var(--hairline);
       width: calc(100% - var(--item-horizontal-padding) * 2);
       margin-inline: auto;
       background: var(--color-border-light);

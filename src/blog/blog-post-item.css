@@ -1,11 +1,13 @@
 @scope (.blog-post-list) to (.blog-reset) {
   :scope {
     --hover-transition: 60ms;
+    --item-vertical-padding: 0.5rem;
+    --item-horizontal-padding: 0.75rem;
 
     position: relative;
     list-style: none;
     padding: 0;
-    margin: 1.5rem -0.75rem 0;
+    margin: 1.5rem calc(var(--item-horizontal-padding) * -1) 0;
     isolation: isolate;
   }
 
@@ -47,7 +49,7 @@
       display: flex;
       justify-content: space-between;
       gap: 0.5rem;
-      padding: 0.5rem 0.75rem;
+      padding: var(--item-vertical-padding) var(--item-horizontal-padding);
 
       /* Override default link styles */
       text-decoration: none;
@@ -71,16 +73,18 @@
       opacity: 20%;
     }
 
+    /* Pseudo-element border below each item except the last */
     &:not(:last-child)::after {
       content: '';
       display: block;
       height: 0.5px;
-      width: 98%;
+      width: calc(100% - var(--item-horizontal-padding) * 2);
       margin-inline: auto;
       background: var(--color-border-light);
       transition: opacity var(--hover-transition);
     }
 
+    /* Hide pseudo-element borders on hover */
     &:hover::after,
     &:has(+ &:hover)::after {
       opacity: 0;
@@ -97,7 +101,6 @@
       font-size: 0.85rem;
       color: var(--color-faint);
       white-space: nowrap;
-      margin-top: 0.2rem;
     }
   }
 

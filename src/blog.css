@@ -979,8 +979,8 @@
     font-size: 0.8em;
 
     /* Base code styles */
-    border: 1px solid var(--color-border-light);
-    padding: 0.2rem 0.3rem;
+    border: var(--hairline) solid var(--color-border-light);
+    padding: 0.2rem 0.25rem 0.25rem;
 
     /* Allow long inline code snippets to wrap */
     overflow-wrap: break-word;
@@ -993,8 +993,8 @@
 
     /* Using !important to override the background applied by highlight.js */
     background: light-dark(
-      white,
-      color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))
+      var(--color-bg),
+      color-mix(in oklch, var(--color-surface) 75%, var(--color-bg))
     ) !important;
   }
 
@@ -1017,12 +1017,20 @@
   pre > code {
     /* Space for copy button */
     padding-right: 3rem !important;
+    padding: 1.1em !important;
 
     border-radius: 0.75rem;
     @supports (corner-shape: squircle) {
       corner-shape: squircle;
       border-radius: 1.5rem;
     }
+
+    /* Using !important to override the background applied by highlight.js */
+    background: light-dark(
+      var(--color-surface),
+      color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))
+    ) !important;
+
   }
 
   .code-block-wrapper {
@@ -1040,18 +1048,18 @@
     /* Position in top right corner */
     grid-area: 1 / 1;
     position: sticky;
-    top: 0.4rem;
+    top: 0.5em;
     z-index: 10;
     justify-self: end;
     align-self: start;
-    margin: 0.4rem;
+    margin: 0.5em;
 
     /* Visual styling */
-    padding: 0.4rem;
+    padding: 0.5em;
     cursor: pointer;
     color: var(--color-muted);
     background: light-dark(
-      var(--color-bg),
+      var(--color-surface),
       color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))
     );
 
@@ -1066,7 +1074,10 @@
     }
 
     &:hover {
-      background: var(--color-surface-alt);
+      background: light-dark(
+        color-mix(in oklch, var(--color-surface-alt) 50%, var(--color-surface-hover)),
+        var(--color-surface-alt)
+      );
     }
 
     &:active {

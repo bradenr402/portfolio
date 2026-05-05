@@ -53,11 +53,9 @@
 
       /* Override default link styles */
       text-decoration: none;
-    }
-
-    /* Override default link hover color change */
-    a:hover {
-      color: inherit;
+      &:hover {
+        color: inherit;
+      }
     }
 
     /* Stack on top of hover highlight */

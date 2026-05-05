@@ -9,7 +9,9 @@
     isolation: isolate;
   }
 
-  .blog-post-highlight {
+  :scope::before {
+    content: '';
+    display: inline-block;
     position: absolute;
     z-index: 0;
     pointer-events: none;
@@ -22,12 +24,13 @@
       border-radius: 1rem;
     }
 
-    transition: top var(--hover-transition) ease;
+    transition: inset calc(var(--hover-transition) * 2) var(--gentler-spring), opacity var(--hover-transition);
+    will-change: inset, opacity;
 
-    top: anchor(--hovered-item top);
-    left: anchor(--hovered-item left);
-    width: anchor-size(--hovered-item width);
-    height: anchor-size(--hovered-item height);
+    transform-origin: center;
+
+    position-anchor: --hovered-item;
+    inset: anchor(inside);
   }
 
   .blog-post-item {

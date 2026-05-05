@@ -1,6 +1,6 @@
 @scope (.blog-post-list) to (.blog-reset) {
   :scope {
-    --hover-transition: 50ms;
+    --hover-transition: 60ms;
 
     position: relative;
     list-style: none;
@@ -68,7 +68,7 @@
     }
 
     .blog-post-list:has(&:hover) &:not(:hover) {
-      opacity: 25%;
+      opacity: 20%;
     }
 
     &:not(:last-child)::after {

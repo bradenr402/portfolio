@@ -132,7 +132,7 @@
   .blog-layout__actions-wrapper:has(.blog-layout__actions)::before {
     content: '';
     display: block;
-    height: 1px;
+    height: var(--hairline);
     width: 100%;
     background: var(--color-border-light);
     border-radius: 9999px;
@@ -642,7 +642,7 @@
       margin-bottom: 6rem;
     }
 
-    height: 1px;
+    height: var(--hairline);
     width: 100%;
     background: var(--color-border-light);
     border-radius: 9999px;

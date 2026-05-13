@@ -1,4 +1,4 @@
-@scope (.blog) to (.blog-reset) {
+@scope (.blog-layout__aside) {
   :scope {
     --toc-inline-padding: 1rem;
     --level-indent: 0.75rem;
@@ -11,19 +11,21 @@
     color: var(--color-muted);
     text-align: left;
 
-    max-height: calc(100vh - (3 * var(--toc-vertical-padding)));
-    overflow-y: auto;
-    overscroll-behavior: none;
+    @media (min-width: 48rem) {
+      max-height: calc(100vh - (3 * var(--toc-vertical-padding)));
+      overflow-y: auto;
+      overscroll-behavior: contain;
 
-    mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      black var(--toc-fade-top, 0%),
-      black calc(100% - var(--toc-fade-bottom, 0%)),
-      transparent 100%
-    );
-    animation: blog-toc-scroll-mask linear;
-    animation-timeline: scroll(self);
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black var(--toc-fade-top, 0%),
+        black calc(100% - var(--toc-fade-bottom, 0%)),
+        transparent 100%
+        );
+      animation: blog-toc-scroll-mask linear;
+      animation-timeline: scroll(self);
+    }
 
     /* Hide scrollbar for IE and Edge */
     -ms-overflow-style: none;

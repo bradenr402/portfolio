@@ -41,10 +41,10 @@
     --line-height: 1.5;
     --max-width: 56rem;
 
-
     &:has(.blog-layout__aside) {
       --max-width: 84rem;
       --toc-width: 18rem;
+      --toc-vertical-padding: 3rem;
     }
   }
 
@@ -73,17 +73,49 @@
   /* Layout wrapper for post content + Table of Contents */
   .blog-layout {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    --toc-gap: 2.5rem;
+    gap: var(--toc-gap);
+
+    .blog-layout__aside::after {
+      content: '';
+      display: block;
+      margin-top: var(--toc-gap);
+      height: var(--hairline);
+      width: 100%;
+      background: var(--color-border-light);
+      border-radius: 9999px;
+    }
+
+    /* Layout for larger screens */
+    @media (min-width: 48rem) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      --toc-gap: 4rem;
+
+      .blog-layout__aside::after {
+        display: none;
+      }
+
+      .blog-layout__content {
+        flex: 1 1 auto;
+      }
+
+      .blog-layout__aside {
+        display: block;
+        flex: 0 0 var(--toc-width);
+
+        position: sticky;
+        top: var(--toc-vertical-padding);
+        bottom: var(--toc-vertical-padding);
+      }
+    }
   }
 
   .blog-layout__content {
     min-width: 0;
     max-width: min(85ch, calc(100vw - var(--horizontal-padding) * 2));
-  }
-
-  .blog-layout__aside {
-    display: none;
-    /* Shown on larger screens via media query below */
   }
 
   .blog-layout__actions {
@@ -183,35 +215,6 @@
 
   .blog-update p {
     margin: 0 !important;
-  }
-
-  /* Layout for larger screens */
-  @media (min-width: 48rem) {
-    :scope {
-      /* Avoid collision with left nav on larger screens */
-      padding-left: 4rem;
-    }
-
-    .blog-layout {
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 4rem;
-    }
-
-    .blog-layout__content {
-      flex: 1 1 auto;
-    }
-
-    .blog-layout__aside {
-      display: block;
-      flex: 0 0 var(--toc-width);
-      position: sticky;
-
-      --toc-vertical-padding: 3rem;
-      top: var(--toc-vertical-padding);
-      bottom: var(--toc-vertical-padding);
-    }
   }
 
   /* Headings */

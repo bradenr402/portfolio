@@ -226,7 +226,7 @@
     --ratio: 1.25;
 
     @media (max-width: 48rem) {
-      --ratio: 1.20;
+      --ratio: 1.2;
     }
 
     font-weight: 700;
@@ -1037,7 +1037,6 @@
       var(--color-surface),
       color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))
     ) !important;
-
   }
 
   .code-block-wrapper {

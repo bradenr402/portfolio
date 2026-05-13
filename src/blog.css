@@ -636,8 +636,12 @@
   .blog-header-wrapper::after {
     content: '';
     display: block;
-    margin-top: 3rem;
-    margin-bottom: 4rem;
+    margin-block: 3rem;
+
+    @media (min-width: 48rem) {
+      margin-bottom: 6rem;
+    }
+
     height: 1px;
     width: 100%;
     background: var(--color-border-light);

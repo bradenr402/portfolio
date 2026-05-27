@@ -616,7 +616,7 @@
       counter-increment: list-counter;
 
       &::before {
-        content: counter(list-counter) '. ';
+        content: counter(list-counter) '.';
         font-variant-numeric: tabular-nums;
       }
     }

@@ -523,7 +523,7 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
   </div>
 </div>
 
-The blog styles are leaking into the images in the component, messing up the image styles, spacing, and even the color of the captions. The first example (with `.blog-reset`) retains the intended design of that section, while the second example (without `.blog-reset`) is affected by the blog’s styles bleeding into it, disrupting the intended design.
+The blog styles are leaking into the images in the component, messing up the layout, the image styles, and even the color of the captions. The first example (with `.blog-reset`) retains the intended design of that section, while the second example (without `.blog-reset`) is affected by the blog’s styles bleeding into it, disrupting the intended design.
 
 ### Heading Links & Table of Contents
 

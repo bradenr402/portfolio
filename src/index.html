@@ -39,8 +39,8 @@
           class="pt-[calc(var(--vertical-padding)*3)] pb-(--bottom-padding)"
         >
           <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
-            <div class="hidden sm:block"></div>
-            <div class="hidden sm:block"></div>
+            <div class="max-sm:hidden"></div>
+            <div class="max-sm:hidden"></div>
             <div class="grid gap-y-6 sm:grid-cols-[1fr_auto] sm:gap-x-8 sm:gap-y-4">
               <div class="min-w-0">
                 <h1 class="text-4xl font-bold tracking-tight">
@@ -113,11 +113,11 @@
         <section id="work" class="py-(--vertical-padding)">
           <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
             <h2
-              class="mb-4 text-sm text-faint sm:sticky sm:top-2 sm:mb-0 sm:self-start sm:text-right"
+              class="text-sm text-faint max-sm:mb-4 sm:sticky sm:top-2 sm:self-start sm:text-right"
             >
               Work
             </h2>
-            <div class="hidden rounded-full bg-(--color-border) sm:block" aria-hidden="true"></div>
+            <div class="rounded-full bg-(--color-border) max-sm:hidden" aria-hidden="true"></div>
             <div class="space-y-4">
               <div class="[--logo-size:calc(var(--spacing)_*_5)]">
                 <span class="group inline-flex items-center gap-[calc(var(--logo-size)_/_2)]">
@@ -155,11 +155,11 @@
         <section id="projects" class="py-(--vertical-padding)">
           <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
             <h2
-              class="mb-4 text-sm text-faint sm:sticky sm:top-2 sm:mb-0 sm:self-start sm:text-right"
+              class="text-sm text-faint max-sm:mb-4 sm:sticky sm:top-2 sm:self-start sm:text-right"
             >
               Projects
             </h2>
-            <div class="hidden rounded-full bg-(--color-border) sm:block" aria-hidden="true"></div>
+            <div class="rounded-full bg-(--color-border) max-sm:hidden" aria-hidden="true"></div>
             <div class="space-y-8">
               <!-- JobJournal -->
               <div>
@@ -217,11 +217,11 @@
         <section id="content" class="py-(--vertical-padding)">
           <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
             <h2
-              class="mb-4 text-sm text-faint sm:sticky sm:top-2 sm:mb-0 sm:self-start sm:text-right"
+              class="text-sm text-faint max-sm:mb-4 sm:sticky sm:top-2 sm:self-start sm:text-right"
             >
               Content
             </h2>
-            <div class="hidden rounded-full bg-(--color-border) sm:block" aria-hidden="true"></div>
+            <div class="rounded-full bg-(--color-border) max-sm:hidden" aria-hidden="true"></div>
             <div>
               <ul class="blog-post-list">
                 {{recentPosts}}
@@ -237,11 +237,11 @@
         <section id="moments" class="py-(--vertical-padding)">
           <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
             <h2
-              class="mb-4 text-sm text-faint sm:sticky sm:top-2 sm:mb-0 sm:self-start sm:text-right"
+              class="text-sm text-faint max-sm:mb-4 sm:sticky sm:top-2 sm:self-start sm:text-right"
             >
               Moments
             </h2>
-            <div class="hidden rounded-full bg-(--color-border) sm:block" aria-hidden="true"></div>
+            <div class="rounded-full bg-(--color-border) max-sm:hidden" aria-hidden="true"></div>
             <div class="photo-gallery">
               <figure class="photo-card sm:z-1 sm:translate-y-3" style="--rotation: -9deg">
                 <div class="photo-card-img-wrapper">

@@ -1,0 +1,66 @@
+@reference './style.css';
+
+/* Page Layout */
+@scope (.page-404) {
+  :scope {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+  }
+
+  .page-404__hero {
+    max-width: 76ch;
+  }
+
+  .page-404__intro {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    text-wrap: pretty;
+    margin-bottom: 1.5rem;
+  }
+
+  .page-404__body {
+    max-width: 76ch;
+    color: var(--color-muted);
+    text-wrap: pretty;
+
+    a:not(:hover) {
+      color: var(--color-text);
+    }
+  }
+
+  .page-404__rule {
+    border: 0;
+    height: var(--hairline);
+    border-radius: 9999px;
+    background-color: var(--color-border-light);
+  }
+}
+
+/* Numeral */
+.page-404__numeral {
+  width: max-content;
+  margin-bottom: 1.5rem;
+  line-height: 1;
+  font-weight: 700;
+  font-size: clamp(9rem, 15vw, 14rem);
+  color: light-dark(var(--color-primary-400), var(--color-primary-500));
+  text-shadow: 0 3.5px 6px oklch(0% 0 0 / 0.09);
+
+  animation: page-404-pop 900ms var(--spring) both;
+}
+
+@keyframes page-404-pop {
+  from {
+    opacity: 0;
+    scale: 0.85;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-404__numeral {
+    animation: none !important;
+  }
+}

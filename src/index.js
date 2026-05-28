@@ -1,5 +1,6 @@
 import './style.css';
 import './highlight-theme.css';
+import './404.css';
 
 import initBlogToc from './helpers/init-blog-toc.js';
 import initCodeCopyButtons from './helpers/init-code-copy-buttons.js';
@@ -11,6 +12,7 @@ import initPhotoGallery from './helpers/init-photo-gallery.js';
 const init = () => {
   initKonamiCode();
   initPhotoGallery();
+
   if (document.body.dataset.page === 'blog-post') {
     initBlogToc();
     initCodeCopyButtons();

@@ -404,6 +404,14 @@ function buildBlogIndexListHtml(posts) {
   return container.innerHTML;
 }
 
+const RECENT_POSTS_PLACEHOLDER = '{{recentPosts}}';
+const DEFAULT_RECENT_POSTS_COUNT = 5;
+
+function injectRecentPosts(html, posts, count = DEFAULT_RECENT_POSTS_COUNT) {
+  const listHtml = buildBlogIndexListHtml(posts.slice(0, count));
+  return html.replace(RECENT_POSTS_PLACEHOLDER, listHtml);
+}
+
 function buildStandaloneBlogIndexPage(blogDir, indexTemplatePath, indexPlaceholder) {
   const html = fs.readFileSync(indexTemplatePath, 'utf8');
 
@@ -419,5 +427,6 @@ export {
   buildBlogPostPage,
   buildBlogIndexListHtml,
   buildStandaloneBlogIndexPage,
+  injectRecentPosts,
   processMarkdown,
 };

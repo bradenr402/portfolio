@@ -5,7 +5,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { fileURLToPath } from 'url';
 
 // Helper functions
-import { collectBlogPostsMeta, buildBlogPostPage, buildBlogIndexListHtml, buildStandaloneBlogIndexPage, processMarkdown } from './src/helpers/blog-build.js';
+import { collectBlogPostsMeta, buildBlogPostPage, buildStandaloneBlogIndexPage, injectRecentPosts, processMarkdown } from './src/helpers/blog-build.js';
 import applyBaseLayout from './src/helpers/apply-base-layout.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -25,7 +25,6 @@ const BLOG_CSS_PATH = path.resolve(__dirname, 'src/blog.css');
 
 // Placeholders
 const BLOG_INDEX_PLACEHOLDER = '{{postList}}';
-const RECENT_POSTS_PLACEHOLDER = '{{recentPosts}}';
 
 // Collect all blog posts to generate HTML pages
 const blogPosts = collectBlogPostsMeta(BLOG_DIR);
@@ -60,6 +59,7 @@ export default {
   output: {
     path: DIST_DIR,
     filename: 'main.js',
+    publicPath: '/',
     clean: true,
   },
   devtool: 'inline-source-map',
@@ -84,25 +84,32 @@ export default {
             slug = slug.replace(/\/$/, '');
             if (!slug) return '/blog/index.html';
 
-            return `/blog/${slug}.html`;
+            // Check if this slug matches an actual blog post
+            const matchedPost = blogPosts.find((post) => post.slug === slug);
+            if (matchedPost) return `/blog/${slug}.html`;
+
+            return '/404.html';
           },
         },
+        { from: /.*/, to: '/404.html' },
       ],
     },
   },
   plugins: [
     new HtmlWebpackPlugin({
+      filename: '404.html',
+      favicon: FAVICON_PATH,
+      templateContent: () => {
+        const html = fs.readFileSync(path.resolve(__dirname, 'src/404.html'), 'utf8');
+        return applyBaseLayout(injectRecentPosts(html, blogPosts));
+      },
+    }),
+    new HtmlWebpackPlugin({
       filename: 'index.html',
       favicon: FAVICON_PATH,
       templateContent: () => {
-        let html = fs.readFileSync(path.resolve(__dirname, 'src/index.html'), 'utf8');
-
-        // Inject 5 most recent blog posts
-        const recentPosts = blogPosts.slice(0, 5);
-        const postsHtml = buildBlogIndexListHtml(recentPosts);
-        html = html.replace(RECENT_POSTS_PLACEHOLDER, postsHtml);
-
-        return applyBaseLayout(html);
+        const html = fs.readFileSync(path.resolve(__dirname, 'src/index.html'), 'utf8');
+        return applyBaseLayout(injectRecentPosts(html, blogPosts));
       },
     }),
     new HtmlWebpackPlugin({
@@ -138,7 +145,7 @@ export default {
         {
           // Copy blog/*.css to the output directory
           from: path.resolve(__dirname, 'src/blog/*.css'),
-          to({ context, absoluteFilename }) {
+          to({ absoluteFilename }) {
             const fileName = path.basename(absoluteFilename);
             return `blog/${fileName}`;
           }

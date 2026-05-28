@@ -113,6 +113,22 @@
 }
 
 /* Links */
+@utility internal-link {
+  text-decoration: dotted underline var(--color-faint);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+
+  transition:
+    color 100ms,
+    text-decoration-color 100ms;
+
+  @variant hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+    text-decoration-style: solid;
+  }
+}
+
 @utility external-link {
   --link-transition: 100ms;
   text-decoration: dotted underline var(--color-faint);

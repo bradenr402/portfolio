@@ -1022,9 +1022,13 @@
   }
 
   pre > code {
-    /* Space for copy button */
-    padding-right: 3rem !important;
+    /* Need !important to override hljs default padding */
     padding: 1.1em !important;
+
+    /* Space for copy button */
+    padding-right: 3.5em !important;
+
+    overscroll-behavior-x: none;
 
     border-radius: 0.75rem;
     @supports (corner-shape: squircle) {

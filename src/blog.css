@@ -558,9 +558,14 @@
     }
 
     figcaption {
+      text-wrap: pretty;
+      line-height: 1.4;
       color: var(--color-muted);
-      font-size: 0.875rem;
-      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      font-style: italic;
+      text-align: center;
+      margin-top: 0.6rem;
+      max-width: 80%;
     }
   }
 

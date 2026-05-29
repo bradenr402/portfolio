@@ -972,13 +972,17 @@
   }
 
   blockquote p {
-    margin: 0.75rem 0;
+    margin-block: 0.75rem;
 
     &:first-of-type {
       margin-top: 0;
     }
 
     &:last-of-type {
+      margin-block: 0;
+    }
+
+    &:nth-last-of-type(2) {
       margin-bottom: 0;
     }
   }

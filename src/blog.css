@@ -939,6 +939,7 @@
   blockquote:has(cite)::before {
     color: var(--color-quote-mark);
     content: '“';
+    font-style: normal;
     font-size: 4em;
     line-height: 0.1em;
     margin-left: -0.1em;

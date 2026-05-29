@@ -920,6 +920,9 @@
       corner-shape: squircle;
       border-radius: 1.5rem;
     }
+
+    text-align: justify;
+    hyphens: auto;
   }
 
   /* Blockquote citation styling */

@@ -553,7 +553,10 @@ Highlights use `box-decoration-break: clone` to ensure highlights that span mult
 
 In the same vein as custom highlights, I also wanted to make the text selection experience a little nicer. By chance, I recently came across [History of Software Design](https://historyofsoftware.org/), which has a really nice text selection style that changes the color of the text and adds a dashed underline:
 
-![History of Software Design text selection](history-of-software-text-selection.webp)
+<figure>
+  ![History of Software Design text selection](history-of-software-text-selection.webp)
+  <figcaption>Text selection effect on [History of Software Design](https://historyofsoftware.org/)</figcaption>
+</figure>
 
 I loved the effect and decided to implement something similar on my site.
 

@@ -541,7 +541,7 @@ Links have different styles depending on their destination.
 
 ### Custom Highlights
 
-The default browser yellow highlight for `<mark>` elements is&hellip; <span style="background-color: yellow; color: black;">a bit harsh</span>. So I added a custom style for them that fits better with the overall design, along with some additional fun color options, which I can easily apply with classes like `.green`, `.red` or `.purple`.
+The default browser yellow highlight for `<mark>` elements is&hellip; <span style="background-color: yellow; color: black;">a bit harsh</span>. So I added a custom style for them that fits better with the overall design, along with some additional fun color options, which I can easily apply with classes like `.green`, `.red`, or `.purple`.
 
 Text highlights are a <mark class="yellow">great way</mark> to draw <mark class="orange">attention</mark> to <mark class="purple">important points</mark> or <mark class="green">key takeaways</mark>. You can also use them for a little bit of <mark class="pink">stylistic flair</mark>, or for warnings. For example: <mark class="red">don’t include six highlights in a single paragraph!</mark>
 

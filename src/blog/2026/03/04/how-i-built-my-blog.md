@@ -547,7 +547,7 @@ Text highlights are a <mark class="yellow">great way</mark> to draw <mark class=
 
 Highlights use `box-decoration-break: clone` to ensure highlights that span multiple lines look continuous across line breaks, without any awkward gaps. <mark>Here’s a really long one to demonstrate that effect. Notice how the highlight wraps around the text smoothly, even as it breaks across lines.</mark> These are the kinds of details that I obsess over. Without `box-decoration-break: clone`, <mark class="red" style="box-decoration-break: initial">the highlight would have flat edges at each line break, which can look a bit disjointed.</mark>
 
-> I can imagine using highlights inside blockquotes to give the reader the feeling of a <mark class="yellow">highlighter pen annotating a physical book</mark>. This adds a tactile, personal touch to the content, making it feel more engaging and less like a standard web page. The web should be a place of <mark class="pink">beauty</mark> and <mark class="purple">personality</mark>, not just a sea of black text on a white background!
+> Imagine using highlights inside blockquotes to give the reader the feeling of a <mark class="yellow">highlighter pen annotating a physical book</mark>. This adds a tactile, personal touch to the content, making it feel more engaging and less like a standard web page. The web should be a place of <mark class="pink">beauty</mark> and <mark class="purple">personality</mark>, not just a sea of black text on a white background!
 
 ### Text Selection
 
@@ -575,7 +575,7 @@ Since I wanted this to apply across my entire site (not just the blog), I define
 }
 ```
 
-I opted for a `dotted` underline instead of `dashed` to prevent the underline from shifting around too much as the selection changes. The color and underline alone still felt just a little too subtle, so I added a mostly-transparent background color to make it a bit more obvious when text is selected.
+I opted for a `dotted` underline instead of `dashed` to prevent the underline from shifting around too much as the selection changes. The color and underline alone still felt just a little too subtle, so I added a mostly-transparent background color to make it a bit more obvious when text is selected. Go ahead and try selecting some text in this post to see the effect.
 
 ### Images & Figures
 

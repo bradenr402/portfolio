@@ -74,8 +74,9 @@ function inlineIcons(html) {
     const svgElement = fragment.querySelector('svg');
     if (!svgElement) continue;
 
-    svgElement.dataset.icon = iconName;
-    svgElement.classList.add(...element.classList);
+    for (const { name, value } of element.attributes) {
+      svgElement.setAttribute(name, value);
+    }
 
     element.replaceWith(svgElement);
   }

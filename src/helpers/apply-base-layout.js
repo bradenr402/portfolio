@@ -90,7 +90,7 @@ function highlightCodeBlocks(html) {
 
   for (const codeEl of codeBlocks) {
     const classList = Array.from(codeEl.classList);
-    const langClass = classList.find(c => c.startsWith('language-'));
+    const langClass = classList.find((c) => c.startsWith('language-'));
     const explicitLang = langClass?.replace(/^language-/, '');
 
     const codeText = codeEl.textContent || '';
@@ -114,11 +114,13 @@ function highlightCodeBlocks(html) {
 }
 
 export default function applyBaseLayout(html) {
-  return [
+  const transformations = [
     injectNav,
     injectFooter,
     setFooterYear,
     inlineIcons,
-    highlightCodeBlocks
-  ].reduce((result, fn) => fn(result), html)
+    highlightCodeBlocks,
+  ];
+
+  return transformations.reduce((result, fn) => fn(result), html);
 }

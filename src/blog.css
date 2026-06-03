@@ -91,8 +91,8 @@
     @media (min-width: 48rem) {
       flex-direction: row;
       align-items: flex-start;
-      justify-content: space-between;
-      --toc-gap: 4rem;
+      justify-content: center;
+      --toc-gap: clamp(4rem, 6vw, 12rem);
 
       .blog-layout__aside::after {
         display: none;

@@ -65,7 +65,7 @@ function setFooterYear(html) {
 function inlineIcons(html) {
   const dom = new JSDOM(html);
 
-  for (const element of dom.window.document.querySelectorAll('span[data-icon]')) {
+  for (const element of dom.window.document.querySelectorAll('i[data-icon]')) {
     const iconName = element.dataset.icon;
     const svgContent = getIconSvg(iconName);
     if (!svgContent) continue;

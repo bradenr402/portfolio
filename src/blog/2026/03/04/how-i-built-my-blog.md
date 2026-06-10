@@ -141,14 +141,14 @@ Here’s how it works:
 
 - **Default behavior**:
   - External links (starting with `http`) open in a new tab:  
-    `[Google](https://www.google.com)` <span data-icon="arrow-right" class="inline size-4"></span> `<a href="https://www.google.com" target="_blank">Google</a>`
+    `[Google](https://www.google.com)` <i data-icon="arrow-right" class="inline size-4"></i> `<a href="https://www.google.com" target="_blank">Google</a>`
   - Internal links open in the same tab:  
-    `[Home](/)` <span data-icon="arrow-right" class="inline size-4"></span> `<a href="/">Home</a>`
+    `[Home](/)` <i data-icon="arrow-right" class="inline size-4"></i> `<a href="/">Home</a>`
 - **Overrides**:
   - Prepending `newtab:` to the URL forces an internal link to open in a new tab:  
-    `[Home](newtab:/)` <span data-icon="arrow-right" class="inline size-4"></span> `<a href="/" target="_blank">Home</a>`
+    `[Home](newtab:/)` <i data-icon="arrow-right" class="inline size-4"></i> `<a href="/" target="_blank">Home</a>`
   - Prepending `sametab:` to the URL forces an external link to open in the _same_ tab:  
-    `[Google](sametab:https://​google.com)` <span data-icon="arrow-right" class="inline size-4"></span> `<a href="https://​google.com">Google</a>`
+    `[Google](sametab:https://​google.com)` <i data-icon="arrow-right" class="inline size-4"></i> `<a href="https://​google.com">Google</a>`
 
 #### Lists
 
@@ -821,18 +821,18 @@ I’m picky about icons. I don’t want to include a massive icon set when I won
 
 My solution is a manual “pipeline”. I create/download only the specific SVGs I need and drop them into `src/images/icons/`.
 
-In my code, I just write `<span data-icon="github"></span>`. During the build (again, using JSDOM), the system finds these spans, reads the actual SVG file from the disk, and inlines the SVG code directly into the HTML.
+In my code, I just write `<i data-icon="github"></i>`. During the build (again, using JSDOM), the system finds these spans, reads the actual SVG file from the disk, and inlines the SVG code directly into the HTML.
 
 This means no HTTP requests for icons, no massive font files, and perfect control over my icon library. Here’s an example:
 
 **Input:**
 
 ```html
-<span data-icon="rails" class="size-24"></span>
+<i data-icon="rails" class="size-24"></i>
 ```
 
 **Output:**
-<span data-icon="rails" class="size-24"></span>
+<i data-icon="rails" class="size-24"></i>
 
 ## Closing Thoughts
 

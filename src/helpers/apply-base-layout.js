@@ -49,16 +49,10 @@ function injectFooter(html) {
 
   const fragment = JSDOM.fragment(footerHtml);
   footerPlaceholder.replaceWith(fragment);
-  return dom.serialize();
-}
 
-function setFooterYear(html) {
-  const dom = new JSDOM(html);
   const footerYearSpan = dom.window.document.getElementById('footer-year');
-  if (!footerYearSpan) return html;
+  if (footerYearSpan) footerYearSpan.textContent = new Date().getFullYear().toString();
 
-  const year = new Date().getFullYear().toString();
-  footerYearSpan.textContent = year;
   return dom.serialize();
 }
 
@@ -117,7 +111,6 @@ export default function applyBaseLayout(html) {
   const transformations = [
     injectNav,
     injectFooter,
-    setFooterYear,
     inlineIcons,
     highlightCodeBlocks,
   ];

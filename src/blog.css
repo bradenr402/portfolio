@@ -306,9 +306,6 @@
       text-underline-offset: 0.15em !important;
       text-decoration: dotted underline var(--color-faint);
     }
-    &:hover :is(h2, h3, h4, h5, h6) {
-      color: var(--color-text);
-    }
 
     .anchor-icon {
       margin-left: 0.25rem;

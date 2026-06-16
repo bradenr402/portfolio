@@ -81,11 +81,6 @@
   border-bottom-width: var(--hairline);
 }
 
-/* Reset blog-post-list top margin on homepage (provided by blog-list-item.css @scope) */
-.blog-post-list {
-  margin-top: 0 !important;
-}
-
 /* Global selection styling */
 ::selection {
   background: var(--selection-color);

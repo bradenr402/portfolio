@@ -102,7 +102,7 @@ export const blogCard = {
       let tags = frontmatter.tags || [];
       const tagsHtml = tags.length > 0 ? tags.map(tag => `<span class="blog-post__tag">${tag}</span>`).join('') : '';
 
-      let template = fs.readFileSync(path.resolve(__dirname, '../../components/_blog-post-card.html'), 'utf8');
+      let template = fs.readFileSync(path.resolve(__dirname, '../../components/_blog-card.html'), 'utf8');
 
       const renderedHtml = renderTemplate(template, {
         href: `/blog/${normalizedSrc}`,
@@ -117,7 +117,7 @@ export const blogCard = {
 
       const fragment = JSDOM.fragment(renderedHtml);
 
-      if (!image) fragment.querySelector('.blog-post-card__thumb')?.remove();
+      if (!image) fragment.querySelector('.blog-card__thumb')?.remove();
 
       const outputTags = [];
 

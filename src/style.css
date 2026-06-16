@@ -2,7 +2,7 @@
 
 @import './theme.css';
 @import './fonts.css';
-@import './blog/blog-post-item.css';
+@import './blog/blog-list-item.css';
 
 @source '../src';
 
@@ -81,7 +81,7 @@
   border-bottom-width: var(--hairline);
 }
 
-/* Reset blog-post-list top margin on homepage (provided by blog-post-item.css @scope) */
+/* Reset blog-post-list top margin on homepage (provided by blog-list-item.css @scope) */
 .blog-post-list {
   margin-top: 0 !important;
 }

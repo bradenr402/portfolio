@@ -21,8 +21,8 @@ function readLocalTemplate(name) {
 }
 
 const BLOG_TOC_ITEM_TEMPLATE = readLocalTemplate('_blog-toc-item.html');
-const BLOG_POST_CARD_TEMPLATE = readLocalTemplate('_blog-post-card.html');
-const BLOG_POST_ITEM_TEMPLATE = readLocalTemplate('_blog-post-item.html');
+const BLOG_CARD_TEMPLATE = readLocalTemplate('_blog-card.html');
+const BLOG_LIST_ITEM_TEMPLATE = readLocalTemplate('_blog-list-item.html');
 const BLOG_ACTIONS_TEMPLATE = readLocalTemplate('_blog-actions.html');
 const BLOG_UPDATES_TEMPLATE = readLocalTemplate('_blog-updates.html');
 const BLOG_UPDATE_ITEM_TEMPLATE = readLocalTemplate('_blog-update-item.html');
@@ -363,7 +363,7 @@ function buildBlogPostPage(partial, template, metadata = null) {
 function renderBlogPostCardHtml(post) {
   const tagsHtml = renderTagsHtml(post.tags);
 
-  const html = renderTemplate(BLOG_POST_CARD_TEMPLATE, {
+  const html = renderTemplate(BLOG_CARD_TEMPLATE, {
     href: post.href,
     slug: post.slug ? `post-${post.slug.replace(/\//g, '-')}` : '',
     title: post.title,
@@ -377,7 +377,7 @@ function renderBlogPostCardHtml(post) {
 
   if (!post.image) {
     const dom = new JSDOM(html);
-    const thumb = dom.window.document.querySelector('.blog-post-card__thumb');
+    const thumb = dom.window.document.querySelector('.blog-card__thumb');
     if (thumb) thumb.remove();
     return dom.serialize();
   }
@@ -386,7 +386,7 @@ function renderBlogPostCardHtml(post) {
 }
 
 function renderBlogPostItemHtml(post) {
-  return renderTemplate(BLOG_POST_ITEM_TEMPLATE, { ...post });
+  return renderTemplate(BLOG_LIST_ITEM_TEMPLATE, { ...post });
 }
 
 function buildBlogIndexListHtml(posts) {
@@ -396,7 +396,7 @@ function buildBlogIndexListHtml(posts) {
 
   posts.forEach((post) => {
     const li = doc.createElement('li');
-    li.className = 'blog-post-item';
+    li.className = 'blog-list-item';
     li.innerHTML = renderBlogPostItemHtml(post);
     container.appendChild(li);
   });

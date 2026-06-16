@@ -2,8 +2,8 @@
 
 @import './theme.css';
 @import './fonts.css';
-@import './blog/blog-post-card.css';
-@import './blog/blog-post-item.css';
+@import './blog/blog-card.css';
+@import './blog/blog-list-item.css';
 @import './blog/blog-toc.css';
 
 /* A scoped blog stylesheet for content typography, images, tables, code, etc. */
@@ -529,7 +529,7 @@
   }
 
   /* Images inside articles */
-  article img:not(:where(header img, .blog-post-card__thumb img)) {
+  article img:not(:where(header img, .blog-card__thumb img)) {
     height: auto;
     margin: 1rem auto;
     border-radius: var(--radius-xs);
@@ -920,7 +920,7 @@
     flex-direction: column;
   }
 
-  /* Blog post item styles in blog/blog-post-item.css */
+  /* Blog list item styles in blog/blog-list-item.css */
 
   /* Blockquotes */
   blockquote {

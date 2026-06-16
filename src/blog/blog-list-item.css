@@ -35,7 +35,7 @@
     inset: anchor(inside);
   }
 
-  .blog-post-item {
+  .blog-list-item {
     margin: 0;
     transition: opacity var(--hover-transition);
     border-radius: 0.5rem;
@@ -88,13 +88,13 @@
       opacity: 0;
     }
 
-    .blog-post-item__title {
+    .blog-list-item__title {
       font-size: 1.05rem;
       font-weight: 600;
       text-wrap: pretty;
     }
 
-    .blog-post-item__date {
+    .blog-list-item__date {
       font-variant-numeric: tabular-nums;
       font-size: 0.85rem;
       color: var(--color-faint);

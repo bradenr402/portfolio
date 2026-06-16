@@ -1,0 +1,232 @@
+@scope (.blog-layout__content) to (.blog-reset) {
+  :scope {
+    --blog-card-transition-duration: 120ms;
+
+    --blog-card-background: light-dark(
+      var(--color-surface),
+      color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))
+    );
+
+    --shadow-color: 0% 0 0;
+    --blog-card-shadow-hover:
+      0 0.1px 0.2px oklch(var(--shadow-color) / 9%),
+      0 0.4px 0.8px -0.5px oklch(var(--shadow-color) / 9%),
+      0 0.7px 1.4px -1.1px oklch(var(--shadow-color) / 8%),
+      0 1.3px 2.6px -1.6px oklch(var(--shadow-color) / 7%),
+      0 2.3px 4.6px -2.1px oklch(var(--shadow-color) / 6%),
+      0 3.9px 7.8px -2.7px oklch(var(--shadow-color) / 5%),
+      0 6.2px 12.4px -3.2px oklch(var(--shadow-color) / 5%),
+      0 9.4px 18.8px -3.7px oklch(var(--shadow-color) / 4%);
+
+    --blog-card-thumb-shadow:
+      inset 0 0 0 1px oklch(var(--shadow-color) / 8%),
+      inset 0 4px 10px oklch(var(--shadow-color) / 18%);
+
+    --blog-card-padding: 0.5rem;
+    --blog-card-gap: 1rem;
+  }
+
+  .blog-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--blog-card-gap);
+
+    @media (max-width: 32rem) {
+      flex-direction: column;
+      align-items: start;
+    }
+
+    padding: var(--blog-card-padding);
+    background: var(--blog-card-background);
+    border: var(--hairline) solid var(--color-border-light);
+    text-decoration: none;
+    overflow: hidden;
+
+    border-radius: 0.75rem;
+    @supports (corner-shape: squircle) {
+      corner-shape: squircle;
+      border-radius: 1.5rem;
+    }
+
+    /* Override default link hover color change */
+    &:hover {
+      color: inherit;
+    }
+
+    scale: 1;
+    will-change: scale;
+    transition: var(--blog-card-transition-duration) ease-out;
+    transition-property: scale, box-shadow;
+
+    @media (prefers-color-scheme: dark) {
+      transition-property: scale, background, filter;
+    }
+
+    @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+      &:hover {
+        scale: 1.015;
+
+        @media (prefers-color-scheme: light) {
+          box-shadow: var(--blog-card-shadow-hover);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          filter: brightness(130%);
+        }
+      }
+
+      &:active {
+        scale: 1.005;
+      }
+    }
+
+    .blog-card__body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      align-self: stretch;
+
+      margin-block: calc(-1 * var(--blog-card-padding));
+      margin-right: calc(-1 * var(--blog-card-padding));
+
+      @media (max-width: 32rem) {
+        margin: 0;
+        align-items: end;
+      }
+    }
+
+    .blog-card__content {
+      @media (max-width: 32rem) {
+        padding-left: var(--blog-card-padding);
+        padding-bottom: var(--blog-card-padding);
+      }
+    }
+
+    .blog-card__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+
+      margin-block: calc(-1 * var(--blog-card-padding));
+      margin-right: calc(-1 * var(--blog-card-padding));
+      margin-left: auto;
+
+      padding: 0 1.75rem;
+      border-left: var(--hairline) solid var(--color-border-light);
+      background: light-dark(
+        var(--color-bg),
+        color-mix(in oklch, var(--color-surface) 90%, var(--color-bg))
+      );
+
+      svg {
+        flex-shrink: 0;
+        height: 1.5rem;
+        width: 1.5rem;
+        color: light-dark(var(--color-faint), var(--color-muted));
+        transform: translate(-0.4rem);
+        transition:
+          transform var(--ease-spring),
+          opacity var(--blog-card-transition-duration),
+          color var(--blog-card-transition-duration);
+
+        .blog-card:hover & {
+          color: light-dark(var(--color-soft), var(--color-text));
+          transform: translate(-0.1rem);
+        }
+      }
+
+      @media (max-width: 32rem) {
+        padding: 1.25rem;
+        margin: calc(var(--blog-card-padding) - var(--blog-card-gap)) 0 0;
+        border: var(--hairline) solid
+          color-mix(in oklch, var(--color-border) 50%, var(--color-border-light));
+
+        border-radius: 0.5rem;
+        @supports (corner-shape: squircle) {
+          corner-shape: squircle;
+          border-radius: 1rem;
+        }
+
+        svg {
+          transform: translate(-0.025rem, 0.025rem) rotate(-45deg);
+
+          .blog-card:hover & {
+            transform: translate(0.15rem, -0.15rem) rotate(-45deg);
+          }
+        }
+      }
+    }
+
+    .blog-card__title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem;
+      line-height: 1.15;
+      text-wrap: pretty;
+      max-width: fit-content;
+    }
+
+    .blog-card__meta {
+      font-size: 0.9rem;
+      color: var(--color-soft);
+      max-width: fit-content;
+
+      display: flex;
+      align-items: center;
+
+      & > *:not(:first-child)::before {
+        content: '·';
+        margin: 0 0.5rem;
+      }
+
+      time {
+        font-style: italic;
+      }
+    }
+
+    .blog-card__thumb {
+      --max-width: 8rem;
+      @media (max-width: 32rem) {
+        --max-width: none;
+      }
+
+      .blog-card:has(.blog-post__tag) & {
+        --max-width: 12rem;
+        @media (max-width: 32rem) {
+          --max-width: none;
+        }
+      }
+
+      width: auto;
+      max-width: var(--max-width);
+
+      max-height: fit-content;
+      overflow: hidden;
+      background: var(--color-bg);
+      box-shadow: var(--blog-card-thumb-shadow);
+
+      /* Inner radius = outer radius − padding (0.75 − 0.5 = 0.25 / 1.5 − 0.5 = 1) */
+      border-radius: 0.25rem;
+      @supports (corner-shape: squircle) {
+        corner-shape: squircle;
+        border-radius: 1rem;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+
+        border-radius: 0.25rem;
+        @supports (corner-shape: squircle) {
+          corner-shape: squircle;
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+}

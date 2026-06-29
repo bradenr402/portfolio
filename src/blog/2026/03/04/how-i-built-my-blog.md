@@ -14,6 +14,9 @@ updates:
     description: |
       - Added an example screenshot in [Text Selection](#text-selection).
       - Revised the explanation to reflect that the `::selection` styles now live in the global stylesheet instead of the blog stylesheet.
+
+  - date: 2026-06-29
+    description: Updated the [Tables](#tables) section with a more detailed explanation of the Markdoc table syntax.
 ---
 
 If you’ve been thinking about building your own personal blog, the tooling choices can feel endless. There are so many frameworks, static site generators, and CMSes available today. There’s nothing wrong with any of these, but they can be limiting when it comes to design and functionality.
@@ -246,59 +249,147 @@ export default {
 };
 ```
 
-Markdoc supports a nice [list-based syntax for defining tables](https://markdoc.dev/docs/tags#table), which is simpler, more flexible, and more powerful than the standard Markdown pipe-and-dash syntax. Markdoc tables support rich text, including code samples and lists, and even allow for custom attributes on cells if needed. I can just write the table as a list of rows and columns, and Markdoc takes care of the rest.
+##### Markdoc Table Syntax
 
-Here’s an example of the markdown for a table:
+Markdoc provides a nice [list-based table syntax](https://markdoc.dev/docs/tags#table) that differs from standard Markdown tables. Instead of cramming each row onto a single line delimited by pipes (`|`), you write each row as a list, separated by a horizontal rule (`---`). Each cell in the row is simply a list item, so it can contain full Markdown content.
 
-```md
+I love this for complex tables. It’s far easier to read, write, and maintain, and it lets cells hold richer content—paragraphs, lists, code blocks, even custom attributes—instead of flattening every row into one line.
+
+Here’s an example of how I would write a complex table with Markdoc syntax, rendered below:
+
+````md
 {% table %}
 
-- Header A {% .sticky %}
-- Header B
-- Header C
+- Capability {% .sticky %}
+- Markdown supports?
+- Markdoc supports?
+- Notes
 
 ---
 
-- Row 1, Col 1
-- Row 1, Col 2
-- Row 1, Col 3
+- Simple text
+- Supported {% .true %}
+- Supported {% .true %}
+- Plain text renders normally in both Markdown and Markdoc tables.
 
 ---
 
-- Row 2, Col 1
-- Row 2, Col 2
-- Row 2, Col 3
+- Inline formatting
+- Supported {% .true %}
+- Supported {% .true %}
+- *Italic*, **bold**, `inline code`, and [links](#).
+
+---
+
+- Multiple paragraphs
+- Supported {% .true %}
+- Limited;  
+  Only raw HTML {% .neutral %}
+-
+  This is the first paragraph.
+
+  This is the second paragraph.
+
+---
+
+- Bullet lists
+- Supported {% .true %}
+- Limited;  
+  Only raw HTML {% .neutral %}
+-
+  - Easy to write
+  - Easy to edit
+    - Supports nesting
+
+---
+
+- Code blocks
+- Supported {% .true %}
+- Not supported;  
+  Only inline code {% .false %}
+-
+  ```ruby
+  user = User.find_by(email: email)
+  user.update(name: "Braden")
+  ```
+
+---
+
+- Cell attributes
+- Supported {% .true %}
+- Not supported {% .false %}
+- Add a custom attribute, like classes: `{% .tint-accent %}`. {% .tint-accent %}
 
 {% /table %}
-```
+````
 
-Which is converted to the following markup:
+{% table %}
 
-```html
-<div class="table-wrapper">
-  <table>
-    <thead>
-      <tr>
-        <th class="sticky">Header A</th>
-        <th>Header B</th>
-        <th>Header C</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Row 1, Col 1</td>
-        <td>Row 1, Col 2</td>
-        <td>Row 1, Col 3</td>
-      </tr>
-      <tr>
-        <td>Row 2, Col 1</td>
-        <td>Row 2, Col 2</td>
-        <td>Row 2, Col 3</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-```
+- Capability {% .sticky %}
+- Markdown supports?
+- Markdoc supports?
+- Notes
+
+---
+
+- Simple text
+- Supported {% .true %}
+- Supported {% .true %}
+- Plain text renders normally in both Markdown and Markdoc tables.
+
+---
+
+- Inline formatting
+- Supported {% .true %}
+- Supported {% .true %}
+- *Italic*, **bold**, `inline code`, and [links](#).
+
+---
+
+- Multiple paragraphs
+- Supported {% .true %}
+- Limited;  
+  Only raw HTML {% .neutral %}
+-
+  This is the first paragraph.
+
+  This is the second paragraph.
+
+---
+
+- Bullet lists
+- Supported {% .true %}
+- Limited;  
+  Only raw HTML {% .neutral %}
+-
+  - Easy to write
+  - Easy to edit
+    - Supports nesting
+
+---
+
+- Code blocks
+- Supported {% .true %}
+- Not supported;  
+  Only inline code {% .false %}
+-
+  ```ruby
+  user = User.find_by(email: email)
+  user.update(name: "Braden")
+  ```
+
+---
+
+- Cell attributes
+- Supported {% .true %}
+- Not supported {% .false %}
+- Add a custom attribute, like classes: `{% .tint-accent %}`. {% .tint-accent %}
+
+{% /table %}
+
+Standard Markdown tables are great for simple, single-line data. But once a cell needs structured content, the format becomes restrictive, forcing you to lose formatting or resort to raw HTML.
+
+My rule: reach for a standard table when the data is simple, and Markdoc the moment a cell needs to do more.
 
 #### Skipping Headings in Table of Contents
 

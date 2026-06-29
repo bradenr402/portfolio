@@ -1,5 +1,5 @@
 import Markdoc from '@markdoc/markdoc';
-const { Tag } = Markdoc;
+const { Tag, nodes: defaultNodes } = Markdoc;
 import { blogCard } from './tags/blog-card.js';
 
 export default {
@@ -32,10 +32,13 @@ export default {
         const isNewTab = href.startsWith('newtab:');
         const isSameTab = href.startsWith('sametab:');
         const isExternal = href.startsWith('http');
+        const isHash = href == "#";
 
         if (isNewTab || (!isSameTab && isExternal)) {
           attributes.target = '_blank';
           attributes.rel = 'noopener noreferrer';
+        } else if (isHash) {
+          attributes.onclick = 'event.preventDefault();';
         }
 
         attributes.href = href.replace(/^(new|same)tab:/, '');
@@ -50,6 +53,20 @@ export default {
         const attributes = node.transformAttributes(config);
         const children = node.transformChildren(config);
         return new Tag('div', { class: 'table-wrapper' }, [new Tag('table', attributes, children)]);
+      },
+    },
+    td: {
+      ...defaultNodes.td,
+      attributes: {
+        ...defaultNodes.td.attributes,
+        style: { type: String },
+      },
+    },
+    th: {
+      ...defaultNodes.th,
+      attributes: {
+        ...defaultNodes.th.attributes,
+        style: { type: String },
       },
     },
     // Custom list item node to wrap content in a div for better styling

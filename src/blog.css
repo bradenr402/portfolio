@@ -1278,6 +1278,7 @@
 
     &:not(:has(.code-block-wrapper)) {
       width: fit-content;
+      min-width: 15ch;
       max-width: 50ch;
       overflow-wrap: break-word;
     }

@@ -1272,6 +1272,7 @@
 
   th,
   td {
+    border-bottom: var(--hairline) solid var(--color-border-light);
     padding: 0.75rem;
     vertical-align: top;
 
@@ -1298,6 +1299,10 @@
     }
   }
 
+  td {
+    color: var(--color-muted);
+  }
+
   td:is(.true, .false, .neutral),
   td:has(p.true, p.false, p.neutral) {
     font-weight: 600;
@@ -1321,12 +1326,6 @@
   td:has(p.neutral) {
     --table-cell-bg-color: light-dark(var(--color-yellow-100), var(--color-yellow-950));
     --table-cell-text-color: light-dark(var(--color-yellow-600), var(--color-yellow-400));
-  }
-
-  th,
-  td {
-    color: var(--color-muted);
-    border-bottom: var(--hairline) solid var(--color-border-light);
   }
 
   tbody tr:last-child {

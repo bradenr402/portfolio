@@ -210,6 +210,18 @@
   --before-icon-url: url('./images/icons/x-outline.svg');
 }
 
+@utility blurry-link-list {
+  @apply flex gap-(--link-spacing);
+
+  a {
+    @apply -m-[calc(var(--link-spacing)/2)] p-[calc(var(--link-spacing)/2)];
+  }
+
+  &:has(a:hover) a:not(:hover) {
+    @apply blur-[1.5px];
+  }
+}
+
 @utility timeline-role {
   --angle: 20deg;
   --half-logo-size: calc(var(--logo-size) / 2);

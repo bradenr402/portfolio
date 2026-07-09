@@ -195,6 +195,21 @@
   }
 }
 
+@utility github-link {
+  @apply link-with-before-icon color-before-icon;
+  --before-icon-url: url('./images/icons/github-circle.svg');
+}
+
+@utility linkedin-link {
+  @apply link-with-before-icon color-before-icon before:mb-[0.1em];
+  --before-icon-url: url('./images/icons/linkedin-outline.svg');
+}
+
+@utility x-link {
+  @apply link-with-before-icon color-before-icon;
+  --before-icon-url: url('./images/icons/x-outline.svg');
+}
+
 @utility timeline-role {
   --angle: 20deg;
   --half-logo-size: calc(var(--logo-size) / 2);

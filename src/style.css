@@ -90,23 +90,6 @@
   text-underline-offset: 2px;
 }
 
-@utility btn {
-  @apply inline-flex items-center justify-center gap-2.5 rounded-lg py-1.5 pr-4.5 pl-5 font-semibold transition-all duration-100 squircle active:scale-97 supports-squircle:rounded-3xl;
-
-  &:disabled,
-  &[aria-disabled='true'] {
-    @apply pointer-events-none cursor-not-allowed opacity-50;
-  }
-}
-
-@utility btn-primary {
-  @apply bg-primary-500 text-white hover:bg-primary-600 dark:bg-primary-400 dark:hover:bg-primary-500;
-}
-
-@utility btn-secondary {
-  @apply bg-primary-500/10 text-primary-500 hover:bg-primary-500/20 dark:bg-primary-400/15 dark:text-primary-100 dark:hover:bg-primary-400/25;
-}
-
 /* Links */
 @utility internal-link {
   text-decoration: dotted underline var(--color-faint);

@@ -2,6 +2,7 @@
 
 @import './theme.css';
 @import './fonts.css';
+@import './photo-gallery.css';
 @import './blog/blog-list-item.css';
 
 @source '../src';
@@ -267,113 +268,4 @@
     border-radius: 9999px;
     background-color: var(--line-color);
   }
-}
-
-/* Photo Gallery */
-@utility photo-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem 0;
-  padding: 0.5rem 0;
-
-  @media (max-width: 40rem) {
-    max-width: 65vw;
-    margin-inline: auto;
-    gap: 0;
-  }
-}
-
-@utility photo-card {
-  --rotation: 0deg;
-  --shadow-ring: inset 0 0 0 var(--hairline)
-    light-dark(oklch(from var(--color-stone-950) l c h / 8%), oklch(from white l c h / 10%));
-  --shadow-drop: 0 4px 20px -6px rgba(28, 25, 23, 0.35), 0 12px 35px -10px rgba(28, 25, 23, 0.25);
-
-  position: relative;
-  overflow: hidden;
-  flex: 0 0 34%;
-  margin-inline: -0.5%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  background: var(--color-stone-50);
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  box-shadow: var(--shadow-ring), var(--shadow-drop);
-  transform: perspective(600px) rotateX(0deg) rotateY(0deg) rotate(var(--rotation)) translateY(0px)
-    scale(1);
-  transition: box-shadow 300ms ease;
-  will-change: transform;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(
-      circle at var(--sheen-x, 50%) var(--sheen-y, 50%),
-      rgba(255, 255, 255, 0.15) 0%,
-      transparent 60%
-    );
-    opacity: var(--sheen-opacity, 0);
-    transition: opacity 300ms ease;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  &.is-hovered {
-    --shadow-drop: 0 12px 30px -6px rgba(28, 25, 23, 0.4), 0 25px 50px -12px rgba(28, 25, 23, 0.3);
-  }
-
-  &:nth-child(n + 4) {
-    margin-top: -0.5rem;
-  }
-
-  @media (max-width: 40rem) {
-    flex: 0 0 100%;
-    margin-inline: 0;
-    margin-top: -0.5rem;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-}
-
-@utility photo-card-img-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.125rem;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    box-shadow:
-      inset 0 0 0 var(--hairline) rgba(255, 255, 255, 0.65),
-      inset 0 0 8px rgba(0, 0, 0, 0.28);
-    pointer-events: none;
-  }
-}
-
-@utility photo-card-img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-}
-
-@utility photo-card-caption {
-  padding: 0.625rem 0.25rem 0.375rem;
-  margin-block: auto;
-  text-align: center;
-  font-family: var(--font-handwriting);
-  font-size: 1rem;
-  line-height: 1;
-  color: var(--color-stone-700);
 }

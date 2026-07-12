@@ -1,5 +1,5 @@
 <footer
-  class="[&_svg]:transition-filter flex w-full max-w-(--max-width(--max-width)) gap-2 py-4 pb-20 transition-opacity duration-100 ease-out [--social-link-padding:--spacing(3)] not-hover:opacity-50 max-sm:flex-col max-sm:justify-between max-sm:px-(--horizontal-padding) sm:mx-auto sm:items-center sm:justify-center sm:gap-8 [&_svg]:duration-100 [&_svg]:ease-out not-hover:[&_svg]:grayscale"
+  class="[&_svg]:transition-filter flex w-full max-w-(--max-width) gap-2 py-4 pb-20 transition-opacity duration-100 ease-out not-hover:opacity-50 max-sm:flex-col max-sm:justify-between max-sm:px-(--horizontal-padding) sm:mx-auto sm:items-center sm:justify-center sm:gap-8 [&_svg]:duration-100 [&_svg]:ease-out not-hover:[&_svg]:grayscale"
 >
   <div class="relative flex items-center gap-1.5 text-sm whitespace-nowrap">
     <span>&copy;</span>
@@ -10,28 +10,26 @@
   <span class="h-3 w-0 border-l-hairline border-faint max-sm:hidden"></span>
 
   <!-- Social Links -->
-  <div class="blurry-link-list flex-wrap [--link-spacing:calc(var(--spacing)*4)] text-sm font-medium">
+  <div
+    class="blurry-link-list flex-wrap text-sm font-medium [--link-spacing:calc(var(--spacing)*4)]"
+  >
     <a href="mailto:me@bradenroth.com" class="mail-link">Email</a>
     <a
       href="https://github.com/bradenr402"
       target="_blank"
       rel="noopener noreferrer"
-      class="external-link github-link"
+      class="github-link"
       >GitHub</a
     >
     <a
       href="https://linkedin.com/in/braden-roth"
       target="_blank"
       rel="noopener noreferrer"
-      class="external-link linkedin-link"
+      class="linkedin-link"
       >LinkedIn</a
     >
-    <a
-      href="https://x.com/BradenRoth02"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="external-link x-link"
-      >𝕏</a
+    <a href="https://x.com/BradenRoth02" target="_blank" rel="noopener noreferrer" class="x-link"
+      >X</a
     >
   </div>
 </footer>

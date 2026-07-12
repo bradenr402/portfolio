@@ -277,7 +277,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Inline formatting
 - Supported {% .true %}
 - Supported {% .true %}
-- *Italic*, **bold**, `inline code`, and [links](#).
+- _Italic_, **bold**, `inline code`, and [links](#).
 
 ---
 
@@ -285,21 +285,19 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Supported {% .true %}
 - Limited;  
   Only raw HTML {% .neutral %}
--
-  This is the first paragraph.
+- This is the first paragraph.
 
   This is the second paragraph.
 
 ---
 
-- Bullet lists
+- Lists
 - Supported {% .true %}
 - Limited;  
   Only raw HTML {% .neutral %}
--
-  - Easy to write
-  - Easy to edit
-    - Supports nesting
+- 1. Easy to write
+  2. Easy to edit
+     - Supports nesting
 
 ---
 
@@ -307,8 +305,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Supported {% .true %}
 - Not supported;  
   Only inline code {% .false %}
--
-  ```ruby
+- ```ruby
   user = User.find_by(email: email)
   user.update(name: "Braden")
   ```
@@ -318,7 +315,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Cell attributes
 - Supported {% .true %}
 - Not supported {% .false %}
-- Add a custom attribute, like classes: `{% .tint-accent %}`. {% .tint-accent %}
+- Add custom attributes, like classes: `{% .tint-accent %}`. {% .tint-accent %}
 
 {% /table %}
 ````
@@ -342,7 +339,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Inline formatting
 - Supported {% .true %}
 - Supported {% .true %}
-- *Italic*, **bold**, `inline code`, and [links](#).
+- _Italic_, **bold**, `inline code`, and [links](#).
 
 ---
 
@@ -350,21 +347,19 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Supported {% .true %}
 - Limited;  
   Only raw HTML {% .neutral %}
--
-  This is the first paragraph.
+- This is the first paragraph.
 
   This is the second paragraph.
 
 ---
 
-- Bullet lists
+- Lists
 - Supported {% .true %}
 - Limited;  
   Only raw HTML {% .neutral %}
--
-  - Easy to write
-  - Easy to edit
-    - Supports nesting
+- 1. Easy to write
+  2. Easy to edit
+     - Supports nesting
 
 ---
 
@@ -372,8 +367,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Supported {% .true %}
 - Not supported;  
   Only inline code {% .false %}
--
-  ```ruby
+- ```ruby
   user = User.find_by(email: email)
   user.update(name: "Braden")
   ```
@@ -383,7 +377,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Cell attributes
 - Supported {% .true %}
 - Not supported {% .false %}
-- Add a custom attribute, like classes: `{% .tint-accent %}`. {% .tint-accent %}
+- Add custom attributes, like classes: `{% .tint-accent %}`. {% .tint-accent %}
 
 {% /table %}
 
@@ -501,56 +495,36 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
 #### Example of a section wrapped in `.blog-reset`:
 
 <div class="blog-reset p-6 border border-(--color-border)">
-  <div class="photo-gallery">
-    <figure class="photo-card sm:z-1 sm:translate-y-3" style="--rotation: -9deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/wedding.webp"
-          alt="My wife and me on our wedding day"
-          class="photo-card-img"
-        />
+  <div class="photo-gallery [--gallery-columns:3]">
+    <figure class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]">
+      <div class="photo-card-inner">
+        <img src="/images/wedding.webp" alt="My wife and me on our wedding day" />
+        <figcaption>Our Wedding</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Our Wedding</figcaption>
     </figure>
-    <figure class="photo-card sm:z-4 sm:-translate-y-2" style="--rotation: 1deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/emily.webp"
-          alt="Emily as a newborn"
-          class="photo-card-img"
-        />
+    <figure class="photo-card [--hover-rotation:-2deg] [--hover-y:-6] [--initial-rotation:1deg] [--initial-y:-2] [--z:4]">
+      <div class="photo-card-inner">
+        <img src="/images/emily.webp" alt="Emily as a newborn" />
+        <figcaption>Welcome, Emily!</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Welcome, Emily!</figcaption>
     </figure>
-    <figure class="photo-card sm:z-2 sm:translate-y-3" style="--rotation: 7deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/emily-first-christmas.webp"
-          alt="Emily’s first Christmas"
-          class="photo-card-img"
-        />
+    <figure class="photo-card [--hover-rotation:3deg] [--hover-x:2] [--hover-y:-2] [--initial-rotation:7deg] [--initial-y:3] [--z:2]">
+      <div class="photo-card-inner">
+        <img src="/images/emily-first-christmas.webp" alt="Emily’s first Christmas" />
+        <figcaption>Emily’s First Xmas</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Emily’s First Xmas</figcaption>
     </figure>
-    <figure class="photo-card sm:z-5 sm:-translate-y-2" style="--rotation: -5deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/sophia.webp"
-          alt="Sophia as a newborn"
-          class="photo-card-img"
-        />
+    <figure class="photo-card [--hover-rotation:-3deg] [--hover-x:-3] [--hover-y:0] [--initial-rotation:-5deg] [--initial-x:0] [--initial-y:-1.5] [--z:5]">
+      <div class="photo-card-inner">
+        <img src="/images/sophia.webp" alt="Sophia as a newborn" />
+        <figcaption>Welcome, Sophia!</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Welcome, Sophia!</figcaption>
     </figure>
-    <figure class="photo-card max-sm:translate-y-2 sm:z-3 sm:translate-x-2 sm:-translate-y-1" style="--rotation: 9deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/sophia-first-christmas.webp"
-          alt="Sophia’s first Christmas"
-          class="photo-card-img"
-        />
+    <figure class="photo-card [--hover-rotation:3deg] [--hover-x:4] [--hover-y:1.5] [--initial-rotation:9deg] [--initial-x:0] [--initial-y:-1] [--z:3] max-sm:translate-y-2">
+      <div class="photo-card-inner">
+        <img src="/images/sophia-first-christmas.webp" alt="Sophia’s first Christmas" />
+        <figcaption>Sophia’s First Xmas</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Sophia’s First Xmas</figcaption>
     </figure>
   </div>
 </div>
@@ -560,56 +534,36 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
 #### Example of a section without `.blog-reset`:
 
 <div class="p-6 border border-(--color-border)">
-  <div class="photo-gallery">
-    <figure class="photo-card sm:z-1 sm:translate-y-3" style="--rotation: -9deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/wedding.webp"
-          alt="My wife and me on our wedding day"
-          class="photo-card-img"
-        />
+  <div class="photo-gallery [--gallery-columns:3]">
+    <figure class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]">
+      <div class="photo-card-inner">
+        <img src="/images/wedding.webp" alt="My wife and me on our wedding day" />
+        <figcaption>Our Wedding</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Our Wedding</figcaption>
     </figure>
-    <figure class="photo-card sm:z-4 sm:-translate-y-2" style="--rotation: 1deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/emily.webp"
-          alt="Emily as a newborn"
-          class="photo-card-img"
-        />
+    <figure class="photo-card [--hover-rotation:-2deg] [--hover-y:-6] [--initial-rotation:1deg] [--initial-y:-2] [--z:4]">
+      <div class="photo-card-inner">
+        <img src="/images/emily.webp" alt="Emily as a newborn" />
+        <figcaption>Welcome, Emily!</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Welcome, Emily!</figcaption>
     </figure>
-    <figure class="photo-card sm:z-2 sm:translate-y-3" style="--rotation: 7deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/emily-first-christmas.webp"
-          alt="Emily's first Christmas"
-          class="photo-card-img"
-        />
+    <figure class="photo-card [--hover-rotation:3deg] [--hover-x:2] [--hover-y:-2] [--initial-rotation:7deg] [--initial-y:3] [--z:2]">
+      <div class="photo-card-inner">
+        <img src="/images/emily-first-christmas.webp" alt="Emily’s first Christmas" />
+        <figcaption>Emily’s First Xmas</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Emily’s First Xmas</figcaption>
     </figure>
-    <figure class="photo-card sm:z-5 sm:-translate-y-2" style="--rotation: -5deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/sophia.webp"
-          alt="Sophia as a newborn"
-          class="photo-card-img"
-        />
+    <figure class="photo-card [--hover-rotation:-3deg] [--hover-x:-3] [--hover-y:0] [--initial-rotation:-5deg] [--initial-x:0] [--initial-y:-1.5] [--z:5]">
+      <div class="photo-card-inner">
+        <img src="/images/sophia.webp" alt="Sophia as a newborn" />
+        <figcaption>Welcome, Sophia!</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Welcome, Sophia!</figcaption>
     </figure>
-    <figure class="photo-card max-sm:translate-y-2 sm:z-3 sm:translate-x-2 sm:-translate-y-1" style="--rotation: 9deg">
-      <div class="photo-card-img-wrapper">
-        <img
-          src="/images/sophia-first-christmas.webp"
-          alt="Sophia's first Christmas"
-          class="photo-card-img"
-        />
+    <figure class="photo-card [--hover-rotation:3deg] [--hover-x:4] [--hover-y:1.5] [--initial-rotation:9deg] [--initial-x:0] [--initial-y:-1] [--z:3] max-sm:translate-y-2">
+      <div class="photo-card-inner">
+        <img src="/images/sophia-first-christmas.webp" alt="Sophia’s first Christmas" />
+        <figcaption>Sophia’s First Xmas</figcaption>
       </div>
-      <figcaption class="photo-card-caption">Sophia’s First Xmas</figcaption>
     </figure>
   </div>
 </div>

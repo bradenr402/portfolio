@@ -70,21 +70,17 @@
               <div
                 class="justify-self-center max-sm:max-w-[65vw] max-sm:py-4 sm:sticky sm:top-8 sm:row-span-2 sm:-mb-[calc(var(--bottom-padding)+var(--vertical-padding))] sm:w-48 sm:self-start"
               >
-                <figure class="photo-card mb-4" style="--rotation: 3deg">
-                  <div class="photo-card-img-wrapper">
-                    <img
-                      src="/images/family.webp"
-                      alt="Me, my wife, and my two daughters"
-                      class="photo-card-img"
-                    />
+                <figure class="photo-card mb-4 [--initial-rotation:6deg] [--hover-rotation:3deg] [--tilt-scale:1.1]">
+                  <div class="photo-card-inner">
+                    <img src="/images/family.webp" alt="Me, my wife, and my two daughters" />
+                    <figcaption>My Family</figcaption>
                   </div>
-                  <figcaption class="photo-card-caption">My Family</figcaption>
                 </figure>
               </div>
 
               <!-- Social Links -->
               <div
-                class="blurry-link-list flex-wrap [--link-spacing:calc(var(--spacing)*4)] border-t-hairline border-(--color-border) pt-3 text-sm font-medium"
+                class="blurry-link-list flex-wrap border-t-hairline border-(--color-border) pt-3 text-sm font-medium [--link-spacing:calc(var(--spacing)*4)]"
               >
                 <a href="mailto:me@bradenroth.com" class="mail-link">Email</a>
                 <a
@@ -175,7 +171,9 @@
                   interview in one place&NoBreak;&mdash;with smart insights to help you see what’s
                   working. No messy spreadsheets. No data selling. No recruiter dashboards.
                 </p>
-                <div class="blurry-link-list [--link-spacing:calc(var(--spacing)*4)] mt-3 text-sm font-medium">
+                <div
+                  class="blurry-link-list mt-3 text-sm font-medium [--link-spacing:calc(var(--spacing)*4)]"
+                >
                   <a
                     href="https://job-journal.fly.dev/registrations/new"
                     target="_blank"
@@ -205,7 +203,9 @@
                   activities from Strava and includes built-in, real-time messaging to keep everyone
                   connected.
                 </p>
-                <div class="blurry-link-list [--link-spacing:calc(var(--spacing)*4)] mt-3 flex gap-4 text-sm font-medium">
+                <div
+                  class="blurry-link-list mt-3 flex gap-4 text-sm font-medium [--link-spacing:calc(var(--spacing)*4)]"
+                >
                   <a
                     href="https://github.com/bradenr402/pace-maker"
                     target="_blank"
@@ -247,55 +247,50 @@
               Moments
             </h2>
             <div class="rounded-full bg-(--color-border) max-sm:hidden" aria-hidden="true"></div>
-            <div class="photo-gallery">
-              <figure class="photo-card sm:z-1 sm:translate-y-3" style="--rotation: -9deg">
-                <div class="photo-card-img-wrapper">
-                  <img
-                    src="/images/wedding.webp"
-                    alt="My wife and me on our wedding day"
-                    class="photo-card-img"
-                  />
+            <div class="photo-gallery [--gallery-columns:3]">
+              <figure
+                class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]"
+              >
+                <div class="photo-card-inner">
+                  <img src="/images/wedding.webp" alt="My wife and me on our wedding day" />
+                  <figcaption>Our Wedding</figcaption>
                 </div>
-                <figcaption class="photo-card-caption">Our Wedding</figcaption>
-              </figure>
-
-              <figure class="photo-card sm:z-4 sm:-translate-y-2" style="--rotation: 1deg">
-                <div class="photo-card-img-wrapper">
-                  <img src="/images/emily.webp" alt="Emily as a newborn" class="photo-card-img" />
-                </div>
-                <figcaption class="photo-card-caption">Welcome, Emily!</figcaption>
-              </figure>
-
-              <figure class="photo-card sm:z-2 sm:translate-y-3" style="--rotation: 7deg">
-                <div class="photo-card-img-wrapper">
-                  <img
-                    src="/images/emily-first-christmas.webp"
-                    alt="Emily’s first Christmas"
-                    class="photo-card-img"
-                  />
-                </div>
-                <figcaption class="photo-card-caption">Emily’s First Xmas</figcaption>
-              </figure>
-
-              <figure class="photo-card sm:z-5 sm:-translate-y-2" style="--rotation: -5deg">
-                <div class="photo-card-img-wrapper">
-                  <img src="/images/sophia.webp" alt="Sophia as a newborn" class="photo-card-img" />
-                </div>
-                <figcaption class="photo-card-caption">Welcome, Sophia!</figcaption>
               </figure>
 
               <figure
-                class="photo-card max-sm:translate-y-2 sm:z-3 sm:translate-x-2 sm:-translate-y-1"
-                style="--rotation: 9deg"
+                class="photo-card [--hover-rotation:-2deg] [--hover-y:-6] [--initial-rotation:1deg] [--initial-y:-2] [--z:4]"
               >
-                <div class="photo-card-img-wrapper">
-                  <img
-                    src="/images/sophia-first-christmas.webp"
-                    alt="Sophia’s first Christmas"
-                    class="photo-card-img"
-                  />
+                <div class="photo-card-inner">
+                  <img src="/images/emily.webp" alt="Emily as a newborn" />
+                  <figcaption>Welcome, Emily!</figcaption>
                 </div>
-                <figcaption class="photo-card-caption">Sophia’s First Xmas</figcaption>
+              </figure>
+
+              <figure
+                class="photo-card [--hover-rotation:3deg] [--hover-x:2] [--hover-y:-2] [--initial-rotation:7deg] [--initial-y:3] [--z:2]"
+              >
+                <div class="photo-card-inner">
+                  <img src="/images/emily-first-christmas.webp" alt="Emily’s first Christmas" />
+                  <figcaption>Emily’s First Xmas</figcaption>
+                </div>
+              </figure>
+
+              <figure
+                class="photo-card [--hover-rotation:-3deg] [--hover-x:-3] [--hover-y:0] [--initial-rotation:-5deg] [--initial-x:0] [--initial-y:-1.5] [--z:5]"
+              >
+                <div class="photo-card-inner">
+                  <img src="/images/sophia.webp" alt="Sophia as a newborn" />
+                  <figcaption>Welcome, Sophia!</figcaption>
+                </div>
+              </figure>
+
+              <figure
+                class="photo-card [--hover-rotation:3deg] [--hover-x:4] [--hover-y:1.5] [--initial-rotation:9deg] [--initial-x:0] [--initial-y:-1] [--z:3] max-sm:translate-y-2"
+              >
+                <div class="photo-card-inner">
+                  <img src="/images/sophia-first-christmas.webp" alt="Sophia’s first Christmas" />
+                  <figcaption>Sophia’s First Xmas</figcaption>
+                </div>
               </figure>
             </div>
           </div>

@@ -1250,6 +1250,7 @@
     border: var(--hairline) solid var(--color-border-light);
 
     ul,
+    ol,
     .code-block-wrapper {
       margin: 0;
     }

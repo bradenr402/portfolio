@@ -659,14 +659,14 @@
     margin-bottom: 3rem;
   }
 
-  /* Blog page header */
+  /* Blog index and blog post header wrapper */
   .blog-header-wrapper::after {
     content: '';
     display: block;
-    margin-block: 3rem;
+    margin-block: 2rem;
 
     @media (min-width: 48rem) {
-      margin-bottom: 6rem;
+      margin-bottom: 4rem;
     }
 
     height: var(--hairline);
@@ -676,11 +676,18 @@
   }
 
   /* Blog index header */
-  .blog-header-wrapper:has(.blog-index__header) {
-    margin-bottom: 1rem;
+  .blog-index__header {
+    h1 {
+      margin: 0 0 0.5rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.05rem;
+    }
   }
 
-  /* Blog post header: optional full-width image above centered title and meta */
+  /* Blog post header */
   .blog-header {
     display: flex;
     flex-direction: column;

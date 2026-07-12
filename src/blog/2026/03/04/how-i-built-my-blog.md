@@ -277,7 +277,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Inline formatting
 - Supported {% .true %}
 - Supported {% .true %}
-- *Italic*, **bold**, `inline code`, and [links](#).
+- _Italic_, **bold**, `inline code`, and [links](#).
 
 ---
 
@@ -285,21 +285,19 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Supported {% .true %}
 - Limited;  
   Only raw HTML {% .neutral %}
--
-  This is the first paragraph.
+- This is the first paragraph.
 
   This is the second paragraph.
 
 ---
 
-- Bullet lists
+- Lists
 - Supported {% .true %}
 - Limited;  
   Only raw HTML {% .neutral %}
--
-  - Easy to write
-  - Easy to edit
-    - Supports nesting
+- 1. Easy to write
+  2. Easy to edit
+     - Supports nesting
 
 ---
 
@@ -307,8 +305,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Supported {% .true %}
 - Not supported;  
   Only inline code {% .false %}
--
-  ```ruby
+- ```ruby
   user = User.find_by(email: email)
   user.update(name: "Braden")
   ```
@@ -318,7 +315,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Cell attributes
 - Supported {% .true %}
 - Not supported {% .false %}
-- Add a custom attribute, like classes: `{% .tint-accent %}`. {% .tint-accent %}
+- Add custom attributes, like classes: `{% .tint-accent %}`. {% .tint-accent %}
 
 {% /table %}
 ````
@@ -342,7 +339,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Inline formatting
 - Supported {% .true %}
 - Supported {% .true %}
-- *Italic*, **bold**, `inline code`, and [links](#).
+- _Italic_, **bold**, `inline code`, and [links](#).
 
 ---
 
@@ -350,21 +347,19 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Supported {% .true %}
 - Limited;  
   Only raw HTML {% .neutral %}
--
-  This is the first paragraph.
+- This is the first paragraph.
 
   This is the second paragraph.
 
 ---
 
-- Bullet lists
+- Lists
 - Supported {% .true %}
 - Limited;  
   Only raw HTML {% .neutral %}
--
-  - Easy to write
-  - Easy to edit
-    - Supports nesting
+- 1. Easy to write
+  2. Easy to edit
+     - Supports nesting
 
 ---
 
@@ -372,8 +367,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Supported {% .true %}
 - Not supported;  
   Only inline code {% .false %}
--
-  ```ruby
+- ```ruby
   user = User.find_by(email: email)
   user.update(name: "Braden")
   ```
@@ -383,7 +377,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 - Cell attributes
 - Supported {% .true %}
 - Not supported {% .false %}
-- Add a custom attribute, like classes: `{% .tint-accent %}`. {% .tint-accent %}
+- Add custom attributes, like classes: `{% .tint-accent %}`. {% .tint-accent %}
 
 {% /table %}
 

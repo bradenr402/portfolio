@@ -186,13 +186,25 @@
   }
 
   .til-entry__title {
-    margin: 0 0 1.5rem;
     font-size: clamp(1.85rem, 5vw, 2.85rem);
     font-weight: 700;
     letter-spacing: -0.01em;
     line-height: 1.15;
     text-wrap: balance;
     overflow-wrap: break-word;
+
+    margin: 0 0 var(--til-gap);
+
+    &::after {
+      content: '';
+      display: block;
+      margin-top: var(--til-gap);
+
+      height: var(--hairline);
+      width: 100%;
+      background: var(--color-border-light);
+      border-radius: 9999px;
+    }
   }
 
   .til-entry__body {

@@ -205,6 +205,10 @@
       background: var(--color-border-light);
       border-radius: 9999px;
     }
+
+    code {
+      border-width: calc(var(--hairline) * 2);
+    }
   }
 
   .til-entry__body {

@@ -29,7 +29,7 @@
 
   .til-list {
     position: relative;
-    padding-left: 0.875rem;
+    padding-left: 0.5rem;
     border-left: 1px dashed var(--color-border);
   }
 
@@ -120,7 +120,7 @@
 
     font-size: 1.2rem;
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.2;
     letter-spacing: -0.01em;
     text-wrap: pretty;
 
@@ -187,17 +187,17 @@
 
   .til-entry__title {
     margin: 0 0 1.5rem;
-    font-size: 2.45rem;
+    font-size: clamp(1.85rem, 5vw, 2.85rem);
     font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
     text-wrap: balance;
     overflow-wrap: break-word;
   }
 
   .til-entry__body {
     font-size: 1.05rem;
-    line-height: 1.7;
+    line-height: calc(var(--line-height) * 1.05);
     color: var(--color-text);
   }
 

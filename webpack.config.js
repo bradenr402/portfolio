@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 
 // Helper functions
 import { collectBlogPostsMeta, buildBlogPostPage, buildStandaloneBlogIndexPage, injectRecentPosts, processMarkdown } from './src/helpers/blog-build.js';
+import { collectTilEntries, buildStandaloneTilPage, buildTilDetailPage } from './src/helpers/til-build.js';
 import applyBaseLayout from './src/helpers/apply-base-layout.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,11 +24,32 @@ const BLOG_TEMPLATE_PATH = path.join(BLOG_DIR, '_template.html');
 const BLOG_INDEX_TEMPLATE_PATH = path.resolve(__dirname, 'src/blog.html');
 const BLOG_CSS_PATH = path.resolve(__dirname, 'src/blog.css');
 
+// TIL paths
+const TIL_DIR = path.resolve(__dirname, 'src/til');
+const TIL_TEMPLATE_PATH = path.resolve(__dirname, 'src/til.html');
+const TIL_CSS_PATH = path.resolve(__dirname, 'src/til.css');
+
 // Placeholders
 const BLOG_INDEX_PLACEHOLDER = '{{postList}}';
+const RECENT_POSTS_PLACEHOLDER = '{{recentPosts}}';
+const TIL_LIST_PLACEHOLDER = '{{tilList}}';
 
 // Collect all blog posts to generate HTML pages
 const blogPosts = collectBlogPostsMeta(BLOG_DIR);
+
+// Collect TIL entries to generate per-entry detail pages
+const tilEntries = collectTilEntries(TIL_DIR);
+
+const tilHtmlPlugins = tilEntries.map((entry) => {
+  return new HtmlWebpackPlugin({
+    filename: `til/${entry.path}.html`,
+    favicon: FAVICON_PATH,
+    templateContent: () => {
+      const fresh = collectTilEntries(TIL_DIR).find((e) => e.path === entry.path);
+      return applyBaseLayout(buildTilDetailPage(fresh));
+    },
+  });
+});
 
 const blogHtmlPlugins = blogPosts.map(post => {
   return new HtmlWebpackPlugin({
@@ -91,6 +113,26 @@ export default {
             return '/404.html';
           },
         },
+        {
+          // Allow extensionless TIL: /til, /til/
+          from: /^\/til\/?$/,
+          to: () => '/til/index.html',
+        },
+        {
+          from: /^\/til\/(.+)$/,
+          to: (context) => {
+            let path = context.match[1];
+
+            path = path.replace(/\/$/, '');
+            if (!path) return '/til/index.html';
+
+            const matchedEntry = tilEntries.find((entry) => entry.path === path);
+            if (matchedEntry) return `/til/${path}.html`;
+
+            return '/404.html';
+          },
+        },
+        // 404 page; last rewrite rule to catch anything not handled above
         { from: /.*/, to: '/404.html' },
       ],
     },
@@ -124,7 +166,16 @@ export default {
           ),
         ),
     }),
+    new HtmlWebpackPlugin({
+      filename: 'til/index.html',
+      favicon: FAVICON_PATH,
+      templateContent: () =>
+        applyBaseLayout(
+          buildStandaloneTilPage(TIL_DIR, TIL_TEMPLATE_PATH, TIL_LIST_PLACEHOLDER),
+        ),
+    }),
     ...blogHtmlPlugins,
+    ...tilHtmlPlugins,
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -141,6 +192,11 @@ export default {
           // Copy blog.css to the output directory
           from: BLOG_CSS_PATH,
           to: 'blog.css',
+        },
+        {
+          // Copy til.css to the output directory
+          from: TIL_CSS_PATH,
+          to: 'til.css',
         },
         {
           // Copy blog/*.css to the output directory

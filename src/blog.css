@@ -6,7 +6,7 @@
 @import './blog/blog-list-item.css';
 @import './blog/blog-toc.css';
 
-/* A scoped blog stylesheet for content typography, images, tables, code, etc. */
+/* Page chrome + content typography for long-form pages (blog, til). */
 
 /* Enable keyword animations */
 @media (prefers-reduced-motion: no-preference) {
@@ -15,8 +15,7 @@
   }
 }
 
-/* Scope blog semantics to .blog, but exclude .blog-reset */
-@scope (.blog) to (.blog-reset) {
+@scope (.prose) to (.prose-reset) {
   /* Enable use of `light-dark()` function */
   color-scheme: light dark;
 
@@ -48,7 +47,7 @@
     }
   }
 
-  /* Base styling for the .blog container */
+  /* Base styling for the prose/page container */
   & {
     font-family: var(--font-sans);
     font-size: 1rem;
@@ -118,18 +117,18 @@
     max-width: min(85ch, calc(100vw - var(--horizontal-padding) * 2));
   }
 
-  .blog-layout__actions {
+  .blog-actions {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding-top: 1.5rem;
   }
 
-  .blog-layout__actions-wrapper:has(.blog-layout__actions) {
+  .blog-actions-wrapper:has(.blog-actions) {
     margin-top: 3rem;
   }
 
-  .blog-layout__actions-wrapper:has(.blog-layout__actions)::before {
+  .blog-actions-wrapper:has(.blog-actions)::before {
     content: '';
     display: block;
     height: var(--hairline);
@@ -622,6 +621,11 @@
       margin-bottom: 0;
     }
 
+    /* Let code blocks inside list items expand to full width */
+    &:has(pre > code) > div {
+      width: 100%;
+    }
+
     /* Shared styles for custom list markers */
     &:is(:is(ol, ul):not([class]) > li) {
       display: flex;
@@ -912,11 +916,11 @@
   /* Table of Contents styles in blog/blog-toc.css */
 
   /* Blog index layout overrides */
-  &.blog--index {
+  &.prose--narrow {
     max-width: 780px;
   }
 
-  &.blog--index .blog-layout {
+  &.prose--narrow .blog-layout {
     flex-direction: column;
   }
 
@@ -1038,7 +1042,7 @@
 
   /* Code blocks */
   pre:has(code) {
-    margin: 1rem 0;
+    margin: 1em 0;
     overflow-x: auto;
 
     /* Smooth scrolling on iOS */
@@ -1050,6 +1054,10 @@
     display: inline;
     color: var(--color-faint);
     margin-right: 1em;
+  }
+
+  pre > code.multi-line::before {
+    content: none;
   }
 
   pre > code {
@@ -1155,10 +1163,10 @@
   /* Keyboard tags */
   kbd {
     display: inline-block;
-    min-width: 0.75rem;
-    padding: 0.15rem 0.3rem;
+    padding: 0.25em 0.5em;
+    min-width: 2em;
     border: 1px solid var(--color-border);
-    border-radius: 0.25rem;
+    border-radius: 0.35em;
 
     font-family: var(--font-sans);
     font-size: 0.75rem;

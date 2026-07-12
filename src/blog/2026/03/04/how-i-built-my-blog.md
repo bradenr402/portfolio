@@ -17,6 +17,9 @@ updates:
 
   - date: 2026-06-29
     description: Updated the [Tables](#tables) section with a more detailed explanation of the Markdoc table syntax.
+
+  - date: 2026-08-04
+    description: Updated `.blog` and `.blog-reset` class references to `.prose` and `.prose-reset`, respectively.
 ---
 
 If you’ve been thinking about building your own personal blog, the tooling choices can feel endless. There are so many frameworks, static site generators, and CMSes available today. There’s nothing wrong with any of these, but they can be limiting when it comes to design and functionality.
@@ -478,23 +481,23 @@ I wanted the blog to feel polished and intentional, so I added a lot of custom s
 
 ### Scoped Styles
 
-I use CSS `@scope` to isolate the blog’s design. This ensures that typography and layout rules apply only to the blog content (`.blog`) and explicitly stop at any element with the class `.blog-reset`.
+I use CSS `@scope` to isolate the blog’s design. This ensures that typography and layout rules apply only to the blog content (`.prose`) and explicitly stop at any element with the class `.prose-reset`.
 
 ```css
 /* src/blog.css */
 
-@scope (.blog) to (.blog-reset) {
+@scope (.prose) to (.prose-reset) {
   /* Blog styles here... */
 }
 ```
 
-This [Donut Scope](https://css-tricks.com/solved-by-css-donuts-scopes/) is perfect for embedding custom components or interactive demos within a post. By wrapping them in `.blog-reset`, I ensure they aren’t affected by the blog’s global styles, giving me a blank canvas for those specific elements.
+This [Donut Scope](https://css-tricks.com/solved-by-css-donuts-scopes/) is perfect for embedding custom components or interactive demos within a post. By wrapping them in `.prose-reset`, I ensure they aren’t affected by the blog’s global styles, giving me a blank canvas for those specific elements.
 
 For example, I can easily embed this custom HTML styled with Tailwind from the [homepage](/) of my site without any style conflicts:
 
-#### Example of a section wrapped in `.blog-reset`:
+#### Example of a section wrapped in `.prose-reset`:
 
-<div class="blog-reset p-6 border border-(--color-border)">
+<div class="prose-reset p-6 border border-(--color-border)">
   <div class="photo-gallery sm:[--gallery-columns:3]">
     <figure class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]">
       <div class="photo-card-inner">
@@ -529,9 +532,9 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
   </div>
 </div>
 
-Without `@scope`, the styles from the blog would bleed into this section, causing visual inconsistencies. The difference is quite obvious if I remove the `blog-reset` wrapper.
+Without `@scope`, the styles from the blog would bleed into this section, causing visual inconsistencies. The difference is quite obvious if I remove the `prose-reset` wrapper.
 
-#### Example of a section without `.blog-reset`:
+#### Example of a section without `.prose-reset`:
 
 <div class="p-6 border border-(--color-border)">
   <div class="photo-gallery sm:[--gallery-columns:3]">

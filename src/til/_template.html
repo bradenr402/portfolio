@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{title}} • TIL • Braden Roth</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/blog.css" />
+    <link rel="stylesheet" href="/til.css" />
+
+    <!-- Basic Open Graph -->
+    <meta property="og:title" content="{{title}} • TIL • Braden Roth" />
+    <meta property="og:type" content="article" />
+  </head>
+  <body
+    data-page="til-entry"
+    class="bg-white text-stone-800 antialiased dark:bg-zinc-950 dark:text-stone-100 dark:selection:bg-primary-500/40"
+  >
+    <div id="wrapper">
+      <main id="main" class="prose">
+        <article class="til-entry">
+          <p class="til-entry__label">
+            TIL on <time datetime="{{datetime}}">{{longDate}}</time>
+          </p>
+          <h1 class="til-entry__title">{{titleHtml}}</h1>
+          <div class="til-entry__body">
+            {{content}}
+            {{learnMore}}
+          </div>
+        </article>
+      </main>
+
+      <div id="nav"></div>
+      <div id="footer"></div>
+    </div>
+  </body>
+</html>

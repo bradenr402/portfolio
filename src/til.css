@@ -1,0 +1,261 @@
+@import 'tailwindcss';
+
+@import './theme.css';
+@import './fonts.css';
+
+@scope (.prose) to (.prose-reset) {
+  /* Index page */
+
+  :scope {
+    --til-hover-transition: 60ms;
+    --til-gap: 2rem;
+  }
+
+  .til-header {
+    margin-bottom: 2.5rem;
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.5rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+  }
+
+  .til-list {
+    position: relative;
+    padding-left: 0.875rem;
+    border-left: 1px dashed var(--color-border);
+  }
+
+  .til-list__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .til-list__dot {
+    --dot-size: 0.75rem;
+    --dot-shadow-size-ratio: calc(1 / 3);
+    --dot-shadow-size: calc(var(--dot-size) * var(--dot-shadow-size-ratio));
+
+    position: absolute;
+    top: 0;
+    left: calc((var(--dot-size) + 1px) / -2);
+    z-index: 1;
+
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 9999px;
+
+    background: var(--color-accent);
+    box-shadow: 0 0 0 var(--dot-shadow-size)
+      color-mix(in oklch, var(--color-accent) 20%, transparent);
+
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(0);
+
+    &[data-ready] {
+      opacity: 1;
+      transition: transform 400ms var(--gentler-spring);
+    }
+  }
+
+  .til-item {
+    position: relative;
+    margin: 0;
+    padding-left: 1rem;
+
+    &:not(:last-child) {
+      padding-bottom: var(--til-gap);
+    }
+
+    & + &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: var(--hairline);
+      margin-bottom: var(--til-gap);
+      background: var(--color-border-light);
+      border-radius: 9999px;
+    }
+
+    a.blanket-link {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    /*
+     * Dim non-hovered items when hovering over the list
+     * Apply to direct children to avoid dimming the ::before border line
+     */
+    & > * {
+      transition: opacity var(--til-hover-transition);
+    }
+    .til-list__items:has(&:hover) &:not(:hover) > * {
+      opacity: 0.2;
+    }
+  }
+
+  .til-item__date {
+    display: inline-block;
+    margin-block: 0.3rem;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-soft);
+  }
+
+  .til-item__title {
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 0.6rem;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+
+    --til-accent-transition: calc(var(--til-hover-transition) * 3);
+
+    /* Animated accent underline */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 1.5px;
+      background: var(--color-accent);
+
+      pointer-events: none;
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--til-accent-transition) ease-out;
+    }
+
+    .til-item:has(a.blanket-link:hover) &::before {
+      transform: scaleX(1);
+      transition: transform calc(var(--til-accent-transition) * 2) var(--gentler-spring);
+    }
+  }
+
+  .til-item__content {
+    --max-height: 7.5rem;
+    --fade-height: 3.5rem;
+
+    position: relative;
+    font-size: 0.95rem;
+
+    /* Soft fade-out for entries taller than max-height */
+    &[data-clipped] {
+      max-height: var(--max-height);
+      overflow: hidden;
+
+      mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-height)), transparent);
+    }
+
+    p:not(:first-child) {
+      margin: 0.5rem 0;
+    }
+
+    pre {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Detail page */
+
+  .til-entry {
+    max-width: 80ch;
+    margin-inline: auto;
+  }
+
+  .til-entry__label {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    color: var(--color-faint);
+  }
+
+  .til-entry__title {
+    margin: 0 0 1.5rem;
+    font-size: 2.45rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  .til-entry__body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .til-actions {
+    margin-top: var(--til-gap);
+
+    &::before {
+      content: '';
+      display: block;
+      margin-bottom: var(--til-gap);
+
+      height: var(--hairline);
+      width: 100%;
+      background: var(--color-border-light);
+      border-radius: 9999px;
+    }
+  }
+
+  .til-entry__learn-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.6rem;
+
+    gap: 0.3rem;
+    padding-right: 0.4rem;
+
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    color: var(--color-soft);
+
+    transition:
+      color 100ms,
+      background-color 100ms,
+      width 100ms,
+      transform 500ms var(--ease-spring);
+
+    border-radius: 0.5rem;
+    @supports (corner-shape: squircle) {
+      corner-shape: squircle;
+      border-radius: 1.5rem;
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+
+    &:hover {
+      color: var(--color-text);
+      background-color: var(--color-surface-alt);
+    }
+
+    svg[data-icon='arrow-up-right'] {
+      margin-top: 1px;
+    }
+  }
+}

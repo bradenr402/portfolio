@@ -12,5 +12,6 @@
     stroke-width="1.5"
     stroke-linecap="round"
     stroke-linejoin="round"
+    class="transition-transform ease-spring group-hover/arrow-up-right:translate-x-0.75 group-hover/arrow-up-right:-translate-y-0.75"
   />
 </svg>

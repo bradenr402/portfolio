@@ -95,7 +95,7 @@ function handleTocClick(linkById, activeState, marker, event) {
 }
 
 export default function initBlogToc() {
-  const main = document.querySelector('main.blog');
+  const main = document.querySelector('main:has(.blog-toc)');
   if (!main) return;
 
   const article = main.querySelector('article');

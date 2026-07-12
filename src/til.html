@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog • Braden Roth</title>
+    <title>TIL • Braden Roth</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/blog.css" />
+    <link rel="stylesheet" href="/til.css" />
 
     <!-- Basic Open Graph -->
-    <meta property="og:title" content="Blog • Braden Roth" />
+    <meta property="og:title" content="TIL • Braden Roth" />
     <meta
       property="og:description"
       content="Full-stack developer building useful, meaningful, and delightful web applications."
@@ -19,7 +20,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Blog • Braden Roth" />
+    <meta name="twitter:title" content="TIL • Braden Roth" />
     <meta
       name="twitter:description"
       content="Full-stack developer building useful, meaningful, and delightful web applications."
@@ -27,30 +28,21 @@
     <meta name="twitter:image" content="https://bradenroth.com/images/family.webp" />
   </head>
   <body
-    data-page="blog-index"
-    class="bg-white text-stone-800 dark:bg-zinc-950 dark:text-stone-100 dark:selection:bg-primary-500/40"
+    data-page="til"
+    class="bg-white text-stone-800 antialiased dark:bg-zinc-950 dark:text-stone-100 dark:selection:bg-primary-500/40"
   >
     <div id="wrapper">
       <main id="main" class="prose prose--narrow">
-        <div class="blog-layout">
-          <div class="blog-layout__content">
-            <div class="blog-header-wrapper">
-              <header class="blog-index__header">
-                <h1>Blog<span class="text-accent">.</span></h1>
-                <p>
-                  Thoughts, posts, notes, and writings about building software, things I’m
-                  learning, and whatever else I’m thinking about. Feel free to send me an
-                  <a href="mailto:me@bradenroth.com">email</a> with your thoughts.
-                </p>
-              </header>
-            </div>
+        <header class="til-header">
+          <h1>TIL<span class="text-accent">.</span></h1>
+          <p>Things I didn’t know yesterday but thought were worth sharing today.</p>
+        </header>
 
-            <section>
-              <ul class="blog-post-list">
-                {{postList}}
-              </ul>
-            </section>
-          </div>
+        <div class="til-list" data-timeline>
+          <span class="til-list__dot" data-timeline-dot aria-hidden="true"></span>
+          <ol class="til-list__items">
+            {{tilList}}
+          </ol>
         </div>
       </main>
 

@@ -8,16 +8,31 @@ import initCopyLinkButton from './helpers/init-copy-link-button.js';
 import initKeyPressListeners from './helpers/init-key-press-listeners.js';
 import initKonamiCode from './helpers/init-konami-code.js';
 import initPhotoGallery from './helpers/init-photo-gallery.js';
+import initTilTimeline, { initTilContentClipping } from './helpers/init-til.js';
 
 const init = () => {
   initKonamiCode();
   initPhotoGallery();
 
-  if (document.body.dataset.page === 'blog-post') {
+  const page = document.body.dataset.page;
+  if (page === 'blog-post') {
     initBlogToc();
     initCodeCopyButtons();
     initCopyLinkButton();
     initKeyPressListeners();
+  }
+  if (page === 'til') {
+    initTilTimeline();
+    initTilContentClipping();
+  }
+  if (page === 'til-entry') {
+    initCodeCopyButtons();
+    initKeyPressListeners();
+    document.querySelectorAll('pre > code.language-sh, pre > code.language-bash, pre > code.language-zsh')
+      .forEach((el) => {
+        const isSingleLine = el.textContent.trim().split('\n').length === 1;
+        if (!isSingleLine) el.classList.add('multi-line');
+      });
   }
 };
 

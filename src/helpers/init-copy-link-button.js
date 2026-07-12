@@ -1,5 +1,5 @@
 export default function initCopyLinkButton() {
-  const button = document.querySelector('.blog .blog-copy-link');
+  const button = document.querySelector('.blog-copy-link');
 
   if (!button) return;
 

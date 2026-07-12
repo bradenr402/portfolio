@@ -534,7 +534,7 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
 #### Example of a section without `.blog-reset`:
 
 <div class="p-6 border border-(--color-border)">
-  <div class="photo-gallery [--gallery-columns:3]">
+  <div class="photo-gallery sm:[--gallery-columns:3]">
     <figure class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]">
       <div class="photo-card-inner">
         <img src="/images/wedding.webp" alt="My wife and me on our wedding day" />

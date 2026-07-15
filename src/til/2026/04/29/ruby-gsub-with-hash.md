@@ -27,6 +27,8 @@ string.gsub(/[a-d]/, hash)
 You can also define the hash inline. In typical Ruby fashion, the outer `{}` can be omitted:
 
 ```ruby
+string.gsub(/[a-c]/, { "a" => "A", "b" => "B", "c" => "C" })
+# => "ABrACAdABrA"
 string.gsub(/[a-c]/, "a" => "A", "b" => "B", "c" => "C")
 # => "ABrACAdABrA"
 ```

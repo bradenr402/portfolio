@@ -34,3 +34,7 @@ string.gsub(/[a-c]/, "a" => "A", "b" => "B", "c" => "C")
 ```
 
 Cleaner, more readable, and more performant than chaining multiple `gsub` calls.
+
+<div class="not-hover:text-(--color-muted) transition-colors duration-100">
+  _(The above rules all apply to `sub`, `sub!`, and `gsub!` as well.)_
+</div>

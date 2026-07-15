@@ -23,3 +23,7 @@ But there’s an _even more compact_ form using the `&:` shorthand syntax:
 ```
 
 Isn’t Ruby just beautiful?
+
+<div class="not-hover:text-(--color-muted) transition-colors duration-100">
+  _(The above rules all apply to `sub`, `sub!`, and `gsub!` as well.)_
+</div>

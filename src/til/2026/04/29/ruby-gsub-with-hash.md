@@ -33,4 +33,4 @@ string.gsub(/[a-c]/, "a" => "A", "b" => "B", "c" => "C")
 # => "ABrACAdABrA"
 ```
 
-Cleaner, more readable, and more performant then chaining multiple `gsub` calls.
+Cleaner, more readable, and more performant than chaining multiple `gsub` calls.

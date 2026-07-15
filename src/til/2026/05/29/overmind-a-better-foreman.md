@@ -36,4 +36,13 @@ overmind c web  # connect
 overmind q      # quit
 ```
 
-For Rails applications that already use `foreman start`, replacing Foreman with Overmind has been seamless.
+I also added an `om` shell alias for `overmind` to make the commands even quicker:
+
+```bash
+om s
+om r
+om c web
+om q
+```
+
+For Rails applications that already use `foreman start`, replacing Foreman with Overmind has been mostly seamless.

@@ -31,6 +31,7 @@
   --color-border-light: light-dark(var(--color-stone-200), var(--color-zinc-900));
 
   --color-accent: light-dark(var(--color-primary-500), var(--color-primary-400));
+  --color-light: light-dark(var(--color-stone-700), var(--color-zinc-200));
   --color-soft: light-dark(var(--color-stone-600), var(--color-zinc-300));
   --color-muted: light-dark(var(--color-stone-500), var(--color-zinc-400));
   --color-faint: light-dark(var(--color-stone-400), var(--color-zinc-500));

@@ -498,31 +498,31 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
   <div class="photo-gallery sm:[--gallery-columns:3]">
     <figure class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]">
       <div class="photo-card-inner">
-        <img src="/images/wedding.webp" alt="My wife and me on our wedding day" />
+        <img src="/images/wedding.webp" loading="lazy" alt="My wife and me on our wedding day" />
         <figcaption>Our Wedding</figcaption>
       </div>
     </figure>
     <figure class="photo-card [--hover-rotation:-2deg] [--hover-y:-6] [--initial-rotation:1deg] [--initial-y:-2] [--z:4]">
       <div class="photo-card-inner">
-        <img src="/images/emily.webp" alt="Emily as a newborn" />
+        <img src="/images/emily.webp" loading="lazy" alt="Emily as a newborn" />
         <figcaption>Welcome, Emily!</figcaption>
       </div>
     </figure>
     <figure class="photo-card [--hover-rotation:3deg] [--hover-x:2] [--hover-y:-2] [--initial-rotation:7deg] [--initial-y:3] [--z:2]">
       <div class="photo-card-inner">
-        <img src="/images/emily-first-christmas.webp" alt="Emily’s first Christmas" />
+        <img src="/images/emily-first-christmas.webp" loading="lazy" alt="Emily’s first Christmas" />
         <figcaption>Emily’s First Xmas</figcaption>
       </div>
     </figure>
     <figure class="photo-card [--hover-rotation:-3deg] [--hover-x:-3] [--hover-y:0] [--initial-rotation:-5deg] [--initial-x:0] [--initial-y:-1.5] [--z:5]">
       <div class="photo-card-inner">
-        <img src="/images/sophia.webp" alt="Sophia as a newborn" />
+        <img src="/images/sophia.webp" loading="lazy" alt="Sophia as a newborn" />
         <figcaption>Welcome, Sophia!</figcaption>
       </div>
     </figure>
     <figure class="photo-card [--hover-rotation:3deg] [--hover-x:4] [--hover-y:1.5] [--initial-rotation:9deg] [--initial-x:0] [--initial-y:-1] [--z:3] max-sm:translate-y-2">
       <div class="photo-card-inner">
-        <img src="/images/sophia-first-christmas.webp" alt="Sophia’s first Christmas" />
+        <img src="/images/sophia-first-christmas.webp" loading="lazy" alt="Sophia’s first Christmas" />
         <figcaption>Sophia’s First Xmas</figcaption>
       </div>
     </figure>
@@ -537,31 +537,31 @@ Without `@scope`, the styles from the blog would bleed into this section, causin
   <div class="photo-gallery sm:[--gallery-columns:3]">
     <figure class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]">
       <div class="photo-card-inner">
-        <img src="/images/wedding.webp" alt="My wife and me on our wedding day" />
+        <img src="/images/wedding.webp" loading="lazy" alt="My wife and me on our wedding day" />
         <figcaption>Our Wedding</figcaption>
       </div>
     </figure>
     <figure class="photo-card [--hover-rotation:-2deg] [--hover-y:-6] [--initial-rotation:1deg] [--initial-y:-2] [--z:4]">
       <div class="photo-card-inner">
-        <img src="/images/emily.webp" alt="Emily as a newborn" />
+        <img src="/images/emily.webp" loading="lazy" alt="Emily as a newborn" />
         <figcaption>Welcome, Emily!</figcaption>
       </div>
     </figure>
     <figure class="photo-card [--hover-rotation:3deg] [--hover-x:2] [--hover-y:-2] [--initial-rotation:7deg] [--initial-y:3] [--z:2]">
       <div class="photo-card-inner">
-        <img src="/images/emily-first-christmas.webp" alt="Emily’s first Christmas" />
+        <img src="/images/emily-first-christmas.webp" loading="lazy" alt="Emily’s first Christmas" />
         <figcaption>Emily’s First Xmas</figcaption>
       </div>
     </figure>
     <figure class="photo-card [--hover-rotation:-3deg] [--hover-x:-3] [--hover-y:0] [--initial-rotation:-5deg] [--initial-x:0] [--initial-y:-1.5] [--z:5]">
       <div class="photo-card-inner">
-        <img src="/images/sophia.webp" alt="Sophia as a newborn" />
+        <img src="/images/sophia.webp" loading="lazy" alt="Sophia as a newborn" />
         <figcaption>Welcome, Sophia!</figcaption>
       </div>
     </figure>
     <figure class="photo-card [--hover-rotation:3deg] [--hover-x:4] [--hover-y:1.5] [--initial-rotation:9deg] [--initial-x:0] [--initial-y:-1] [--z:3] max-sm:translate-y-2">
       <div class="photo-card-inner">
-        <img src="/images/sophia-first-christmas.webp" alt="Sophia’s first Christmas" />
+        <img src="/images/sophia-first-christmas.webp" loading="lazy" alt="Sophia’s first Christmas" />
         <figcaption>Sophia’s First Xmas</figcaption>
       </div>
     </figure>

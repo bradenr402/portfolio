@@ -13,7 +13,6 @@
   "type": "module",
   "devDependencies": {
     "@markdoc/markdoc": "^0.5.4",
-    "@tailwindcss/postcss": "4.1.7",
     "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
@@ -25,12 +24,14 @@
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
     "jsdom": "^20.0.0",
-    "postcss-loader": "^8.1.1",
+    "mini-css-extract-plugin": "^2.10.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "style-loader": "^4.0.0",
-    "tailwindcss": "4.1.7",
+    "tailwindcss": "^4.3.3",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
+  },
+  "dependencies": {
+    "@tailwindcss/webpack": "^4.3.3"
   }
 }

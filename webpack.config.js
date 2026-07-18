@@ -175,6 +175,14 @@ export default {
         use: ['html-loader'],
       },
       {
+        // Fonts — stable filenames so pages can <link rel="preload"> them
+        test: /\.(woff2?|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]',
+        },
+      },
+      {
         test: /\.svg$/i,
         oneOf: [
           {

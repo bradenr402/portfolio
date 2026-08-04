@@ -31,6 +31,7 @@ export default function initCodeCopyButtons() {
     button.classList.add('copy-code-btn', 'group/clipboard');
     button.type = 'button';
     button.ariaLabel = 'Copy code';
+    button.setAttribute('aria-live', 'polite');
     button.innerHTML = buttonContent;
 
     let timeoutId;
@@ -44,11 +45,14 @@ export default function initCodeCopyButtons() {
       copyIcon.classList.add('copy-code-btn__icon--hidden');
       checkIcon.classList.remove('copy-code-btn__icon--hidden');
 
+      button.ariaLabel = 'Copied code';
+
       if (timeoutId) clearTimeout(timeoutId);
 
       timeoutId = setTimeout(() => {
         copyIcon.classList.remove('copy-code-btn__icon--hidden');
         checkIcon.classList.add('copy-code-btn__icon--hidden');
+        button.ariaLabel = 'Copy code';
         timeoutId = null;
       }, 2000);
     });

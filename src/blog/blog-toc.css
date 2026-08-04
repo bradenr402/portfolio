@@ -76,7 +76,7 @@
     line-height: 1.2;
     text-decoration: none;
 
-    color: var(--color-faint);
+    color: var(--color-subtle);
     transition: color calc(var(--highlight-transition) / 2);
 
     &:hover {

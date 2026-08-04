@@ -171,7 +171,6 @@
     margin: 0;
     font-size: 0.85rem;
     line-height: 1.45;
-    color: var(--color-soft);
 
     &::before {
       --dot-size: 6px;
@@ -208,7 +207,7 @@
   .blog-update time {
     font-size: 0.8rem;
     font-variant-numeric: tabular-nums;
-    color: var(--color-faint);
+    color: var(--color-subtle);
     font-style: normal;
     margin: 0;
   }

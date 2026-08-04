@@ -36,6 +36,8 @@
   --color-muted: light-dark(var(--color-stone-500), var(--color-zinc-400));
   --color-faint: light-dark(var(--color-stone-400), var(--color-zinc-500));
 
+  --color-subtle: color-mix(in oklab, var(--color-muted) 50%, var(--color-faint)) ;
+
   --selection-color: oklch(from var(--color-primary-500) l c h / 5%);
 
   /* Surfaces & UI */

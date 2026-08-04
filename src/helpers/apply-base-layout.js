@@ -39,6 +39,18 @@ function injectNav(html) {
 
   const fragment = JSDOM.fragment(navHtml);
   navPlaceholder.replaceWith(fragment);
+
+  // Mark the current page in the primary nav
+  const page = dom.window.document.body?.dataset.page || '';
+
+  if (page === 'home' || page.startsWith('blog')) {
+    const currentHref = page === 'home' ? '/' : '/blog';
+    const currentLink = dom.window.document.querySelector(
+      `nav[aria-label="Primary"] a[href="${currentHref}"]`,
+    );
+    if (currentLink) currentLink.setAttribute('aria-current', 'page');
+  }
+
   return dom.serialize();
 }
 

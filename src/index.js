@@ -9,6 +9,7 @@ import initKeyPressListeners from './helpers/init-key-press-listeners.js';
 import initKonamiCode from './helpers/init-konami-code.js';
 import initPhotoGallery from './helpers/init-photo-gallery.js';
 import initTilTimeline, { initTilContentClipping } from './helpers/init-til.js';
+import markMultilineCodeBlocks from './helpers/mark-multiline-code-blocks.js';
 
 const init = () => {
   initKonamiCode();
@@ -24,15 +25,12 @@ const init = () => {
   if (page === 'til-index') {
     initTilTimeline();
     initTilContentClipping();
+    markMultilineCodeBlocks();
   }
   if (page === 'til-entry') {
     initCodeCopyButtons();
     initKeyPressListeners();
-    document.querySelectorAll('pre > code.language-sh, pre > code.language-bash, pre > code.language-zsh')
-      .forEach((el) => {
-        const isSingleLine = el.textContent.trim().split('\n').length === 1;
-        if (!isSingleLine) el.classList.add('multi-line');
-      });
+    markMultilineCodeBlocks();
   }
 };
 

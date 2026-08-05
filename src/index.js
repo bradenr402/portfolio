@@ -21,7 +21,7 @@ const init = () => {
     initCopyLinkButton();
     initKeyPressListeners();
   }
-  if (page === 'til') {
+  if (page === 'til-index') {
     initTilTimeline();
     initTilContentClipping();
   }

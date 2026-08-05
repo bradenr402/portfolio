@@ -1,0 +1,69 @@
+@utility btn {
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-soft);
+  text-decoration: none;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  padding: 0.35rem 0.6rem;
+
+  /*
+   * Optical spacing: tighten padding on the icon side.
+   * Matches a direct svg or an svg wrapped in a single container.
+   */
+  &:has(> svg:first-child, > :first-child > svg) {
+    padding-left: 0.5rem;
+  }
+
+  &:has(> svg:last-child, > :last-child > svg) {
+    padding-right: 0.5rem;
+  }
+
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+
+  border-radius: 0.5rem;
+  @supports (corner-shape: squircle) {
+    corner-shape: squircle;
+    border-radius: 1.5rem;
+  }
+
+  transition:
+    color 100ms,
+    background-color 100ms,
+    width 100ms,
+    scale 100ms,
+    transform var(--ease-spring);
+
+  &:hover {
+    color: var(--color-text);
+    background-color: var(--color-surface-alt);
+  }
+
+  &:active {
+    scale: 0.97;
+  }
+
+  /* Default icon size to size-5 */
+  svg:not([class*="size-"]) {
+    height: --spacing(5);
+    width: --spacing(5);
+  }
+
+  /* Optical alignment adjustments for specific icons */
+  svg[data-icon='arrow-up'] {
+    margin-top: 2px;
+    margin-inline: -0.2em;
+  }
+
+  svg[data-icon="arrow-up-right"] {
+    margin-top: 2px;
+    margin-right: 1px;
+    margin-left: -2px;
+  }
+}

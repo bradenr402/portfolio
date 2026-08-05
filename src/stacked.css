@@ -1,0 +1,51 @@
+/*
+ * Reusable "stacked" utilities for cross-fading swappable content
+ * (e.g., copy buttons that flip between a clipboard and a check icon).
+ *
+ * Children are stacked in the same grid cell so the container is always
+ * sized to its largest child. Toggle the `--hidden` modifiers to swap
+ * which child is visible.
+ */
+
+@utility stacked-icons-container {
+  display: grid;
+  place-items: center;
+}
+
+@utility stacked-icon {
+  grid-area: 1 / 1;
+  transform-origin: center;
+  transition:
+    opacity 200ms ease,
+    scale 200ms var(--bounce),
+    filter 200ms ease;
+}
+
+@utility stacked-icon--hidden {
+  opacity: 0;
+  scale: 0.5;
+  filter: blur(4px);
+}
+
+@utility stacked-text-container {
+  display: grid;
+  place-items: start;
+}
+
+@utility stacked-text {
+  grid-area: 1 / 1;
+  transition:
+    opacity 200ms ease,
+    transform 200ms var(--bounce);
+}
+
+/* Hidden text slides vertically so swaps read as one continuous motion */
+@utility stacked-text--hidden-above {
+  opacity: 0;
+  transform: translateY(-50%) scale(0.9);
+}
+
+@utility stacked-text--hidden-below {
+  opacity: 0;
+  transform: translateY(50%) scale(0.9);
+}

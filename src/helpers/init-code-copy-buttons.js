@@ -9,10 +9,10 @@ export default function initCodeCopyButtons() {
   const clipboardSvg = parser.parseFromString(clipboardSvgContent, 'image/svg+xml').documentElement;
   const checkSvg = parser.parseFromString(checkSvgContent, 'image/svg+xml').documentElement;
 
-  const baseIconClasses = ['size-4', 'copy-code-btn__icon'];
+  const baseIconClasses = ['size-4', 'stacked-icon'];
 
   clipboardSvg.classList.add('copy-icon', ...baseIconClasses);
-  checkSvg.classList.add('check-icon', ...baseIconClasses, 'copy-code-btn__icon--hidden');
+  checkSvg.classList.add('check-icon', ...baseIconClasses, 'stacked-icon--hidden');
 
   const buttonContent = clipboardSvg.outerHTML + checkSvg.outerHTML;
 
@@ -28,7 +28,7 @@ export default function initCodeCopyButtons() {
     wrapper.appendChild(pre);
 
     const button = document.createElement('button');
-    button.classList.add('copy-code-btn', 'group/clipboard');
+    button.classList.add('copy-code-btn', 'stacked-icons-container', 'group/clipboard');
     button.type = 'button';
     button.ariaLabel = 'Copy code';
     button.setAttribute('aria-live', 'polite');
@@ -42,16 +42,16 @@ export default function initCodeCopyButtons() {
       const copyIcon = button.querySelector('.copy-icon');
       const checkIcon = button.querySelector('.check-icon');
 
-      copyIcon.classList.add('copy-code-btn__icon--hidden');
-      checkIcon.classList.remove('copy-code-btn__icon--hidden');
+      copyIcon.classList.add('stacked-icon--hidden');
+      checkIcon.classList.remove('stacked-icon--hidden');
 
       button.ariaLabel = 'Copied code';
 
       if (timeoutId) clearTimeout(timeoutId);
 
       timeoutId = setTimeout(() => {
-        copyIcon.classList.remove('copy-code-btn__icon--hidden');
-        checkIcon.classList.add('copy-code-btn__icon--hidden');
+        copyIcon.classList.remove('stacked-icon--hidden');
+        checkIcon.classList.add('stacked-icon--hidden');
         button.ariaLabel = 'Copy code';
         timeoutId = null;
       }, 2000);

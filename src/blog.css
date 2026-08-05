@@ -998,7 +998,7 @@
 
     transition:
       background-color 100ms,
-      transform 500ms var(--ease-spring);
+      transform var(--ease-spring);
 
     border-radius: 0.25rem;
     @supports (corner-shape: squircle) {

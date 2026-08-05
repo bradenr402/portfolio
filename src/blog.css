@@ -1055,15 +1055,11 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  pre > code:is(.language-bash, .language-sh, .language-zsh)::before {
+  pre > code:not(.multi-line):is(.language-bash, .language-sh, .language-shell, .language-zsh)::before {
     content: '$';
     display: inline;
     color: var(--color-faint);
     margin-right: 1em;
-  }
-
-  pre > code.multi-line::before {
-    content: none;
   }
 
   pre > code {

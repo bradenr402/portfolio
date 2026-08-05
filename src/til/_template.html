@@ -19,13 +19,11 @@
     <div id="wrapper">
       <main id="main" class="prose">
         <article class="til-entry">
-          <p class="til-entry__label">
-            TIL on <time datetime="{{datetime}}">{{longDate}}</time>
-          </p>
+          <p class="til-entry__label">TIL on <time datetime="{{datetime}}">{{longDate}}</time></p>
           <h1 class="til-entry__title">{{titleHtml}}</h1>
           <div class="til-entry__body">
-            {{content}}
-            {{learnMore}}
+            <!-- content will be wrapped in an <article> -->
+            {{content}} {{actions}}
           </div>
         </article>
       </main>

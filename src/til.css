@@ -228,13 +228,18 @@
   }
 
   .til-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: var(--til-gap);;
+  }
+
+  .til-actions-wrapper:has(.til-actions) {
     margin-top: var(--til-gap);
 
     &::before {
       content: '';
       display: block;
-      margin-bottom: var(--til-gap);
-
       height: var(--hairline);
       width: 100%;
       background: var(--color-border-light);

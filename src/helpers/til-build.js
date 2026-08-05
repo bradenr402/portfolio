@@ -18,6 +18,10 @@ const TIL_ITEM_TEMPLATE = fs
   .readFileSync(path.join(COMPONENTS_DIR, '_til-item.html'), 'utf8')
   .trim();
 
+const TIL_ACTIONS_TEMPLATE = fs
+  .readFileSync(path.join(COMPONENTS_DIR, '_til-actions.html'), 'utf8')
+  .trim();
+
 const TIL_ENTRY_TEMPLATE = fs.readFileSync(
   path.join(TIL_DIR, '_template.html'),
   'utf8',
@@ -53,14 +57,10 @@ function renderInlineMarkdown(text) {
   return html.replace(/^<article>\s*<p>/, '').replace(/<\/p>\s*<\/article>$/, '');
 }
 
-function renderLearnMore(link) {
+function renderActions(link) {
   if (!link) return '';
 
-  return `
-    <div class="til-actions">
-      <a href="${link}" class="til-entry__learn-more group/arrow-up-right">Learn More <i data-icon="arrow-up-right" class="size-5"></i></a>
-    </div>
-  `;
+  return renderTemplate(TIL_ACTIONS_TEMPLATE, { link });
 }
 
 function collectTilEntries(tilDir) {
@@ -120,7 +120,7 @@ function renderTilEntryHtml(entry) {
     title: entry.title,
     titleHtml: renderInlineMarkdown(entry.title),
     content,
-    learnMore: renderLearnMore(entry.link),
+    actions: renderActions(entry.link),
   });
 }
 
@@ -147,7 +147,7 @@ function buildTilDetailPage(entry) {
     datetime: entry.date,
     longDate: formatDate(entry.date) || entry.date,
     content,
-    learnMore: renderLearnMore(entry.link),
+    actions: renderActions(entry.link),
   });
 }
 

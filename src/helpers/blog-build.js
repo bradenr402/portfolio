@@ -137,7 +137,8 @@ function processHtmlOutput(html) {
       .replace(/&quot;/g, '"')
       .replace(/&amp;/g, '&');
 
-    return unescaped;
+    // Lazy-load article-body images (the header image is handled separately)
+    return unescaped.replace(/<img(?![^>]*\bloading=)/gi, '<img loading="lazy"');
   });
 
   return processedParts.join('');
@@ -320,7 +321,7 @@ function buildBlogPostPage(partial, template, metadata = null) {
     datetime: datetime || '',
     updatedDatetime: latestUpdateDate || '',
     updatedDate: updatedDateHtml,
-    headerImage: image ? `<img src="${image}" alt="${alt || ''}" />` : '',
+    headerImage: image ? `<img src="${image}" alt="${alt || ''}" fetchpriority="high" />` : '',
     readingTime: readingTime || '',
     tags: tagsHtml,
     actions: actionsHtml,

@@ -31,9 +31,13 @@
   --color-border-light: light-dark(var(--color-stone-200), var(--color-zinc-900));
 
   --color-accent: light-dark(var(--color-primary-500), var(--color-primary-400));
+  --color-light: light-dark(var(--color-stone-700), var(--color-zinc-200));
   --color-soft: light-dark(var(--color-stone-600), var(--color-zinc-300));
   --color-muted: light-dark(var(--color-stone-500), var(--color-zinc-400));
+  --color-subtle: color-mix(in oklab, var(--color-muted) 50%, var(--color-faint)) ;
   --color-faint: light-dark(var(--color-stone-400), var(--color-zinc-500));
+  --color-weak: color-mix(in oklab, var(--color-faint) 50%, var(--color-ghost));
+  --color-ghost: light-dark(var(--color-stone-300), var(--color-zinc-600));
 
   --selection-color: oklch(from var(--color-primary-500) l c h / 5%);
 

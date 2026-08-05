@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { fileURLToPath } from 'url';
 
 // Helper functions
@@ -138,6 +139,7 @@ export default {
     },
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       filename: '404.html',
       favicon: FAVICON_PATH,
@@ -222,11 +224,19 @@ export default {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', '@tailwindcss/webpack'],
       },
       {
         test: /\.html$/i,
         use: ['html-loader'],
+      },
+      {
+        // Fonts — stable filenames so pages can <link rel="preload"> them
+        test: /\.(woff2?|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]',
+        },
       },
       {
         test: /\.svg$/i,

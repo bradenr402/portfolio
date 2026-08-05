@@ -97,7 +97,7 @@
     .blog-list-item__date {
       font-variant-numeric: tabular-nums;
       font-size: 0.85rem;
-      color: var(--color-faint);
+      color: var(--color-subtle);
       white-space: nowrap;
       margin-top: 0.2em;
     }

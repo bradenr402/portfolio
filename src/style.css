@@ -188,10 +188,10 @@
 
 /* Mail link icon (envelope that opens on hover) */
 @utility mail-link {
-  @apply link-with-before-icon color-before-icon hover:before:[transform:translateY(-2px)];
+  @apply link-with-before-icon color-before-icon hover:before:transform-[translateY(-2px)] focus-visible:before:transform-[translateY(-2px)];
   --before-icon-url: url('./images/icons/email.svg');
 
-  @variant hover {
+  @variant hover, focus-visible {
     --before-icon-url: url('./images/icons/email-open.svg');
   }
 }
@@ -218,7 +218,8 @@
     @apply -m-[calc(var(--link-spacing)/2)] p-[calc(var(--link-spacing)/2)];
   }
 
-  &:has(a:hover) a:not(:hover) {
+  &:has(a:hover) a:not(:hover),
+  &:has(a:focus-visible) a:not(:focus-visible) {
     @apply blur-[1.5px];
   }
 }
@@ -231,7 +232,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: calc(var(--spacing) * 4);
+  gap: --spacing(4);
   margin-left: var(--half-logo-size);
   padding-left: var(--logo-size);
 

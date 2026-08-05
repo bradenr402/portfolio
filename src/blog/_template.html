@@ -1,8 +1,17 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth scrollbar-thumb-faint scrollbar-track-transparent">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preload" href="/fonts/calibre-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/calibre-regular-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/calibre-semibold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/calibre-semibold-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/calibre-bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Monaspace%20Neon%20Var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/CrimsonPro-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/CrimsonPro-Italic-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
     <title>{{title}} • Braden Roth</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/blog.css" />
@@ -49,7 +58,7 @@
 
           <aside class="blog-layout__aside">
             <a href="#top"><h2 class="blog-toc__title">Contents</h2></a>
-            <nav class="blog-toc" aria-label="Table of contents" hidden="true">
+            <nav class="blog-toc" aria-label="Table of contents">
               <ol class="blog-toc__list">
                 {{toc}}
               </ol>

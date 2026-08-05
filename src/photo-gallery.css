@@ -44,12 +44,12 @@
   --hover-x: 0;
   --z: 0;
 
-  --initial-translate-y: calc(var(--spacing) * var(--initial-y));
-  --initial-translate-x: calc(var(--spacing) * var(--initial-x));
+  --initial-translate-y: --spacing(var(--initial-y));
+  --initial-translate-x: --spacing(var(--initial-x));
 
   @variant hover {
-    --hover-translate-y: calc(var(--spacing) * var(--hover-y, var(--initial-y)));
-    --hover-translate-x: calc(var(--spacing) * var(--hover-x, var(--initial-x)));
+    --hover-translate-x: --spacing(var(--hover-x, var(--initial-x)));
+    --hover-translate-y: --spacing(var(--hover-y, var(--initial-y)));
   }
 
   /* prettier-ignore */

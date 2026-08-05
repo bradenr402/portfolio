@@ -126,15 +126,15 @@
 
   .blog-actions-wrapper:has(.blog-actions) {
     margin-top: 3rem;
-  }
 
-  .blog-actions-wrapper:has(.blog-actions)::before {
-    content: '';
-    display: block;
-    height: var(--hairline);
-    width: 100%;
-    background: var(--color-border-light);
-    border-radius: 9999px;
+    &::before {
+      content: '';
+      display: block;
+      height: var(--hairline);
+      width: 100%;
+      background: var(--color-border-light);
+      border-radius: 9999px;
+    }
   }
 
   .blog-updates {

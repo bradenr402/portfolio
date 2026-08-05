@@ -40,7 +40,7 @@
   .til-list {
     position: relative;
     padding-left: 0.5rem;
-    border-left: 1px dashed var(--color-border);
+    border-left: 1px dashed var(--color-border-light);
   }
 
   .til-list__items {

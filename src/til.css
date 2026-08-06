@@ -177,6 +177,59 @@
       margin: 0.5rem 0;
     }
 
+    /* Headings */
+    :is(h2, h3, h4, h5, h6) {
+      font-weight: 700;
+      text-wrap: balance;
+
+      /* --lh, --mt, and --mb are defined per heading below */
+      line-height: var(--lh);
+      margin-top: var(--mt);
+      margin-bottom: var(--mb);
+    }
+
+    :is(h2, h3, h4, h5, h6) {
+      letter-spacing: -0.01em;
+    }
+
+    :is(h2, h3, h4, h5, h6):first-child {
+      margin-top: 0;
+    }
+
+    :is(h2, h3, h4, h5, h6) + p {
+      margin-top: 0;
+    }
+
+    h2 {
+      --lh: 1.25;
+      --mt: 0.7em;
+      --mb: 0.25em;
+
+      font-size: 1.05rem;
+    }
+
+    h3 {
+      --lh: 1.25;
+      --mt: 0.65em;
+      --mb: 0.2em;
+
+      font-size: 1rem;
+    }
+
+    h4,
+    h5,
+    h6 {
+      --lh: 1.25;
+      --mt: 0.6em;
+      --mb: 0.15em;
+
+      font-size: 0.95rem;
+    }
+
+    h6 {
+      color: var(--color-muted);
+    }
+
     pre {
       font-size: 0.85rem;
     }
@@ -226,6 +279,70 @@
     font-size: 1.05rem;
     line-height: calc(var(--line-height) * 1.05);
     color: var(--color-text);
+
+    /* Headings */
+    :is(h2, h3, h4, h5, h6) {
+      font-weight: 700;
+      text-wrap: balance;
+
+      /* --lh, --mt, and --mb are defined per heading below */
+      line-height: var(--lh);
+      margin-top: var(--mt);
+      margin-bottom: var(--mb);
+    }
+
+    :is(h2, h3, h4, h5, h6) {
+      letter-spacing: -0.01em;
+    }
+
+    :is(h2, h3, h4, h5, h6):first-child {
+      margin-top: 0;
+    }
+
+    :is(h2, h3, h4, h5, h6) + p {
+      margin-top: 0;
+    }
+
+    h2 {
+      --lh: 1.2;
+      --mt: 1.45em;
+      --mb: 0.45em;
+
+      font-size: 1.35rem;
+    }
+
+    h3 {
+      --lh: 1.25;
+      --mt: 1.3em;
+      --mb: 0.4em;
+
+      font-size: 1.15rem;
+    }
+
+    h4 {
+      --lh: 1.3;
+      --mt: 1.15em;
+      --mb: 0.35em;
+
+      font-size: 1.05rem;
+    }
+
+    h5 {
+      --lh: 1.3;
+      --mt: 1.05em;
+      --mb: 0.3em;
+
+      font-size: 0.95rem;
+    }
+
+    h6 {
+      --lh: 1.3;
+      --mt: 1em;
+      --mb: 0.3em;
+
+      font-size: 0.95rem;
+      color: var(--color-muted);
+    }
   }
 
   .til-actions-wrapper {

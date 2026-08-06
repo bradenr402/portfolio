@@ -1,42 +1,45 @@
 const VIEWPORT_LINE_RATIO = 0.25;     // Fraction of viewport height used to determine the active entry
-const DATE_OFFSET = 9;                // px - Vertical offset to align the dot with the date label
-const SUBSEQUENT_ENTRY_OFFSET = 32;   // px - Offset applied to all entries except the first to correct divider spacing
 const TOP_TOLERANCE = 5;              // px - Distance from the top at which the next entry becomes active
 
 function getViewportHeight() {
   return window.innerHeight || document.documentElement.clientHeight || 0;
 }
 
-function activeIndex(entries) {
+function dateElementFor(entry) {
+  return entry.querySelector('.til-item__date') || entry.querySelector('time') || entry;
+}
+
+function dateCenterY(dateElement) {
+  const rect = dateElement.getBoundingClientRect();
+  return rect.top + (rect.height / 2);
+}
+
+function activeIndex(dateElements) {
   const lineY = getViewportHeight() * VIEWPORT_LINE_RATIO;
 
   let idx = 0;
-  for (let i = 0; i < entries.length; i += 1) {
-    const top = entries[i].getBoundingClientRect().top;
+  for (let i = 0; i < dateElements.length; i += 1) {
+    const centerY = dateCenterY(dateElements[i]);
 
-    if (top - 1 <= lineY) idx = i;
+    if (centerY <= lineY) idx = i;
     else break;
   }
   while (
-    idx < entries.length - 1
-    && entries[idx].getBoundingClientRect().top + DATE_OFFSET < TOP_TOLERANCE
+    idx < dateElements.length - 1
+    && dateCenterY(dateElements[idx]) < TOP_TOLERANCE
   ) {
-    idx++;
+    idx += 1;
   }
 
   return idx;
 }
 
-function moveDot(timeline, dot, entries, hoveredIndex) {
-  const idx = hoveredIndex ?? activeIndex(entries);
+function moveDot(timeline, dot, dateElements, hoveredIndex) {
+  const idx = hoveredIndex ?? activeIndex(dateElements);
   const tlRect = timeline.getBoundingClientRect();
-
-  const targetRect = entries[idx].getBoundingClientRect();
-
-  const baseOffset = targetRect.top - tlRect.top + DATE_OFFSET;
-  const correction = (idx > 0) ? SUBSEQUENT_ENTRY_OFFSET : 0;
-
-  const dotY = baseOffset + correction;
+  const dateRect = dateElements[idx].getBoundingClientRect();
+  const dotY = dateRect.top - tlRect.top
+    + (dateRect.height / 2) - (dot.getBoundingClientRect().height / 2);
 
   dot.style.transform = `translateY(${dotY}px)`;
   dot.setAttribute('data-ready', '');
@@ -47,6 +50,7 @@ function initTimeline(timeline) {
   const entries = Array.from(timeline.querySelectorAll('[data-timeline-entry]'));
   if (!dot || entries.length === 0) return;
 
+  const dateElements = entries.map(dateElementFor);
   let hoveredIndex = null;
   let queued = false;
   const tick = () => {
@@ -55,7 +59,7 @@ function initTimeline(timeline) {
 
     requestAnimationFrame(() => {
       queued = false;
-      moveDot(timeline, dot, entries, hoveredIndex);
+      moveDot(timeline, dot, dateElements, hoveredIndex);
     });
   };
 

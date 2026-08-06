@@ -80,6 +80,7 @@ function initTimeline(timeline) {
   }
 
   tick();
+  document.fonts.ready.then(tick);
   window.addEventListener('scroll', tick, { passive: true });
   window.addEventListener('resize', tick);
 }
@@ -111,6 +112,7 @@ export function initTilContentClipping() {
   };
 
   measure();
+  document.fonts.ready.then(measure);
   window.addEventListener('resize', measure);
 }
 

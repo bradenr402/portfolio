@@ -1,12 +1,22 @@
 import fs from 'fs';
 import path from 'path';
 import { JSDOM } from 'jsdom';
-import Markdoc from '@markdoc/markdoc';
-import matter from 'gray-matter';
 import { fileURLToPath } from 'url';
 import markdocConfig from './markdoc-config.js';
 
-import { renderTemplate, textToSlug } from './utils.js';
+import {
+  extractDateFromPath,
+  parseMarkdownFrontmatter,
+  renderMarkdoc,
+  renderMarkdocWithHeadings,
+} from './markdown.js';
+import {
+  buildMetaDescription,
+  collapseWhitespace,
+  escapeAttribute,
+  escapeHtml,
+  renderTemplate,
+} from './utils.js';
 import formatDate from './format-date.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -29,42 +39,10 @@ const BLOG_UPDATE_ITEM_TEMPLATE = readLocalTemplate('_blog-update-item.html');
 
 const WORDS_PER_MINUTE = 250;
 
-function getTextContent(node) {
-  if (typeof node === 'string') return node;
-  if (node && node.children) return node.children.map(getTextContent).join('');
-
-  return '';
-}
-
 function calculateReadingTime(text) {
   const words = text.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / WORDS_PER_MINUTE);
   return `${minutes} min read`;
-}
-
-function extractDateFromPath(pathStr) {
-  const match = pathStr.match(/(?<year>\d{4})\/(?<month>\d{2})\/(?<day>\d{2})\//);
-  if (match) {
-    const { year, month, day } = match.groups;
-    return [year, month, day].join('-');
-  }
-}
-
-function renderMarkdoc(content, config) {
-  const ast = Markdoc.parse(content);
-  const transformed = Markdoc.transform(ast, config);
-  const rendered = Markdoc.renderers.html(transformed);
-  return processHtmlOutput(rendered);
-}
-
-function renderMarkdocWithHeadings(content, config) {
-  const ast = Markdoc.parse(content);
-  const transformed = Markdoc.transform(ast, config);
-
-  const headings = collectHeadings(transformed);
-  const html = processHtmlOutput(Markdoc.renderers.html(transformed));
-
-  return { headings, html };
 }
 
 function renderTagsHtml(tags) {
@@ -86,66 +64,8 @@ function resolveBlogImage(src, contextPath) {
   return `/blog/${relativePathUrl}/${src}`;
 }
 
-function collectHeadings(node, headings = [], usedIds = new Set()) {
-  if (!node) return headings;
-
-  if (node.name?.match(/h[2-6]/)) {
-    const level = parseInt(node.name.substring(1), 10);
-    const text = getTextContent(node);
-
-    if (!node.attributes['data-toc-skip']) {
-      let id = node.attributes.id;
-      if (!id) {
-        const base = textToSlug(text);
-        let candidate = base;
-        let counter = 2;
-
-        while (usedIds.has(candidate)) {
-          candidate = `${base}-${counter}`;
-          counter += 1;
-        }
-
-        id = candidate;
-        node.attributes.id = id;
-      }
-
-      usedIds.add(id);
-      headings.push({ id, level, text });
-    }
-  }
-
-  if (node.children) {
-    for (const child of node.children) collectHeadings(child, headings, usedIds);
-  }
-
-  return headings;
-}
-
-// Post-process HTML to allow raw HTML blocks in markdown files
-function processHtmlOutput(html) {
-  // Use regex to find code blocks and avoid modifying them
-  const codeRegex = /(<pre[\s\S]*?<\/pre>|<code[^>]*>[\s\S]*?<\/code>)/gi;
-
-  const parts = html.split(codeRegex);
-
-  const processedParts = parts.map((part) => {
-    if (/^<(pre|code)/i.test(part)) return part;
-
-    const unescaped = part
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
-      .replace(/&quot;/g, '"')
-      .replace(/&amp;/g, '&');
-
-    // Lazy-load article-body images (the header image is handled separately)
-    return unescaped.replace(/<img(?![^>]*\bloading=)/gi, '<img loading="lazy"');
-  });
-
-  return processedParts.join('');
-}
-
 function processMarkdown(content, filepath) {
-  const { data: frontmatter, content: markdownBody } = matter(content);
+  const { data: frontmatter, content: markdownBody } = parseMarkdownFrontmatter(content);
 
   const alt = frontmatter.image?.alt;
   let image = frontmatter.image?.src;

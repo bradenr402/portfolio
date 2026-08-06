@@ -159,8 +159,8 @@
   }
 
   .til-item__content {
-    --max-height: 7.5rem;
-    --fade-height: 3.5rem;
+    --max-height: 4rem;
+    --fade-height: 4rem;
 
     position: relative;
     font-size: 0.95rem;

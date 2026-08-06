@@ -109,6 +109,7 @@ function normalizePostMetadata(slug, metadata = {}) {
   const displayDate = formatDate(datetime) || datetime;
   const tags = metadata.tags || [];
   const updates = metadata.updates || [];
+  const excerpt = collapseWhitespace(metadata.excerpt || '');
 
   return {
     title,
@@ -119,6 +120,7 @@ function normalizePostMetadata(slug, metadata = {}) {
     readingTime,
     tags,
     updates,
+    excerpt,
   };
 }
 
@@ -219,7 +221,7 @@ function getLatestUpdateDate(updates) {
 }
 
 function buildBlogPostPage(partial, template, metadata = null) {
-  const { title, datetime, displayDate, image, alt, readingTime, tags, updates } =
+  const { title, datetime, displayDate, image, alt, readingTime, tags, updates, excerpt } =
     normalizePostMetadata('', metadata);
 
   // Headings come from metadata (from processMarkdown)
@@ -234,23 +236,41 @@ function buildBlogPostPage(partial, template, metadata = null) {
     : '';
 
   const tocHtml = buildBlogTocListHtml(headings);
+  const pageTitle = `${title || ''} • ${SITE_NAME}`;
+  const metaDescription = buildMetaDescription({
+    excerpt,
+    html: partial,
+    fallback: BLOG_DESCRIPTION,
+  });
+  const metaImage = image
+    ? `${SITE_ORIGIN}${image}`
+    : SITE_IMAGE_URL;
+  const canonicalUrl = metadata?.href
+    ? `${SITE_ORIGIN}${metadata.href}`
+    : `${SITE_ORIGIN}/blog`;
 
   const data = {
-    title: title || '',
+    headingTitle: escapeHtml(title || ''),
+    pageTitle: escapeHtml(pageTitle),
+    metaTitle: escapeAttribute(pageTitle),
+    metaDescription: escapeAttribute(metaDescription),
+    canonicalUrl: escapeAttribute(canonicalUrl),
     displayDate: displayDate || '',
     datetime: datetime || '',
     updatedDatetime: latestUpdateDate || '',
     updatedDate: updatedDateHtml,
-    headerImage: image ? `<img src="${image}" alt="${alt || ''}" fetchpriority="high" />` : '',
+    headerImage: image
+      ? `<img src="${escapeAttribute(image)}" alt="${escapeAttribute(alt || '')}" fetchpriority="high" />`
+      : '',
     readingTime: readingTime || '',
     tags: tagsHtml,
     actions: actionsHtml,
     updates: updatesHtml,
     content: partial,
+    excerpt: escapeHtml(excerpt),
     toc: tocHtml,
-    metaImage: image
-      ? `https://bradenroth.com${image}`
-      : 'https://bradenroth.com/images/family.webp',
+    metaImage: escapeAttribute(metaImage),
+    siteName: escapeAttribute(SITE_NAME),
   };
 
   const templateWithData = renderTemplate(template, data);

@@ -146,8 +146,11 @@ function resolveDate(input) {
   if (m) return shiftDays(today, Number(m[1]));
   m = /^-(\d+)$/.exec(s); // -3 = 3 days ago
   if (m) return shiftDays(today, -Number(m[1]));
-  m = /^\+?(\d+)$/.exec(s); // +3 = 3 days ahead
-  if (m && raw.startsWith('+')) return shiftDays(today, Number(m[1]));
+  m = /^\+(\d+)$/.exec(s); // +3 = 3 days ahead
+  if (m) return shiftDays(today, Number(m[1]));
+  if (/^\d+$/.test(s)) {
+    fail(`Ambiguous date "${raw}". Use "+${raw}" for days ahead, "-${raw}" for days ago, "${raw} days ago", or a real date.`);
+  }
 
   // ISO-ish: YYYY-MM-DD or YYYY/MM/DD or YYYY.MM.DD
   m = /^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})$/.exec(raw);
@@ -263,21 +266,13 @@ async function runInteractive() {
 
     const linkInput = (await ask(rl, queue, 'Link', 'optional')).trim();
 
-    const description = (await ask(rl, queue, 'Description', 'blank to draft in $EDITOR')).trim();
-
-    let edit;
-    if (description === '') {
-      edit = true;
-    } else {
-      const yn = (await ask(rl, queue, 'Open in $EDITOR?', 'y/N')).trim().toLowerCase();
-      edit = yn === 'y' || yn === 'yes';
-    }
+    const yn = (await ask(rl, queue, 'Open in $EDITOR?', 'Y/n')).trim().toLowerCase();
+    const edit = yn !== 'n' && yn !== 'no';
     console.log();
     return {
       title,
       slug: slugInput || null,
       date: dateInput || null,
-      description,
       link: linkInput || null,
       edit,
     };
@@ -298,7 +293,6 @@ if (opts.title === null && opts.link === null && opts.date === null && opts.slug
     title: title,
     slug: opts.slug,
     date: opts.date,
-    description: '',
     link: opts.link,
     edit: true,
   };
@@ -322,8 +316,7 @@ const { file: targetFile, slug: finalSlug } = uniqueTarget(targetDir, slug);
 const frontmatterLines = ['---', `title: ${yamlDoubleQuoted(input.title)}`];
 if (input.link) frontmatterLines.push(`link: ${input.link}`);
 frontmatterLines.push('---', '');
-const body = input.description ? `${input.description}\n` : '';
-const stub = `${frontmatterLines.join('\n')}\n${body}`;
+const stub = `${frontmatterLines.join('\n')}\n`;
 
 fs.writeFileSync(targetFile, stub, 'utf8');
 

@@ -18,6 +18,12 @@ import {
   renderTemplate,
 } from './utils.js';
 import formatDate from './format-date.js';
+import {
+  BLOG_DESCRIPTION,
+  SITE_IMAGE_URL,
+  SITE_NAME,
+  SITE_ORIGIN,
+} from './site-meta.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,16 +32,16 @@ const SRC_DIR = path.resolve(__dirname, '..');
 const BLOG_ROOT = path.join(SRC_DIR, 'blog');
 const COMPONENTS_DIR = path.join(SRC_DIR, 'components');
 
-function readLocalTemplate(name) {
-  return fs.readFileSync(path.join(COMPONENTS_DIR, name), 'utf8').trim();
-}
+const BLOG_TOC_ITEM_TEMPLATE_PATH    = path.join(COMPONENTS_DIR, '_blog-toc-item.html');
+const BLOG_CARD_TEMPLATE_PATH        = path.join(COMPONENTS_DIR, '_blog-card.html');
+const BLOG_LIST_ITEM_TEMPLATE_PATH   = path.join(COMPONENTS_DIR, '_blog-list-item.html');
+const BLOG_ACTIONS_TEMPLATE_PATH     = path.join(COMPONENTS_DIR, '_blog-actions.html');
+const BLOG_UPDATES_TEMPLATE_PATH     = path.join(COMPONENTS_DIR, '_blog-updates.html');
+const BLOG_UPDATE_ITEM_TEMPLATE_PATH = path.join(COMPONENTS_DIR, '_blog-update-item.html');
 
-const BLOG_TOC_ITEM_TEMPLATE = readLocalTemplate('_blog-toc-item.html');
-const BLOG_CARD_TEMPLATE = readLocalTemplate('_blog-card.html');
-const BLOG_LIST_ITEM_TEMPLATE = readLocalTemplate('_blog-list-item.html');
-const BLOG_ACTIONS_TEMPLATE = readLocalTemplate('_blog-actions.html');
-const BLOG_UPDATES_TEMPLATE = readLocalTemplate('_blog-updates.html');
-const BLOG_UPDATE_ITEM_TEMPLATE = readLocalTemplate('_blog-update-item.html');
+function readTemplate(templatePath) {
+  return fs.readFileSync(templatePath, 'utf8').trim();
+}
 
 const WORDS_PER_MINUTE = 250;
 
@@ -168,9 +174,11 @@ function collectBlogPostsMeta(blogDir) {
 function buildBlogTocListHtml(headings) {
   if (!headings || headings.length < 3) return '';
 
+  const template = readTemplate(BLOG_TOC_ITEM_TEMPLATE_PATH);
+
   return headings
     .map((h) =>
-      renderTemplate(BLOG_TOC_ITEM_TEMPLATE, {
+      renderTemplate(template, {
         level: h.level,
         id: h.id,
         text: h.text,
@@ -188,6 +196,9 @@ function normalizeDate(value) {
 function buildUpdatesHtml(updates) {
   if (!updates || updates.length === 0) return '';
 
+  const updatesTemplate = readTemplate(BLOG_UPDATES_TEMPLATE_PATH);
+  const updateItemTemplate = readTemplate(BLOG_UPDATE_ITEM_TEMPLATE_PATH);
+
   // Sort by newest date first
   const sorted = [...updates].sort((a, b) =>
     normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
@@ -200,7 +211,7 @@ function buildUpdatesHtml(updates) {
       const displayDate = formatDate(datetime) || datetime;
       const description = renderMarkdoc(update.description, markdocConfig);
 
-      return renderTemplate(BLOG_UPDATE_ITEM_TEMPLATE, {
+      return renderTemplate(updateItemTemplate, {
         datetime,
         displayDate,
         description,
@@ -208,7 +219,7 @@ function buildUpdatesHtml(updates) {
     })
     .join('\n');
 
-  return renderTemplate(BLOG_UPDATES_TEMPLATE, { items });
+  return renderTemplate(updatesTemplate, { items });
 }
 
 function getLatestUpdateDate(updates) {
@@ -227,7 +238,7 @@ function buildBlogPostPage(partial, template, metadata = null) {
   // Headings come from metadata (from processMarkdown)
   const headings = metadata?.headings || [];
   const tagsHtml = renderTagsHtml(tags);
-  const actionsHtml = metadata?.skip_actions ? '' : BLOG_ACTIONS_TEMPLATE;
+  const actionsHtml = metadata?.skip_actions ? '' : readTemplate(BLOG_ACTIONS_TEMPLATE_PATH);
   const updatesHtml = buildUpdatesHtml(updates);
 
   const latestUpdateDate = getLatestUpdateDate(updates);
@@ -303,8 +314,9 @@ function buildBlogPostPage(partial, template, metadata = null) {
 
 function renderBlogPostCardHtml(post) {
   const tagsHtml = renderTagsHtml(post.tags);
+  const template = readTemplate(BLOG_CARD_TEMPLATE_PATH);
 
-  const html = renderTemplate(BLOG_CARD_TEMPLATE, {
+  const html = renderTemplate(template, {
     href: post.href,
     slug: post.slug ? `post-${post.slug.replace(/\//g, '-')}` : '',
     title: post.title,
@@ -327,7 +339,8 @@ function renderBlogPostCardHtml(post) {
 }
 
 function renderBlogPostItemHtml(post) {
-  return renderTemplate(BLOG_LIST_ITEM_TEMPLATE, { ...post });
+  const template = readTemplate(BLOG_LIST_ITEM_TEMPLATE_PATH);
+  return renderTemplate(template, { ...post });
 }
 
 function buildBlogIndexListHtml(posts) {

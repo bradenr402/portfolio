@@ -20,10 +20,6 @@ const NAV_PATH = path.join(SRC_DIR, 'components', '_nav.html');
 const FOOTER_PATH = path.join(SRC_DIR, 'components', '_footer.html');
 const ICONS_DIR = path.join(SRC_DIR, 'images', 'icons');
 
-const navHtml = fs.readFileSync(NAV_PATH, 'utf8');
-const footerHtml = fs.readFileSync(FOOTER_PATH, 'utf8');
-
-const iconCache = new Map();
 const SHARED_TEMPLATE_VALUES = {
   blogDescription: BLOG_DESCRIPTION,
   siteDescription: SITE_DESCRIPTION,
@@ -34,18 +30,10 @@ const SHARED_TEMPLATE_VALUES = {
 };
 
 function getIconSvg(name) {
-  if (!iconCache.has(name)) {
-    const iconPath = path.join(ICONS_DIR, `${name}.svg`);
+  const iconPath = path.join(ICONS_DIR, `${name}.svg`);
+  if (!fs.existsSync(iconPath)) return null;
 
-    if (!fs.existsSync(iconPath)) {
-      iconCache.set(name, null);
-    } else {
-      const svg = fs.readFileSync(iconPath, 'utf8');
-      iconCache.set(name, svg);
-    }
-  }
-
-  return iconCache.get(name);
+  return fs.readFileSync(iconPath, 'utf8');
 }
 
 function injectNav(html) {
@@ -53,6 +41,7 @@ function injectNav(html) {
   const navPlaceholder = dom.window.document.getElementById('nav');
   if (!navPlaceholder) return html;
 
+  const navHtml = fs.readFileSync(NAV_PATH, 'utf8');
   const fragment = JSDOM.fragment(navHtml);
   navPlaceholder.replaceWith(fragment);
 
@@ -75,6 +64,7 @@ function injectFooter(html) {
   const footerPlaceholder = dom.window.document.getElementById('footer');
   if (!footerPlaceholder) return html;
 
+  const footerHtml = fs.readFileSync(FOOTER_PATH, 'utf8');
   const fragment = JSDOM.fragment(footerHtml);
   footerPlaceholder.replaceWith(fragment);
 

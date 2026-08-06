@@ -6,20 +6,15 @@ link: https://docs.ruby-lang.org/en/3.4/String.html#class-String-label-Substitut
 You may already know you can pass a block to `gsub` like this:
 
 ```ruby
-"abracadabra".gsub(/[a-d]/) { |substring| substring.upcase }
-# => "ABrACADABrA"
+"the html spec and some css tricks".gsub(/\b(html|css)\b/) { it.upcase }
+# => "the HTML spec and some CSS tricks"
 ```
 
-You can make this more concise by using the implicit block parameter `_1` (or `it` in Ruby 3.4+):
+But you can make this even simpler by using the `&:` shorthand syntax:
 
 ```ruby
-"abracadabra".gsub(/[a-d]/) { it.upcase }
-```
-
-But there’s an _even more compact_ form using the `&:` shorthand syntax:
-
-```ruby
-"abracadabra".gsub(/[a-d]/, &:upcase)
+"the html spec and some css tricks".gsub(/\b(html|css)\b/, &:upcase)
+# => "the HTML spec and some CSS tricks"
 ```
 
 Isn’t Ruby just beautiful?

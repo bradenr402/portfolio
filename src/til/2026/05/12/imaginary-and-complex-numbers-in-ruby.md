@@ -3,7 +3,7 @@ title: 'Imaginary and complex numbers in Ruby'
 link: https://ruby-doc.org/core-2.7.2/Complex.html
 ---
 
-Ruby has built-in support for complex numbers via the `Complex` class in the standard library. It’s a small feature, but it makes working with imaginary numbers feel surprisingly natural.
+Ruby has built-in support for complex numbers via the `Complex` class. It’s a small feature, but it makes working with imaginary numbers feel surprisingly natural.
 
 You can create complex numbers explicitly using the `Complex` constructor. This is the most direct and readable approach when both real and imaginary parts are variables or come from calculations.
 

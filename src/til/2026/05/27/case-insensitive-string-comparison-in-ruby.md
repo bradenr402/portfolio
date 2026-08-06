@@ -3,13 +3,13 @@ title: "Case-insensitive string comparison in Ruby"
 link: https://www.rubydoc.info/stdlib/core/String:casecmp%3F
 ---
 
-When confronted with a situation that needs to compare strings without regard to case, most Ruby developers (myself included) tend to reach for `String#downcase` to normalize both strings before comparison. For example:
+You can’t call yourself a programmer if you’ve never needed to compare strings without regard to case. Most Ruby developers (myself included) reach for `String#downcase` to normalize both strings before comparing:
 
 ```ruby
 string.downcase == another_string.downcase  # => true
 ```
 
-It works, but Ruby already has built-in methods that are made for exactly this purpose: `String#casecmp` and `String#casecmp?`.
+It works, but Ruby already has built-in methods made for exactly this purpose: `String#casecmp` and `String#casecmp?`.
 
 If you just need a boolean, `casecmp?` is the cleanest option:
 

@@ -1,5 +1,5 @@
 ---
-title: "Oh My Zsh `take` commands"
+title: "Oh My Zsh’s `take` command"
 ---
 
 The Oh My Zsh `take` command is basically a shortcut for “set something up and immediately `cd` into it.” At its simplest, it wraps `mkdir -p` + `cd`, but it extends the same idea to git repositories and remote archives.
@@ -28,17 +28,15 @@ take https://example.com/project.tar.gz
 
 This is basically a “download source distribution and enter workspace” shortcut, assuming the archive has a sensible top-level directory structure.
 
-ZIP files are handled similarly. A ZIP URL gets downloaded, unzipped into the current directory, and then it tries to infer the extracted root folder and `cd` into it:
+ZIP files are handled similarly. A ZIP URL gets downloaded and unzipped into the current directory, and `take` then tries to infer the extracted root folder and `cd` into it:
 
 ```bash
 take https://example.com/project.zip
 ```
 
-This one is a bit more heuristic compared to tar handling, since ZIP archives are less consistent in how they structure top-level directories.
+This one is a bit more heuristic than the tar handling, since ZIP archives are less consistent in how they structure top-level directories.
 
 ---
 
-Under the hood, `take` is just a dispatcher that decides which of these behaviors to trigger based on the input pattern:
-
-Local paths go to `mkcd` / `takedir`, git URLs go to `takegit`, tar archives go to `takeurl`, and zip archives go to `takezip`. The consistent idea across all of them is eliminating the repeated “setup” steps so every operation ends with you already inside the working directory.
+Under the hood, `take` is just a dispatcher that decides which of these behaviors to trigger based on the input pattern: local paths go to `mkcd` / `takedir`, git URLs go to `takegit`, tar archives go to `takeurl`, and zip archives go to `takezip`. The consistent idea across all of them is eliminating the repeated setup steps, so every operation ends with you already inside the working directory.
 

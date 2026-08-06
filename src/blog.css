@@ -117,14 +117,7 @@
     max-width: min(85ch, calc(100vw - var(--horizontal-padding) * 2));
   }
 
-  .blog-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding-top: 1.5rem;
-  }
-
-  .blog-actions-wrapper:has(.blog-actions) {
+  .blog-actions-wrapper {
     margin-top: 3rem;
 
     &::before {
@@ -134,6 +127,13 @@
       width: 100%;
       background: var(--color-border-light);
       border-radius: 9999px;
+    }
+
+    .blog-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-top: 1.5rem;
     }
   }
 

@@ -227,14 +227,7 @@
     color: var(--color-text);
   }
 
-  .til-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding-top: var(--til-gap);;
-  }
-
-  .til-actions-wrapper:has(.til-actions) {
+  .til-actions-wrapper {
     margin-top: var(--til-gap);
 
     &::before {
@@ -244,6 +237,13 @@
       width: 100%;
       background: var(--color-border-light);
       border-radius: 9999px;
+    }
+
+    .til-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-top: var(--til-gap);
     }
   }
 

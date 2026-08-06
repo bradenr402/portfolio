@@ -15,16 +15,15 @@
     &::after {
       content: '';
       display: block;
-      margin-block: var(--til-gap);
-
-    @media (min-width: 48rem) {
-      margin-bottom: calc(var(--til-gap) * 2);
-    }
-
       height: var(--hairline);
       width: 100%;
       background: var(--color-border-light);
       border-radius: 9999px;
+
+      margin-block: var(--til-gap);
+      @media (min-width: 48rem) {
+        margin-bottom: calc(var(--til-gap) * 2);
+      }
     }
 
     h1 {

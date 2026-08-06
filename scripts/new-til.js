@@ -290,7 +290,7 @@ if (opts.title === null && opts.link === null && opts.date === null && opts.slug
   const title = (opts.title ?? '').trim();
   if (!title) fail(`A title is required (use -t/--title).\n\n${HELP}`);
   input = {
-    title: title,
+    title,
     slug: opts.slug,
     date: opts.date,
     link: opts.link,
@@ -298,7 +298,7 @@ if (opts.title === null && opts.link === null && opts.date === null && opts.slug
   };
 }
 
-const slugSource = input.slug ? input.slug : input.title;
+const slugSource = input.slug || input.title;
 const slug = textToSlug(slugSource);
 if (!slug) fail('Could not derive a slug from the given title.');
 

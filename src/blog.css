@@ -911,10 +911,10 @@
     /* Allow long inline code snippets to wrap */
     overflow-wrap: break-word;
 
-    border-radius: 0.3rem;
+    border-radius: 0.4em;
     @supports (corner-shape: squircle) {
       corner-shape: squircle;
-      border-radius: 1.5rem;
+      border-radius: 0.8em;
     }
 
     /* Using !important to override the background applied by highlight.js */

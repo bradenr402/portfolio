@@ -7,17 +7,72 @@ import { fileURLToPath } from 'url';
 
 // Helper functions
 import { collectBlogPostsMeta, buildBlogPostPage, buildStandaloneBlogIndexPage, injectRecentPosts, processMarkdown } from './src/helpers/blog-build.js';
-import { collectTilEntries, buildStandaloneTilPage, buildTilDetailPage } from './src/helpers/til-build.js';
+import { collectTilEntries, readTilEntry, buildStandaloneTilPage, buildTilDetailPage } from './src/helpers/til-build.js';
 import applyBaseLayout from './src/helpers/apply-base-layout.js';
+import {
+  blogMarkdownPathFromRequestPath,
+  blogSlugFromRequestPath,
+  createDevMiddleware,
+  tilEntryPathFromRequestPath,
+  tilMarkdownPathFromEntryPath,
+} from './src/helpers/dev-middleware.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Output directory
 const DIST_DIR = path.resolve(__dirname, 'dist');
+const PUBLIC_PATH = '/';
+const MAIN_JS_FILENAME = 'main.js';
+const MAIN_CSS_FILENAME = 'main.css';
+
+function publicAssetPath(publicPath, filename) {
+  const rootPath = publicPath.endsWith('/') ? publicPath : `${publicPath}/`;
+
+  return `${rootPath}${filename.replace(/^\//, '')}`;
+}
+
+function createDevAssetTags({
+  publicPath = '/',
+  faviconPath,
+  scriptFilename,
+  cssFilename,
+}) {
+  return [
+    `<link rel="icon" href="${publicAssetPath(publicPath, path.basename(faviconPath))}">`,
+    `<script defer src="${publicAssetPath(publicPath, scriptFilename)}"></script>`,
+    `<link href="${publicAssetPath(publicPath, cssFilename)}" rel="stylesheet">`,
+  ].join('');
+}
 
 // Asset paths
 const FAVICON_PATH = path.resolve(__dirname, './src/images/BR_logo.svg');
+const DEV_ASSET_TAGS = createDevAssetTags({
+  publicPath: PUBLIC_PATH,
+  faviconPath: FAVICON_PATH,
+  scriptFilename: MAIN_JS_FILENAME,
+  cssFilename: MAIN_CSS_FILENAME,
+});
+const WATCH_EXTRA_CONTEXT_PATHS = [
+  path.resolve(__dirname, 'src/components'),
+  path.resolve(__dirname, 'src/images/icons'),
+];
+const WATCH_EXTRA_FILE_PATHS = [
+  path.resolve(__dirname, 'src/blog/_template.html'),
+  path.resolve(__dirname, 'src/til/_template.html'),
+  path.resolve(__dirname, 'src/index.html'),
+  path.resolve(__dirname, 'src/blog.html'),
+  path.resolve(__dirname, 'src/til.html'),
+  path.resolve(__dirname, 'src/404.html'),
+];
+const watchExtraFiles = {
+  apply(compiler) {
+    compiler.hooks.afterCompile.tap('WatchExtraFiles', (compilation) => {
+      WATCH_EXTRA_CONTEXT_PATHS.forEach((dir) => compilation.contextDependencies.add(dir));
+      WATCH_EXTRA_FILE_PATHS.forEach((file) => compilation.fileDependencies.add(file));
+    });
+  },
+};
 
 // Blog paths
 const BLOG_DIR = path.resolve(__dirname, 'src/blog');
@@ -40,13 +95,15 @@ const blogPosts = collectBlogPostsMeta(BLOG_DIR);
 
 // Collect TIL entries to generate per-entry detail pages
 const tilEntries = collectTilEntries(TIL_DIR);
+const knownBlogSlugs = new Set(blogPosts.map((post) => post.slug));
+const knownTilEntryPaths = new Set(tilEntries.map((entry) => entry.path));
 
 const tilHtmlPlugins = tilEntries.map((entry) => {
   return new HtmlWebpackPlugin({
     filename: `til/${entry.path}.html`,
     favicon: FAVICON_PATH,
     templateContent: () => {
-      const fresh = collectTilEntries(TIL_DIR).find((e) => e.path === entry.path);
+      const fresh = readTilEntry(entry.filePath);
       return applyBaseLayout(buildTilDetailPage(fresh));
     },
   });
@@ -68,7 +125,7 @@ const blogHtmlPlugins = blogPosts.map(post => {
       const pageHtml = buildBlogPostPage(
         content,
         template,
-        metadata,
+        { ...metadata, href: post.href },
       );
 
       return applyBaseLayout(pageHtml);
@@ -81,8 +138,8 @@ export default {
   mode: 'development',
   output: {
     path: DIST_DIR,
-    filename: 'main.js',
-    publicPath: '/',
+    filename: MAIN_JS_FILENAME,
+    publicPath: PUBLIC_PATH,
     clean: true,
   },
   devtool: 'inline-source-map',
@@ -94,22 +151,36 @@ export default {
     open: true,
     hot: true,
     compress: true,
+    setupMiddlewares: (middlewares) => {
+      middlewares.unshift(
+        {
+          name: 'dev-middleware',
+          middleware: createDevMiddleware({
+            blogDir: BLOG_DIR,
+            blogTemplatePath: BLOG_TEMPLATE_PATH,
+            tilDir: TIL_DIR,
+            assetTags: DEV_ASSET_TAGS,
+            knownBlogSlugs,
+            knownTilEntryPaths,
+          }),
+        },
+      );
+
+      return middlewares;
+    },
     historyApiFallback: {
       rewrites: [
         {
-          // Allow extensionless blog URLs like /blog/2026/01/12/post-title
+          // Allow extensionless blog URLs like /blog/2026/01/01/post
           from: /^\/blog\/(.+)$/,
           to: (context) => {
-            let slug = context.match[1];
-
-            // Trim a trailing slash before appending .html, so both
-            // /blog/2026/01/12/post and /blog/2026/01/12/post/ work.
-            slug = slug.replace(/\/$/, '');
-            if (!slug) return '/blog/index.html';
+            const requestPath = `/blog/${context.match[1]}`;
+            const slug = blogSlugFromRequestPath(requestPath);
+            if (!slug) return '/404.html';
 
             // Check if this slug matches an actual blog post
-            const matchedPost = blogPosts.find((post) => post.slug === slug);
-            if (matchedPost) return `/blog/${slug}.html`;
+            const markdownPath = blogMarkdownPathFromRequestPath(BLOG_DIR, requestPath);
+            if (markdownPath) return `/blog/${slug}.html`;
 
             return '/404.html';
           },
@@ -120,15 +191,14 @@ export default {
           to: () => '/til/index.html',
         },
         {
+          // Allow extensionless TIL URLs like /til/2026/01/01/entry
           from: /^\/til\/(.+)$/,
           to: (context) => {
-            let path = context.match[1];
+            const entryPath = tilEntryPathFromRequestPath(`/til/${context.match[1]}`);
+            if (!entryPath) return '/404.html';
 
-            path = path.replace(/\/$/, '');
-            if (!path) return '/til/index.html';
-
-            const matchedEntry = tilEntries.find((entry) => entry.path === path);
-            if (matchedEntry) return `/til/${path}.html`;
+            const markdownPath = tilMarkdownPathFromEntryPath(TIL_DIR, entryPath);
+            if (markdownPath) return `/til/${entryPath}.html`;
 
             return '/404.html';
           },
@@ -139,7 +209,8 @@ export default {
     },
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    watchExtraFiles,
+    new MiniCssExtractPlugin({ filename: MAIN_CSS_FILENAME }),
     new HtmlWebpackPlugin({
       filename: '404.html',
       favicon: FAVICON_PATH,

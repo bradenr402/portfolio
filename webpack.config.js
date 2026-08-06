@@ -288,6 +288,16 @@ export default {
             ignore: ['**/*.md', '**/_template.html', '**/.DS_Store'],
           },
         },
+        {
+          // Copy non-Markdown assets (e.g., images) from the TIL directory,
+          // preserving the nested yyyy/mm/dd structure alongside the entries.
+          from: path.resolve(__dirname, 'src/til'),
+          to: 'til',
+          noErrorOnMissing: true,
+          globOptions: {
+            ignore: ['**/*.md', '**/_template.html', '**/.DS_Store'],
+          },
+        },
       ],
     }),
   ],

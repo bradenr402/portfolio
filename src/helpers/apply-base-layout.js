@@ -3,6 +3,14 @@ import path from 'path';
 import hljs from 'highlight.js';
 import { JSDOM } from 'jsdom';
 import { fileURLToPath } from 'url';
+import {
+  BLOG_DESCRIPTION,
+  SITE_DESCRIPTION,
+  SITE_IMAGE_URL,
+  SITE_NAME,
+  SITE_ORIGIN,
+  TIL_DESCRIPTION,
+} from './site-meta.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,6 +24,14 @@ const navHtml = fs.readFileSync(NAV_PATH, 'utf8');
 const footerHtml = fs.readFileSync(FOOTER_PATH, 'utf8');
 
 const iconCache = new Map();
+const SHARED_TEMPLATE_VALUES = {
+  blogDescription: BLOG_DESCRIPTION,
+  siteDescription: SITE_DESCRIPTION,
+  siteImageUrl: SITE_IMAGE_URL,
+  siteName: SITE_NAME,
+  siteOrigin: SITE_ORIGIN,
+  tilDescription: TIL_DESCRIPTION,
+};
 
 function getIconSvg(name) {
   if (!iconCache.has(name)) {
@@ -119,12 +135,20 @@ function highlightCodeBlocks(html) {
   return dom.serialize();
 }
 
+function replaceSharedTemplateValues(html) {
+  return Object.entries(SHARED_TEMPLATE_VALUES).reduce((result, [key, value]) => {
+    const pattern = new RegExp(`{{\\s*${key}\\s*}}`, 'g');
+    return result.replace(pattern, () => value);
+  }, html);
+}
+
 export default function applyBaseLayout(html) {
   const transformations = [
     injectNav,
     injectFooter,
     inlineIcons,
     highlightCodeBlocks,
+    replaceSharedTemplateValues,
   ];
 
   return transformations.reduce((result, fn) => fn(result), html);

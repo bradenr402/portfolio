@@ -34,7 +34,7 @@ function moveDot(timeline, dot, entries, hoveredIndex) {
   const targetRect = entries[idx].getBoundingClientRect();
 
   const baseOffset = targetRect.top - tlRect.top + DATE_OFFSET;
-  const correction = (idx > 0) ? SUBSEQUENT_ENTRY_OFFSET : 0
+  const correction = (idx > 0) ? SUBSEQUENT_ENTRY_OFFSET : 0;
 
   const dotY = baseOffset + correction;
 

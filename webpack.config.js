@@ -285,7 +285,7 @@ export default {
           from: path.resolve(__dirname, 'src/blog'),
           to: 'blog',
           globOptions: {
-            ignore: ['**/*.md', '**/_template.html'],
+            ignore: ['**/*.md', '**/_template.html', '**/.DS_Store'],
           },
         },
       ],

@@ -1,11 +1,18 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import Markdoc from '@markdoc/markdoc';
 
-import { processMarkdown } from './blog-build.js';
-import { renderTemplate } from './utils.js';
+import markdocConfig from './markdoc-config.js';
+import { extractDateFromPath, parseMarkdownFrontmatter, renderMarkdoc } from './markdown.js';
+import {
+  buildMetaDescription,
+  collapseWhitespace,
+  escapeAttribute,
+  escapeHtml,
+  renderTemplate,
+} from './utils.js';
 import formatDate from './format-date.js';
+import { SITE_NAME, SITE_ORIGIN, TIL_DESCRIPTION } from './site-meta.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,22 +21,17 @@ const SRC_DIR = path.resolve(__dirname, '..');
 const COMPONENTS_DIR = path.join(SRC_DIR, 'components');
 const TIL_DIR = path.join(SRC_DIR, 'til');
 
-const TIL_ITEM_TEMPLATE = fs
-  .readFileSync(path.join(COMPONENTS_DIR, '_til-item.html'), 'utf8')
-  .trim();
-
-const TIL_ACTIONS_TEMPLATE = fs
-  .readFileSync(path.join(COMPONENTS_DIR, '_til-actions.html'), 'utf8')
-  .trim();
-
-const TIL_ENTRY_TEMPLATE = fs.readFileSync(
-  path.join(TIL_DIR, '_template.html'),
-  'utf8',
-);
+const TIL_ENTRY_TEMPLATE_PATH = path.join(TIL_DIR, '_template.html');
+const TIL_ITEM_TEMPLATE_PATH = path.join(COMPONENTS_DIR, '_til-item.html');
+const TIL_ACTIONS_TEMPLATE_PATH = path.join(COMPONENTS_DIR, '_til-actions.html');
 
 // Match `<til-root>/yyyy/mm/dd/slug.md` and capture each part.
 const TIL_PATH_REGEX =
   /(?<year>\d{4})[\\/](?<month>\d{2})[\\/](?<day>\d{2})[\\/](?<slug>[^\\/]+?)\.md$/;
+
+function readTemplate(templatePath) {
+  return fs.readFileSync(templatePath, 'utf8').trim();
+}
 
 function parseTilPath(filePath) {
   const match = filePath.match(TIL_PATH_REGEX);
@@ -48,19 +50,68 @@ function parseTilPath(filePath) {
   };
 }
 
+function unwrapArticle(html) {
+  const trimmed = html.trim();
+  const match = trimmed.match(/^<article>\s*([\s\S]*?)\s*<\/article>$/);
+  return match ? match[1].trim() : trimmed;
+}
+
+function unwrapParagraph(html) {
+  return html.replace(/^<p>/, '').replace(/<\/p>$/, '');
+}
+
 function renderInlineMarkdown(text) {
-  const ast = Markdoc.parse(text);
-  const transformed = Markdoc.transform(ast);
-  const html = Markdoc.renderers.html(transformed);
   // Markdoc wraps single-line content in <article><p>…</p></article>.
   // Unwrap so the title renders inline inside an <h2> / <h1>.
-  return html.replace(/^<article>\s*<p>/, '').replace(/<\/p>\s*<\/article>$/, '');
+  return unwrapParagraph(unwrapArticle(renderMarkdoc(text)));
+}
+
+function processTilMarkdown(content, filePath) {
+  const { data: frontmatter, content: markdownBody } = parseMarkdownFrontmatter(content);
+  const date = extractDateFromPath(filePath);
+
+  const markdocConfigWithFrontmatter = {
+    variables: {
+      frontmatter: { ...frontmatter, date },
+    },
+    ...markdocConfig,
+  };
+
+  return {
+    html: unwrapArticle(renderMarkdoc(markdownBody, markdocConfigWithFrontmatter)),
+    metadata: {
+      ...frontmatter,
+      date,
+    },
+  };
 }
 
 function renderActions(link) {
   if (!link) return '';
 
-  return renderTemplate(TIL_ACTIONS_TEMPLATE, { link });
+  return renderTemplate(readTemplate(TIL_ACTIONS_TEMPLATE_PATH), { link });
+}
+
+function readTilEntry(filePath) {
+  const parsed = parseTilPath(filePath);
+  if (!parsed) return null;
+
+  const rawContent = fs.readFileSync(filePath, 'utf8');
+  const { html, metadata } = processTilMarkdown(rawContent, filePath);
+
+  return {
+    slug: parsed.slug,
+    path: parsed.path,
+    href: parsed.href,
+    domId: parsed.domId,
+    date: metadata.date || parsed.date,
+    sortValue: `${parsed.date}-${parsed.slug}`,
+    title: metadata.title || parsed.slug,
+    link: metadata.link || '',
+    excerpt: collapseWhitespace(metadata.excerpt || ''),
+    contentHtml: html,
+    filePath,
+  };
 }
 
 function collectTilEntries(tilDir) {
@@ -80,24 +131,8 @@ function collectTilEntries(tilDir) {
 
       if (!(dirent.isFile() && dirent.name.endsWith('.md'))) continue;
 
-      const parsed = parseTilPath(entryPath);
-      if (!parsed) continue;
-
-      const rawContent = fs.readFileSync(entryPath, 'utf8');
-      const { html, metadata } = processMarkdown(rawContent, entryPath);
-
-      entries.push({
-        slug: parsed.slug,
-        path: parsed.path,
-        href: parsed.href,
-        domId: parsed.domId,
-        date: parsed.date,
-        sortValue: `${parsed.date}-${parsed.slug}`,
-        title: metadata.title || parsed.slug,
-        link: metadata.link || '',
-        contentHtml: html ? html.trim() : '',
-        filePath: entryPath,
-      });
+      const entry = readTilEntry(entryPath);
+      if (entry) entries.push(entry);
     }
   }
 
@@ -107,11 +142,7 @@ function collectTilEntries(tilDir) {
 }
 
 function renderTilEntryHtml(entry) {
-  const content = entry.contentHtml
-    ? `<div class="til-item__content">${entry.contentHtml}</div>`
-    : '';
-
-  return renderTemplate(TIL_ITEM_TEMPLATE, {
+  return renderTemplate(readTemplate(TIL_ITEM_TEMPLATE_PATH), {
     slug: entry.slug,
     path: entry.path,
     href: entry.href,
@@ -119,7 +150,7 @@ function renderTilEntryHtml(entry) {
     datetime: entry.date,
     title: entry.title,
     titleHtml: renderInlineMarkdown(entry.title),
-    content,
+    content: entry.contentHtml,
     actions: renderActions(entry.link),
   });
 }
@@ -136,22 +167,32 @@ function buildStandaloneTilPage(tilDir, templatePath, placeholder) {
 }
 
 function buildTilDetailPage(entry) {
-  const content = entry.contentHtml
-    ? `<div class="til-entry__content">${entry.contentHtml}</div>`
-    : '';
+  const template = fs.readFileSync(TIL_ENTRY_TEMPLATE_PATH, 'utf8');
+  const content = entry.contentHtml || '';
+  const pageTitle = `${entry.title} • TIL • ${SITE_NAME}`;
+  const metaDescription = buildMetaDescription({
+    excerpt: entry.excerpt,
+    html: entry.contentHtml,
+    fallback: TIL_DESCRIPTION,
+  });
 
-  return renderTemplate(TIL_ENTRY_TEMPLATE, {
-    slug: entry.slug,
-    title: entry.title,
+  return renderTemplate(template, {
+    pageTitle: escapeHtml(pageTitle),
+    metaTitle: escapeAttribute(pageTitle),
+    metaDescription: escapeAttribute(metaDescription),
+    canonicalUrl: escapeAttribute(`${SITE_ORIGIN}${entry.href}`),
     titleHtml: renderInlineMarkdown(entry.title),
     datetime: entry.date,
     longDate: formatDate(entry.date) || entry.date,
     content,
+    excerpt: escapeHtml(entry.excerpt || ''),
     actions: renderActions(entry.link),
+    siteName: escapeAttribute(SITE_NAME),
   });
 }
 
 export {
+  readTilEntry,
   collectTilEntries,
   buildTilListHtml,
   buildStandaloneTilPage,

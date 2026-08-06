@@ -3,14 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{title}} • TIL • Braden Roth</title>
+    <title>{{pageTitle}}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/blog.css" />
     <link rel="stylesheet" href="/til.css" />
 
     <!-- Basic Open Graph -->
-    <meta property="og:title" content="{{title}} • TIL • Braden Roth" />
+    <meta property="og:title" content="{{metaTitle}}" />
+    <meta property="og:description" content="{{metaDescription}}" />
+    <meta property="og:url" content="{{canonicalUrl}}" />
     <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="{{siteName}}" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:site" content="@BradenRoth02" />
+    <meta name="twitter:creator" content="@BradenRoth02" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{metaTitle}}" />
+    <meta name="twitter:description" content="{{metaDescription}}" />
   </head>
   <body
     data-page="til-entry"
@@ -22,8 +32,8 @@
           <p class="til-entry__label">TIL on <time datetime="{{datetime}}">{{longDate}}</time></p>
           <h1 class="til-entry__title">{{titleHtml}}</h1>
           <div class="til-entry__body">
-            <!-- content will be wrapped in an <article> -->
-            {{content}} {{actions}}
+            <div class="til-entry__content">{{content}}</div>
+            {{actions}}
           </div>
         </article>
       </main>

@@ -1,7 +1,3 @@
-@import 'tailwindcss';
-
-@import './theme.css';
-@import './fonts.css';
 @import './blog/blog-card.css';
 @import './blog/blog-list-item.css';
 @import './blog/blog-toc.css';

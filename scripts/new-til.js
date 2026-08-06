@@ -255,7 +255,7 @@ async function runInteractive() {
     const title = (await ask(rl, queue, 'Title')).trim();
     if (!title) fail('A title is required.');
 
-    const inferredSlug = textToSlug(title) || textToSlug(rawTitle);
+    const inferredSlug = textToSlug(title);
     const slugInput = (await ask(rl, queue, 'Slug', `default: ${inferredSlug}`)).trim();
 
     const todayStr = formatDate(new Date());

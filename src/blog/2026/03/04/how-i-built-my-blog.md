@@ -2,10 +2,9 @@
 title: How I Built My Blog
 updates:
   - date: 2026-03-14
-    description: Updated component example in [Scoped Styles](#scoped-styles).
-
-  - date: 2026-03-14
-    description: Updated description of mail links in [Clear & Intuitive Links](#clear--intuitive-links).
+    description: |
+      - Updated component example in [Scoped Styles](#scoped-styles).
+      - Updated description of mail links in [Clear & Intuitive Links](#clear--intuitive-links).
 
   - date: 2026-03-27
     description: Fixed alt text for images in [Scoped Styles](#scoped-styles).

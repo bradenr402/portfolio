@@ -24,7 +24,7 @@ function domNodeToTag(node) {
       attributes[attr.name] = attr.value;
     }
     const children = [];
-    node.childNodes.forEach(child => {
+    node.childNodes.forEach((child) => {
       const res = domNodeToTag(child);
       if (res !== null) children.push(res);
     });

@@ -514,14 +514,6 @@
     max-width: 100%;
   }
 
-  /* Inherit fonts for form controls */
-  input,
-  button,
-  textarea,
-  select {
-    font: inherit;
-  }
-
   /* Images inside articles */
   article img:not(:where(header img, .blog-card__thumb img)) {
     height: auto;

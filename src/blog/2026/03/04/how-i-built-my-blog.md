@@ -100,7 +100,7 @@ I knew early on that I would want a nice way to reference other posts I’ve wri
 {% blog-card src="2026/01/26/hello-world" /%}
 ```
 
-The custom component in `markdoc-config.js` reads the target post’s metadata and injects it into a template. The result is a fully styled card with the post’s title, date, estimated reading time, header image preview, and tags, generated at build time. Here’s how it looks:
+The custom component in `markdoc-config.js` reads the target post’s metadata and injects it into a template. The result is a fully styled card with the post’s title, date, estimated reading time, header image preview, and tags, generated entirely at build time. Here’s how it looks:
 
 {% blog-card src="2026/01/26/hello-world" /%}
 

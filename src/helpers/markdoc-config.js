@@ -33,7 +33,7 @@ export default {
         const isNewTab = href.startsWith('newtab:');
         const isSameTab = href.startsWith('sametab:');
         const isExternal = href.startsWith('http');
-        const isHash = href == "#";
+        const isHash = href === '#';
 
         if (isNewTab || (!isSameTab && isExternal)) {
           attributes.target = '_blank';

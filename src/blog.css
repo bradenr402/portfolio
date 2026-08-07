@@ -362,7 +362,7 @@
   :where(.blog-layout__content, .blog-header) a:not([class]) {
     --link-transition: 100ms;
     text-decoration: dotted underline var(--color-faint);
-    text-decoration-thickness: 0.075em;
+    text-decoration-thickness: var(--underline-thickness);
     text-underline-offset: 0.12em;
 
     transition:

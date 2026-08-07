@@ -5,6 +5,8 @@
   --main-gap: --spacing(6);
   --horizontal-padding: --spacing(4);
 
+  --underline-thickness: 0.075em;
+
   --font-sans: Calibre, sans-serif;
   --font-mono: 'Monaspace Neon', monospace;
   --font-serif: 'Crimson Pro', serif;

@@ -33,7 +33,6 @@ const BLOG_ROOT = path.join(SRC_DIR, 'blog');
 const COMPONENTS_DIR = path.join(SRC_DIR, 'components');
 
 const BLOG_TOC_ITEM_TEMPLATE_PATH    = path.join(COMPONENTS_DIR, '_blog-toc-item.html');
-const BLOG_CARD_TEMPLATE_PATH        = path.join(COMPONENTS_DIR, '_blog-card.html');
 const BLOG_LIST_ITEM_TEMPLATE_PATH   = path.join(COMPONENTS_DIR, '_blog-list-item.html');
 const BLOG_ACTIONS_TEMPLATE_PATH     = path.join(COMPONENTS_DIR, '_blog-actions.html');
 const BLOG_UPDATES_TEMPLATE_PATH     = path.join(COMPONENTS_DIR, '_blog-updates.html');
@@ -310,32 +309,6 @@ function buildBlogPostPage(partial, template, metadata = null) {
   }
 
   return templateWithData;
-}
-
-function renderBlogPostCardHtml(post) {
-  const tagsHtml = renderTagsHtml(post.tags);
-  const template = readTemplate(BLOG_CARD_TEMPLATE_PATH);
-
-  const html = renderTemplate(template, {
-    href: post.href,
-    slug: post.slug ? `post-${post.slug.replace(/\//g, '-')}` : '',
-    title: post.title,
-    datetime: post.datetime,
-    displayDate: post.displayDate,
-    readingTime: post.readingTime,
-    image: post.image || '',
-    alt: post.alt || '',
-    tags: tagsHtml,
-  });
-
-  if (!post.image) {
-    const dom = new JSDOM(html);
-    const thumb = dom.window.document.querySelector('.blog-card__thumb');
-    if (thumb) thumb.remove();
-    return dom.serialize();
-  }
-
-  return html;
 }
 
 function renderBlogPostItemHtml(post) {

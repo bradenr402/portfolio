@@ -87,7 +87,6 @@ const TIL_CSS_PATH = path.resolve(__dirname, 'src/til.css');
 
 // Placeholders
 const BLOG_INDEX_PLACEHOLDER = '{{postList}}';
-const RECENT_POSTS_PLACEHOLDER = '{{recentPosts}}';
 const TIL_LIST_PLACEHOLDER = '{{tilList}}';
 
 // Collect all blog posts to generate HTML pages

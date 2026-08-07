@@ -6,8 +6,19 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { fileURLToPath } from 'url';
 
 // Helper functions
-import { collectBlogPostsMeta, buildBlogPostPage, buildStandaloneBlogIndexPage, injectRecentPosts, processMarkdown } from './src/helpers/blog-build.js';
-import { collectTilEntries, readTilEntry, buildStandaloneTilPage, buildTilDetailPage } from './src/helpers/til-build.js';
+import {
+  collectBlogPostsMeta,
+  buildBlogPostPage,
+  buildStandaloneBlogIndexPage,
+  injectRecentPosts,
+  processMarkdown,
+} from './src/helpers/blog-build.js';
+import {
+  collectTilEntries,
+  readTilEntry,
+  buildStandaloneTilPage,
+  buildTilDetailPage,
+} from './src/helpers/til-build.js';
 import applyBaseLayout from './src/helpers/apply-base-layout.js';
 import {
   blogMarkdownPathFromRequestPath,
@@ -32,12 +43,7 @@ function publicAssetPath(publicPath, filename) {
   return `${rootPath}${filename.replace(/^\//, '')}`;
 }
 
-function createDevAssetTags({
-  publicPath = '/',
-  faviconPath,
-  scriptFilename,
-  cssFilename,
-}) {
+function createDevAssetTags({ publicPath = '/', faviconPath, scriptFilename, cssFilename }) {
   return [
     `<link rel="icon" href="${publicAssetPath(publicPath, path.basename(faviconPath))}">`,
     `<script defer src="${publicAssetPath(publicPath, scriptFilename)}"></script>`,
@@ -97,40 +103,38 @@ const tilEntries = collectTilEntries(TIL_DIR);
 const knownBlogSlugs = new Set(blogPosts.map((post) => post.slug));
 const knownTilEntryPaths = new Set(tilEntries.map((entry) => entry.path));
 
-const tilHtmlPlugins = tilEntries.map((entry) => {
-  return new HtmlWebpackPlugin({
-    filename: `til/${entry.path}.html`,
-    favicon: FAVICON_PATH,
-    templateContent: () => {
-      const fresh = readTilEntry(entry.filePath);
-      return applyBaseLayout(buildTilDetailPage(fresh));
-    },
-  });
-});
+const tilHtmlPlugins = tilEntries.map(
+  (entry) =>
+    new HtmlWebpackPlugin({
+      filename: `til/${entry.path}.html`,
+      favicon: FAVICON_PATH,
+      templateContent: () => {
+        const fresh = readTilEntry(entry.filePath);
+        return applyBaseLayout(buildTilDetailPage(fresh));
+      },
+    }),
+);
 
-const blogHtmlPlugins = blogPosts.map(post => {
-  return new HtmlWebpackPlugin({
-    filename: `blog/${post.slug}.html`,
-    favicon: FAVICON_PATH,
-    templateContent: () => {
-      let content = fs.readFileSync(post.filePath, 'utf8');
+const blogHtmlPlugins = blogPosts.map(
+  (post) =>
+    new HtmlWebpackPlugin({
+      filename: `blog/${post.slug}.html`,
+      favicon: FAVICON_PATH,
+      templateContent: () => {
+        let content = fs.readFileSync(post.filePath, 'utf8');
 
-      const processed = processMarkdown(content, post.filePath);
-      content = processed.html;
-      const metadata = processed.metadata;
+        const processed = processMarkdown(content, post.filePath);
+        content = processed.html;
+        const { metadata } = processed;
 
-      const template = fs.readFileSync(BLOG_TEMPLATE_PATH, 'utf8');
+        const template = fs.readFileSync(BLOG_TEMPLATE_PATH, 'utf8');
 
-      const pageHtml = buildBlogPostPage(
-        content,
-        template,
-        { ...metadata, href: post.href },
-      );
+        const pageHtml = buildBlogPostPage(content, template, { ...metadata, href: post.href });
 
-      return applyBaseLayout(pageHtml);
-    },
-  });
-});
+        return applyBaseLayout(pageHtml);
+      },
+    }),
+);
 
 export default {
   entry: './src/index.js',
@@ -151,19 +155,17 @@ export default {
     hot: true,
     compress: true,
     setupMiddlewares: (middlewares) => {
-      middlewares.unshift(
-        {
-          name: 'dev-middleware',
-          middleware: createDevMiddleware({
-            blogDir: BLOG_DIR,
-            blogTemplatePath: BLOG_TEMPLATE_PATH,
-            tilDir: TIL_DIR,
-            assetTags: DEV_ASSET_TAGS,
-            knownBlogSlugs,
-            knownTilEntryPaths,
-          }),
-        },
-      );
+      middlewares.unshift({
+        name: 'dev-middleware',
+        middleware: createDevMiddleware({
+          blogDir: BLOG_DIR,
+          blogTemplatePath: BLOG_TEMPLATE_PATH,
+          tilDir: TIL_DIR,
+          assetTags: DEV_ASSET_TAGS,
+          knownBlogSlugs,
+          knownTilEntryPaths,
+        }),
+      });
 
       return middlewares;
     },
@@ -231,20 +233,14 @@ export default {
       favicon: FAVICON_PATH,
       templateContent: () =>
         applyBaseLayout(
-          buildStandaloneBlogIndexPage(
-            BLOG_DIR,
-            BLOG_INDEX_TEMPLATE_PATH,
-            BLOG_INDEX_PLACEHOLDER,
-          ),
+          buildStandaloneBlogIndexPage(BLOG_DIR, BLOG_INDEX_TEMPLATE_PATH, BLOG_INDEX_PLACEHOLDER),
         ),
     }),
     new HtmlWebpackPlugin({
       filename: 'til/index.html',
       favicon: FAVICON_PATH,
       templateContent: () =>
-        applyBaseLayout(
-          buildStandaloneTilPage(TIL_DIR, TIL_TEMPLATE_PATH, TIL_LIST_PLACEHOLDER),
-        ),
+        applyBaseLayout(buildStandaloneTilPage(TIL_DIR, TIL_TEMPLATE_PATH, TIL_LIST_PLACEHOLDER)),
     }),
     ...blogHtmlPlugins,
     ...tilHtmlPlugins,
@@ -276,7 +272,7 @@ export default {
           to({ absoluteFilename }) {
             const fileName = path.basename(absoluteFilename);
             return `blog/${fileName}`;
-          }
+          },
         },
         {
           // Copy non-Markdown assets (e.g., images) from the blog directory,

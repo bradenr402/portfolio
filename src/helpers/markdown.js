@@ -14,6 +14,7 @@ function extractDateFromPath(pathStr) {
     const { year, month, day } = match.groups;
     return [year, month, day].join('-');
   }
+  return undefined;
 }
 
 function getTextContent(node) {

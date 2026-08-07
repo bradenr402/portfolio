@@ -377,6 +377,127 @@
     }
   }
 
+  /* Sidenotes */
+  .sidenote-ref,
+  .sidenote {
+    --sidenote-transition: 100ms;
+    --sidenote-number-scale: 0.7;
+  }
+
+  .sidenote-ref {
+    cursor: help;
+    text-decoration: dotted underline var(--color-faint);
+    text-decoration-thickness: var(--underline-thickness);
+    text-underline-offset: 0.12em;
+
+    transition:
+      color var(--sidenote-transition),
+      text-decoration-color var(--sidenote-transition);
+
+    &::after {
+      content: attr(data-sidenote);
+      display: inline-block; /* Keep the underline from extending under the number */
+      margin-left: 0.35ch;
+
+      font-size: calc(var(--sidenote-number-scale) * 1em);
+      font-variant-numeric: tabular-nums;
+      vertical-align: super;
+      line-height: 0;
+
+      color: var(--color-faint);
+      transition: color var(--sidenote-transition);
+    }
+  }
+
+  .sidenote {
+    --sidenote-body-scale: 0.9;
+    --sidenote-gutter: 1.5rem;
+
+    position: relative;
+    padding-inline: var(--sidenote-gutter);
+    padding-block: 1em;
+
+    font-size: calc(var(--sidenote-body-scale) * 1em);
+    color: var(--color-faint);
+    transition: color var(--sidenote-transition);
+
+    &:not(:first-child) {
+      margin-top: var(--sidenote-gutter);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: var(--sidenote-gutter);
+    }
+
+    /* The number floats in the left gutter so every line of text stays aligned */
+    &::before {
+      content: attr(data-sidenote);
+      float: left;
+      width: var(--sidenote-gutter);
+      margin-left: calc(-1 * var(--sidenote-gutter));
+      margin-top: -0.15em;
+      padding-right: 1ch;
+      text-align: right;
+
+      /* Divide out the body scale so the number matches the size of the ref's number */
+      font-size: calc(var(--sidenote-number-scale) / var(--sidenote-body-scale) * 1em);
+      font-variant-numeric: tabular-nums;
+      transition: color var(--sidenote-transition);
+    }
+
+    /* Top and bottom dividers */
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin-inline: auto;
+      width: calc(100% - var(--sidenote-gutter) * 2);
+      border-block: var(--hairline) solid var(--color-border-light);
+      pointer-events: none;
+    }
+
+    /* Consecutive sidenotes sit flush and share a single divider */
+    & + & {
+      margin-top: 0;
+
+      &::after {
+        border-top: none;
+      }
+    }
+
+    &:has(+ &) {
+      margin-bottom: 0;
+    }
+  }
+
+  /*
+   * Hovering a ref or a sidenote highlights its counterpart. Pairs share a
+   * `data-sidenote` value (assigned at build time), but CSS can't compare
+   * attribute values across elements, so the pairing rules are enumerated.
+   * Articles with more than 10 sidenotes lose cross-highlighting for the
+   * extras (each element's own :hover styles still apply).
+   */
+  :scope {
+    &:has([data-sidenote='1']:hover) [data-sidenote='1'],
+    &:has([data-sidenote='2']:hover) [data-sidenote='2'],
+    &:has([data-sidenote='3']:hover) [data-sidenote='3'],
+    &:has([data-sidenote='4']:hover) [data-sidenote='4'],
+    &:has([data-sidenote='5']:hover) [data-sidenote='5'],
+    &:has([data-sidenote='6']:hover) [data-sidenote='6'],
+    &:has([data-sidenote='7']:hover) [data-sidenote='7'],
+    &:has([data-sidenote='8']:hover) [data-sidenote='8'],
+    &:has([data-sidenote='9']:hover) [data-sidenote='9'],
+    &:has([data-sidenote='10']:hover) [data-sidenote='10'] {
+      color: var(--color-accent);
+      text-decoration-color: var(--color-accent);
+
+      &::before,
+      &::after {
+        color: var(--color-accent);
+      }
+    }
+  }
+
   /* External link icon for links that open in a new tab */
   a[target='_blank']:not(:has(img))::after {
     content: '';

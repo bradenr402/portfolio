@@ -1,5 +1,7 @@
 import Markdoc from '@markdoc/markdoc';
 import blogCard from './tags/blog-card.js';
+import sidenote from './tags/sidenote.js';
+import sidenoteRef from './tags/sidenote-ref.js';
 
 const { Tag, nodes: defaultNodes } = Markdoc;
 
@@ -103,5 +105,7 @@ export default {
   },
   tags: {
     'blog-card': blogCard,
+    sidenote,
+    'sidenote-ref': sidenoteRef,
   },
 };

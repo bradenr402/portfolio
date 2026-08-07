@@ -86,7 +86,7 @@ export default {
         language: { type: String },
         content: { type: String },
       },
-      transform(node, config) {
+      transform(node) {
         if (node.attributes.language === 'html_raw') {
           return node.attributes.content;
         }

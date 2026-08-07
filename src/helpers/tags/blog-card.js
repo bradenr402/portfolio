@@ -61,7 +61,7 @@ function formatDate(dateStr) {
 
 export default {
   attributes: { src: { type: String, required: true } },
-  transform(node, config) {
+  transform(node) {
     const { src } = node.attributes;
     if (!src) return [];
 

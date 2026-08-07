@@ -1046,7 +1046,13 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  pre > code:not(.multi-line):is(.language-bash, .language-sh, .language-shell, .language-zsh)::before {
+  pre
+    > code:not(.multi-line):where(
+      .language-bash,
+      .language-sh,
+      .language-shell,
+      .language-zsh
+    )::before {
     content: '$';
     display: inline;
     color: var(--color-faint);

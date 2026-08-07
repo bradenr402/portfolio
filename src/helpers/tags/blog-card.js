@@ -59,20 +59,35 @@ function formatDate(dateStr) {
   return dateStr;
 }
 
-export default {
-  attributes: { src: { type: String, required: true } },
-  transform(node) {
-    const { src } = node.attributes;
-    if (!src) return [];
+function blogCardPath(src) {
+  const blogDir = path.resolve(__dirname, '../../blog');
+  const normalizedSrc = src.replace(/^\/+|\/+$/g, '');
+  return { normalizedSrc, filePath: path.join(blogDir, `${normalizedSrc}.md`) };
+}
 
-    const blogDir = path.resolve(__dirname, '../../blog');
-    const normalizedSrc = src.replace(/^\/+|\/+$/g, '');
-    const filePath = path.join(blogDir, `${normalizedSrc}.md`);
+class BlogCardSrc {
+  validate(value) {
+    const { filePath } = blogCardPath(value);
 
     if (!fs.existsSync(filePath)) {
-      const href = `/blog/${normalizedSrc}`;
-      return new Tag('p', {}, [new Tag('a', { href }, [href])]);
+      return [
+        {
+          id: 'blog-card-src-missing',
+          level: 'error',
+          message: `No blog post found for src '${value}' (expected ${filePath})`,
+        },
+      ];
     }
+
+    return [];
+  }
+}
+
+export default {
+  attributes: { src: { type: BlogCardSrc, required: true } },
+  transform(node) {
+    const { src } = node.attributes;
+    const { normalizedSrc, filePath } = blogCardPath(src);
 
     try {
       const fileContent = fs.readFileSync(filePath, 'utf8');

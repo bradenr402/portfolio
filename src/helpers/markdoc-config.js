@@ -9,6 +9,7 @@ export default {
     heading: {
       children: ['inline'],
       attributes: {
+        level: { type: Number, render: false, required: true },
         'data-toc-skip': { type: Boolean },
       },
       transform(node, config) {
@@ -85,6 +86,7 @@ export default {
       attributes: {
         language: { type: String },
         content: { type: String },
+        process: { type: Boolean, render: false, default: true },
       },
       transform(node) {
         if (node.attributes.language === 'html_raw') {

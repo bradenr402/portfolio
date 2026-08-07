@@ -79,19 +79,42 @@ function processHtmlOutput(html) {
   return processedParts.join('');
 }
 
-function renderMarkdoc(content, config = markdocConfig) {
+function validateMarkdoc(ast, config) {
+  const errors = Markdoc.validate(ast, config);
+  if (!errors.length) return;
+
+  const messages = errors.map(({ error, lines }) => {
+    return `  [${error.level}] ${error.message} (line ${lines[0] + 1})`;
+  });
+
+  throw new Error(`Invalid Markdoc content:\n${messages.join('\n')}`);
+}
+
+function transformMarkdoc(content, config = markdocConfig) {
   const ast = Markdoc.parse(content);
+  validateMarkdoc(ast, config);
+
   const transformed = Markdoc.transform(ast, config);
+  assignSidenoteNumbers(transformed);
+
+  return transformed;
+}
+
+function renderMarkdoc(content, config = markdocConfig) {
+  const transformed = transformMarkdoc(content, config);
+
   const rendered = Markdoc.renderers.html(transformed);
-  return processHtmlOutput(rendered);
+  const html = processHtmlOutput(rendered);
+
+  return html;
 }
 
 function renderMarkdocWithHeadings(content, config = markdocConfig) {
-  const ast = Markdoc.parse(content);
-  const transformed = Markdoc.transform(ast, config);
-
+  const transformed = transformMarkdoc(content, config);
   const headings = collectHeadings(transformed);
-  const html = processHtmlOutput(Markdoc.renderers.html(transformed));
+
+  const rendered = Markdoc.renderers.html(transformed);
+  const html = processHtmlOutput(rendered);
 
   return { headings, html };
 }

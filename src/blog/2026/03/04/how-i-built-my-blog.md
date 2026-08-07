@@ -260,7 +260,7 @@ I love this for complex tables. It’s far easier to read, write, and maintain, 
 
 Here’s an example of how I would write a complex table with Markdoc syntax, rendered below:
 
-````md
+````md {% process=false %}
 {% table %}
 
 - Capability {% .sticky %}
@@ -416,7 +416,7 @@ export default {
 
 Then I filter out those headings when building the TOC. Here’s an example:
 
-```md
+```md {% process=false %}
 ### Heading to Include
 
 ### Heading to Exclude {% data-toc-skip=true %}

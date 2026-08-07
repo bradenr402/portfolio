@@ -99,10 +99,10 @@ export default {
         image = `/blog/${cardDir}/${image}`;
       }
 
-      let tags = frontmatter.tags || [];
-      const tagsHtml = tags.length > 0 ? tags.map(tag => `<span class="blog-post__tag">${tag}</span>`).join('') : '';
+      const tags = frontmatter.tags || [];
+      const tagsHtml = tags.length > 0 ? tags.map((tag) => `<span class="blog-post__tag">${tag}</span>`).join('') : '';
 
-      let template = fs.readFileSync(path.resolve(__dirname, '../../components/_blog-card.html'), 'utf8');
+      const template = fs.readFileSync(path.resolve(__dirname, '../../components/_blog-card.html'), 'utf8');
 
       const renderedHtml = renderTemplate(template, {
         href: `/blog/${normalizedSrc}`,

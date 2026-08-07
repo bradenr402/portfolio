@@ -149,7 +149,7 @@ function collectBlogPostsMeta(blogDir) {
       const relativePath = path.relative(blogDir, entryPath);
       const slug = relativePath.replace(/\.md$/, '').split(path.sep).join('/');
 
-      let rawContent = fs.readFileSync(entryPath, 'utf8');
+      const rawContent = fs.readFileSync(entryPath, 'utf8');
 
       // Efficiently process markdown to get metadata
       const { metadata } = processMarkdown(rawContent, entryPath);

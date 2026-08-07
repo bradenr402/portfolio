@@ -1,6 +1,7 @@
 import Markdoc from '@markdoc/markdoc';
+import blogCard from './tags/blog-card.js';
+
 const { Tag, nodes: defaultNodes } = Markdoc;
-import { blogCard } from './tags/blog-card.js';
 
 export default {
   nodes: {

@@ -1,16 +1,16 @@
 import Markdoc from '@markdoc/markdoc';
 import { fileURLToPath } from 'url';
 
-const { Tag } = Markdoc;
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { JSDOM } from 'jsdom';
 import { renderTemplate } from '../utils.js';
+
+const { Tag } = Markdoc;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function domNodeToTag(node) {
   if (node.nodeType === 3) {
@@ -59,7 +59,7 @@ function formatDate(dateStr) {
   return dateStr;
 }
 
-export const blogCard = {
+export default {
   attributes: { src: { type: String, required: true } },
   transform(node, config) {
     const { src } = node.attributes;

@@ -45,4 +45,4 @@ export default function initKonamiCode() {
       konamiIndex = 0;
     }
   });
-};
+}

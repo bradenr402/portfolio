@@ -121,8 +121,8 @@ export default {
 
       const outputTags = [];
 
-      fragment.childNodes.forEach(node => {
-        const tag = domNodeToTag(node);
+      fragment.childNodes.forEach((child) => {
+        const tag = domNodeToTag(child);
         if (tag) outputTags.push(tag);
       });
 

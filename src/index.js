@@ -21,6 +21,7 @@ const init = () => {
     initCodeCopyButtons();
     initCopyLinkButton();
     initKeyPressListeners();
+    markMultilineCodeBlocks();
   }
   if (page === 'til-index') {
     initTilTimeline();

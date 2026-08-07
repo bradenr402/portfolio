@@ -89,7 +89,7 @@ function handleTocClick(linkById, activeState, marker, event) {
 
   scrollToHeadingWithOffset(heading);
 
-  history.replaceState(null, '', `#${id}`);
+  window.history.replaceState(null, '', `#${id}`);
 
   setActive(id, linkById, activeState, marker);
 }

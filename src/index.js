@@ -15,7 +15,7 @@ const init = () => {
   initKonamiCode();
   initPhotoGallery();
 
-  const page = document.body.dataset.page;
+  const { page } = document.body.dataset;
   if (page === 'blog-post') {
     initBlogToc();
     initCodeCopyButtons();

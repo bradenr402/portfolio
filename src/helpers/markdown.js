@@ -31,7 +31,7 @@ function collectHeadings(node, headings = [], usedIds = new Set()) {
     const text = getTextContent(node);
 
     if (!node.attributes['data-toc-skip']) {
-      let id = node.attributes.id;
+      let { id } = node.attributes;
       if (!id) {
         const base = textToSlug(text);
         let candidate = base;

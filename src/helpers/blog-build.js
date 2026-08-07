@@ -181,8 +181,7 @@ function buildBlogTocListHtml(headings) {
         level: h.level,
         id: h.id,
         text: h.text,
-      }),
-    )
+      }))
     .join('\n');
 }
 
@@ -200,9 +199,7 @@ function buildUpdatesHtml(updates) {
 
   // Sort by newest date first
   const sorted = [...updates].sort((a, b) =>
-    normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
-  );
-
+    normalizeDate(b.date).localeCompare(normalizeDate(a.date)));
 
   const items = sorted
     .map((update) => {
@@ -225,8 +222,7 @@ function getLatestUpdateDate(updates) {
   if (!updates || updates.length === 0) return null;
 
   const sorted = [...updates].sort((a, b) =>
-    normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
-  );
+    normalizeDate(b.date).localeCompare(normalizeDate(a.date)));
   return normalizeDate(sorted[0].date);
 }
 

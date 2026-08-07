@@ -62,7 +62,7 @@ function formatDate(dateStr) {
 export const blogCard = {
   attributes: { src: { type: String, required: true } },
   transform(node, config) {
-    const src = node.attributes.src;
+    const { src } = node.attributes;
     if (!src) return [];
 
     const blogDir = path.resolve(__dirname, '../../blog');
@@ -112,7 +112,7 @@ export const blogCard = {
         readingTime,
         image: image || '',
         alt,
-        tags: tagsHtml
+        tags: tagsHtml,
       });
 
       const fragment = JSDOM.fragment(renderedHtml);
@@ -127,10 +127,9 @@ export const blogCard = {
       });
 
       return outputTags;
-
     } catch (e) {
       console.error('Error in blog-card transform:', e);
       return [];
     }
-  }
+  },
 };

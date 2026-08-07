@@ -74,7 +74,7 @@ function scrollToHeadingWithOffset(target) {
 }
 
 function handleTocClick(linkById, activeState, marker, event) {
-  const target = event.target;
+  const { target } = event;
   const link = target.closest?.('a');
   if (!link) return;
 

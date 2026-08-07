@@ -19,7 +19,7 @@ function domNodeToTag(node) {
   if (node.nodeType === 1) {
     const tagName = node.tagName.toLowerCase();
     const attributes = {};
-    for (let i = 0; i < node.attributes.length; i++) {
+    for (let i = 0; i < node.attributes.length; i += 1) {
       const attr = node.attributes[i];
       attributes[attr.name] = attr.value;
     }

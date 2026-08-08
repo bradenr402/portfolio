@@ -78,7 +78,7 @@ function assignSidenoteNumbers(root) {
     if (node.attributes.class === 'sidenote-ref') refs.push(node);
     if (node.attributes.class === 'sidenote') notes.push(node);
 
-    stack.push(...node.children.toReversed());
+    stack.push(...node.children.slice().reverse());
   }
 
   const numbersByLabel = new Map();

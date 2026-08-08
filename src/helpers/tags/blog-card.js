@@ -1,16 +1,16 @@
 import Markdoc from '@markdoc/markdoc';
 import { fileURLToPath } from 'url';
 
-const { Tag } = Markdoc;
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { JSDOM } from 'jsdom';
 import { renderTemplate } from '../utils.js';
+
+const { Tag } = Markdoc;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function domNodeToTag(node) {
   if (node.nodeType === 3) {
@@ -19,12 +19,12 @@ function domNodeToTag(node) {
   if (node.nodeType === 1) {
     const tagName = node.tagName.toLowerCase();
     const attributes = {};
-    for (let i = 0; i < node.attributes.length; i++) {
+    for (let i = 0; i < node.attributes.length; i += 1) {
       const attr = node.attributes[i];
       attributes[attr.name] = attr.value;
     }
     const children = [];
-    node.childNodes.forEach(child => {
+    node.childNodes.forEach((child) => {
       const res = domNodeToTag(child);
       if (res !== null) children.push(res);
     });
@@ -59,20 +59,35 @@ function formatDate(dateStr) {
   return dateStr;
 }
 
-export const blogCard = {
-  attributes: { src: { type: String, required: true } },
-  transform(node, config) {
-    const src = node.attributes.src;
-    if (!src) return [];
+function blogCardPath(src) {
+  const blogDir = path.resolve(__dirname, '../../blog');
+  const normalizedSrc = src.replace(/^\/+|\/+$/g, '');
+  return { normalizedSrc, filePath: path.join(blogDir, `${normalizedSrc}.md`) };
+}
 
-    const blogDir = path.resolve(__dirname, '../../blog');
-    const normalizedSrc = src.replace(/^\/+|\/+$/g, '');
-    const filePath = path.join(blogDir, `${normalizedSrc}.md`);
+class BlogCardSrc {
+  validate(value) {
+    const { filePath } = blogCardPath(value);
 
     if (!fs.existsSync(filePath)) {
-      const href = `/blog/${normalizedSrc}`;
-      return new Tag('p', {}, [new Tag('a', { href }, [href])]);
+      return [
+        {
+          id: 'blog-card-src-missing',
+          level: 'error',
+          message: `No blog post found for src '${value}' (expected ${filePath})`,
+        },
+      ];
     }
+
+    return [];
+  }
+}
+
+export default {
+  attributes: { src: { type: BlogCardSrc, required: true } },
+  transform(node) {
+    const { src } = node.attributes;
+    const { normalizedSrc, filePath } = blogCardPath(src);
 
     try {
       const fileContent = fs.readFileSync(filePath, 'utf8');
@@ -99,10 +114,10 @@ export const blogCard = {
         image = `/blog/${cardDir}/${image}`;
       }
 
-      let tags = frontmatter.tags || [];
-      const tagsHtml = tags.length > 0 ? tags.map(tag => `<span class="blog-post__tag">${tag}</span>`).join('') : '';
+      const tags = frontmatter.tags || [];
+      const tagsHtml = tags.length > 0 ? tags.map((tag) => `<span class="blog-post__tag">${tag}</span>`).join('') : '';
 
-      let template = fs.readFileSync(path.resolve(__dirname, '../../components/_blog-card.html'), 'utf8');
+      const template = fs.readFileSync(path.resolve(__dirname, '../../components/_blog-card.html'), 'utf8');
 
       const renderedHtml = renderTemplate(template, {
         href: `/blog/${normalizedSrc}`,
@@ -112,7 +127,7 @@ export const blogCard = {
         readingTime,
         image: image || '',
         alt,
-        tags: tagsHtml
+        tags: tagsHtml,
       });
 
       const fragment = JSDOM.fragment(renderedHtml);
@@ -121,16 +136,15 @@ export const blogCard = {
 
       const outputTags = [];
 
-      fragment.childNodes.forEach(node => {
-        const tag = domNodeToTag(node);
+      fragment.childNodes.forEach((child) => {
+        const tag = domNodeToTag(child);
         if (tag) outputTags.push(tag);
       });
 
       return outputTags;
-
     } catch (e) {
       console.error('Error in blog-card transform:', e);
       return [];
     }
-  }
+  },
 };

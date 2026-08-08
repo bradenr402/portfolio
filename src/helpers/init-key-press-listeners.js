@@ -1,54 +1,54 @@
 export default function initKeyPressListeners() {
-  const kbdElements = Array.from(document.querySelectorAll("kbd"));
+  const kbdElements = Array.from(document.querySelectorAll('kbd'));
 
   const normalize = (v) => v.trim().toLowerCase();
 
   // Map display text → modifier flag OR special/meta identifier
   const modifierMap = {
-    "⌘": "metaKey",
-    "cmd": "metaKey",
-    "command": "metaKey",
+    '⌘': 'metaKey',
+    cmd: 'metaKey',
+    command: 'metaKey',
 
-    "⌥": "altKey",
-    "alt": "altKey",
-    "option": "altKey",
+    '⌥': 'altKey',
+    alt: 'altKey',
+    option: 'altKey',
 
-    "⌃": "ctrlKey",
-    "ctrl": "ctrlKey",
-    "control": "ctrlKey",
+    '⌃': 'ctrlKey',
+    ctrl: 'ctrlKey',
+    control: 'ctrlKey',
 
-    "⇧": "shiftKey",
-    "shift": "shiftKey",
+    '⇧': 'shiftKey',
+    shift: 'shiftKey',
   };
 
   // Non‑modifier special keys where event.key is a name, not a character
   const specialKeyMap = {
-    "⎋": "escape",
-    "esc": "escape",
-    "escape": "escape",
+    '⎋': 'escape',
+    esc: 'escape',
+    escape: 'escape',
 
-    "⇥": "tab",
-    "tab": "tab",
+    '⇥': 'tab',
+    tab: 'tab',
 
-    "␣": " ",
-    "space": " ",
+    '␣': ' ',
+    space: ' ',
 
-    "⏎": "enter",
-    "enter": "enter",
-    "return": "enter",
+    '⏎': 'enter',
+    enter: 'enter',
+    return: 'enter',
 
-    "backspace": "backspace",
-    "⌫": "delete",
-    "delete": "delete",
+    backspace: 'backspace',
+    '⌫': 'delete',
+    delete: 'delete',
 
-    "↑": "arrowup",
-    "arrowup": "arrowup",
-    "↓": "arrowdown",
-    "arrowdown": "arrowdown",
-    "←": "arrowleft",
-    "arrowleft": "arrowleft",
-    "→": "arrowright",
-    "arrowright": "arrowright",
+    '↑': 'arrowup',
+    arrowup: 'arrowup',
+    '↓': 'arrowdown',
+    arrowdown: 'arrowdown',
+    '←': 'arrowleft',
+    arrowleft: 'arrowleft',
+    '→': 'arrowright',
+    arrowright: 'arrowright',
   };
 
   const updateModifiers = (event) => {
@@ -58,8 +58,7 @@ export default function initKeyPressListeners() {
       // Modifiers, e.g. <kbd>⌘</kbd>, <kbd>⌥</kbd>, <kbd>⌃</kbd>, <kbd>⇧</kbd>
       const modifierFlag = modifierMap[text];
       if (modifierFlag) {
-        kbd.classList.toggle("is-active", !!event[modifierFlag]);
-        return;
+        kbd.classList.toggle('is-active', !!event[modifierFlag]);
       }
     });
   };
@@ -77,7 +76,7 @@ export default function initKeyPressListeners() {
       // 1) Named special keys (Esc, Enter, Arrow keys, etc.), e.g. <kbd>esc</kbd>
       const special = specialKeyMap[text];
       if (special && special === eventKeyNorm) {
-        kbd.classList.toggle("is-active", isActive);
+        kbd.classList.toggle('is-active', isActive);
         return;
       }
 
@@ -85,24 +84,24 @@ export default function initKeyPressListeners() {
       if (rawText.length === 1) {
         const charNorm = normalize(rawText);
         if (eventKeyNorm === charNorm) {
-          kbd.classList.toggle("is-active", isActive);
+          kbd.classList.toggle('is-active', isActive);
         }
         return;
       }
 
       // 3) Fallback: direct `key` name match, e.g. <kbd>enter</kbd>
       if (eventKeyNorm === text) {
-        kbd.classList.toggle("is-active", isActive);
+        kbd.classList.toggle('is-active', isActive);
       }
     });
   };
 
-  window.addEventListener("keydown", (e) => {
+  window.addEventListener('keydown', (e) => {
     updateModifiers(e);
     updateRegularKeys(e, true);
   });
 
-  window.addEventListener("keyup", (e) => {
+  window.addEventListener('keyup', (e) => {
     updateModifiers(e);
     updateRegularKeys(e, false);
   });

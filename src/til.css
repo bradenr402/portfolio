@@ -1,0 +1,371 @@
+@scope (.prose) to (.prose-reset) {
+  /* Index page */
+
+  :scope {
+    --til-hover-transition: 60ms;
+    --til-gap: 2rem;
+  }
+
+  .til-header {
+    &::after {
+      content: '';
+      display: block;
+      height: var(--hairline);
+      width: 100%;
+      background: var(--color-border-light);
+      border-radius: 9999px;
+
+      margin-block: var(--til-gap);
+      @media (min-width: 48rem) {
+        margin-bottom: calc(var(--til-gap) * 2);
+      }
+    }
+
+    h1 {
+      margin: 0 0 0.5rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+  }
+
+  .til-list {
+    position: relative;
+    border-left: 1px dashed var(--color-border-light);
+
+    padding-left: 1rem;
+    @media (min-width: 48rem) {
+      padding-left: 1.5rem;
+    }
+  }
+
+  .til-list__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .til-list__dot {
+    --dot-size: 0.6rem;
+    @media (min-width: 48rem) {
+      --dot-size: 0.8rem;
+    }
+ 
+    --dot-shadow-size-ratio: calc(1 / 3);
+    --dot-shadow-size: calc(var(--dot-size) * var(--dot-shadow-size-ratio));
+
+    position: absolute;
+    top: 0;
+    left: calc((var(--dot-size) + 1px) / -2);
+    z-index: 1;
+
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 9999px;
+
+    background: var(--color-accent);
+    box-shadow: 0 0 0 var(--dot-shadow-size)
+      color-mix(in oklch, var(--color-accent) 20%, transparent);
+
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(0);
+
+    &[data-ready] {
+      opacity: 1;
+      transition: transform 400ms var(--gentler-spring);
+    }
+  }
+
+  .til-item {
+    position: relative;
+    margin: 0;
+
+    &:not(:last-child) {
+      padding-bottom: var(--til-gap);
+    }
+
+    & + &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: var(--hairline);
+      margin-bottom: var(--til-gap);
+      background: var(--color-border-light);
+      border-radius: 9999px;
+    }
+
+    a.blanket-link {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    /*
+     * Dim non-hovered items when hovering over the list
+     * Apply to direct children to avoid dimming the ::before border line
+     */
+    & > * {
+      transition: opacity var(--til-hover-transition);
+    }
+    .til-list__items:has(&:hover) &:not(:hover) > * {
+      opacity: 0.2;
+    }
+  }
+
+  .til-item__date {
+    display: inline-block;
+    margin-block: 0.3rem;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-soft);
+  }
+
+  .til-item__title {
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 0.6rem;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+
+    --til-accent-transition: calc(var(--til-hover-transition) * 3);
+
+    /* Animated accent underline */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 1.5px;
+      background: var(--color-accent);
+
+      pointer-events: none;
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--til-accent-transition) ease-out;
+    }
+
+    .til-item:has(a.blanket-link:hover) &::before {
+      transform: scaleX(1);
+      transition: transform calc(var(--til-accent-transition) * 2) var(--gentler-spring);
+    }
+  }
+
+  .til-item__content {
+    --max-height: 4rem;
+    --fade-height: 4rem;
+
+    position: relative;
+    font-size: 0.95rem;
+
+    /* Soft fade-out for entries taller than max-height */
+    &[data-clipped] {
+      max-height: var(--max-height);
+      overflow: hidden;
+
+      mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-height)), transparent);
+    }
+
+    p:not(:first-child) {
+      margin: 0.5rem 0;
+    }
+
+    /* Headings */
+    :is(h2, h3, h4, h5, h6) {
+      font-weight: 700;
+      text-wrap: balance;
+
+      /* --lh, --mt, and --mb are defined per heading below */
+      line-height: var(--lh);
+      margin-top: var(--mt);
+      margin-bottom: var(--mb);
+    }
+
+    :is(h2, h3, h4, h5, h6) {
+      letter-spacing: -0.01em;
+    }
+
+    :is(h2, h3, h4, h5, h6):first-child {
+      margin-top: 0;
+    }
+
+    :is(h2, h3, h4, h5, h6) + p {
+      margin-top: 0;
+    }
+
+    h2 {
+      --lh: 1.25;
+      --mt: 0.7em;
+      --mb: 0.25em;
+
+      font-size: 1.05rem;
+    }
+
+    h3 {
+      --lh: 1.25;
+      --mt: 0.65em;
+      --mb: 0.2em;
+
+      font-size: 1rem;
+    }
+
+    h4,
+    h5,
+    h6 {
+      --lh: 1.25;
+      --mt: 0.6em;
+      --mb: 0.15em;
+
+      font-size: 0.95rem;
+    }
+
+    h6 {
+      color: var(--color-muted);
+    }
+
+    pre {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Detail page */
+
+  .til-entry {
+    max-width: 80ch;
+    margin-inline: auto;
+  }
+
+  .til-entry__label {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    color: var(--color-faint);
+  }
+
+  .til-entry__title {
+    font-size: clamp(1.85rem, 5vw, 2.85rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+
+    margin: 0 0 var(--til-gap);
+
+    &::after {
+      content: '';
+      display: block;
+      margin-top: var(--til-gap);
+
+      height: var(--hairline);
+      width: 100%;
+      background: var(--color-border-light);
+      border-radius: 9999px;
+    }
+
+    code {
+      border-width: calc(var(--hairline) * 2);
+    }
+  }
+
+  .til-entry__body {
+    font-size: 1.05rem;
+    line-height: calc(var(--line-height) * 1.05);
+    color: var(--color-text);
+
+    /* Headings */
+    :is(h2, h3, h4, h5, h6) {
+      font-weight: 700;
+      text-wrap: balance;
+
+      /* --lh, --mt, and --mb are defined per heading below */
+      line-height: var(--lh);
+      margin-top: var(--mt);
+      margin-bottom: var(--mb);
+    }
+
+    :is(h2, h3, h4, h5, h6) {
+      letter-spacing: -0.01em;
+    }
+
+    :is(h2, h3, h4, h5, h6):first-child {
+      margin-top: 0;
+    }
+
+    :is(h2, h3, h4, h5, h6) + p {
+      margin-top: 0;
+    }
+
+    h2 {
+      --lh: 1.2;
+      --mt: 1.45em;
+      --mb: 0.45em;
+
+      font-size: 1.35rem;
+    }
+
+    h3 {
+      --lh: 1.25;
+      --mt: 1.3em;
+      --mb: 0.4em;
+
+      font-size: 1.15rem;
+    }
+
+    h4 {
+      --lh: 1.3;
+      --mt: 1.15em;
+      --mb: 0.35em;
+
+      font-size: 1.05rem;
+    }
+
+    h5 {
+      --lh: 1.3;
+      --mt: 1.05em;
+      --mb: 0.3em;
+
+      font-size: 0.95rem;
+    }
+
+    h6 {
+      --lh: 1.3;
+      --mt: 1em;
+      --mb: 0.3em;
+
+      font-size: 0.95rem;
+      color: var(--color-muted);
+    }
+  }
+
+  .til-actions-wrapper {
+    margin-top: var(--til-gap);
+
+    &::before {
+      content: '';
+      display: block;
+      height: var(--hairline);
+      width: 100%;
+      background: var(--color-border-light);
+      border-radius: 9999px;
+    }
+
+    .til-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-top: var(--til-gap);
+    }
+  }
+
+  .til-entry__learn-more {
+    gap: 0.3rem;
+  }
+}

@@ -2,10 +2,9 @@
 title: How I Built My Blog
 updates:
   - date: 2026-03-14
-    description: Updated component example in [Scoped Styles](#scoped-styles).
-
-  - date: 2026-03-14
-    description: Updated description of mail links in [Clear & Intuitive Links](#clear--intuitive-links).
+    description: |
+      - Updated component example in [Scoped Styles](#scoped-styles).
+      - Updated description of mail links in [Clear & Intuitive Links](#clear--intuitive-links).
 
   - date: 2026-03-27
     description: Fixed alt text for images in [Scoped Styles](#scoped-styles).
@@ -17,6 +16,14 @@ updates:
 
   - date: 2026-06-29
     description: Updated the [Tables](#tables) section with a more detailed explanation of the Markdoc table syntax.
+
+  - date: 2026-08-04
+    description: Updated `.blog` and `.blog-reset` class references to `.prose` and `.prose-reset`, respectively.
+
+  - date: 2026-08-07
+    description: |
+      - Added the [Sidenotes](#sidenotes) section under [Custom Components](#custom-components).
+      - Added notes on build-time validation to the [Blog Card](#blog-card) and [Sidenotes](#sidenotes) sections.
 ---
 
 If you’ve been thinking about building your own personal blog, the tooling choices can feel endless. There are so many frameworks, static site generators, and CMSes available today. There’s nothing wrong with any of these, but they can be limiting when it comes to design and functionality.
@@ -75,11 +82,11 @@ It’s nothing fancy; just a few moving parts that work well together. Let’s d
 
 [Markdoc](https://markdoc.io/) is what makes the blog feel like a custom product. It parses Markdown into an Abstract Syntax Tree (AST), then renders that AST into HTML. This allows me to intercept the parsing process and inject my own logic at various stages.
 
-On top of that, writing in Markdown is simply a much better experience than writing in raw HTML: it’s easier to read and write, it keeps my focus on the content rather than the markup, and I don’t have to worry about wrapping every single paragraph in `<p>` tags.
+On top of that, writing in Markdown is simply a {% sidenote-ref label="markdown-writing" %}much better experience{% /sidenote-ref %} than writing in raw HTML: it’s easier to read and write, it keeps my focus on the content rather than the markup, and I don’t have to worry about wrapping every single paragraph in `<p>` tags.
 
-<div class="not-hover:text-(--color-muted) transition-colors duration-100">
-  _(Josh Comeau mentioned this in his post as well; while I initially had planned to write in HTML, I realized Markdown was the way to go after reading about how awful his experience was. It took more work upfront to set up the Markdoc parsing and my custom logic, but I think it’ll be worth it for the improved writing experience.)_
-</div>
+{% sidenote label="markdown-writing" %}
+Josh Comeau mentioned this in his post as well; while I initially had planned to write in HTML, I realized Markdown was the way to go after reading about how awful his experience was. It took more work upfront to set up the Markdoc parsing and my custom logic, but I think it’ll be worth it for the improved writing experience.
+{% /sidenote %}
 
 Markdoc also has support for custom tags and node transforms, enabling me to build custom components and apply transformations to nodes as they’re being processed. Keep reading to see some examples of how I take advantage of this.
 
@@ -93,9 +100,110 @@ I knew early on that I would want a nice way to reference other posts I’ve wri
 {% blog-card src="2026/01/26/hello-world" /%}
 ```
 
-The custom component in `markdoc-config.js` reads the target post’s metadata and injects it into a template. The result is a fully styled card with the post’s title, date, estimated reading time, header image preview, and tags, generated at build time. Here’s how it looks:
+The custom component in `markdoc-config.js` reads the target post’s metadata and injects it into a template. The result is a fully styled card with the post’s title, date, estimated reading time, header image preview, and tags, generated entirely at build time. Here’s how it looks:
 
 {% blog-card src="2026/01/26/hello-world" /%}
+
+The `src` attribute is validated at build time, too: if it points at a post that doesn’t exist, the build fails with the path it expected to find, so I’ll never accidentally ship a dead card.
+
+#### Sidenotes
+
+Sometimes I want to add a tangential remark without derailing the flow of the text—the kind of thing that would traditionally live in a footnote. But footnotes make you jump to the bottom of the page and back, so I built sidenotes instead: small asides that sit right in the flow of the text, close to the words they comment on. You’ve already seen one of them in [The Secret Ingredient](#the-secret-ingredient) section above.
+
+A sidenote comes in two parts: a <span class="whitespace-nowrap">`{% sidenote-ref %}`</span> tag wraps the words the note relates to, and a <span class="whitespace-nowrap">`{% sidenote %}`</span> tag holds the note itself. Both take a required `label` attribute that ties the pair together:
+
+```md {% process=false %}
+Sidenotes are handy for {% sidenote-ref label="tangents" %}tangential remarks{% /sidenote-ref %}.
+
+{% sidenote label="tangents" %}
+Like this one—related, but not essential.
+{% /sidenote %}
+```
+
+Which renders as exactly this:
+
+Sidenotes are handy for {% sidenote-ref label="tangents" %}tangential remarks{% /sidenote-ref %}.
+
+{% sidenote label="tangents" %}
+Like this one—related, but not essential.
+{% /sidenote %}
+
+Because the pairing comes from the label rather than the position, a sidenote doesn’t have to follow the paragraph that references it—{% sidenote-ref label="placement" %}it can go anywhere{% /sidenote-ref %} in the document.
+
+That said, I prefer to keep each note close to its reference. A note that shows up three paragraphs after the words it comments on isn’t much better than a footnote.
+
+{% sidenote label="placement" %}
+Case in point: this note comes after the paragraph that follows its reference, and the pairing works just the same.
+{% /sidenote %}
+
+The numbering happens at build time. Since Markdoc transforms each tag in isolation, no single tag knows how many sidenotes came before it—so after transforming the whole document, I walk the resulting tree, number the references in document order, and give each sidenote the number of the reference that shares its label:
+
+```javascript
+// src/helpers/markdown.js
+
+function assignSidenoteNumbers(root) {
+  // ... walk the transformed tree, collecting `refs` and `notes`
+
+  const numbersByLabel = new Map();
+
+  refs.forEach((ref, index) => {
+    const number = index + 1;
+
+    ref.attributes['data-sidenote'] = number;
+    numbersByLabel.set(ref.attributes.label, number);
+  });
+
+  notes.forEach((note) => {
+    const number = numbersByLabel.get(note.attributes.label);
+
+    note.attributes['data-sidenote'] = number;
+    note.attributes['aria-label'] = `Sidenote ${number}`;
+  });
+
+  // Remove the `label` attribute from refs and notes
+  [...refs, ...notes].forEach(({ attributes }) => delete attributes.label);
+}
+```
+
+Both elements end up with the same `data-sidenote` attribute, which the CSS uses to render the numbers (via `content: attr(data-sidenote)`) and to highlight the pair whenever either one is hovered—no JavaScript required. There’s one wrinkle, though: CSS can’t compare attribute values across elements, so the hover pairing is enumerated, one `:has()` rule per number:
+
+```css
+/* src/blog.css */
+
+.sidenote-ref::after,
+.sidenote::before {
+  content: attr(data-sidenote);
+}
+
+:scope {
+  &:has([data-sidenote='1']:hover) [data-sidenote='1'],
+  &:has([data-sidenote='2']:hover) [data-sidenote='2'],
+  /* ... */
+  &:has([data-sidenote='10']:hover) [data-sidenote='10'] {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+}
+```
+
+Ten is an arbitrary ceiling—if a post ever needs more sidenotes than that, it probably needs an editor more than it needs another selector. Try hovering this {% sidenote-ref label="sidenote-demo" %}live example{% /sidenote-ref %} and watch the note below light up. Consecutive sidenotes get some {% sidenote-ref label="shared-divider" %}special treatment{% /sidenote-ref %} too: notes attached to the same paragraph stack flush against each other and share a single divider, rather than doubling up the borders between them.
+
+{% sidenote label="sidenote-demo" %}
+Hover this note and you’ll see its reference above light up too. Everything here—the numbers, the pairing, the hover effect—is pure CSS on top of two build-time-injected attributes.
+{% /sidenote %}
+
+{% sidenote label="shared-divider" %}
+Notice the single shared divider between this note and the one above.
+{% /sidenote %}
+
+The labels are validated at build time, too: each one must appear on exactly one reference and exactly one note, so a typo won’t accidentally break a `sidenote`–`sidenote-ref` pairing—the build fails and tells me exactly where:
+
+```text {% process=false %}
+Invalid Markdoc content:
+  [error] {% sidenote-ref %} label 'tangent' has no matching {% sidenote %} (line 42)
+```
+
+I’d much rather have the build yell at me than ship a broken post.
 
 ### Node Transforms
 
@@ -257,7 +365,7 @@ I love this for complex tables. It’s far easier to read, write, and maintain, 
 
 Here’s an example of how I would write a complex table with Markdoc syntax, rendered below:
 
-````md
+````md {% process=false %}
 {% table %}
 
 - Capability {% .sticky %}
@@ -413,7 +521,7 @@ export default {
 
 Then I filter out those headings when building the TOC. Here’s an example:
 
-```md
+```md {% process=false %}
 ### Heading to Include
 
 ### Heading to Exclude {% data-toc-skip=true %}
@@ -478,23 +586,23 @@ I wanted the blog to feel polished and intentional, so I added a lot of custom s
 
 ### Scoped Styles
 
-I use CSS `@scope` to isolate the blog’s design. This ensures that typography and layout rules apply only to the blog content (`.blog`) and explicitly stop at any element with the class `.blog-reset`.
+I use CSS `@scope` to isolate the blog’s design. This ensures that typography and layout rules apply only to the blog content (`.prose`) and explicitly stop at any element with the class `.prose-reset`.
 
 ```css
 /* src/blog.css */
 
-@scope (.blog) to (.blog-reset) {
+@scope (.prose) to (.prose-reset) {
   /* Blog styles here... */
 }
 ```
 
-This [Donut Scope](https://css-tricks.com/solved-by-css-donuts-scopes/) is perfect for embedding custom components or interactive demos within a post. By wrapping them in `.blog-reset`, I ensure they aren’t affected by the blog’s global styles, giving me a blank canvas for those specific elements.
+This [Donut Scope](https://css-tricks.com/solved-by-css-donuts-scopes/) is perfect for embedding custom components or interactive demos within a post. By wrapping them in `.prose-reset`, I ensure they aren’t affected by the blog’s global styles, giving me a blank canvas for those specific elements.
 
 For example, I can easily embed this custom HTML styled with Tailwind from the [homepage](/) of my site without any style conflicts:
 
-#### Example of a section wrapped in `.blog-reset`:
+#### Example of a section wrapped in `.prose-reset`:
 
-<div class="blog-reset p-6 border border-(--color-border)">
+<div class="prose-reset p-6 border border-(--color-border)">
   <div class="photo-gallery sm:[--gallery-columns:3]">
     <figure class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]">
       <div class="photo-card-inner">
@@ -529,9 +637,9 @@ For example, I can easily embed this custom HTML styled with Tailwind from the [
   </div>
 </div>
 
-Without `@scope`, the styles from the blog would bleed into this section, causing visual inconsistencies. The difference is quite obvious if I remove the `blog-reset` wrapper.
+Without `@scope`, the styles from the blog would bleed into this section, causing visual inconsistencies. The difference is quite obvious if I remove the `prose-reset` wrapper.
 
-#### Example of a section without `.blog-reset`:
+#### Example of a section without `.prose-reset`:
 
 <div class="p-6 border border-(--color-border)">
   <div class="photo-gallery sm:[--gallery-columns:3]">
@@ -742,7 +850,7 @@ codeBlocks.forEach((codeBlock) => {
 
 I like to use `<kbd>` tags to denote keyboard shortcuts. I designed custom styles for `<kbd>` elements adapted from [this post by Dylan Smith](https://dylanatsmith.com/wrote/styling-the-kbd-element) to make them look more like physical keys, with subtle hover and click effects. `<kbd>` elements also react to keypresses. When you press a key that matches the content of a `<kbd>`, it animates as if it were being pressed.
 
-For example, press <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>R</kbd> to force refresh the page. Or press <kbd>↑</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>←</kbd> <kbd>B</kbd> <kbd>A</kbd> in sequence for a surprise...
+For example, press <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>R</kbd> to force refresh the page. Or press <kbd>↑</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>B</kbd> <kbd>A</kbd> in sequence for a surprise...
 
 ### Smart Tables
 

@@ -5,7 +5,11 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "lint": "eslint src webpack.config.js scripts",
+    "lint:fix": "eslint src webpack.config.js scripts --fix",
+    "til:new": "node scripts/new-til.js",
+    "til:help": "node scripts/new-til.js --help"
   },
   "author": "",
   "license": "ISC",
@@ -16,8 +20,6 @@
     "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.31.0",
     "file-loader": "^6.2.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",

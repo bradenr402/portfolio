@@ -1,13 +1,29 @@
 import fs from 'fs';
 import path from 'path';
 import { JSDOM } from 'jsdom';
-import Markdoc from '@markdoc/markdoc';
-import matter from 'gray-matter';
 import { fileURLToPath } from 'url';
 import markdocConfig from './markdoc-config.js';
 
-import { renderTemplate, textToSlug } from './utils.js';
+import {
+  extractDateFromPath,
+  parseMarkdownFrontmatter,
+  renderMarkdoc,
+  renderMarkdocWithHeadings,
+} from './markdown.js';
+import {
+  buildMetaDescription,
+  collapseWhitespace,
+  escapeAttribute,
+  escapeHtml,
+  renderTemplate,
+} from './utils.js';
 import formatDate from './format-date.js';
+import {
+  BLOG_DESCRIPTION,
+  SITE_IMAGE_URL,
+  SITE_NAME,
+  SITE_ORIGIN,
+} from './site-meta.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,55 +32,22 @@ const SRC_DIR = path.resolve(__dirname, '..');
 const BLOG_ROOT = path.join(SRC_DIR, 'blog');
 const COMPONENTS_DIR = path.join(SRC_DIR, 'components');
 
-function readLocalTemplate(name) {
-  return fs.readFileSync(path.join(COMPONENTS_DIR, name), 'utf8').trim();
-}
+const BLOG_TOC_ITEM_TEMPLATE_PATH    = path.join(COMPONENTS_DIR, '_blog-toc-item.html');
+const BLOG_LIST_ITEM_TEMPLATE_PATH   = path.join(COMPONENTS_DIR, '_blog-list-item.html');
+const BLOG_ACTIONS_TEMPLATE_PATH     = path.join(COMPONENTS_DIR, '_blog-actions.html');
+const BLOG_UPDATES_TEMPLATE_PATH     = path.join(COMPONENTS_DIR, '_blog-updates.html');
+const BLOG_UPDATE_ITEM_TEMPLATE_PATH = path.join(COMPONENTS_DIR, '_blog-update-item.html');
 
-const BLOG_TOC_ITEM_TEMPLATE = readLocalTemplate('_blog-toc-item.html');
-const BLOG_CARD_TEMPLATE = readLocalTemplate('_blog-card.html');
-const BLOG_LIST_ITEM_TEMPLATE = readLocalTemplate('_blog-list-item.html');
-const BLOG_ACTIONS_TEMPLATE = readLocalTemplate('_blog-actions.html');
-const BLOG_UPDATES_TEMPLATE = readLocalTemplate('_blog-updates.html');
-const BLOG_UPDATE_ITEM_TEMPLATE = readLocalTemplate('_blog-update-item.html');
+function readTemplate(templatePath) {
+  return fs.readFileSync(templatePath, 'utf8').trim();
+}
 
 const WORDS_PER_MINUTE = 250;
-
-function getTextContent(node) {
-  if (typeof node === 'string') return node;
-  if (node && node.children) return node.children.map(getTextContent).join('');
-
-  return '';
-}
 
 function calculateReadingTime(text) {
   const words = text.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / WORDS_PER_MINUTE);
   return `${minutes} min read`;
-}
-
-function extractDateFromPath(pathStr) {
-  const match = pathStr.match(/(?<year>\d{4})\/(?<month>\d{2})\/(?<day>\d{2})\//);
-  if (match) {
-    const { year, month, day } = match.groups;
-    return [year, month, day].join('-');
-  }
-}
-
-function renderMarkdoc(content, config) {
-  const ast = Markdoc.parse(content);
-  const transformed = Markdoc.transform(ast, config);
-  const rendered = Markdoc.renderers.html(transformed);
-  return processHtmlOutput(rendered);
-}
-
-function renderMarkdocWithHeadings(content, config) {
-  const ast = Markdoc.parse(content);
-  const transformed = Markdoc.transform(ast, config);
-
-  const headings = collectHeadings(transformed);
-  const html = processHtmlOutput(Markdoc.renderers.html(transformed));
-
-  return { headings, html };
 }
 
 function renderTagsHtml(tags) {
@@ -86,66 +69,8 @@ function resolveBlogImage(src, contextPath) {
   return `/blog/${relativePathUrl}/${src}`;
 }
 
-function collectHeadings(node, headings = [], usedIds = new Set()) {
-  if (!node) return headings;
-
-  if (node.name?.match(/h[2-6]/)) {
-    const level = parseInt(node.name.substring(1), 10);
-    const text = getTextContent(node);
-
-    if (!node.attributes['data-toc-skip']) {
-      let id = node.attributes.id;
-      if (!id) {
-        const base = textToSlug(text);
-        let candidate = base;
-        let counter = 2;
-
-        while (usedIds.has(candidate)) {
-          candidate = `${base}-${counter}`;
-          counter += 1;
-        }
-
-        id = candidate;
-        node.attributes.id = id;
-      }
-
-      usedIds.add(id);
-      headings.push({ id, level, text });
-    }
-  }
-
-  if (node.children) {
-    for (const child of node.children) collectHeadings(child, headings, usedIds);
-  }
-
-  return headings;
-}
-
-// Post-process HTML to allow raw HTML blocks in markdown files
-function processHtmlOutput(html) {
-  // Use regex to find code blocks and avoid modifying them
-  const codeRegex = /(<pre[\s\S]*?<\/pre>|<code[^>]*>[\s\S]*?<\/code>)/gi;
-
-  const parts = html.split(codeRegex);
-
-  const processedParts = parts.map((part) => {
-    if (/^<(pre|code)/i.test(part)) return part;
-
-    const unescaped = part
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
-      .replace(/&quot;/g, '"')
-      .replace(/&amp;/g, '&');
-
-    // Lazy-load article-body images (the header image is handled separately)
-    return unescaped.replace(/<img(?![^>]*\bloading=)/gi, '<img loading="lazy"');
-  });
-
-  return processedParts.join('');
-}
-
 function processMarkdown(content, filepath) {
-  const { data: frontmatter, content: markdownBody } = matter(content);
+  const { data: frontmatter, content: markdownBody } = parseMarkdownFrontmatter(content);
 
   const alt = frontmatter.image?.alt;
   let image = frontmatter.image?.src;
@@ -189,6 +114,7 @@ function normalizePostMetadata(slug, metadata = {}) {
   const displayDate = formatDate(datetime) || datetime;
   const tags = metadata.tags || [];
   const updates = metadata.updates || [];
+  const excerpt = collapseWhitespace(metadata.excerpt || '');
 
   return {
     title,
@@ -199,6 +125,7 @@ function normalizePostMetadata(slug, metadata = {}) {
     readingTime,
     tags,
     updates,
+    excerpt,
   };
 }
 
@@ -222,7 +149,7 @@ function collectBlogPostsMeta(blogDir) {
       const relativePath = path.relative(blogDir, entryPath);
       const slug = relativePath.replace(/\.md$/, '').split(path.sep).join('/');
 
-      let rawContent = fs.readFileSync(entryPath, 'utf8');
+      const rawContent = fs.readFileSync(entryPath, 'utf8');
 
       // Efficiently process markdown to get metadata
       const { metadata } = processMarkdown(rawContent, entryPath);
@@ -246,14 +173,15 @@ function collectBlogPostsMeta(blogDir) {
 function buildBlogTocListHtml(headings) {
   if (!headings || headings.length < 3) return '';
 
+  const template = readTemplate(BLOG_TOC_ITEM_TEMPLATE_PATH);
+
   return headings
     .map((h) =>
-      renderTemplate(BLOG_TOC_ITEM_TEMPLATE, {
+      renderTemplate(template, {
         level: h.level,
         id: h.id,
         text: h.text,
-      }),
-    )
+      }))
     .join('\n');
 }
 
@@ -266,11 +194,12 @@ function normalizeDate(value) {
 function buildUpdatesHtml(updates) {
   if (!updates || updates.length === 0) return '';
 
+  const updatesTemplate = readTemplate(BLOG_UPDATES_TEMPLATE_PATH);
+  const updateItemTemplate = readTemplate(BLOG_UPDATE_ITEM_TEMPLATE_PATH);
+
   // Sort by newest date first
   const sorted = [...updates].sort((a, b) =>
-    normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
-  );
-
+    normalizeDate(b.date).localeCompare(normalizeDate(a.date)));
 
   const items = sorted
     .map((update) => {
@@ -278,7 +207,7 @@ function buildUpdatesHtml(updates) {
       const displayDate = formatDate(datetime) || datetime;
       const description = renderMarkdoc(update.description, markdocConfig);
 
-      return renderTemplate(BLOG_UPDATE_ITEM_TEMPLATE, {
+      return renderTemplate(updateItemTemplate, {
         datetime,
         displayDate,
         description,
@@ -286,26 +215,25 @@ function buildUpdatesHtml(updates) {
     })
     .join('\n');
 
-  return renderTemplate(BLOG_UPDATES_TEMPLATE, { items });
+  return renderTemplate(updatesTemplate, { items });
 }
 
 function getLatestUpdateDate(updates) {
   if (!updates || updates.length === 0) return null;
 
   const sorted = [...updates].sort((a, b) =>
-    normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
-  );
+    normalizeDate(b.date).localeCompare(normalizeDate(a.date)));
   return normalizeDate(sorted[0].date);
 }
 
 function buildBlogPostPage(partial, template, metadata = null) {
-  const { title, datetime, displayDate, image, alt, readingTime, tags, updates } =
+  const { title, datetime, displayDate, image, alt, readingTime, tags, updates, excerpt } =
     normalizePostMetadata('', metadata);
 
   // Headings come from metadata (from processMarkdown)
   const headings = metadata?.headings || [];
   const tagsHtml = renderTagsHtml(tags);
-  const actionsHtml = metadata?.skip_actions ? '' : BLOG_ACTIONS_TEMPLATE;
+  const actionsHtml = metadata?.skip_actions ? '' : readTemplate(BLOG_ACTIONS_TEMPLATE_PATH);
   const updatesHtml = buildUpdatesHtml(updates);
 
   const latestUpdateDate = getLatestUpdateDate(updates);
@@ -314,23 +242,41 @@ function buildBlogPostPage(partial, template, metadata = null) {
     : '';
 
   const tocHtml = buildBlogTocListHtml(headings);
+  const pageTitle = `${title || ''} • ${SITE_NAME}`;
+  const metaDescription = buildMetaDescription({
+    excerpt,
+    html: partial,
+    fallback: BLOG_DESCRIPTION,
+  });
+  const metaImage = image
+    ? `${SITE_ORIGIN}${image}`
+    : SITE_IMAGE_URL;
+  const canonicalUrl = metadata?.href
+    ? `${SITE_ORIGIN}${metadata.href}`
+    : `${SITE_ORIGIN}/blog`;
 
   const data = {
-    title: title || '',
+    headingTitle: escapeHtml(title || ''),
+    pageTitle: escapeHtml(pageTitle),
+    metaTitle: escapeAttribute(pageTitle),
+    metaDescription: escapeAttribute(metaDescription),
+    canonicalUrl: escapeAttribute(canonicalUrl),
     displayDate: displayDate || '',
     datetime: datetime || '',
     updatedDatetime: latestUpdateDate || '',
     updatedDate: updatedDateHtml,
-    headerImage: image ? `<img src="${image}" alt="${alt || ''}" fetchpriority="high" />` : '',
+    headerImage: image
+      ? `<img src="${escapeAttribute(image)}" alt="${escapeAttribute(alt || '')}" fetchpriority="high" />`
+      : '',
     readingTime: readingTime || '',
     tags: tagsHtml,
     actions: actionsHtml,
     updates: updatesHtml,
     content: partial,
+    excerpt: escapeHtml(excerpt),
     toc: tocHtml,
-    metaImage: image
-      ? `https://bradenroth.com${image}`
-      : 'https://bradenroth.com/images/family.webp',
+    metaImage: escapeAttribute(metaImage),
+    siteName: escapeAttribute(SITE_NAME),
   };
 
   const templateWithData = renderTemplate(template, data);
@@ -361,33 +307,9 @@ function buildBlogPostPage(partial, template, metadata = null) {
   return templateWithData;
 }
 
-function renderBlogPostCardHtml(post) {
-  const tagsHtml = renderTagsHtml(post.tags);
-
-  const html = renderTemplate(BLOG_CARD_TEMPLATE, {
-    href: post.href,
-    slug: post.slug ? `post-${post.slug.replace(/\//g, '-')}` : '',
-    title: post.title,
-    datetime: post.datetime,
-    displayDate: post.displayDate,
-    readingTime: post.readingTime,
-    image: post.image || '',
-    alt: post.alt || '',
-    tags: tagsHtml,
-  });
-
-  if (!post.image) {
-    const dom = new JSDOM(html);
-    const thumb = dom.window.document.querySelector('.blog-card__thumb');
-    if (thumb) thumb.remove();
-    return dom.serialize();
-  }
-
-  return html;
-}
-
 function renderBlogPostItemHtml(post) {
-  return renderTemplate(BLOG_LIST_ITEM_TEMPLATE, { ...post });
+  const template = readTemplate(BLOG_LIST_ITEM_TEMPLATE_PATH);
+  return renderTemplate(template, { ...post });
 }
 
 function buildBlogIndexListHtml(posts) {

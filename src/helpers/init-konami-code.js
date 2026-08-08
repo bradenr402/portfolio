@@ -25,7 +25,7 @@ export default function initKonamiCode() {
     lastKeyTime = currentTime;
 
     if (e.key === konamiCode[konamiIndex]) {
-      konamiIndex++;
+      konamiIndex += 1;
       if (konamiIndex === konamiCode.length) {
         // Play cool effect
         const scrollY = window.scrollY + window.innerHeight / 2;
@@ -45,4 +45,4 @@ export default function initKonamiCode() {
       konamiIndex = 0;
     }
   });
-};
+}

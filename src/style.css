@@ -2,6 +2,8 @@
 
 @import './theme.css';
 @import './fonts.css';
+@import './btn.css';
+@import './stacked.css';
 @import './photo-gallery.css';
 @import './blog/blog-list-item.css';
 
@@ -94,7 +96,7 @@
 /* Links */
 @utility link {
   text-decoration: dotted underline var(--color-faint);
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: var(--underline-thickness);
   text-underline-offset: 2px;
 
   transition:

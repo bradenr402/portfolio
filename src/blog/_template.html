@@ -12,19 +12,24 @@
     <link rel="preload" href="/fonts/Monaspace%20Neon%20Var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/CrimsonPro-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="/fonts/CrimsonPro-Italic-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
-    <title>{{title}} • Braden Roth</title>
+    <title>{{pageTitle}}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/blog.css" />
 
     <!-- Basic Open Graph -->
-    <meta property="og:title" content="{{title}} • Braden Roth" />
+    <meta property="og:title" content="{{metaTitle}}" />
+    <meta property="og:description" content="{{metaDescription}}" />
     <meta property="og:image" content="{{metaImage}}" />
-    <meta property="og:url" content="https://bradenroth.com/" />
+    <meta property="og:url" content="{{canonicalUrl}}" />
     <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="{{siteName}}" />
 
     <!-- Twitter Card -->
+    <meta name="twitter:site" content="@BradenRoth02" />
+    <meta name="twitter:creator" content="@BradenRoth02" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{title}} • Braden Roth" />
+    <meta name="twitter:title" content="{{metaTitle}}" />
+    <meta name="twitter:description" content="{{metaDescription}}" />
     <meta name="twitter:image" content="{{metaImage}}" />
   </head>
   <body
@@ -32,12 +37,12 @@
     class="bg-white text-stone-800 dark:bg-zinc-950 dark:text-stone-100 dark:selection:bg-primary-500/40"
   >
     <div id="wrapper">
-      <main id="main" class="blog">
+      <main id="main" class="prose">
         <div class="blog-header-wrapper">
           <header class="blog-header">
             <div class="blog-header__media">{{headerImage}}</div>
             <div class="blog-header__text">
-              <h1 class="blog-header__title">{{title}}</h1>
+              <h1 class="blog-header__title">{{headingTitle}}</h1>
               <div class="blog-header__meta">
                 <time datetime="{{datetime}}" class="blog-header__date">{{displayDate}}</time>
                 <span class="blog-header__reading-time">{{readingTime}}</span>

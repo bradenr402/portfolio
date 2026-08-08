@@ -1,12 +1,8 @@
-@import 'tailwindcss';
-
-@import './theme.css';
-@import './fonts.css';
 @import './blog/blog-card.css';
 @import './blog/blog-list-item.css';
 @import './blog/blog-toc.css';
 
-/* A scoped blog stylesheet for content typography, images, tables, code, etc. */
+/* Page chrome + content typography for long-form pages (blog, til). */
 
 /* Enable keyword animations */
 @media (prefers-reduced-motion: no-preference) {
@@ -15,8 +11,7 @@
   }
 }
 
-/* Scope blog semantics to .blog, but exclude .blog-reset */
-@scope (.blog) to (.blog-reset) {
+@scope (.prose) to (.prose-reset) {
   /* Enable use of `light-dark()` function */
   color-scheme: light dark;
 
@@ -48,7 +43,7 @@
     }
   }
 
-  /* Base styling for the .blog container */
+  /* Base styling for the prose/page container */
   & {
     font-family: var(--font-sans);
     font-size: 1rem;
@@ -118,24 +113,24 @@
     max-width: min(85ch, calc(100vw - var(--horizontal-padding) * 2));
   }
 
-  .blog-layout__actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding-top: 1.5rem;
-  }
-
-  .blog-layout__actions-wrapper:has(.blog-layout__actions) {
+  .blog-actions-wrapper {
     margin-top: 3rem;
-  }
 
-  .blog-layout__actions-wrapper:has(.blog-layout__actions)::before {
-    content: '';
-    display: block;
-    height: var(--hairline);
-    width: 100%;
-    background: var(--color-border-light);
-    border-radius: 9999px;
+    &::before {
+      content: '';
+      display: block;
+      height: var(--hairline);
+      width: 100%;
+      background: var(--color-border-light);
+      border-radius: 9999px;
+    }
+
+    .blog-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-top: 1.5rem;
+    }
   }
 
   .blog-updates {
@@ -367,7 +362,7 @@
   :where(.blog-layout__content, .blog-header) a:not([class]) {
     --link-transition: 100ms;
     text-decoration: dotted underline var(--color-faint);
-    text-decoration-thickness: 0.075em;
+    text-decoration-thickness: var(--underline-thickness);
     text-underline-offset: 0.12em;
 
     transition:
@@ -379,6 +374,127 @@
       text-decoration-color: var(--color-accent);
       text-decoration-style: solid;
       text-underline-offset: 0.1em;
+    }
+  }
+
+  /* Sidenotes */
+  .sidenote-ref,
+  .sidenote {
+    --sidenote-transition: 100ms;
+    --sidenote-number-scale: 0.7;
+  }
+
+  .sidenote-ref {
+    cursor: help;
+    text-decoration: dotted underline var(--color-faint);
+    text-decoration-thickness: var(--underline-thickness);
+    text-underline-offset: 0.12em;
+
+    transition:
+      color var(--sidenote-transition),
+      text-decoration-color var(--sidenote-transition);
+
+    &::after {
+      content: attr(data-sidenote);
+      display: inline-block; /* Keep the underline from extending under the number */
+      margin-left: 0.35ch;
+
+      font-size: calc(var(--sidenote-number-scale) * 1em);
+      font-variant-numeric: tabular-nums;
+      vertical-align: super;
+      line-height: 0;
+
+      color: var(--color-faint);
+      transition: color var(--sidenote-transition);
+    }
+  }
+
+  .sidenote {
+    --sidenote-body-scale: 0.9;
+    --sidenote-gutter: 1.5rem;
+
+    position: relative;
+    padding-inline: var(--sidenote-gutter);
+    padding-block: 1em;
+
+    font-size: calc(var(--sidenote-body-scale) * 1em);
+    color: var(--color-faint);
+    transition: color var(--sidenote-transition);
+
+    &:not(:first-child) {
+      margin-top: var(--sidenote-gutter);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: var(--sidenote-gutter);
+    }
+
+    /* The number floats in the left gutter so every line of text stays aligned */
+    &::before {
+      content: attr(data-sidenote);
+      float: left;
+      width: var(--sidenote-gutter);
+      margin-left: calc(-1 * var(--sidenote-gutter));
+      margin-top: -0.15em;
+      padding-right: 1ch;
+      text-align: right;
+
+      /* Divide out the body scale so the number matches the size of the ref's number */
+      font-size: calc(var(--sidenote-number-scale) / var(--sidenote-body-scale) * 1em);
+      font-variant-numeric: tabular-nums;
+      transition: color var(--sidenote-transition);
+    }
+
+    /* Top and bottom dividers */
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin-inline: auto;
+      width: calc(100% - var(--sidenote-gutter) * 2);
+      border-block: var(--hairline) solid var(--color-border-light);
+      pointer-events: none;
+    }
+
+    /* Consecutive sidenotes sit flush and share a single divider */
+    & + & {
+      margin-top: 0;
+
+      &::after {
+        border-top: none;
+      }
+    }
+
+    &:has(+ &) {
+      margin-bottom: 0;
+    }
+  }
+
+  /*
+   * Hovering a ref or a sidenote highlights its counterpart. Pairs share a
+   * `data-sidenote` value (assigned at build time), but CSS can't compare
+   * attribute values across elements, so the pairing rules are enumerated.
+   * Articles with more than 10 sidenotes lose cross-highlighting for the
+   * extras (each element's own :hover styles still apply).
+   */
+  :scope {
+    &:has([data-sidenote='1']:hover) [data-sidenote='1'],
+    &:has([data-sidenote='2']:hover) [data-sidenote='2'],
+    &:has([data-sidenote='3']:hover) [data-sidenote='3'],
+    &:has([data-sidenote='4']:hover) [data-sidenote='4'],
+    &:has([data-sidenote='5']:hover) [data-sidenote='5'],
+    &:has([data-sidenote='6']:hover) [data-sidenote='6'],
+    &:has([data-sidenote='7']:hover) [data-sidenote='7'],
+    &:has([data-sidenote='8']:hover) [data-sidenote='8'],
+    &:has([data-sidenote='9']:hover) [data-sidenote='9'],
+    &:has([data-sidenote='10']:hover) [data-sidenote='10'] {
+      color: var(--color-accent);
+      text-decoration-color: var(--color-accent);
+
+      &::before,
+      &::after {
+        color: var(--color-accent);
+      }
     }
   }
 
@@ -519,14 +635,6 @@
     max-width: 100%;
   }
 
-  /* Inherit fonts for form controls */
-  input,
-  button,
-  textarea,
-  select {
-    font: inherit;
-  }
-
   /* Images inside articles */
   article img:not(:where(header img, .blog-card__thumb img)) {
     height: auto;
@@ -621,6 +729,11 @@
       margin-bottom: 0;
     }
 
+    /* Let code blocks inside list items expand to full width */
+    &:has(pre > code) > div {
+      width: 100%;
+    }
+
     /* Shared styles for custom list markers */
     &:is(:is(ol, ul):not([class]) > li) {
       display: flex;
@@ -654,14 +767,14 @@
     margin-bottom: 3rem;
   }
 
-  /* Blog page header */
+  /* Blog index and blog post header wrapper */
   .blog-header-wrapper::after {
     content: '';
     display: block;
-    margin-block: 3rem;
+    margin-block: 2rem;
 
     @media (min-width: 48rem) {
-      margin-bottom: 6rem;
+      margin-bottom: 4rem;
     }
 
     height: var(--hairline);
@@ -671,11 +784,18 @@
   }
 
   /* Blog index header */
-  .blog-header-wrapper:has(.blog-index__header) {
-    margin-bottom: 1rem;
+  .blog-index__header {
+    h1 {
+      margin: 0 0 0.5rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.05rem;
+    }
   }
 
-  /* Blog post header: optional full-width image above centered title and meta */
+  /* Blog post header */
   .blog-header {
     display: flex;
     flex-direction: column;
@@ -790,132 +910,14 @@
     mask-position: center;
   }
 
-  .blog-back-to-top,
-  .blog-copy-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.35rem 0.6rem;
-
-    &:where(.blog-back-to-top) {
-      gap: 0.4rem;
-      padding-right: 0.4rem;
-    }
-
-    &:where(.blog-copy-link) {
-      gap: 0.6rem;
-      padding-left: 0.5rem;
-    }
-
-    font-weight: 600;
-    color: var(--color-text);
-    text-decoration: none;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    cursor: pointer;
-    color: var(--color-soft);
-
-    transition:
-      color 100ms,
-      background-color 100ms,
-      width 100ms,
-      transform 500ms var(--ease-spring);
-
-    border-radius: 0.5rem;
-    @supports (corner-shape: squircle) {
-      corner-shape: squircle;
-      border-radius: 1.5rem;
-    }
-
-    &:active {
-      transform: scale(0.97);
-    }
-
-    &:hover {
-      color: var(--color-text);
-      background-color: var(--color-surface-alt);
-    }
-
-    svg[data-icon='arrow-up'] {
-      margin-top: 2px;
-    }
-
-    .blog-copy-link__icon-container {
-      /* Stack icons for cross-fading */
-      display: grid;
-      place-items: center;
-
-      /* Base icon styles */
-      .blog-copy-link__icon {
-        grid-area: 1 / 1;
-        transition:
-          opacity 200ms ease,
-          transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
-          filter 200ms ease;
-        transform-origin: center;
-      }
-
-      .blog-copy-link__icon--hidden {
-        opacity: 0;
-        transform: scale(0.5);
-        filter: blur(4px);
-      }
-    }
-
-    /* Stack text so button is always sized to the widest text */
-    .blog-copy-link__text-container {
-      display: grid;
-      place-items: start;
-    }
-
-    .blog-copy-link__text-container > span {
-      grid-area: 1 / 1;
-      transition:
-        opacity 200ms ease,
-        transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .blog-copy-link__text-success {
-      opacity: 0;
-      transform: translateY(50%) scale(0.9);
-    }
-
-    /* State: Copied */
-    &.copied {
-      /* Flip icons */
-      .blog-copy-link__icon[data-icon='clipboard'] {
-        opacity: 0;
-        transform: scale(0.5);
-        filter: blur(4px);
-      }
-
-      .blog-copy-link__icon[data-icon='check'] {
-        opacity: 1;
-        transform: scale(1);
-        filter: none;
-      }
-
-      /* Flip text */
-      .blog-copy-link__text-default {
-        opacity: 0;
-        transform: translateY(-50%) scale(0.9);
-      }
-
-      .blog-copy-link__text-success {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-  }
-
   /* Table of Contents styles in blog/blog-toc.css */
 
   /* Blog index layout overrides */
-  &.blog--index {
+  &.prose--narrow {
     max-width: 780px;
   }
 
-  &.blog--index .blog-layout {
+  &.prose--narrow .blog-layout {
     flex-direction: column;
   }
 
@@ -1022,10 +1024,10 @@
     /* Allow long inline code snippets to wrap */
     overflow-wrap: break-word;
 
-    border-radius: 0.3rem;
+    border-radius: 0.4em;
     @supports (corner-shape: squircle) {
       corner-shape: squircle;
-      border-radius: 1.5rem;
+      border-radius: 0.8em;
     }
 
     /* Using !important to override the background applied by highlight.js */
@@ -1037,14 +1039,20 @@
 
   /* Code blocks */
   pre:has(code) {
-    margin: 1rem 0;
+    margin: 1em 0;
     overflow-x: auto;
 
     /* Smooth scrolling on iOS */
     -webkit-overflow-scrolling: touch;
   }
 
-  pre > code:is(.language-bash, .language-sh, .language-zsh)::before {
+  pre
+    > code:not(.multi-line):where(
+      .language-bash,
+      .language-sh,
+      .language-shell,
+      .language-zsh
+    )::before {
     content: '$';
     display: inline;
     color: var(--color-faint);
@@ -1105,7 +1113,7 @@
 
     transition:
       background-color 100ms,
-      transform 500ms var(--ease-spring);
+      transform var(--ease-spring);
 
     border-radius: 0.25rem;
     @supports (corner-shape: squircle) {
@@ -1123,26 +1131,6 @@
     &:active {
       transform: scale(0.97);
     }
-
-    /* Stack icons for cross-fading */
-    display: grid;
-    place-items: center;
-
-    /* Base icon styles */
-    .copy-code-btn__icon {
-      grid-area: 1 / 1;
-      transition:
-        opacity 200ms ease,
-        transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        filter 200ms ease;
-      transform-origin: center;
-    }
-
-    .copy-code-btn__icon--hidden {
-      opacity: 0;
-      transform: scale(0.5);
-      filter: blur(4px);
-    }
   }
 
   /* Inline code inside blockquotes */
@@ -1154,10 +1142,10 @@
   /* Keyboard tags */
   kbd {
     display: inline-block;
-    min-width: 0.75rem;
-    padding: 0.15rem 0.3rem;
+    padding: 0.25em 0.5em;
+    min-width: 2em;
     border: 1px solid var(--color-border);
-    border-radius: 0.25rem;
+    border-radius: 0.35em;
 
     font-family: var(--font-sans);
     font-size: 0.75rem;

@@ -5,6 +5,8 @@
   --main-gap: --spacing(6);
   --horizontal-padding: --spacing(4);
 
+  --underline-thickness: 0.075em;
+
   --font-sans: Calibre, sans-serif;
   --font-mono: 'Monaspace Neon', monospace;
   --font-serif: 'Crimson Pro', serif;
@@ -34,7 +36,10 @@
   --color-light: light-dark(var(--color-stone-700), var(--color-zinc-200));
   --color-soft: light-dark(var(--color-stone-600), var(--color-zinc-300));
   --color-muted: light-dark(var(--color-stone-500), var(--color-zinc-400));
+  --color-subtle: color-mix(in oklab, var(--color-muted) 50%, var(--color-faint)) ;
   --color-faint: light-dark(var(--color-stone-400), var(--color-zinc-500));
+  --color-weak: color-mix(in oklab, var(--color-faint) 50%, var(--color-ghost));
+  --color-ghost: light-dark(var(--color-stone-300), var(--color-zinc-600));
 
   --color-subtle: color-mix(in oklab, var(--color-muted) 50%, var(--color-faint)) ;
 
@@ -49,6 +54,8 @@
   --text-xxs: 0.625rem;
 
   --radius-5xl: 2.5rem;
+
+  --bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   --spring: linear(
     0,

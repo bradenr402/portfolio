@@ -1,4 +1,4 @@
-@scope (.blog-layout__content) to (.blog-reset) {
+@scope (.blog-layout__content) {
   :scope {
     --blog-card-transition-duration: 120ms;
 

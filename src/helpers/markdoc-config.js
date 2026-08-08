@@ -1,6 +1,9 @@
 import Markdoc from '@markdoc/markdoc';
+import blogCard from './tags/blog-card.js';
+import sidenote from './tags/sidenote.js';
+import sidenoteRef from './tags/sidenote-ref.js';
+
 const { Tag, nodes: defaultNodes } = Markdoc;
-import { blogCard } from './tags/blog-card.js';
 
 export default {
   nodes: {
@@ -8,6 +11,7 @@ export default {
     heading: {
       children: ['inline'],
       attributes: {
+        level: { type: Number, render: false, required: true },
         'data-toc-skip': { type: Boolean },
       },
       transform(node, config) {
@@ -32,7 +36,7 @@ export default {
         const isNewTab = href.startsWith('newtab:');
         const isSameTab = href.startsWith('sametab:');
         const isExternal = href.startsWith('http');
-        const isHash = href == "#";
+        const isHash = href === '#';
 
         if (isNewTab || (!isSameTab && isExternal)) {
           attributes.target = '_blank';
@@ -84,8 +88,9 @@ export default {
       attributes: {
         language: { type: String },
         content: { type: String },
+        process: { type: Boolean, render: false, default: true },
       },
-      transform(node, config) {
+      transform(node) {
         if (node.attributes.language === 'html_raw') {
           return node.attributes.content;
         }
@@ -100,5 +105,7 @@ export default {
   },
   tags: {
     'blog-card': blogCard,
+    sidenote,
+    'sidenote-ref': sidenoteRef,
   },
 };

@@ -1,16 +1,15 @@
 {
   "env": {
     "browser": true,
+    "node": true,
     "es2021": true
   },
-  "extends": "airbnb-base",
+  "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "rules": {
-    "implicit-arrow-linebreak": "off",
-    "max-len": ["error", { "code": 100 }],
-    "operator-linebreak": "off"
+    "max-len": ["error", { "code": 100, "ignoreComments": true, "ignoreStrings": true, "ignoreTemplateLiterals": true, "ignoreUrls": true }]
   }
 }

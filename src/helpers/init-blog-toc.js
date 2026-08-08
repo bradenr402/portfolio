@@ -74,7 +74,7 @@ function scrollToHeadingWithOffset(target) {
 }
 
 function handleTocClick(linkById, activeState, marker, event) {
-  const target = event.target;
+  const { target } = event;
   const link = target.closest?.('a');
   if (!link) return;
 
@@ -89,13 +89,13 @@ function handleTocClick(linkById, activeState, marker, event) {
 
   scrollToHeadingWithOffset(heading);
 
-  history.replaceState(null, '', `#${id}`);
+  window.history.replaceState(null, '', `#${id}`);
 
   setActive(id, linkById, activeState, marker);
 }
 
 export default function initBlogToc() {
-  const main = document.querySelector('main.blog');
+  const main = document.querySelector('main:has(.blog-toc)');
   if (!main) return;
 
   const article = main.querySelector('article');

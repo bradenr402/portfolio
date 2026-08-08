@@ -9,43 +9,39 @@
     <link rel="preload" href="/fonts/calibre-semibold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/calibre-semibold-italic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/calibre-bold.woff2" as="font" type="font/woff2" crossorigin />
-    <title>Blog • Braden Roth</title>
+    <title>Blog • {{siteName}}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/blog.css" />
 
     <!-- Basic Open Graph -->
-    <meta property="og:title" content="Blog • Braden Roth" />
-    <meta
-      property="og:description"
-      content="Full-stack developer building useful, meaningful, and delightful web applications."
-    />
-    <meta property="og:image" content="https://bradenroth.com/images/family.webp" />
-    <meta property="og:url" content="https://bradenroth.com/" />
+    <meta property="og:title" content="Blog • {{siteName}}" />
+    <meta property="og:description" content="{{blogDescription}}" />
+    <meta property="og:image" content="{{siteImageUrl}}" />
+    <meta property="og:url" content="{{siteOrigin}}/blog" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{siteName}}" />
 
     <!-- Twitter Card -->
+    <meta name="twitter:site" content="@BradenRoth02" />
+    <meta name="twitter:creator" content="@BradenRoth02" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Blog • Braden Roth" />
-    <meta
-      name="twitter:description"
-      content="Full-stack developer building useful, meaningful, and delightful web applications."
-    />
-    <meta name="twitter:image" content="https://bradenroth.com/images/family.webp" />
+    <meta name="twitter:title" content="Blog • {{siteName}}" />
+    <meta name="twitter:description" content="{{blogDescription}}" />
+    <meta name="twitter:image" content="{{siteImageUrl}}" />
   </head>
   <body
     data-page="blog-index"
     class="bg-white text-stone-800 dark:bg-zinc-950 dark:text-stone-100 dark:selection:bg-primary-500/40"
   >
     <div id="wrapper">
-      <main id="main" class="blog blog--index">
+      <main id="main" class="prose prose--narrow">
         <div class="blog-layout">
           <div class="blog-layout__content">
             <div class="blog-header-wrapper">
               <header class="blog-index__header">
                 <h1>Blog<span class="text-accent">.</span></h1>
                 <p>
-                  Thoughts, posts, notes, and writings about building software, things I’m
-                  learning, and whatever else I’m thinking about. Feel free to send me an
+                  {{blogDescription}} Feel free to send me an
                   <a href="mailto:me@bradenroth.com">email</a> with your thoughts.
                 </p>
               </header>

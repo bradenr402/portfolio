@@ -28,7 +28,9 @@
 
   /* Colors */
   --color-text: light-dark(var(--color-stone-950), var(--color-zinc-100));
+  --color-text-inverse: light-dark(var(--color-zinc-100), var(--color-stone-950));
   --color-bg: light-dark(white, var(--color-zinc-950));
+  --color-bg-inverse: light-dark(var(--color-zinc-950), white);
   --color-border: light-dark(var(--color-stone-300), var(--color-zinc-800));
   --color-border-light: light-dark(var(--color-stone-200), var(--color-zinc-900));
 

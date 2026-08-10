@@ -47,9 +47,13 @@ function injectNav(html) {
 
   // Mark the current page in the primary nav
   const page = dom.window.document.body?.dataset.page || '';
+  let currentHref;
 
-  if (page === 'home' || page.startsWith('blog')) {
-    const currentHref = page === 'home' ? '/' : '/blog';
+  if (page === 'home') currentHref = '/';
+  else if (page.startsWith('blog')) currentHref = '/blog';
+  else if (page.startsWith('til')) currentHref = '/til';
+
+  if (currentHref) {
     const currentLink = dom.window.document.querySelector(
       `nav[aria-label="Primary"] a[href="${currentHref}"]`,
     );

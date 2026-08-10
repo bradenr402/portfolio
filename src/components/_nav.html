@@ -3,100 +3,55 @@
     <a
       href="/"
       aria-label="Back to home"
-      class="group pointer-events-auto absolute inset-y-0 right-full mr-1.5 rounded-full border-hairline border-border-light bg-white p-3 text-weak transition-[colors,scale] duration-100 not-in-data-[page=blog-index]:not-in-data-[page=til-index]:hidden not-dark:shadow-md not-dark:shadow-stone-800/10 hover:text-text active:scale-97 dark:border-border dark:bg-surface"
+      class="nav-back-btn not-in-data-[page=blog-index]:not-in-data-[page=til-index]:hidden"
     >
-      <span class="relative flex items-center justify-center">
-        <i data-icon="arrow-big-left" class="-m-0.5 size-7 translate-x-[-0.5px]"></i>
-        <span
-          aria-hidden="true"
-          class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 self-start justify-self-start rounded-lg bg-black px-2 py-0.75 whitespace-nowrap text-white transition-all duration-100 ease-out squircle not-group-hover:translate-y-1 not-group-hover:scale-97 not-group-hover:opacity-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
-        >
-          Back to Home
-        </span>
+      <span>
+        <i data-icon="arrow-big-left"></i>
+        <span aria-hidden="true" class="nav-tip">Back to Home</span>
       </span>
     </a>
 
     <a
       href="/blog"
       aria-label="Back to blog"
-      class="group pointer-events-auto absolute inset-y-0 right-full mr-1.5 rounded-full border-hairline border-border-light bg-white p-3 text-weak transition-[colors,scale] duration-100 not-in-data-[page=blog-post]:hidden not-dark:shadow-md not-dark:shadow-stone-800/10 hover:text-text active:scale-97 dark:border-border dark:bg-surface"
+      class="nav-back-btn not-in-data-[page=blog-post]:hidden"
     >
-      <span class="relative flex items-center justify-center">
-        <i data-icon="arrow-big-left" class="-m-0.5 size-7 translate-x-[-0.5px]"></i>
-        <span
-          aria-hidden="true"
-          class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 self-start justify-self-start rounded-lg bg-black px-2 py-0.75 whitespace-nowrap text-white transition-all duration-100 ease-out squircle not-group-hover:translate-y-1 not-group-hover:scale-97 not-group-hover:opacity-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
-        >
-          Back to Blog
-        </span>
+      <span>
+        <i data-icon="arrow-big-left"></i>
+        <span aria-hidden="true" class="nav-tip">Back to Blog</span>
       </span>
     </a>
 
     <a
       href="/til"
       aria-label="Back to TIL"
-      class="group pointer-events-auto absolute inset-y-0 right-full mr-1.5 rounded-full border-hairline border-border-light bg-white p-3 text-weak transition-[colors,scale] duration-100 not-in-data-[page=til-entry]:hidden not-dark:shadow-md not-dark:shadow-stone-800/10 hover:text-text active:scale-97 dark:border-border dark:bg-surface"
+      class="nav-back-btn not-in-data-[page=til-entry]:hidden"
     >
-      <span class="relative flex items-center justify-center">
-        <i data-icon="arrow-big-left" class="-m-0.5 size-7 translate-x-[-0.5px]"></i>
-        <span
-          aria-hidden="true"
-          class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 self-start justify-self-start rounded-lg bg-black px-2 py-0.75 whitespace-nowrap text-white transition-all duration-100 ease-out squircle not-group-hover:translate-y-1 not-group-hover:scale-97 not-group-hover:opacity-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
-        >
-          Back to TIL
-        </span>
+      <span>
+        <i data-icon="arrow-big-left"></i>
+        <span aria-hidden="true" class="nav-tip">Back to TIL</span>
       </span>
     </a>
 
-    <nav
-      aria-label="Primary"
-      class="pointer-events-auto flex items-center justify-center rounded-full border-hairline border-border-light bg-white *:px-3 *:py-3 not-dark:shadow-md not-dark:shadow-stone-800/10 *:first:pl-3 *:last:pr-3 dark:border-border dark:bg-surface"
-    >
-      <a
-        href="/"
-        aria-label="Home"
-        class="group text-weak transition-colors duration-100 hover:text-text in-data-[page=home]:text-text"
-      >
-        <span class="relative flex items-center justify-center">
-          <i data-icon="home-filled" class="size-6"></i>
-          <span
-            aria-hidden="true"
-            class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 self-start justify-self-start rounded-lg bg-black px-2 py-0.75 text-white transition-all duration-100 ease-out squircle not-group-hover:translate-y-1 not-group-hover:scale-97 not-group-hover:opacity-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
-          >
-            Home
-          </span>
+    <nav aria-label="Primary" class="nav-chrome">
+      <a href="/" aria-label="Home" class="nav-link">
+        <span>
+          <i data-icon="home-filled"></i>
+          <span aria-hidden="true" class="nav-tip">Home</span>
         </span>
       </a>
 
-      <a
-        href="/blog"
-        aria-label="Blog"
-        class="group text-weak transition-colors duration-100 hover:text-text in-data-[page^=blog]:text-text"
-      >
-        <span class="relative flex items-center justify-center">
-          <i data-icon="blog-filled" class="size-6"></i>
-          <span
-            aria-hidden="true"
-            class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 self-start justify-self-start rounded-lg bg-black px-2 py-0.75 text-white transition-all duration-100 ease-out squircle not-group-hover:translate-y-1 not-group-hover:scale-97 not-group-hover:opacity-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
-          >
-            Blog
-          </span>
+      <a href="/blog" aria-label="Blog" class="nav-link">
+        <span>
+          <i data-icon="blog-filled"></i>
+          <span aria-hidden="true" class="nav-tip">Blog</span>
         </span>
       </a>
 
-      <a
-        href="/til"
-        aria-label="TIL"
-        class="group text-weak transition-colors duration-100 hover:text-stone-900 in-data-[page*=til]:text-stone-900 dark:hover:text-white dark:in-data-[page*=til]:text-white"
-      >
-        <span class="relative flex items-center justify-center">
-          <i data-icon="knowledge-filled" class="size-6"></i>
-          <span
-            aria-hidden="true"
-            class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 self-start justify-self-start rounded-lg bg-black px-2 py-0.75 text-white transition-all duration-100 ease-out squircle not-group-hover:translate-y-1 not-group-hover:scale-97 not-group-hover:opacity-0 dark:bg-white dark:text-black supports-squircle:rounded-full"
-          >
-            TIL
-          </span>
+      <a href="/til" aria-label="TIL" class="nav-link">
+        <span>
+          <i data-icon="knowledge-filled"></i>
+          <span aria-hidden="true" class="nav-tip">TIL</span>
         </span>
       </a>
     </nav>

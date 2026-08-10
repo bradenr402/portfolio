@@ -1,0 +1,107 @@
+@utility nav-chrome {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: light-dark(var(--color-white), var(--color-surface));
+  border: var(--hairline) solid light-dark(var(--color-border-light), var(--color-border));
+  border-radius: 9999px;
+
+  @variant not-dark {
+    @apply shadow-md shadow-stone-800/10;
+  }
+}
+
+@utility nav-item {
+  --nav-item-padding: 0.75rem;
+  --nav-icon-size: 1.5rem;
+  padding: var(--nav-item-padding);
+  color: var(--color-weak);
+
+  transition:
+    color 100ms,
+    scale 100ms;
+
+  @variant hover, focus-visible {
+    color: var(--color-text);
+  }
+
+  & > span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@utility nav-link {
+  @apply nav-item;
+
+  &:not(:first-child) {
+    padding-left: calc(var(--nav-item-padding) * 2 / 3);
+  }
+  &:not(:last-child) {
+    padding-right: calc(var(--nav-item-padding) * 2 / 3);
+  }
+
+  &[aria-current='page'] {
+    color: var(--color-text);
+  }
+
+  & svg {
+    width: var(--nav-icon-size);
+    height: var(--nav-icon-size);
+  }
+}
+
+@utility nav-back-btn {
+  @apply nav-chrome nav-item;
+  --nav-back-btn-icon-size-offset: 0.25rem;
+
+  position: absolute;
+  inset-block: 0;
+  right: 100%;
+  margin-right: 0.375rem;
+
+  @variant active {
+    scale: 0.97;
+  }
+
+  & svg {
+    width: calc(var(--nav-icon-size) + var(--nav-back-btn-icon-size-offset));
+    height: calc(var(--nav-icon-size) + var(--nav-back-btn-icon-size-offset));
+
+    margin: calc(var(--nav-back-btn-icon-size-offset) / -2);
+    translate: calc(var(--nav-back-btn-icon-size-offset) / -4);
+  }
+}
+
+@utility nav-tip {
+  pointer-events: none;
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  translate: -50%;
+
+  align-self: start;
+  justify-self: start;
+
+  padding: 0.15rem 0.5rem;
+
+  background: var(--color-bg-inverse);
+
+  border-radius: 0.5rem;
+  @apply squircle supports-squircle:rounded-full;
+
+  color: var(--color-text-inverse);
+  white-space: nowrap;
+
+  transition: all 100ms ease-out;
+
+  :where(.nav-link, .nav-back-btn):not(:hover, :focus-visible) & {
+    translate: -50% 0.25rem;
+    scale: 0.97;
+    opacity: 0;
+  }
+}

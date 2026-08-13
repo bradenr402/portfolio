@@ -2,8 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import markdocConfig from './markdoc-config.js';
-import { extractDateFromPath, parseMarkdownFrontmatter, renderMarkdoc } from './markdown.js';
+import {
+  extractDateFromPath,
+  parseMarkdown,
+  renderMarkdoc,
+  withFrontmatterVariables,
+} from './markdown.js';
 import {
   buildMetaDescription,
   collapseWhitespace,
@@ -61,24 +65,24 @@ function unwrapParagraph(html) {
 }
 
 function renderInlineMarkdown(text) {
+  const { ast } = parseMarkdown(text);
+
   // Markdoc wraps single-line content in <article><p>…</p></article>.
   // Unwrap so the title renders inline inside an <h2> / <h1>.
-  return unwrapParagraph(unwrapArticle(renderMarkdoc(text)));
+  return unwrapParagraph(unwrapArticle(renderMarkdoc(ast)));
 }
 
 function processTilMarkdown(content, filePath) {
-  const { data: frontmatter, content: markdownBody } = parseMarkdownFrontmatter(content);
+  const { ast, frontmatter } = parseMarkdown(content);
   const date = extractDateFromPath(filePath);
 
-  const markdocConfigWithFrontmatter = {
-    variables: {
-      frontmatter: { ...frontmatter, date },
-    },
-    ...markdocConfig,
-  };
+  const markdocConfigWithFrontmatter = withFrontmatterVariables({
+    ...frontmatter,
+    date,
+  });
 
   return {
-    html: unwrapArticle(renderMarkdoc(markdownBody, markdocConfigWithFrontmatter)),
+    html: unwrapArticle(renderMarkdoc(ast, markdocConfigWithFrontmatter)),
     metadata: {
       ...frontmatter,
       date,

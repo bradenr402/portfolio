@@ -3,14 +3,18 @@ import { fileURLToPath } from 'url';
 
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
 import { JSDOM } from 'jsdom';
+import formatDate from '../format-date.js';
+import { calculateReadingTime, parseMarkdown } from '../parse-markdown.js';
 import { renderTemplate } from '../utils.js';
 
 const { Tag } = Markdoc;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const BLOG_ROOT = path.resolve(__dirname, '../../blog');
+const BLOG_CARD_TEMPLATE_PATH = path.resolve(__dirname, '../../components/_blog-card.html');
 
 function domNodeToTag(node) {
   if (node.nodeType === 3) {
@@ -33,50 +37,36 @@ function domNodeToTag(node) {
   return null;
 }
 
-function getReadingTime(content) {
-  const wordCount = content.trim().split(/\s+/).length;
-  const readingTimeMinutes = Math.ceil(wordCount / 250);
-  return `${readingTimeMinutes} min read`;
-}
-
-function formatDate(dateStr) {
-  if (!dateStr) return '';
-  try {
-    const parts = dateStr.split('-');
-    if (parts.length === 3) {
-      const [y, m, d] = parts;
-      const dateObj = new Date(Date.UTC(y, m - 1, d));
-      return dateObj.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        timeZone: 'UTC',
-      });
-    }
-  } catch (e) {
-    return dateStr;
-  }
-  return dateStr;
-}
-
 function blogCardPath(src) {
-  const blogDir = path.resolve(__dirname, '../../blog');
-  const normalizedSrc = src.replace(/^\/+|\/+$/g, '');
-  return { normalizedSrc, filePath: path.join(blogDir, `${normalizedSrc}.md`) };
+  const srcWithoutSlashes = src.replace(/^\/+|\/+$/g, '');
+  const filePath = path.resolve(BLOG_ROOT, `${srcWithoutSlashes}.md`);
+  const relativePath = path.relative(BLOG_ROOT, filePath);
+
+  if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
+    throw new Error(`blog-card src '${src}' resolves outside the blog directory`);
+  }
+
+  const slug = relativePath.replace(/\.md$/, '').split(path.sep).join('/');
+
+  return { slug, filePath };
 }
 
 class BlogCardSrc {
   validate(value) {
-    const { filePath } = blogCardPath(value);
+    try {
+      const { filePath } = blogCardPath(value);
 
-    if (!fs.existsSync(filePath)) {
-      return [
-        {
-          id: 'blog-card-src-missing',
-          level: 'error',
-          message: `No blog post found for src '${value}' (expected ${filePath})`,
-        },
-      ];
+      if (!fs.existsSync(filePath)) {
+        return [
+          {
+            id: 'blog-card-src-missing',
+            level: 'error',
+            message: `No blog post found for src '${value}' (expected ${filePath})`,
+          },
+        ];
+      }
+    } catch (e) {
+      return [{ id: 'blog-card-src-invalid', level: 'error', message: e.message }];
     }
 
     return [];
@@ -87,15 +77,15 @@ export default {
   attributes: { src: { type: BlogCardSrc, required: true } },
   transform(node) {
     const { src } = node.attributes;
-    const { normalizedSrc, filePath } = blogCardPath(src);
 
     try {
+      const { slug, filePath } = blogCardPath(src);
       const fileContent = fs.readFileSync(filePath, 'utf8');
-      const { data: frontmatter, content: markdownBody } = matter(fileContent);
+      const { ast, frontmatter } = parseMarkdown(fileContent);
 
-      const readingTime = getReadingTime(markdownBody);
+      const readingTime = calculateReadingTime(ast);
 
-      const match = normalizedSrc.match(/(?<year>\d{4})\/(?<month>\d{2})\/(?<day>\d{2})\//);
+      const match = slug.match(/(?<year>\d{4})\/(?<month>\d{2})\/(?<day>\d{2})\//);
       let dateStr = '';
       if (match) {
         const { year, month, day } = match.groups;
@@ -105,22 +95,22 @@ export default {
       const datetime = dateStr;
       const displayDate = formatDate(dateStr);
 
-      const title = frontmatter.title || path.basename(normalizedSrc);
+      const title = frontmatter.title || path.basename(slug);
       let image = frontmatter.image?.src;
       const alt = frontmatter.image?.alt || '';
 
-      if (image && !image.startsWith('http') && !image.startsWith('/')) {
-        const cardDir = path.dirname(normalizedSrc);
+      if (image && !/^https?:\/\//.test(image) && !image.startsWith('/')) {
+        const cardDir = path.dirname(slug);
         image = `/blog/${cardDir}/${image}`;
       }
 
       const tags = frontmatter.tags || [];
       const tagsHtml = tags.length > 0 ? tags.map((tag) => `<span class="blog-post__tag">${tag}</span>`).join('') : '';
 
-      const template = fs.readFileSync(path.resolve(__dirname, '../../components/_blog-card.html'), 'utf8');
+      const template = fs.readFileSync(BLOG_CARD_TEMPLATE_PATH, 'utf8');
 
       const renderedHtml = renderTemplate(template, {
-        href: `/blog/${normalizedSrc}`,
+        href: `/blog/${slug}`,
         title,
         datetime,
         displayDate,
@@ -143,8 +133,7 @@ export default {
 
       return outputTags;
     } catch (e) {
-      console.error('Error in blog-card transform:', e);
-      return [];
+      throw new Error(`Failed to render blog-card '${src}'`, { cause: e });
     }
   },
 };

@@ -1,12 +1,8 @@
 import Markdoc from '@markdoc/markdoc';
-import matter from 'gray-matter';
 
 import markdocConfig from './markdoc-config.js';
+import { calculateReadingTime, parseMarkdown } from './parse-markdown.js';
 import { textToSlug } from './utils.js';
-
-function parseMarkdownFrontmatter(content) {
-  return matter(content);
-}
 
 function extractDateFromPath(pathStr) {
   const match = pathStr.match(/(?<year>\d{4})[\\/](?<month>\d{2})[\\/](?<day>\d{2})[\\/]/);
@@ -17,9 +13,9 @@ function extractDateFromPath(pathStr) {
   return undefined;
 }
 
-function getTextContent(node) {
+function getTagTextContent(node) {
   if (typeof node === 'string') return node;
-  if (node && node.children) return node.children.map(getTextContent).join('');
+  if (node && node.children) return node.children.map(getTagTextContent).join('');
 
   return '';
 }
@@ -27,9 +23,9 @@ function getTextContent(node) {
 function collectHeadings(node, headings = [], usedIds = new Set()) {
   if (!node) return headings;
 
-  if (node.name?.match(/h[2-6]/)) {
+  if (node.name?.match(/^h[2-6]$/)) {
     const level = parseInt(node.name.substring(1), 10);
-    const text = getTextContent(node);
+    const text = getTagTextContent(node);
 
     if (!node.attributes['data-toc-skip']) {
       let { id } = node.attributes;
@@ -181,8 +177,7 @@ function validateMarkdoc(ast, config) {
   throw new Error(`Invalid Markdoc content:\n${messages.join('\n')}`);
 }
 
-function transformMarkdoc(content, config = markdocConfig) {
-  const ast = Markdoc.parse(content);
+function transformMarkdoc(ast, config = markdocConfig) {
   validateMarkdoc(ast, config);
 
   const transformed = Markdoc.transform(ast, config);
@@ -191,8 +186,8 @@ function transformMarkdoc(content, config = markdocConfig) {
   return transformed;
 }
 
-function renderMarkdoc(content, config = markdocConfig) {
-  const transformed = transformMarkdoc(content, config);
+function renderMarkdoc(ast, config = markdocConfig) {
+  const transformed = transformMarkdoc(ast, config);
 
   const rendered = Markdoc.renderers.html(transformed);
   const html = processHtmlOutput(rendered);
@@ -200,8 +195,8 @@ function renderMarkdoc(content, config = markdocConfig) {
   return html;
 }
 
-function renderMarkdocWithHeadings(content, config = markdocConfig) {
-  const transformed = transformMarkdoc(content, config);
+function renderMarkdocWithHeadings(ast, config = markdocConfig) {
+  const transformed = transformMarkdoc(ast, config);
   const headings = collectHeadings(transformed);
 
   const rendered = Markdoc.renderers.html(transformed);
@@ -210,10 +205,19 @@ function renderMarkdocWithHeadings(content, config = markdocConfig) {
   return { headings, html };
 }
 
+function withFrontmatterVariables(frontmatter) {
+  return {
+    ...markdocConfig,
+    variables: { ...markdocConfig.variables, frontmatter },
+  };
+}
+
 export {
+  calculateReadingTime,
   extractDateFromPath,
-  parseMarkdownFrontmatter,
+  parseMarkdown,
   processHtmlOutput,
   renderMarkdoc,
   renderMarkdocWithHeadings,
+  withFrontmatterVariables,
 };

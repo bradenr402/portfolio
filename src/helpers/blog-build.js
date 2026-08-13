@@ -2,13 +2,14 @@ import fs from 'fs';
 import path from 'path';
 import { JSDOM } from 'jsdom';
 import { fileURLToPath } from 'url';
-import markdocConfig from './markdoc-config.js';
 
 import {
+  calculateReadingTime,
   extractDateFromPath,
-  parseMarkdownFrontmatter,
+  parseMarkdown,
   renderMarkdoc,
   renderMarkdocWithHeadings,
+  withFrontmatterVariables,
 } from './markdown.js';
 import {
   buildMetaDescription,
@@ -42,14 +43,6 @@ function readTemplate(templatePath) {
   return fs.readFileSync(templatePath, 'utf8').trim();
 }
 
-const WORDS_PER_MINUTE = 250;
-
-function calculateReadingTime(text) {
-  const words = text.trim().split(/\s+/).length;
-  const minutes = Math.ceil(words / WORDS_PER_MINUTE);
-  return `${minutes} min read`;
-}
-
 function renderTagsHtml(tags) {
   if (!tags || tags.length === 0) return '';
 
@@ -60,7 +53,7 @@ function resolveBlogImage(src, contextPath) {
   if (!src) return '';
 
   // If absolute URL or root-relative, return as is
-  if (src.startsWith('/') || src.match(/^https?:\/\//)) return src;
+  if (src.startsWith('/') || /^https?:\/\//.test(src)) return src;
 
   const dir = path.dirname(contextPath);
   const relativeDir = path.relative(BLOG_ROOT, dir);
@@ -70,7 +63,7 @@ function resolveBlogImage(src, contextPath) {
 }
 
 function processMarkdown(content, filepath) {
-  const { data: frontmatter, content: markdownBody } = parseMarkdownFrontmatter(content);
+  const { ast, frontmatter } = parseMarkdown(content);
 
   const alt = frontmatter.image?.alt;
   let image = frontmatter.image?.src;
@@ -80,17 +73,16 @@ function processMarkdown(content, filepath) {
   }
 
   const date = extractDateFromPath(filepath);
-  const readingTime = calculateReadingTime(markdownBody);
+  const readingTime = calculateReadingTime(ast);
 
   // Inject frontmatter as variables for use within blog posts
-  const markdocConfigWithFrontmatter = {
-    variables: {
-      frontmatter: { ...frontmatter, readingTime, date },
-    },
-    ...markdocConfig,
-  };
+  const markdocConfigWithFrontmatter = withFrontmatterVariables({
+    ...frontmatter,
+    readingTime,
+    date,
+  });
 
-  const { headings, html } = renderMarkdocWithHeadings(markdownBody, markdocConfigWithFrontmatter);
+  const { headings, html } = renderMarkdocWithHeadings(ast, markdocConfigWithFrontmatter);
 
   return {
     html,
@@ -179,8 +171,8 @@ function buildBlogTocListHtml(headings) {
     .map((h) =>
       renderTemplate(template, {
         level: h.level,
-        id: h.id,
-        text: h.text,
+        id: escapeAttribute(h.id),
+        text: escapeHtml(h.text),
       }))
     .join('\n');
 }
@@ -205,7 +197,8 @@ function buildUpdatesHtml(updates) {
     .map((update) => {
       const datetime = normalizeDate(update.date);
       const displayDate = formatDate(datetime) || datetime;
-      const description = renderMarkdoc(update.description, markdocConfig);
+      const { ast } = parseMarkdown(update.description);
+      const description = renderMarkdoc(ast);
 
       return renderTemplate(updateItemTemplate, {
         datetime,

@@ -24,6 +24,9 @@ updates:
     description: |
       - Added the [Sidenotes](#sidenotes) section under [Custom Components](#custom-components).
       - Added notes on build-time validation to the [Blog Card](#blog-card) and [Sidenotes](#sidenotes) sections.
+
+  - date: 2026-08-10
+    description: Removed `gray-matter` from [The Stack](#the-stack)—Markdoc now handles frontmatter parsing, with [js-yaml](https://github.com/nodeca/js-yaml) decoding the YAML.
 ---
 
 If you’ve been thinking about building your own personal blog, the tooling choices can feel endless. There are so many frameworks, static site generators, and CMSes available today. There’s nothing wrong with any of these, but they can be limiting when it comes to design and functionality.
@@ -41,8 +44,8 @@ Thanks to Josh W. Comeau for his own post [How I Built My Blog](https://www.josh
 The stack is intentionally small:
 
 - [**Webpack**](https://webpack.js.org/) for the build and asset pipeline—I created this site several years ago, and it already used Webpack, so it made sense to extend it.
-- [**Markdoc**](https://markdoc.io/) for Markdown & custom tags.
-- [**gray-matter**](https://github.com/jonschlinkert/gray-matter) for frontmatter parsing.
+- [**Markdoc**](https://markdoc.io/) for Markdown & custom tags—it even [parses frontmatter](https://markdoc.dev/docs/frontmatter).
+- [**js-yaml**](https://github.com/nodeca/js-yaml) for decoding the YAML before Markdoc parses the frontmatter.
 - [**JSDOM**](https://github.com/jsdom/jsdom) for manipulating HTML at build time.
 - [**highlight.js**](https://highlightjs.org/) for syntax highlighting code blocks at build time.
 

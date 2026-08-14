@@ -1180,6 +1180,7 @@
   .table-wrapper {
     position: relative;
     margin: 2rem 0;
+    border: var(--hairline) solid var(--color-border-light);
 
     overflow-x: auto;
     overscroll-behavior-x: contain;
@@ -1234,7 +1235,6 @@
     font-size: 0.875rem;
     text-align: left;
     border-collapse: collapse;
-    border: var(--hairline) solid var(--color-border-light);
 
     ul,
     ol,
@@ -1253,6 +1253,11 @@
     background: var(--color-surface);
   }
 
+  thead > tr,
+  tbody > tr:not(:last-child) {
+    border-bottom: var(--hairline) solid var(--color-border-light);
+  }
+
   th {
     min-width: max-content;
     white-space: nowrap;
@@ -1260,7 +1265,6 @@
 
   th,
   td {
-    border-bottom: var(--hairline) solid var(--color-border-light);
     padding: 0.75rem;
     vertical-align: top;
 

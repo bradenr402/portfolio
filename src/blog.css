@@ -1235,12 +1235,6 @@
     font-size: 0.875rem;
     text-align: left;
     border-collapse: collapse;
-
-    ul,
-    ol,
-    .code-block-wrapper {
-      margin: 0;
-    }
   }
 
   html[dir='rtl'] table {
@@ -1275,6 +1269,12 @@
       overflow-wrap: break-word;
     }
 
+    ul,
+    ol,
+    .code-block-wrapper {
+      margin: 0;
+    }
+
     .code-block-wrapper {
       width: 100%;
       min-width: max-content;
@@ -1294,35 +1294,31 @@
 
   td {
     color: var(--color-muted);
-  }
 
-  td:is(.true, .false, .neutral),
-  td:has(p.true, p.false, p.neutral) {
-    font-weight: 600;
-    background-color: var(--table-cell-bg-color);
-    color: var(--table-cell-text-color);
-  }
+    &:is(.true, .false, .neutral),
+    &:has(p.true, p.false, p.neutral) {
+      font-weight: 600;
+      background-color: var(--table-cell-bg-color);
+      color: var(--table-cell-text-color);
+    }
 
-  td.true,
-  td:has(p.true) {
-    --table-cell-bg-color: light-dark(var(--color-emerald-100), var(--color-emerald-950));
-    --table-cell-text-color: light-dark(var(--color-emerald-600), var(--color-emerald-400));
-  }
+    &.true,
+    &:has(p.true) {
+      --table-cell-bg-color: light-dark(var(--color-emerald-100), var(--color-emerald-950));
+      --table-cell-text-color: light-dark(var(--color-emerald-600), var(--color-emerald-400));
+    }
 
-  td.false,
-  td:has(p.false) {
-    --table-cell-bg-color: light-dark(var(--color-rose-100), var(--color-rose-950));
-    --table-cell-text-color: light-dark(var(--color-rose-600), var(--color-rose-400));
-  }
+    &.false,
+    &:has(p.false) {
+      --table-cell-bg-color: light-dark(var(--color-rose-100), var(--color-rose-950));
+      --table-cell-text-color: light-dark(var(--color-rose-600), var(--color-rose-400));
+    }
 
-  td.neutral,
-  td:has(p.neutral) {
-    --table-cell-bg-color: light-dark(var(--color-yellow-100), var(--color-yellow-950));
-    --table-cell-text-color: light-dark(var(--color-yellow-600), var(--color-yellow-400));
-  }
-
-  tbody tr:last-child {
-    border-bottom: none;
+    &.neutral,
+    &:has(p.neutral) {
+      --table-cell-bg-color: light-dark(var(--color-yellow-100), var(--color-yellow-950));
+      --table-cell-text-color: light-dark(var(--color-yellow-600), var(--color-yellow-400));
+    }
   }
 
   /* Sticky first column for tables when the first header cell is marked sticky */

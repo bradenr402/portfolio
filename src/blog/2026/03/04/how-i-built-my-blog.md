@@ -2,7 +2,7 @@
 title: How I Built My Blog
 updates:
   - date: 2026-03-14
-    description: |
+    description: |-
       - Updated component example in [Scoped Styles](#scoped-styles).
       - Updated description of mail links in [Clear & Intuitive Links](#clear--intuitive-links).
 
@@ -10,7 +10,7 @@ updates:
     description: Fixed alt text for images in [Scoped Styles](#scoped-styles).
 
   - date: 2026-05-01
-    description: |
+    description: |-
       - Added an example screenshot in [Text Selection](#text-selection).
       - Revised the explanation to reflect that the `::selection` styles now live in the global stylesheet instead of the blog stylesheet.
 
@@ -21,7 +21,7 @@ updates:
     description: Updated `.blog` and `.blog-reset` class references to `.prose` and `.prose-reset`, respectively.
 
   - date: 2026-08-07
-    description: |
+    description: |-
       - Added the [Sidenotes](#sidenotes) section under [Custom Components](#custom-components).
       - Added notes on build-time validation to the [Blog Card](#blog-card) and [Sidenotes](#sidenotes) sections.
 

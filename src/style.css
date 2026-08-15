@@ -227,6 +227,27 @@
   }
 }
 
+/* Separates flex children with small dots in the container's text color */
+@utility divide-dot {
+  --divide-dot-gap: --spacing(2);
+  --divide-dot-size: --spacing(0.5);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  > *:not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: var(--divide-dot-size);
+    height: var(--divide-dot-size);
+    border-radius: 9999px;
+    margin-inline: var(--divide-dot-gap);
+    background: currentColor;
+  }
+}
+
 @utility timeline-role {
   --angle: 20deg;
   --half-logo-size: calc(var(--logo-size) / 2);

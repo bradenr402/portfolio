@@ -325,7 +325,7 @@ const DEFAULT_RECENT_POSTS_COUNT = 5;
 
 function injectRecentPosts(html, posts, count = DEFAULT_RECENT_POSTS_COUNT) {
   const listHtml = buildBlogIndexListHtml(posts.slice(0, count));
-  return html.replace(RECENT_POSTS_PLACEHOLDER, listHtml);
+  return html.replace(RECENT_POSTS_PLACEHOLDER, () => listHtml);
 }
 
 function buildStandaloneBlogIndexPage(blogDir, indexTemplatePath, indexPlaceholder) {
@@ -334,7 +334,7 @@ function buildStandaloneBlogIndexPage(blogDir, indexTemplatePath, indexPlacehold
   const posts = collectBlogPostsMeta(blogDir);
   const listHtml = buildBlogIndexListHtml(posts);
 
-  return html.replace(indexPlaceholder, `\n${listHtml}\n            `);
+  return html.replace(indexPlaceholder, () => `\n${listHtml}\n            `);
 }
 
 export {

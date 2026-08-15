@@ -151,7 +151,7 @@ function buildStandaloneTilPage(tilDir, templatePath, placeholder) {
   const html = fs.readFileSync(templatePath, 'utf8');
   const entries = collectTilEntries(tilDir);
   const listHtml = buildTilListHtml(entries);
-  return html.replace(placeholder, `\n${listHtml}\n        `);
+  return html.replace(placeholder, () => `\n${listHtml}\n        `);
 }
 
 function buildTilDetailPage(entry) {

@@ -358,8 +358,8 @@
     background-color: transparent !important;
   }
 
-  /* Links */
-  :where(.blog-layout__content, .blog-header) a:not([class]) {
+  /* Links — excluding links that have a class, have child nodes, or are empty */
+  a:not([class], :has(*), :empty) {
     --link-transition: 100ms;
     text-decoration: dotted underline var(--color-faint);
     text-decoration-thickness: var(--underline-thickness);

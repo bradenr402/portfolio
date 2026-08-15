@@ -205,6 +205,36 @@ function renderMarkdocWithHeadings(ast, config = markdocConfig) {
   return { headings, html };
 }
 
+// Markdoc wraps rendered documents in <article>; strip it for embedded output
+function unwrapArticle(html) {
+  const trimmed = html.trim();
+  const match = trimmed.match(/^<article>\s*([\s\S]*?)\s*<\/article>$/);
+
+  return match ? match[1].trim() : trimmed;
+}
+
+function unwrapParagraph(html) {
+  return html.replace(/^<p>/, '').replace(/<\/p>$/, '');
+}
+
+// Render a string as inline Markdown for use inside an existing element.
+// Multi-paragraph input is collapsed into one line.
+function renderInlineMarkdown(text) {
+  const { ast } = parseMarkdown(String(text));
+
+  return unwrapArticle(renderMarkdoc(ast))
+    .split(/<\/p>\s*<p>/)
+    .map(unwrapParagraph)
+    .join(' ');
+}
+
+// Full Markdown (paragraphs, lists, code blocks), without the <article> wrapper
+function renderFullMarkdown(text, config = markdocConfig) {
+  const { ast } = parseMarkdown(String(text));
+
+  return unwrapArticle(renderMarkdoc(ast, config));
+}
+
 function withFrontmatterVariables(frontmatter) {
   return {
     ...markdocConfig,
@@ -217,7 +247,10 @@ export {
   extractDateFromPath,
   parseMarkdown,
   processHtmlOutput,
+  renderFullMarkdown,
+  renderInlineMarkdown,
   renderMarkdoc,
   renderMarkdocWithHeadings,
+  unwrapArticle,
   withFrontmatterVariables,
 };

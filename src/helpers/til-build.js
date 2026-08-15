@@ -5,7 +5,9 @@ import { fileURLToPath } from 'url';
 import {
   extractDateFromPath,
   parseMarkdown,
+  renderInlineMarkdown,
   renderMarkdoc,
+  unwrapArticle,
   withFrontmatterVariables,
 } from './markdown.js';
 import {
@@ -52,24 +54,6 @@ function parseTilPath(filePath) {
     href: `/til/${entryPath}`,
     domId: `til-${entryPath.replace(/\//g, '-')}`,
   };
-}
-
-function unwrapArticle(html) {
-  const trimmed = html.trim();
-  const match = trimmed.match(/^<article>\s*([\s\S]*?)\s*<\/article>$/);
-  return match ? match[1].trim() : trimmed;
-}
-
-function unwrapParagraph(html) {
-  return html.replace(/^<p>/, '').replace(/<\/p>$/, '');
-}
-
-function renderInlineMarkdown(text) {
-  const { ast } = parseMarkdown(text);
-
-  // Markdoc wraps single-line content in <article><p>…</p></article>.
-  // Unwrap so the title renders inline inside an <h2> / <h1>.
-  return unwrapParagraph(unwrapArticle(renderMarkdoc(ast)));
 }
 
 function processTilMarkdown(content, filePath) {

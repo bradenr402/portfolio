@@ -15,9 +15,9 @@ function extractDateFromPath(pathStr) {
 
 function getTagTextContent(node) {
   if (typeof node === 'string') return node;
-  if (node && node.children) return node.children.map(getTagTextContent).join('');
+  if (!node?.children) return '';
 
-  return '';
+  return node.children.map(getTagTextContent).join('');
 }
 
 function collectHeadings(node, headings = [], usedIds = new Set()) {

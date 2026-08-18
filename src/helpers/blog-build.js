@@ -172,7 +172,7 @@ function buildBlogTocListHtml(headings) {
       renderTemplate(template, {
         level: h.level,
         id: escapeAttribute(h.id),
-        text: escapeHtml(h.text),
+        text: h.html,
       }))
     .join('\n');
 }

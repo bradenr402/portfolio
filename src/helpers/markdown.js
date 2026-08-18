@@ -2,7 +2,7 @@ import Markdoc from '@markdoc/markdoc';
 
 import markdocConfig from './markdoc-config.js';
 import { calculateReadingTime, parseMarkdown } from './parse-markdown.js';
-import { textToSlug } from './utils.js';
+import { escapeHtml, textToSlug } from './utils.js';
 
 function extractDateFromPath(pathStr) {
   const match = pathStr.match(/(?<year>\d{4})[\\/](?<month>\d{2})[\\/](?<day>\d{2})[\\/]/);
@@ -18,6 +18,16 @@ function getTagTextContent(node) {
   if (!node?.children) return '';
 
   return node.children.map(getTagTextContent).join('');
+}
+
+const TOC_INLINE_TAGS = new Set(['code', 'em', 'strong', 'i', 'b', 's']);
+
+function getTagInlineHtml(node) {
+  if (typeof node === 'string') return escapeHtml(node);
+  if (!node?.children) return '';
+
+  const html = node.children.map(getTagInlineHtml).join('');
+  return TOC_INLINE_TAGS.has(node.name) ? `<${node.name}>${html}</${node.name}>` : html;
 }
 
 function collectHeadings(node, headings = [], usedIds = new Set()) {
@@ -44,7 +54,7 @@ function collectHeadings(node, headings = [], usedIds = new Set()) {
       }
 
       usedIds.add(id);
-      headings.push({ id, level, text });
+      headings.push({ id, level, text, html: getTagInlineHtml(node) });
     }
   }
 

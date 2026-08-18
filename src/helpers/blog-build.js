@@ -33,11 +33,14 @@ const SRC_DIR = path.resolve(__dirname, '..');
 const BLOG_ROOT = path.join(SRC_DIR, 'blog');
 const COMPONENTS_DIR = path.join(SRC_DIR, 'components');
 
-const BLOG_TOC_ITEM_TEMPLATE_PATH    = path.join(COMPONENTS_DIR, '_blog-toc-item.html');
-const BLOG_LIST_ITEM_TEMPLATE_PATH   = path.join(COMPONENTS_DIR, '_blog-list-item.html');
-const BLOG_ACTIONS_TEMPLATE_PATH     = path.join(COMPONENTS_DIR, '_blog-actions.html');
-const BLOG_UPDATES_TEMPLATE_PATH     = path.join(COMPONENTS_DIR, '_blog-updates.html');
-const BLOG_UPDATE_ITEM_TEMPLATE_PATH = path.join(COMPONENTS_DIR, '_blog-update-item.html');
+const BLOG_TOC_ITEM_TEMPLATE_PATH      = path.join(COMPONENTS_DIR, '_blog-toc-item.html');
+const BLOG_TOC_RAIL_DASH_TEMPLATE_PATH = path.join(COMPONENTS_DIR, '_blog-toc-rail-dash.html');
+const BLOG_LIST_ITEM_TEMPLATE_PATH     = path.join(COMPONENTS_DIR, '_blog-list-item.html');
+const BLOG_ACTIONS_TEMPLATE_PATH       = path.join(COMPONENTS_DIR, '_blog-actions.html');
+const BLOG_UPDATES_TEMPLATE_PATH       = path.join(COMPONENTS_DIR, '_blog-updates.html');
+const BLOG_UPDATE_ITEM_TEMPLATE_PATH   = path.join(COMPONENTS_DIR, '_blog-update-item.html');
+
+const TOC_MIN_HEADINGS = 3;
 
 function readTemplate(templatePath) {
   return fs.readFileSync(templatePath, 'utf8').trim();
@@ -162,8 +165,12 @@ function collectBlogPostsMeta(blogDir) {
   return posts;
 }
 
+function hasToc(headings) {
+  return (headings?.length || 0) >= TOC_MIN_HEADINGS;
+}
+
 function buildBlogTocListHtml(headings) {
-  if (!headings || headings.length < 3) return '';
+  if (!hasToc(headings)) return '';
 
   const template = readTemplate(BLOG_TOC_ITEM_TEMPLATE_PATH);
 
@@ -173,6 +180,20 @@ function buildBlogTocListHtml(headings) {
         level: h.level,
         id: escapeAttribute(h.id),
         text: h.html,
+      }))
+    .join('\n');
+}
+
+function buildBlogTocRailHtml(headings) {
+  if (!hasToc(headings)) return '';
+
+  const template = readTemplate(BLOG_TOC_RAIL_DASH_TEMPLATE_PATH);
+
+  return headings
+    .map((h) =>
+      renderTemplate(template, {
+        level: h.level,
+        id: escapeAttribute(h.id),
       }))
     .join('\n');
 }
@@ -235,6 +256,7 @@ function buildBlogPostPage(partial, template, metadata = null) {
     : '';
 
   const tocHtml = buildBlogTocListHtml(headings);
+  const tocRailHtml = buildBlogTocRailHtml(headings);
   const pageTitle = `${title || ''} • ${SITE_NAME}`;
   const metaDescription = buildMetaDescription({
     excerpt,
@@ -268,6 +290,7 @@ function buildBlogPostPage(partial, template, metadata = null) {
     content: partial,
     excerpt: escapeHtml(excerpt),
     toc: tocHtml,
+    tocRail: tocRailHtml,
     metaImage: escapeAttribute(metaImage),
     siteName: escapeAttribute(SITE_NAME),
   };
@@ -340,6 +363,7 @@ function buildStandaloneBlogIndexPage(blogDir, indexTemplatePath, indexPlacehold
 export {
   collectBlogPostsMeta,
   buildBlogTocListHtml,
+  buildBlogTocRailHtml,
   buildBlogPostPage,
   buildBlogIndexListHtml,
   buildStandaloneBlogIndexPage,

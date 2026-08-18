@@ -61,13 +61,25 @@
             {{content}} {{updates}} {{actions}}
           </div>
 
-          <aside class="blog-layout__aside">
-            <a href="#top"><h2 class="blog-toc__title">Contents</h2></a>
-            <nav class="blog-toc" aria-label="Table of contents">
-              <ol class="blog-toc__list">
-                {{toc}}
-              </ol>
-            </nav>
+          <aside class="blog-layout__aside" data-toc-open="false">
+            <button
+              type="button"
+              class="blog-toc-rail"
+              aria-controls="blog-toc-panel"
+              aria-expanded="false"
+              aria-label="Table of contents"
+            >
+              {{tocRail}}
+            </button>
+
+            <div class="blog-toc-panel" id="blog-toc-panel">
+              <a href="#top"><h2 class="blog-toc__title">Contents</h2></a>
+              <nav class="blog-toc" aria-label="Table of contents">
+                <ol class="blog-toc__list">
+                  {{toc}}
+                </ol>
+              </nav>
+            </div>
           </aside>
         </div>
       </main>

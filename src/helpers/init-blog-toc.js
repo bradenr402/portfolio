@@ -10,13 +10,17 @@ function moveMarker(item, marker) {
   const nav = marker.parentElement;
   if (!nav) return;
   const navRect = nav.getBoundingClientRect();
+
+  // The panel is display:none while collapsed, so nothing can be measured yet
+  if (!navRect.height) return;
+
   const itemRect = item.getBoundingClientRect();
   const offset = 2;
   marker.style.top = `${itemRect.top - navRect.top + nav.scrollTop + offset}px`;
   marker.style.height = `${itemRect.height - (offset * 2)}px`;
 }
 
-function setActive(id, linkById, activeState, marker) {
+function setActive(id, linkById, activeState, marker, railById) {
   if (!id || !linkById.has(id)) return;
   if (activeState.value === id) return;
 
@@ -24,6 +28,9 @@ function setActive(id, linkById, activeState, marker) {
     const prevLink = linkById.get(activeState.value);
     const prevItem = prevLink && prevLink.parentElement;
     if (prevItem) prevItem.classList.remove('blog-toc__item--active');
+
+    const prevRail = railById.get(activeState.value);
+    if (prevRail) prevRail.classList.remove('blog-toc-rail__dash--active');
   }
 
   const link = linkById.get(id);
@@ -33,10 +40,13 @@ function setActive(id, linkById, activeState, marker) {
     if (marker) moveMarker(item, marker);
   }
 
+  const railDash = railById.get(id);
+  if (railDash) railDash.classList.add('blog-toc-rail__dash--active');
+
   activeState.value = id;
 }
 
-function updateActiveFromScroll(headings, linkById, activeState, marker) {
+function updateActiveFromScroll(headings, linkById, activeState, marker, railById) {
   if (!headings.length) return;
 
   const viewportHeight = getViewportHeight();
@@ -57,7 +67,7 @@ function updateActiveFromScroll(headings, linkById, activeState, marker) {
   }
 
   if (!currentId && headings[0]) currentId = headings[0].id;
-  if (currentId) setActive(currentId, linkById, activeState, marker);
+  if (currentId) setActive(currentId, linkById, activeState, marker, railById);
 }
 
 function scrollToHeadingWithOffset(target) {
@@ -73,7 +83,7 @@ function scrollToHeadingWithOffset(target) {
   });
 }
 
-function handleTocClick(linkById, activeState, marker, event) {
+function handleTocClick(linkById, activeState, marker, railById, event) {
   const { target } = event;
   const link = target.closest?.('a');
   if (!link) return;
@@ -91,7 +101,7 @@ function handleTocClick(linkById, activeState, marker, event) {
 
   window.history.replaceState(null, '', `#${id}`);
 
-  setActive(id, linkById, activeState, marker);
+  setActive(id, linkById, activeState, marker, railById);
 }
 
 export default function initBlogToc() {
@@ -138,7 +148,13 @@ export default function initBlogToc() {
     return;
   }
 
-  nav.hidden = false;
+  const rail = aside?.querySelector('.blog-toc-rail');
+  const railById = new Map();
+
+  rail?.querySelectorAll('.blog-toc-rail__dash').forEach((dash) => {
+    const id = dash.getAttribute('data-toc-target');
+    if (id) railById.set(id, dash);
+  });
 
   const marker = document.createElement('div');
   marker.className = 'blog-toc__marker';
@@ -146,16 +162,30 @@ export default function initBlogToc() {
 
   const activeState = { value: null };
 
-  const handleScroll = () => updateActiveFromScroll(headings, linkById, activeState, marker);
+  const openPanel = () => {
+    aside.setAttribute('data-toc-open', 'true');
+    rail.setAttribute('aria-expanded', 'true');
+
+    const link = linkById.get(activeState.value);
+    moveMarker(link?.parentElement, marker);
+  };
+
+  const closePanel = () => {
+    aside.setAttribute('data-toc-open', 'false');
+    rail.setAttribute('aria-expanded', 'false');
+  };
+
+  const handleScroll = () =>
+    updateActiveFromScroll(headings, linkById, activeState, marker, railById);
   const handleResize = () => {
-    updateActiveFromScroll(headings, linkById, activeState, marker);
+    updateActiveFromScroll(headings, linkById, activeState, marker, railById);
     if (activeState.value) {
       const link = linkById.get(activeState.value);
       const item = link && link.parentElement;
       moveMarker(item, marker);
     }
   };
-  const handleClick = handleTocClick.bind(null, linkById, activeState, marker);
+  const handleClick = handleTocClick.bind(null, linkById, activeState, marker, railById);
 
   window.addEventListener('scroll', handleScroll, { passive: true });
   window.addEventListener('resize', handleResize);
@@ -163,24 +193,29 @@ export default function initBlogToc() {
 
   const initialId = window.location.hash.slice(1);
   if (initialId && linkById.has(initialId)) {
-    setActive(initialId, linkById, activeState, marker);
+    setActive(initialId, linkById, activeState, marker, railById);
   } else {
-    updateActiveFromScroll(headings, linkById, activeState, marker);
+    updateActiveFromScroll(headings, linkById, activeState, marker, railById);
   }
 
-  // Toggle logic
-  const toggleBtn = main.querySelector('.blog-toc-toggle');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isVisible = nav.getAttribute('data-visible') === 'true';
-      nav.setAttribute('data-visible', !isVisible);
+  // Panel toggle: the rail opens and closes it, an outside click closes it,
+  // and clicks inside the panel leave it open.
+  if (rail && aside) {
+    rail.addEventListener('click', () => {
+      if (aside.getAttribute('data-toc-open') === 'true') closePanel();
+      else openPanel();
     });
 
-    document.addEventListener('click', (e) => {
-      if (nav.getAttribute('data-visible') === 'true' && !nav.contains(e.target) && !toggleBtn.contains(e.target)) {
-        nav.setAttribute('data-visible', 'false');
-      }
+    document.addEventListener('click', (event) => {
+      if (aside.getAttribute('data-toc-open') !== 'true') return;
+      if (!aside.contains(event.target)) closePanel();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      if (aside.getAttribute('data-toc-open') !== 'true') return;
+      closePanel();
+      rail.focus();
     });
   }
 }

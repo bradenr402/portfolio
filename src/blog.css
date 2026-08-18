@@ -1174,6 +1174,12 @@
       box-shadow: 0 1px 0 0.5px var(--color-border);
       translate: 0 1px;
     }
+
+    &::selection {
+      background-color: transparent !important;
+      color: currentColor !important;
+      text-decoration: none !important;
+    }
   }
 
   /* Scrollable table wrapper */

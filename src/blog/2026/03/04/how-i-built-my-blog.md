@@ -178,13 +178,25 @@ Both elements end up with the same `data-sidenote` attribute, which the CSS uses
   content: attr(data-sidenote);
 }
 
+.sidenote {
+  opacity: 0.4;
+  filter: grayscale(0.5);
+  /* ... */
+}
+
 :scope {
   &:has([data-sidenote='1']:hover) [data-sidenote='1'],
   &:has([data-sidenote='2']:hover) [data-sidenote='2'],
   /* ... */
   &:has([data-sidenote='10']:hover) [data-sidenote='10'] {
-    color: var(--color-accent);
+    opacity: 1;
+    filter: none;
     text-decoration-color: var(--color-accent);
+
+    &::before,
+    &::after {
+      color: var(--color-accent);
+    }
   }
 }
 ```

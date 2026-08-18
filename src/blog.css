@@ -384,6 +384,11 @@
     --sidenote-number-scale: 0.7;
   }
 
+  .sidenote-ref::after,
+  .sidenote::before {
+    content: attr(data-sidenote);
+  }
+
   .sidenote-ref {
     cursor: help;
     text-decoration: dotted underline var(--color-faint);
@@ -395,7 +400,6 @@
       text-decoration-color var(--sidenote-transition);
 
     &::after {
-      content: attr(data-sidenote);
       display: inline-block; /* Keep the underline from extending under the number */
       margin-left: 0.35ch;
 
@@ -418,31 +422,35 @@
     padding-block: 1em;
 
     font-size: calc(var(--sidenote-body-scale) * 1em);
-    color: var(--color-faint);
-    transition: color var(--sidenote-transition);
+
+    opacity: 0.4;
+    filter: grayscale(0.5);
+
+    transition: var(--sidenote-transition);
+    transition-property: filter, opacity;
 
     &:not(:first-child) {
       margin-top: var(--sidenote-gutter);
     }
-
     &:not(:last-child) {
       margin-bottom: var(--sidenote-gutter);
     }
 
     /* The number floats in the left gutter so every line of text stays aligned */
     &::before {
-      content: attr(data-sidenote);
       float: left;
       width: var(--sidenote-gutter);
       margin-left: calc(-1 * var(--sidenote-gutter));
-      margin-top: -0.15em;
+      margin-top: 0.25em;
       padding-right: 1ch;
       text-align: right;
 
       /* Divide out the body scale so the number matches the size of the ref's number */
       font-size: calc(var(--sidenote-number-scale) / var(--sidenote-body-scale) * 1em);
+      line-height: 0;
       font-variant-numeric: tabular-nums;
-      transition: color var(--sidenote-transition);
+      transition: var(--sidenote-transition);
+      transition-property: color, filter, opacity;
     }
 
     /* Top and bottom dividers */
@@ -452,7 +460,7 @@
       inset: 0;
       margin-inline: auto;
       width: calc(100% - var(--sidenote-gutter) * 2);
-      border-block: var(--hairline) solid var(--color-border-light);
+      border-block: var(--hairline) solid var(--color-border);
       pointer-events: none;
     }
 
@@ -488,7 +496,8 @@
     &:has([data-sidenote='8']:hover) [data-sidenote='8'],
     &:has([data-sidenote='9']:hover) [data-sidenote='9'],
     &:has([data-sidenote='10']:hover) [data-sidenote='10'] {
-      color: var(--color-accent);
+      opacity: 1;
+      filter: none;
       text-decoration-color: var(--color-accent);
 
       &::before,

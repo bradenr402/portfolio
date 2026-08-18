@@ -695,9 +695,9 @@ The blog styles are leaking into the images in the component, messing up the lay
 
 ### Heading Links & Table of Contents
 
-Every `h2`-`h6` gets an auto-generated ID and a small anchor icon on hover. Try hovering over any heading in this post to see it. Those headings also power the sidebar table of contents, which you can see to the right (if you’re on desktop).
+Every `h2`-`h6` gets an auto-generated ID and a small anchor icon on hover. Try hovering over any heading in this post to see it. Those headings also power the sidebar table of contents, which you can see to the right.
 
-During the Markdoc parsing phase, a function traverses the AST and builds a tree of all the headings found in the document. This tree is then rendered as a nested list in the sidebar. If a post has fewer than three headings, the Table of Contents is omitted to keep the layout clean.
+During the Markdoc parsing phase, a function traverses the AST and builds a tree of all the headings found in the document. This tree is then rendered as a nested list in the side panel. If a post has fewer than three headings, the Table of Contents is omitted to keep the layout clean.
 
 ### Clear & Intuitive Links
 

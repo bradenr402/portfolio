@@ -24,14 +24,6 @@
     --color-quote-mark: light-dark(var(--color-stone-300), var(--color-zinc-600));
     --color-blockquote-border: light-dark(var(--color-stone-200), var(--color-zinc-800));
 
-    --color-scroll-cover: light-dark(white, var(--color-zinc-950));
-    --color-scroll-cover-transparent: light-dark(
-      oklch(100% 0.00011 271.152 / 0),
-      oklch(0% 0 0 / 0)
-    );
-    --color-scroll-shadow: light-dark(oklch(0% 0 0 / 0.2), oklch(0% 0 0 / 40%));
-    --color-scroll-shadow-transparent: light-dark(oklch(0% 0 0 / 0), oklch(0% 0 0 / 0));
-
     /* Sizes */
     --line-height: 1.5;
     --max-width: 56rem;

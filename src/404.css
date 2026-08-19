@@ -16,12 +16,16 @@
     color: var(--color-text);
     text-wrap: pretty;
     margin-bottom: 1.5rem;
+
+    animation: page-404-pop 900ms var(--spring) 60ms both;
   }
 
   .page-404__body {
     max-width: 70ch;
     color: var(--color-muted);
     text-wrap: pretty;
+
+    animation: page-404-pop 900ms var(--spring) 120ms both;
 
     a:not(:hover) {
       color: var(--color-text);
@@ -60,7 +64,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page-404__numeral {
+  .page-404__numeral,
+  .page-404__intro,
+  .page-404__body {
     animation: none !important;
   }
 }

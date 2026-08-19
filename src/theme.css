@@ -46,7 +46,15 @@
   --color-border: light-dark(var(--color-stone-300), var(--color-zinc-800));
   --color-border-light: light-dark(var(--color-stone-200), var(--color-zinc-900));
 
+  /* Divider bars (hr-like fills) are a distinct role from border colors, even
+     though they currently resolve to the same value. */
+  --color-divider: light-dark(var(--color-stone-200), var(--color-zinc-900));
+
   --color-accent: light-dark(var(--color-primary-500), var(--color-primary-400));
+  /* Muted/inverted accent shade, used where the brand color needs to recede
+     rather than draw focus (e.g. the 404 numeral). */
+  --color-accent-muted: light-dark(var(--color-primary-400), var(--color-primary-500));
+  --color-accent-text: light-dark(var(--color-primary-600), var(--color-primary-400));
   --color-light: light-dark(var(--color-stone-700), var(--color-zinc-200));
   --color-soft: light-dark(var(--color-stone-600), var(--color-zinc-300));
   --color-muted: light-dark(var(--color-stone-500), var(--color-zinc-400));
@@ -70,9 +78,27 @@
   --color-surface-alt: light-dark(var(--color-stone-100), var(--color-zinc-800));
   --color-surface-hover: light-dark(var(--color-stone-200), var(--color-zinc-700));
 
+  /* Blog/prose */
+  --color-quote-mark: light-dark(var(--color-stone-300), var(--color-zinc-600));
+  --color-blockquote-border: light-dark(var(--color-stone-200), var(--color-zinc-800));
+
   /* Content images */
   --color-image-frame: light-dark(white, var(--color-zinc-100));
   --color-image-outline: light-dark(oklch(0% 0 0 / 8%), oklch(100% 0 0 / 8%));
+
+  /* Table/status state colors */
+  --color-state-positive: light-dark(var(--color-emerald-600), var(--color-emerald-400));
+  --color-state-positive-bg: light-dark(var(--color-emerald-100), var(--color-emerald-950));
+  --color-state-negative: light-dark(var(--color-rose-600), var(--color-rose-400));
+  --color-state-negative-bg: light-dark(var(--color-rose-100), var(--color-rose-950));
+  --color-state-caution: light-dark(var(--color-yellow-600), var(--color-yellow-400));
+  --color-state-caution-bg: light-dark(var(--color-yellow-100), var(--color-yellow-950));
+
+  /* Photo gallery */
+  --color-photo-ring: light-dark(oklch(from var(--color-stone-950) l c h / 8%), oklch(from white l c h / 10%));
+  --color-photo-shadow: var(--color-stone-900);
+  --color-photo-mount: var(--color-stone-50);
+  --color-photo-caption: var(--color-stone-700);
 
   --breakpoint-xs: 30rem;
   --text-xxs: 0.625rem;

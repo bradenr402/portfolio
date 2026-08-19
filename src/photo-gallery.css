@@ -64,11 +64,10 @@
   --card-rotation: var(--initial-rotation);
   --card-padding: 0.75rem;
 
-  --shadow-ring: inset 0 0 0 var(--hairline)
-    light-dark(oklch(from var(--color-stone-950) l c h / 8%), oklch(from white l c h / 10%));
+  --shadow-ring: inset 0 0 0 var(--hairline) var(--color-photo-ring);
   --shadow-drop:
-    0 4px 20px -6px oklch(from var(--color-stone-900) l c h / 0.35),
-    0 12px 35px -10px oklch(from var(--color-stone-900) l c h / 0.25);
+    0 4px 20px -6px oklch(from var(--color-photo-shadow) l c h / 0.35),
+    0 12px 35px -10px oklch(from var(--color-photo-shadow) l c h / 0.25);
 
   /* Tilt interaction (from Transitions.dev — 3D pointer tilt with cursor glare) */
   --tilt-max: 17deg;
@@ -118,8 +117,8 @@
     --card-rotation: var(--hover-rotation);
     --card-scale: var(--tilt-scale);
     --shadow-drop:
-      0 8px 24px -6px oklch(from var(--color-stone-900) l c h / 0.42),
-      0 16px 40px -10px oklch(from var(--color-stone-900) l c h / 0.32);
+      0 8px 24px -6px oklch(from var(--color-photo-shadow) l c h / 0.42),
+      0 16px 40px -10px oklch(from var(--color-photo-shadow) l c h / 0.32);
   }
 
   & > .photo-card-inner {
@@ -131,7 +130,7 @@
     align-items: center;
     justify-content: center;
 
-    background: var(--color-stone-50);
+    background: var(--color-photo-mount);
     padding: var(--card-padding);
     border-radius: 0.5rem;
     box-shadow: var(--shadow-ring), var(--shadow-drop);
@@ -161,7 +160,7 @@
     font-family: var(--font-handwriting);
     font-size: 1rem;
     line-height: 1;
-    color: var(--color-stone-700);
+    color: var(--color-photo-caption);
   }
 
   & > .photo-card-inner::before {

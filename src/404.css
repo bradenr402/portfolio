@@ -43,7 +43,7 @@
   line-height: 1;
   font-weight: 700;
   font-size: clamp(9rem, 15vw, 14rem);
-  color: light-dark(var(--color-primary-400), var(--color-primary-500));
+  color: var(--color-accent-muted);
   text-shadow: 0 3.5px 6px oklch(0% 0 0 / 0.09);
 
   animation: page-404-pop 900ms var(--spring) both;

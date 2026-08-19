@@ -58,6 +58,10 @@
   --color-surface-alt: light-dark(var(--color-stone-100), var(--color-zinc-800));
   --color-surface-hover: light-dark(var(--color-stone-200), var(--color-zinc-700));
 
+  /* Content images */
+  --color-image-frame: light-dark(white, var(--color-zinc-100));
+  --color-image-outline: light-dark(oklch(0% 0 0 / 8%), oklch(100% 0 0 / 8%));
+
   --breakpoint-xs: 30rem;
   --text-xxs: 0.625rem;
 

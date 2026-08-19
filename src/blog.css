@@ -591,7 +591,7 @@
     height: auto;
     margin: 1rem auto;
     border-radius: var(--radius-xs);
-    border: 5px solid light-dark(white, var(--color-zinc-100));
+    border: 5px solid var(--color-image-frame);
     object-fit: cover;
 
     /* prettier-ignore */
@@ -603,17 +603,12 @@
       0 0.3px 0.4px oklch(0% 0 0 / 0.02),
       0 0.9px 1.5px oklch(0% 0 0 / 0.045),
       0 3.5px 6px oklch(0% 0 0 / 0.09);
-
-    outline: 0.5px solid oklch(from var(--color-stone-700) l c h / 10%);
   }
 
   /* Featured image in blog post header */
   header img {
     object-fit: cover;
     box-shadow: var(--shadow-md);
-
-    outline: 1.5px solid oklch(from var(--color-border) l c h / 30%);
-    outline-offset: -1.5px;
 
     border-radius: 1rem;
     @supports (corner-shape: squircle) {

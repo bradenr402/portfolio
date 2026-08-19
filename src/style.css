@@ -49,6 +49,11 @@ html[data-theme-switching] *::after {
   }
 }
 
+img {
+  outline: 1px solid var(--color-image-outline);
+  outline-offset: -1px;
+}
+
 /* Visually hidden until focused, then pinned near the top of the viewport */
 .skip-link {
   position: fixed;

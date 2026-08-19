@@ -237,10 +237,11 @@
   .heading-anchor {
     color: var(--color-text);
 
-    &:hover {
-      text-decoration-thickness: 0.08em !important;
-      text-underline-offset: 0.15em !important;
-      text-decoration: dotted underline var(--color-faint);
+    @media (hover: hover) {
+      &:hover {
+        text-decoration-thickness: 0.08em !important;
+        text-decoration: dotted underline var(--color-faint);
+      }
     }
 
     .anchor-icon {
@@ -305,17 +306,17 @@
     --link-transition: 100ms;
     text-decoration: dotted underline var(--color-faint);
     text-decoration-thickness: var(--underline-thickness);
-    text-underline-offset: 0.12em;
 
     transition:
       color var(--link-transition),
       text-decoration-color var(--link-transition);
 
-    &:hover {
-      color: var(--color-accent);
-      text-decoration-color: var(--color-accent);
-      text-decoration-style: solid;
-      text-underline-offset: 0.1em;
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+        text-decoration-color: var(--color-accent);
+        text-decoration-style: solid;
+      }
     }
   }
 
@@ -335,7 +336,6 @@
     cursor: help;
     text-decoration: dotted underline var(--color-faint);
     text-decoration-thickness: var(--underline-thickness);
-    text-underline-offset: 0.12em;
 
     transition:
       color var(--sidenote-transition),

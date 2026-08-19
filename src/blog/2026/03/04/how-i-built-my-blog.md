@@ -743,8 +743,7 @@ Since I wanted this to apply across my entire site (not just the blog), I define
   background: var(--selection-color);
   color: var(--color-accent);
   text-decoration: dotted underline var(--color-accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-decoration-thickness: var(--underline-thickness);
 }
 ```
 

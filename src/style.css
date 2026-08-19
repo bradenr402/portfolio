@@ -12,6 +12,9 @@
 
 :root {
   color-scheme: light dark;
+
+  text-underline-position: from-font;
+  text-decoration-skip-ink: auto;
 }
 
 /* Suppress transitions/animations while the theme is flipping between light
@@ -155,15 +158,13 @@ img {
   background: var(--selection-color);
   color: var(--color-accent);
   text-decoration: dotted underline var(--color-accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-decoration-thickness: var(--underline-thickness);
 }
 
 /* Links */
 @utility link {
   text-decoration: dotted underline var(--color-faint);
   text-decoration-thickness: var(--underline-thickness);
-  text-underline-offset: 2px;
 
   transition:
     color var(--link-transition),

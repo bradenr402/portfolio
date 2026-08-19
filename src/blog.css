@@ -241,6 +241,7 @@
     .anchor-icon {
       margin-inline-start: 0.25rem;
       color: var(--color-muted);
+      transition: opacity 100ms ease-out;
 
       &::after {
         content: '';

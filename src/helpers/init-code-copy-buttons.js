@@ -34,6 +34,12 @@ export default function initCodeCopyButtons() {
     button.setAttribute('aria-live', 'polite');
     button.innerHTML = buttonContent;
 
+    // Text-content changes on a role="status" region are what gets announced;
+    // toggling the button's aria-label/icons alone is silent to screen readers.
+    const status = document.createElement('span');
+    status.className = 'sr-only';
+    status.setAttribute('role', 'status');
+
     let timeoutId;
 
     button.addEventListener('click', async () => {
@@ -45,18 +51,19 @@ export default function initCodeCopyButtons() {
       copyIcon.classList.add('stacked-icon--hidden');
       checkIcon.classList.remove('stacked-icon--hidden');
 
-      button.ariaLabel = 'Copied code';
+      status.textContent = 'Copied Code';
 
       if (timeoutId) clearTimeout(timeoutId);
 
       timeoutId = setTimeout(() => {
         copyIcon.classList.remove('stacked-icon--hidden');
         checkIcon.classList.add('stacked-icon--hidden');
-        button.ariaLabel = 'Copy code';
+        status.textContent = '';
         timeoutId = null;
       }, 2000);
     });
 
     wrapper.appendChild(button);
+    wrapper.appendChild(status);
   });
 }

@@ -20,7 +20,7 @@ export default function initCopyLinkButton() {
   button.addEventListener('click', async () => {
     await navigator.clipboard.writeText(window.location.href);
 
-    // Swapping aria-hidden announces "Copied!" via the aria-live text container
+    // Swapping aria-hidden announces "Copied" via the role="status" container
     showSuccess(true);
     defaultText?.setAttribute('aria-hidden', 'true');
     successText?.setAttribute('aria-hidden', 'false');

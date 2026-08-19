@@ -1040,6 +1040,7 @@
   .code-block-wrapper {
     display: grid;
     margin: 1rem 0;
+    position: relative;
   }
 
   .code-block-wrapper pre {

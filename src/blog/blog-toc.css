@@ -30,7 +30,10 @@ body:has(.blog-layout__aside) {
   --toc-rail-padding-inline: 0.6rem;
   --toc-rail-radius: 0.75rem;
   --toc-rail-radius-squircle: 1.25rem;
-  --toc-rail-bg: var(--color-surface);
+  --toc-rail-bg: light-dark(
+    var(--color-surface),
+    color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))
+  );
   --toc-rail-max-height: calc(100svh - 4rem);
 
   --toc-dash-width: 1rem; /* width at heading level 2 */
@@ -57,7 +60,10 @@ body:has(.blog-layout__aside) {
   --toc-panel-radius: 1rem;
   --toc-panel-radius-squircle: 1.75rem;
   --toc-panel-max-height: min(70svh, calc(100svh - 8rem));
-  --toc-panel-bg: light-dark(var(--color-bg), var(--color-surface));
+  --toc-panel-bg: light-dark(
+    var(--color-bg),
+    color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))
+  );
   --toc-panel-border-color: light-dark(var(--color-border-light), var(--color-border));
   --toc-panel-shadow: 0 12px 32px -12px var(--color-scroll-shadow);
 

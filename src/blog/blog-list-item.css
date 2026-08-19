@@ -92,6 +92,7 @@
       font-size: 1.05rem;
       font-weight: 600;
       text-wrap: pretty;
+      margin-top: 0;
     }
 
     .blog-list-item__date {

@@ -36,6 +36,21 @@ function getIconSvg(name) {
   return fs.readFileSync(iconPath, 'utf8');
 }
 
+function injectSkipLink(html) {
+  const dom = new JSDOM(html);
+  const { document } = dom.window;
+  const { body } = document;
+  if (!body || body.querySelector(':scope > a.skip-link')) return html;
+
+  const skipLink = document.createElement('a');
+  skipLink.className = 'skip-link';
+  skipLink.href = '#main';
+  skipLink.textContent = 'Skip to Content';
+  body.insertBefore(skipLink, body.firstChild);
+
+  return dom.serialize();
+}
+
 function injectNav(html) {
   const dom = new JSDOM(html);
   const navPlaceholder = dom.window.document.getElementById('nav');
@@ -138,6 +153,7 @@ function replaceSharedTemplateValues(html) {
 
 export default function applyBaseLayout(html) {
   const transformations = [
+    injectSkipLink,
     injectNav,
     injectFooter,
     inlineIcons,

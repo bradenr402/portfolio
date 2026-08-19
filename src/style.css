@@ -28,6 +28,45 @@
   }
 }
 
+/* Visually hidden until focused, then pinned near the top of the viewport */
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  background: var(--color-bg);
+  color: var(--color-light);
+  font-weight: 600;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--focus-radius);
+  @supports (corner-shape: squircle) {
+    corner-shape: squircle;
+    border-radius: var(--focus-radius-squircle);
+  }
+
+  text-decoration: none;
+
+  &:focus,
+  &:focus-visible {
+    clip: auto;
+    clip-path: none;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+}
+
 @layer base {
   html,
   body {

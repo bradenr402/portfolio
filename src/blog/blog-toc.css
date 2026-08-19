@@ -380,6 +380,15 @@ body:has(.blog-layout__aside) {
     font-size: var(--toc-title-size);
     font-weight: 600;
     letter-spacing: 0.03em;
+
+    a {
+      text-decoration: none;
+      @media (hover: hover) {
+        &:hover {
+          color: var(--toc-title-color);
+        }
+      }
+    }
   }
 
   .blog-toc {

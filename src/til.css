@@ -127,8 +127,10 @@
     & > * {
       transition: opacity var(--til-hover-transition);
     }
-    .til-list__items:has(&:hover) &:not(:hover) > * {
-      opacity: 0.2;
+    @media (hover: hover) {
+      .til-list__items:has(&:hover) &:not(:hover) > * {
+        opacity: 0.4;
+      }
     }
   }
 
@@ -172,9 +174,14 @@
       }
     }
 
-    .til-item:has(a.blanket-link:hover) &::before {
-      transform: scaleX(1);
-      transition: transform calc(var(--til-accent-transition) * 2) var(--gentler-spring);
+    @media (hover: hover) {
+      .til-item:has(a.blanket-link:hover) &::before {
+        transform: scaleX(1);
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: transform calc(var(--til-accent-transition) * 2) var(--gentler-spring);
+        }
+      }
     }
   }
 

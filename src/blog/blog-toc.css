@@ -435,9 +435,11 @@ body:has(.blog-layout__aside) {
     color: var(--toc-link-color);
     transition: color var(--toc-highlight-color-transition);
 
-    &:hover {
-      color: var(--toc-link-color-active);
-      transition: none;
+    @media (hover: hover) {
+      &:hover {
+        color: var(--toc-link-color-active);
+        transition: none;
+      }
     }
   }
 

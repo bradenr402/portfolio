@@ -207,8 +207,14 @@ img {
 }
 
 @utility external-link {
-  @apply link-with-after-icon color-after-icon hover:after:[transform:translate(1.5px,-1.5px)];
+  @apply link-with-after-icon color-after-icon;
   --after-icon-url: url('./images/icons/arrow-up-right.svg');
+
+  @media (hover: hover) {
+    &:hover::after {
+      transform: translate(1.5px, -1.5px);
+    }
+  }
 
   &::after {
     width: 0.75em;
@@ -244,7 +250,11 @@ img {
 }
 
 @utility color-before-icon {
-  @apply hover:before:bg-accent;
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: var(--color-accent);
+    }
+  }
 }
 
 @utility link-with-after-icon {
@@ -271,16 +281,30 @@ img {
 }
 
 @utility color-after-icon {
-  @apply hover:after:bg-accent;
+  @media (hover: hover) {
+    &:hover::after {
+      background-color: var(--color-accent);
+    }
+  }
 }
 
 /* Mail link icon (envelope that opens on hover) */
 @utility mail-link {
-  @apply link-with-before-icon color-before-icon hover:before:transform-[translateY(-2px)] focus-visible:before:transform-[translateY(-2px)];
+  @apply link-with-before-icon color-before-icon focus-visible:before:transform-[translateY(-2px)];
   --before-icon-url: url('./images/icons/email.svg');
 
-  @variant hover, focus-visible {
+  @variant focus-visible {
     --before-icon-url: url('./images/icons/email-open.svg');
+  }
+
+  @variant hover {
+    --before-icon-url: url('./images/icons/email-open.svg');
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      transform: translateY(-2px);
+    }
   }
 }
 
@@ -306,9 +330,14 @@ img {
     @apply -m-[calc(var(--link-spacing)/2)] p-[calc(var(--link-spacing)/2)];
   }
 
-  &:has(a:hover) a:not(:hover),
   &:has(a:focus-visible) a:not(:focus-visible) {
     @apply blur-[1.5px];
+  }
+
+  @media (hover: hover) {
+    &:has(a:hover) a:not(:hover) {
+      @apply blur-[1.5px];
+    }
   }
 }
 

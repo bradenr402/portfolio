@@ -61,8 +61,10 @@
 
       /* Override default link styles */
       text-decoration: none;
-      &:hover {
-        color: inherit;
+      @media (hover: hover) {
+        &:hover {
+          color: inherit;
+        }
       }
     }
 
@@ -70,13 +72,15 @@
     position: relative;
     z-index: 1;
 
-    /* Apply anchor-name on hover to make highlight element follow cursor */
-    &:hover {
-      anchor-name: --hovered-item;
-    }
+    @media (hover: hover) {
+      /* Apply anchor-name on hover to make highlight element follow cursor */
+      &:hover {
+        anchor-name: --hovered-item;
+      }
 
-    .blog-post-list:has(&:hover) &:not(:hover) {
-      opacity: 20%;
+      .blog-post-list:has(&:hover) &:not(:hover) {
+        opacity: 0.4;
+      }
     }
 
     /* Pseudo-element border below each item except the last */
@@ -91,9 +95,11 @@
     }
 
     /* Hide pseudo-element borders on hover */
-    &:hover::after,
-    &:has(+ &:hover)::after {
-      opacity: 0;
+    @media (hover: hover) {
+      &:hover::after,
+      &:has(+ &:hover)::after {
+        opacity: 0;
+      }
     }
 
     .blog-list-item__title {

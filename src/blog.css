@@ -260,8 +260,13 @@
 
       opacity: 0;
     }
-    &:is(:focus-visible, :hover) .anchor-icon {
+    &:focus-visible .anchor-icon {
       opacity: 1;
+    }
+    @media (hover: hover) {
+      &:hover .anchor-icon {
+        opacity: 1;
+      }
     }
   }
 
@@ -421,24 +426,26 @@
    * Articles with more than 10 sidenotes lose cross-highlighting for the
    * extras (each element's own :hover styles still apply).
    */
-  :scope {
-    &:has([data-sidenote='1']:hover) [data-sidenote='1'],
-    &:has([data-sidenote='2']:hover) [data-sidenote='2'],
-    &:has([data-sidenote='3']:hover) [data-sidenote='3'],
-    &:has([data-sidenote='4']:hover) [data-sidenote='4'],
-    &:has([data-sidenote='5']:hover) [data-sidenote='5'],
-    &:has([data-sidenote='6']:hover) [data-sidenote='6'],
-    &:has([data-sidenote='7']:hover) [data-sidenote='7'],
-    &:has([data-sidenote='8']:hover) [data-sidenote='8'],
-    &:has([data-sidenote='9']:hover) [data-sidenote='9'],
-    &:has([data-sidenote='10']:hover) [data-sidenote='10'] {
-      opacity: 1;
-      filter: none;
-      text-decoration-color: var(--color-accent);
+  @media (hover: hover) {
+    :scope {
+      &:has([data-sidenote='1']:hover) [data-sidenote='1'],
+      &:has([data-sidenote='2']:hover) [data-sidenote='2'],
+      &:has([data-sidenote='3']:hover) [data-sidenote='3'],
+      &:has([data-sidenote='4']:hover) [data-sidenote='4'],
+      &:has([data-sidenote='5']:hover) [data-sidenote='5'],
+      &:has([data-sidenote='6']:hover) [data-sidenote='6'],
+      &:has([data-sidenote='7']:hover) [data-sidenote='7'],
+      &:has([data-sidenote='8']:hover) [data-sidenote='8'],
+      &:has([data-sidenote='9']:hover) [data-sidenote='9'],
+      &:has([data-sidenote='10']:hover) [data-sidenote='10'] {
+        opacity: 1;
+        filter: none;
+        text-decoration-color: var(--color-accent);
 
-      &::before,
-      &::after {
-        color: var(--color-accent);
+        &::before,
+        &::after {
+          color: var(--color-accent);
+        }
       }
     }
   }
@@ -464,9 +471,11 @@
       transform var(--ease-spring);
   }
 
-  a[target='_blank']:not(:has(img)):hover::after {
-    background-color: var(--color-accent);
-    transform: translate(1.5px, -1.5px);
+  @media (hover: hover) {
+    a[target='_blank']:not(:has(img)):hover::after {
+      background-color: var(--color-accent);
+      transform: translate(1.5px, -1.5px);
+    }
   }
 
   /* Mail icon for email links */
@@ -490,12 +499,14 @@
       transform var(--ease-spring);
   }
 
-  a[href^='mailto:']:hover::before {
-    mask-image: url('./images/icons/email-open.svg');
-    background-color: var(--color-accent);
+  @media (hover: hover) {
+    a[href^='mailto:']:hover::before {
+      mask-image: url('./images/icons/email-open.svg');
+      background-color: var(--color-accent);
 
-    /* Make the bottom edge of the envelopes align */
-    transform: translateY(-2px);
+      /* Make the bottom edge of the envelopes align */
+      transform: translateY(-2px);
+    }
   }
 
   /* Emphasis */

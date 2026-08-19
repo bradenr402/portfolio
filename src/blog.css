@@ -150,6 +150,7 @@
   :is(h1, h2, h3, h4, h5, h6) {
     /* Ensures anchor-icon is positioned properly */
     position: relative;
+    scroll-margin-block-start: 2rem;
 
     --base: 1rem;
     --ratio: 1.25;

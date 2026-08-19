@@ -1,5 +1,4 @@
 const VIEWPORT_LINE_RATIO = 0.25;
-const SCROLL_OFFSET_RATIO = 0.15;
 
 function getViewportHeight() {
   return window.innerHeight || document.documentElement.clientHeight || 0;
@@ -70,17 +69,10 @@ function updateActiveFromScroll(headings, linkById, activeState, marker, railByI
   if (currentId) setActive(currentId, linkById, activeState, marker, railById);
 }
 
-function scrollToHeadingWithOffset(target) {
-  const viewportHeight = getViewportHeight();
-  const rect = target.getBoundingClientRect();
-
-  const offset = viewportHeight * SCROLL_OFFSET_RATIO;
-  const targetY = window.pageYOffset + rect.top - offset;
-
-  window.scrollTo({
-    top: Math.max(targetY, 0),
-    behavior: 'smooth',
-  });
+function scrollToHeading(target) {
+  // CSS `scroll-margin-block-start` on headings supplies the offset, so a
+  // native scroll avoids stacking a second, JS-computed offset on top of it.
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function handleTocClick(linkById, activeState, marker, railById, event) {
@@ -97,7 +89,7 @@ function handleTocClick(linkById, activeState, marker, railById, event) {
 
   event.preventDefault();
 
-  scrollToHeadingWithOffset(heading);
+  scrollToHeading(heading);
 
   window.history.replaceState(null, '', `#${id}`);
 

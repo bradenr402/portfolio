@@ -443,6 +443,7 @@
         filter: none;
         text-decoration-color: var(--color-accent);
 
+        &:where(.sidenote-ref),
         &::before,
         &::after {
           color: var(--color-accent);

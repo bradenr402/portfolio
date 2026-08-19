@@ -51,7 +51,7 @@
     font-family: 'Crimson Pro';
     font-style: italic;
     font-weight: 200 900;
-    src: url('./fonts/CrimsonPro-Italic-VariableFont_wght.ttf') format('truetype');
+    src: url('./fonts/CrimsonPro-Italic-VariableFont_wght.woff2') format('woff2');
     font-display: swap;
   }
 
@@ -59,7 +59,7 @@
     font-family: 'Crimson Pro';
     font-style: normal;
     font-weight: 200 900;
-    src: url('./fonts/CrimsonPro-VariableFont_wght.ttf') format('truetype');
+    src: url('./fonts/CrimsonPro-VariableFont_wght.woff2') format('woff2');
     font-display: swap;
   }
 
@@ -67,7 +67,7 @@
     font-family: 'Gloria Hallelujah';
     font-style: normal;
     font-weight: 500;
-    src: url('./fonts/GloriaHallelujah-Regular.ttf') format('truetype');
+    src: url('./fonts/GloriaHallelujah-Regular.woff2') format('woff2');
     font-display: swap;
   }
 }

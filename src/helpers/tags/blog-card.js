@@ -115,7 +115,10 @@ export default {
       }
 
       const tags = frontmatter.tags || [];
-      const tagsHtml = tags.length > 0 ? tags.map((tag) => `<span class="blog-post__tag">${tag}</span>`).join('') : '';
+      const tagsHtml =
+        tags.length > 0
+          ? tags.map((tag) => `<span class="blog-post__tag">${tag}</span>`).join('')
+          : '';
 
       const template = fs.readFileSync(BLOG_CARD_TEMPLATE_PATH, 'utf8');
 

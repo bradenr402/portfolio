@@ -20,12 +20,7 @@ import {
   renderTemplate,
 } from './utils.js';
 import formatDate from './format-date.js';
-import {
-  BLOG_DESCRIPTION,
-  SITE_IMAGE_URL,
-  SITE_NAME,
-  SITE_ORIGIN,
-} from './site-meta.js';
+import { BLOG_DESCRIPTION, SITE_IMAGE_URL, SITE_NAME, SITE_ORIGIN } from './site-meta.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -202,7 +197,8 @@ function buildBlogTocListHtml(headings) {
         level: h.level,
         id: escapeAttribute(h.id),
         text: h.html,
-      }))
+      }),
+    )
     .join('\n');
 }
 
@@ -216,14 +212,13 @@ function buildBlogTocRailHtml(headings) {
       renderTemplate(template, {
         level: h.level,
         id: escapeAttribute(h.id),
-      }))
+      }),
+    )
     .join('\n');
 }
 
 function normalizeDate(value) {
-  return value instanceof Date
-    ? value.toISOString().slice(0, 10)
-    : String(value);
+  return value instanceof Date ? value.toISOString().slice(0, 10) : String(value);
 }
 
 function buildUpdatesHtml(updates) {
@@ -234,7 +229,8 @@ function buildUpdatesHtml(updates) {
 
   // Sort by newest date first
   const sorted = [...updates].sort((a, b) =>
-    normalizeDate(b.date).localeCompare(normalizeDate(a.date)));
+    normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
+  );
 
   const items = sorted
     .map((update) => {
@@ -258,7 +254,8 @@ function getLatestUpdateDate(updates) {
   if (!updates || updates.length === 0) return null;
 
   const sorted = [...updates].sort((a, b) =>
-    normalizeDate(b.date).localeCompare(normalizeDate(a.date)));
+    normalizeDate(b.date).localeCompare(normalizeDate(a.date)),
+  );
   return normalizeDate(sorted[0].date);
 }
 
@@ -284,9 +281,7 @@ function buildBlogPostPage(partial, template, metadata = null) {
   const updatesHtml = buildUpdatesHtml(updates);
 
   const latestUpdateDate = getLatestUpdateDate(updates);
-  const updatedDateHtml = latestUpdateDate
-    ? formatDate(latestUpdateDate)
-    : '';
+  const updatedDateHtml = latestUpdateDate ? formatDate(latestUpdateDate) : '';
 
   const tocHtml = buildBlogTocListHtml(headings);
   const tocRailHtml = buildBlogTocRailHtml(headings);
@@ -296,12 +291,8 @@ function buildBlogPostPage(partial, template, metadata = null) {
     html: partial,
     fallback: BLOG_DESCRIPTION,
   });
-  const metaImage = image
-    ? `${SITE_ORIGIN}${image}`
-    : SITE_IMAGE_URL;
-  const canonicalUrl = metadata?.href
-    ? `${SITE_ORIGIN}${metadata.href}`
-    : `${SITE_ORIGIN}/blog`;
+  const metaImage = image ? `${SITE_ORIGIN}${image}` : SITE_IMAGE_URL;
+  const canonicalUrl = metadata?.href ? `${SITE_ORIGIN}${metadata.href}` : `${SITE_ORIGIN}/blog`;
 
   const data = {
     headingTitle: escapeHtml(title || ''),

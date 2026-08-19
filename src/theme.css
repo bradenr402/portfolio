@@ -66,10 +66,7 @@
   --selection-color: oklch(from var(--color-primary-500) l c h / 5%);
 
   --color-scroll-cover: light-dark(white, var(--color-zinc-950));
-  --color-scroll-cover-transparent: light-dark(
-    oklch(100% 0.00011 271.152 / 0),
-    oklch(0% 0 0 / 0)
-  );
+  --color-scroll-cover-transparent: light-dark(oklch(100% 0.00011 271.152 / 0), oklch(0% 0 0 / 0));
   --color-scroll-shadow: light-dark(oklch(0% 0 0 / 0.2), oklch(0% 0 0 / 40%));
   --color-scroll-shadow-transparent: light-dark(oklch(0% 0 0 / 0), oklch(0% 0 0 / 0));
 
@@ -95,7 +92,10 @@
   --color-state-caution-bg: light-dark(var(--color-yellow-100), var(--color-yellow-950));
 
   /* Photo gallery */
-  --color-photo-ring: light-dark(oklch(from var(--color-stone-950) l c h / 8%), oklch(from white l c h / 10%));
+  --color-photo-ring: light-dark(
+    oklch(from var(--color-stone-950) l c h / 8%),
+    oklch(from white l c h / 10%)
+  );
   --color-photo-shadow: var(--color-stone-900);
   --color-photo-mount: var(--color-stone-50);
   --color-photo-caption: var(--color-stone-700);

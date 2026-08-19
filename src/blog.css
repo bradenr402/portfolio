@@ -1083,7 +1083,9 @@
     transition: background-color 100ms;
 
     @media (prefers-reduced-motion: no-preference) {
-      transition: background-color 100ms, scale var(--ease-spring);
+      transition:
+        background-color 100ms,
+        scale var(--ease-spring);
     }
 
     border-radius: 0.25rem;

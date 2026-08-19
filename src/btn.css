@@ -52,7 +52,7 @@
   }
 
   /* Default icon size to size-5 */
-  svg:not([class*="size-"]) {
+  svg:not([class*='size-']) {
     height: --spacing(5);
     width: --spacing(5);
   }
@@ -63,7 +63,7 @@
     margin-inline: -0.2em;
   }
 
-  svg[data-icon="arrow-up-right"] {
+  svg[data-icon='arrow-up-right'] {
     margin-top: 2px;
     margin-inline-end: 1px;
     margin-inline-start: -2px;

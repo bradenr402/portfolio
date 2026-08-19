@@ -33,9 +33,7 @@ function helpOptionsBlock() {
   ];
   const flagW = Math.max(...rows.map((r) => r[0].length));
   const valW = Math.max(...rows.map((r) => r[1].length));
-  return rows
-    .map(([f, v, d]) => `  ${f.padEnd(flagW)} ${v.padEnd(valW)}  ${d}`)
-    .join('\n');
+  return rows.map(([f, v, d]) => `  ${f.padEnd(flagW)} ${v.padEnd(valW)}  ${d}`).join('\n');
 }
 
 const HELP = `${c.bold('npm run til:new')} — create a new TIL entry
@@ -67,7 +65,10 @@ function pad(n) {
 
 function parseArgs(argv) {
   const opts = {
-    title: null, link: null, date: null, slug: null,
+    title: null,
+    link: null,
+    date: null,
+    slug: null,
   };
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
@@ -112,11 +113,7 @@ function parseArgs(argv) {
 
 function buildLocalDate(y, mo, d, original) {
   const date = new Date(y, mo - 1, d);
-  if (
-    date.getFullYear() !== y
-    || date.getMonth() !== mo - 1
-    || date.getDate() !== d
-  ) {
+  if (date.getFullYear() !== y || date.getMonth() !== mo - 1 || date.getDate() !== d) {
     fail(`Invalid calendar date: ${original}.`);
   }
   return date;
@@ -149,7 +146,9 @@ function resolveDate(input) {
   m = /^\+(\d+)$/.exec(s); // +3 = 3 days ahead
   if (m) return shiftDays(today, Number(m[1]));
   if (/^\d+$/.test(s)) {
-    fail(`Ambiguous date "${raw}". Use "+${raw}" for days ahead, "-${raw}" for days ago, "${raw} days ago", or a real date.`);
+    fail(
+      `Ambiguous date "${raw}". Use "+${raw}" for days ahead, "-${raw}" for days ago, "${raw} days ago", or a real date.`,
+    );
   }
 
   // ISO-ish: YYYY-MM-DD or YYYY/MM/DD or YYYY.MM.DD
@@ -174,7 +173,9 @@ function resolveDate(input) {
     return new Date(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
   }
 
-  fail(`Could not parse date "${raw}". Try YYYY-MM-DD, M/D/YYYY, "May 1 2026", "yesterday", or "3 days ago".`);
+  fail(
+    `Could not parse date "${raw}". Try YYYY-MM-DD, M/D/YYYY, "May 1 2026", "yesterday", or "3 days ago".`,
+  );
   return null;
 }
 
@@ -225,7 +226,9 @@ function ask(rl, queue, label, hint) {
   }
   if (queue.lines.length > 0) return Promise.resolve(queue.lines.shift());
   if (queue.closed) return Promise.resolve('');
-  return new Promise((resolve) => { queue.pending = resolve; });
+  return new Promise((resolve) => {
+    queue.pending = resolve;
+  });
 }
 
 async function runInteractive() {
@@ -253,7 +256,9 @@ async function runInteractive() {
     }
   });
   try {
-    console.log(`\n${c.bold(c.cyan('✨  New TIL'))}  ${c.dim('— answer the prompts (⏎ to accept defaults)')}\n`);
+    console.log(
+      `\n${c.bold(c.cyan('✨  New TIL'))}  ${c.dim('— answer the prompts (⏎ to accept defaults)')}\n`,
+    );
 
     const title = (await ask(rl, queue, 'Title')).trim();
     if (!title) fail('A title is required.');

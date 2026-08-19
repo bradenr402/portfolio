@@ -26,7 +26,9 @@
       border-radius: 1rem;
     }
 
-    transition: inset calc(var(--hover-transition) * 2) var(--gentler-spring), opacity var(--hover-transition);
+    transition:
+      inset calc(var(--hover-transition) * 2) var(--gentler-spring),
+      opacity var(--hover-transition);
     will-change: inset, opacity;
 
     transform-origin: center;

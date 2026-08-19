@@ -16,7 +16,7 @@ function moveMarker(item, marker) {
   const itemRect = item.getBoundingClientRect();
   const offset = 2;
   marker.style.top = `${itemRect.top - navRect.top + nav.scrollTop + offset}px`;
-  marker.style.height = `${itemRect.height - (offset * 2)}px`;
+  marker.style.height = `${itemRect.height - offset * 2}px`;
 }
 
 function setActive(id, linkById, activeState, marker, railById) {
@@ -107,7 +107,9 @@ export default function initBlogToc() {
 
   if (!article || !nav || !list) return;
 
-  const headings = Array.from(article.querySelectorAll(':is(h2, h3, h4, h5, h6):not([data-toc-skip=true])'));
+  const headings = Array.from(
+    article.querySelectorAll(':is(h2, h3, h4, h5, h6):not([data-toc-skip=true])'),
+  );
 
   headings.forEach((heading) => {
     if (!heading.parentElement?.classList.contains('heading-anchor')) {

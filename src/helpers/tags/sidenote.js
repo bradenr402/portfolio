@@ -21,6 +21,10 @@ export default {
   },
   transform(node, config) {
     const children = node.transformChildren(config);
-    return new Tag('aside', { class: 'sidenote', role: 'note', label: node.attributes.label }, children);
+    return new Tag(
+      'aside',
+      { class: 'sidenote', role: 'note', label: node.attributes.label },
+      children,
+    );
   },
 };

@@ -57,7 +57,7 @@
     @media (min-width: 48rem) {
       --dot-size: 0.8rem;
     }
- 
+
     --dot-shadow-size-ratio: calc(1 / 3);
     --dot-shadow-size: calc(var(--dot-size) * var(--dot-shadow-size-ratio));
 
@@ -198,7 +198,11 @@
       max-height: var(--max-height);
       overflow: hidden;
 
-      mask-image: linear-gradient(to bottom in oklab, black calc(100% - var(--fade-height)), transparent);
+      mask-image: linear-gradient(
+        to bottom in oklab,
+        black calc(100% - var(--fade-height)),
+        transparent
+      );
     }
 
     p:not(:first-child) {

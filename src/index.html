@@ -29,10 +29,7 @@
     <meta name="twitter:description" content="{{siteDescription}}" />
     <meta name="twitter:image" content="{{siteImageUrl}}" />
   </head>
-  <body
-    data-page="home"
-    class="bg-bg text-text antialiased"
-  >
+  <body data-page="home" class="bg-bg text-text antialiased">
     <div id="wrapper">
       <main
         id="main"
@@ -40,7 +37,9 @@
       >
         <!-- Introduction -->
         <section id="introduction" class="pt-(--top-padding) pb-(--bottom-padding)">
-          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
+          <div
+            class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)"
+          >
             <div class="max-rail:hidden"></div>
             <div class="max-rail:hidden"></div>
             <div class="grid gap-y-6 sm:grid-cols-[1fr_auto] sm:gap-x-8 sm:gap-y-4">
@@ -72,9 +71,17 @@
               <div
                 class="justify-self-center max-sm:max-w-[65vw] max-sm:py-4 sm:sticky sm:top-8 sm:row-span-2 sm:-mb-[calc(var(--bottom-padding)+var(--vertical-padding))] sm:w-48 sm:self-start"
               >
-                <figure class="photo-card mb-4 [--initial-rotation:6deg] [--hover-rotation:3deg] [--tilt-scale:1.1]">
+                <figure
+                  class="photo-card mb-4 [--hover-rotation:3deg] [--initial-rotation:6deg] [--tilt-scale:1.1]"
+                >
                   <div class="photo-card-inner">
-                    <img src="/images/family.webp" alt="Me, my wife, and my two daughters" width="3276" height="3276" fetchpriority="high" />
+                    <img
+                      src="/images/family.webp"
+                      alt="Me, my wife, and my two daughters"
+                      width="3276"
+                      height="3276"
+                      fetchpriority="high"
+                    />
                     <figcaption>My Family</figcaption>
                   </div>
                 </figure>
@@ -113,7 +120,9 @@
 
         <!-- Work -->
         <section id="work" class="py-(--vertical-padding)">
-          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
+          <div
+            class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)"
+          >
             <h2
               class="text-sm text-subtle max-rail:mb-4 rail:sticky rail:top-2 rail:self-start rail:text-right"
             >
@@ -123,11 +132,7 @@
             <div class="space-y-4">
               <div class="[--logo-size:--spacing(5)]">
                 <span class="group inline-flex items-center gap-[calc(var(--logo-size)/2)]">
-                  <i
-                    data-icon="serpapi"
-                    aria-hidden="true"
-                    class="size-(--logo-size)"
-                  ></i>
+                  <i data-icon="serpapi" aria-hidden="true" class="size-(--logo-size)"></i>
                   <a
                     href="https://serpapi.com"
                     target="_blank"
@@ -154,7 +159,9 @@
 
         <!-- Projects -->
         <section id="projects" class="py-(--vertical-padding)">
-          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
+          <div
+            class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)"
+          >
             <h2
               class="text-sm text-subtle max-rail:mb-4 rail:sticky rail:top-2 rail:self-start rail:text-right"
             >
@@ -228,7 +235,9 @@
 
         <!-- Content -->
         <section id="content" class="py-(--vertical-padding)">
-          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
+          <div
+            class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)"
+          >
             <h2
               class="text-sm text-subtle max-rail:mb-4 rail:sticky rail:top-2 rail:self-start rail:text-right"
             >
@@ -248,7 +257,9 @@
 
         <!-- Moments -->
         <section id="moments" class="py-(--vertical-padding)">
-          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
+          <div
+            class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)"
+          >
             <h2
               class="text-sm text-subtle max-rail:mb-4 rail:sticky rail:top-2 rail:self-start rail:text-right"
             >
@@ -260,7 +271,13 @@
                 class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]"
               >
                 <div class="photo-card-inner">
-                  <img src="/images/wedding.webp" loading="lazy" alt="My wife and me on our wedding day" width="3635" height="3635" />
+                  <img
+                    src="/images/wedding.webp"
+                    loading="lazy"
+                    alt="My wife and me on our wedding day"
+                    width="3635"
+                    height="3635"
+                  />
                   <figcaption>Our Wedding</figcaption>
                 </div>
               </figure>
@@ -269,7 +286,13 @@
                 class="photo-card [--hover-rotation:-2deg] [--hover-y:-6] [--initial-rotation:1deg] [--initial-y:-2] [--z:4]"
               >
                 <div class="photo-card-inner">
-                  <img src="/images/emily.webp" loading="lazy" alt="Emily as a newborn" width="3024" height="3024" />
+                  <img
+                    src="/images/emily.webp"
+                    loading="lazy"
+                    alt="Emily as a newborn"
+                    width="3024"
+                    height="3024"
+                  />
                   <figcaption>Welcome, Emily!</figcaption>
                 </div>
               </figure>
@@ -278,7 +301,13 @@
                 class="photo-card [--hover-rotation:3deg] [--hover-x:2] [--hover-y:-2] [--initial-rotation:7deg] [--initial-y:3] [--z:2]"
               >
                 <div class="photo-card-inner">
-                  <img src="/images/emily-first-christmas.webp" loading="lazy" alt="Emily’s first Christmas" width="3712" height="3712" />
+                  <img
+                    src="/images/emily-first-christmas.webp"
+                    loading="lazy"
+                    alt="Emily’s first Christmas"
+                    width="3712"
+                    height="3712"
+                  />
                   <figcaption>Emily’s First Xmas</figcaption>
                 </div>
               </figure>
@@ -287,7 +316,13 @@
                 class="photo-card [--hover-rotation:-3deg] [--hover-x:-3] [--hover-y:0] [--initial-rotation:-5deg] [--initial-x:0] [--initial-y:-1.5] [--z:5]"
               >
                 <div class="photo-card-inner">
-                  <img src="/images/sophia.webp" loading="lazy" alt="Sophia as a newborn" width="4284" height="4284" />
+                  <img
+                    src="/images/sophia.webp"
+                    loading="lazy"
+                    alt="Sophia as a newborn"
+                    width="4284"
+                    height="4284"
+                  />
                   <figcaption>Welcome, Sophia!</figcaption>
                 </div>
               </figure>
@@ -296,7 +331,13 @@
                 class="photo-card [--hover-rotation:3deg] [--hover-x:4] [--hover-y:1.5] [--initial-rotation:9deg] [--initial-x:0] [--initial-y:-1] [--z:3] max-sm:translate-y-2"
               >
                 <div class="photo-card-inner">
-                  <img src="/images/sophia-first-christmas.webp" loading="lazy" alt="Sophia’s first Christmas" width="3200" height="3200" />
+                  <img
+                    src="/images/sophia-first-christmas.webp"
+                    loading="lazy"
+                    alt="Sophia’s first Christmas"
+                    width="3200"
+                    height="3200"
+                  />
                   <figcaption>Sophia’s First Xmas</figcaption>
                 </div>
               </figure>

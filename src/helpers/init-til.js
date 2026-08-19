@@ -11,7 +11,7 @@ function dateElementFor(entry) {
 
 function dateCenterY(dateElement) {
   const rect = dateElement.getBoundingClientRect();
-  return rect.top + (rect.height / 2);
+  return rect.top + rect.height / 2;
 }
 
 function activeIndex(dateElements) {
@@ -24,10 +24,7 @@ function activeIndex(dateElements) {
     if (centerY <= lineY) idx = i;
     else break;
   }
-  while (
-    idx < dateElements.length - 1
-    && dateCenterY(dateElements[idx]) < TOP_TOLERANCE
-  ) {
+  while (idx < dateElements.length - 1 && dateCenterY(dateElements[idx]) < TOP_TOLERANCE) {
     idx += 1;
   }
 
@@ -38,8 +35,8 @@ function moveDot(timeline, dot, dateElements, hoveredIndex) {
   const idx = hoveredIndex ?? activeIndex(dateElements);
   const tlRect = timeline.getBoundingClientRect();
   const dateRect = dateElements[idx].getBoundingClientRect();
-  const dotY = dateRect.top - tlRect.top
-    + (dateRect.height / 2) - (dot.getBoundingClientRect().height / 2);
+  const dotY =
+    dateRect.top - tlRect.top + dateRect.height / 2 - dot.getBoundingClientRect().height / 2;
 
   dot.style.transform = `translateY(${dotY}px)`;
   dot.setAttribute('data-ready', '');

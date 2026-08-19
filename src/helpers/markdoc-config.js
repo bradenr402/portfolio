@@ -60,7 +60,9 @@ export default {
       transform(node, config) {
         const attributes = node.transformAttributes(config);
         const children = node.transformChildren(config);
-        return new Tag('div', { class: 'table-wrapper' }, [new Tag('table', attributes, children)]);
+        return new Tag('div', { class: 'table-wrapper' }, [
+          new Tag('div', { class: 'table-scroll' }, [new Tag('table', attributes, children)]),
+        ]);
       },
     },
     td: {

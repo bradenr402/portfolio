@@ -351,7 +351,7 @@ The extra `<div>` wrapper ensures proper block layout within the flex container.
 
 #### Tables
 
-To prevent tables from breaking mobile layouts, I have a transform that wraps every `<table>` in a container div (`.table-wrapper`). This lets the table scroll horizontally on small screens without breaking the layout of the page itself.
+To prevent tables from breaking mobile layouts, I have a transform that wraps every `<table>` in a container div (`.table-wrapper`) holding an inner scroll container (`.table-scroll`). The inner element does the horizontal scrolling on small screens, while the outer one stays put so it can paint the fading edge shadows *over* the table — otherwise cells with their own background, like code blocks, would cover them up.
 
 ```javascript
 // src/helpers/markdoc-config.js
@@ -364,7 +364,9 @@ export default {
       transform(node, config) {
         const attributes = node.transformAttributes(config);
         const children = node.transformChildren(config);
-        return new Tag('div', { class: 'table-wrapper' }, [new Tag('table', attributes, children)]);
+        return new Tag('div', { class: 'table-wrapper' }, [
+          new Tag('div', { class: 'table-scroll' }, [new Tag('table', attributes, children)]),
+        ]);
       },
     },
     // other node transforms...

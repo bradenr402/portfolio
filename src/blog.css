@@ -1139,19 +1139,29 @@
     }
   }
 
-  /* Scrollable table wrapper */
+  /* Scrollable table wrapper. The outer element never scrolls, so it can host
+     the edge shadows as an overlay; the inner element is the scroll port. */
   .table-wrapper {
     position: relative;
     margin: 2rem 0;
+  }
+
+  .table-scroll {
     border: var(--hairline) solid var(--color-border-light);
 
     overflow-x: auto;
     overscroll-behavior-x: contain;
 
+    position: relative;
+    isolation: isolate;
+
     /* Smooth scrolling on iOS */
     -webkit-overflow-scrolling: touch;
 
-    /* Fading shadows on left and right edges to indicate scrollability */
+    /* Fallback affordance for browsers without scroll-driven animations. These
+       gradients paint on the scroll container's background, so any cell with
+       its own background (code blocks, tinted cells) paints over them. The
+       overlay below replaces them wherever it is supported. */
     background:
       /* Shadow Cover LEFT */
       linear-gradient(
@@ -1189,6 +1199,57 @@
       14px 100%,
       14px 100%;
     background-attachment: local, local, scroll, scroll;
+  }
+
+  /* Where scroll-driven animations are available, draw the edge shadows on the
+     non-scrolling wrapper instead. An overlay paints above cell backgrounds,
+     so code blocks and tinted cells no longer cover the shadow. */
+  @supports (animation-timeline: --t) and (timeline-scope: --t) {
+    .table-wrapper {
+      timeline-scope: --table-scroll-x;
+    }
+
+    .table-scroll {
+      background-image: none;
+      scroll-timeline: --table-scroll-x inline;
+    }
+
+    .table-wrapper::before,
+    .table-wrapper::after {
+      content: '';
+      position: absolute;
+      inset-block: var(--hairline);
+      width: 14px;
+      z-index: 1;
+      pointer-events: none;
+
+      animation-name: table-edge-shadow;
+      animation-timeline: --table-scroll-x;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+    }
+
+    .table-wrapper::before {
+      inset-inline-start: var(--hairline);
+      background: radial-gradient(
+        farthest-side at 0 50% in oklab,
+        var(--color-scroll-shadow),
+        var(--color-scroll-shadow-transparent)
+      );
+      animation-range: 0px 24px;
+    }
+
+    .table-wrapper::after {
+      inset-inline-end: var(--hairline);
+      background: radial-gradient(
+        farthest-side at 100% 50% in oklab,
+        var(--color-scroll-shadow),
+        var(--color-scroll-shadow-transparent)
+      );
+      animation-direction: reverse;
+      animation-range: calc(100% - 24px) 100%;
+    }
   }
 
   /* Tables */
@@ -1338,5 +1399,16 @@
     background: oklch(from var(--color-accent) l c h / 15%);
     mix-blend-mode: normal;
     pointer-events: none;
+  }
+}
+
+/* Drives the scroll-driven edge shadows on .table-wrapper. Declared outside the
+   @scope block above because @keyframes is not scoped. */
+@keyframes table-edge-shadow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

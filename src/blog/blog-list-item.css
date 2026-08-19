@@ -45,6 +45,14 @@
       border-radius: 1rem;
     }
 
+    @media (prefers-reduced-motion: no-preference) {
+      transition: scale 200ms ease-out;
+
+      &:active {
+        scale: 0.98;
+      }
+    }
+
     a {
       display: flex;
       justify-content: space-between;

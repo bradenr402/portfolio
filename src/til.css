@@ -80,13 +80,25 @@
 
     &[data-ready] {
       opacity: 1;
-      transition: transform 400ms var(--gentler-spring);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform 400ms var(--gentler-spring);
+      }
     }
   }
 
   .til-item {
     position: relative;
     margin: 0;
+    scale: 1;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: scale 200ms ease-out;
+
+      &:has(a.blanket-link:active) {
+        scale: 0.98;
+      }
+    }
 
     &:not(:last-child) {
       padding-bottom: var(--til-gap);
@@ -154,7 +166,10 @@
 
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform var(--til-accent-transition) ease-out;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform var(--til-accent-transition) ease-out;
+      }
     }
 
     .til-item:has(a.blanket-link:hover) &::before {

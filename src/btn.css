@@ -45,8 +45,10 @@
     background-color: var(--color-surface-alt);
   }
 
-  &:active {
-    scale: 0.97;
+  @media (prefers-reduced-motion: no-preference) {
+    &:active {
+      scale: 0.97;
+    }
   }
 
   /* Default icon size to size-5 */

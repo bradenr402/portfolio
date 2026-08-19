@@ -226,6 +226,12 @@ body:has(.blog-layout__aside) {
 
     transition: background-color var(--toc-rail-transition);
 
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        background-color var(--toc-rail-transition),
+        scale 200ms ease-out;
+    }
+
     /* The rail only picks up a surface while hovered or while it is open */
     &:focus-visible {
       background: var(--toc-rail-bg);
@@ -233,6 +239,13 @@ body:has(.blog-layout__aside) {
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         background: var(--toc-rail-bg);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      /* Preserve the side-dir mirror while adding press feedback */
+      &:active {
+        scale: calc(var(--toc-side-dir) * 0.97) 0.97;
       }
     }
   }

@@ -15,16 +15,23 @@
 @utility stacked-icon {
   grid-area: 1 / 1;
   transform-origin: center;
-  transition:
-    opacity 200ms ease,
-    scale 200ms var(--bounce),
-    filter 200ms ease;
+  transition: opacity 200ms ease;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      opacity 200ms ease,
+      scale 200ms var(--bounce),
+      filter 200ms ease;
+  }
 }
 
 @utility stacked-icon--hidden {
   opacity: 0;
-  scale: 0.5;
-  filter: blur(4px);
+
+  @media (prefers-reduced-motion: no-preference) {
+    scale: 0.25;
+    filter: blur(4px);
+  }
 }
 
 @utility stacked-text-container {

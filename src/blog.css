@@ -1048,9 +1048,11 @@
       color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))
     );
 
-    transition:
-      background-color 100ms,
-      transform var(--ease-spring);
+    transition: background-color 100ms;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background-color 100ms, scale var(--ease-spring);
+    }
 
     border-radius: 0.25rem;
     @supports (corner-shape: squircle) {
@@ -1066,7 +1068,7 @@
     }
 
     &:active {
-      transform: scale(0.97);
+      scale: 0.97;
     }
   }
 
@@ -1097,19 +1099,29 @@
     box-shadow: 0 2px 0 1px var(--color-border);
     translate: 0 -1px;
 
-    transition:
-      translate 50ms ease,
-      box-shadow 50ms ease;
+    transition: box-shadow 50ms ease;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        translate 50ms ease,
+        box-shadow 50ms ease;
+    }
 
     &:hover {
       box-shadow: 0 2.5px 0 1px var(--color-border);
-      translate: 0 -1.5px;
+
+      @media (prefers-reduced-motion: no-preference) {
+        translate: 0 -1.5px;
+      }
     }
 
     &:active,
     &.is-active {
       box-shadow: 0 1px 0 0.5px var(--color-border);
-      translate: 0 1px;
+
+      @media (prefers-reduced-motion: no-preference) {
+        translate: 0 1px;
+      }
     }
 
     &::selection {

@@ -30,8 +30,7 @@ export default function initCodeCopyButtons() {
     const button = document.createElement('button');
     button.classList.add('copy-code-btn', 'stacked-icons-container', 'group/clipboard');
     button.type = 'button';
-    button.ariaLabel = 'Copy code';
-    button.setAttribute('aria-live', 'polite');
+    button.ariaLabel = 'Copy Code';
     button.innerHTML = buttonContent;
 
     // Text-content changes on a role="status" region are what gets announced;

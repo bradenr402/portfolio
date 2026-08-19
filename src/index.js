@@ -5,6 +5,7 @@ import './404.css';
 import initBlogToc from './helpers/init-blog-toc.js';
 import initCodeCopyButtons from './helpers/init-code-copy-buttons.js';
 import initCopyLinkButton from './helpers/init-copy-link-button.js';
+import initDemoLinks from './helpers/init-demo-links.js';
 import initKeyPressListeners from './helpers/init-key-press-listeners.js';
 import initKonamiCode from './helpers/init-konami-code.js';
 import initPhotoGallery from './helpers/init-photo-gallery.js';
@@ -20,6 +21,7 @@ const init = () => {
     initBlogToc();
     initCodeCopyButtons();
     initCopyLinkButton();
+    initDemoLinks();
     initKeyPressListeners();
     markMultilineCodeBlocks();
   }

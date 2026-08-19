@@ -42,7 +42,11 @@ export default {
           attributes.target = '_blank';
           attributes.rel = 'noopener noreferrer';
         } else if (isHash) {
-          attributes.onclick = 'event.preventDefault();';
+          // Demo/placeholder links (used in markdown examples): keep real
+          // anchor semantics but make the inertness explicit and accessible
+          // instead of an inline `onclick` handler.
+          attributes['aria-disabled'] = 'true';
+          attributes['data-demo-link'] = '';
         }
 
         attributes.href = href.replace(/^(new|same)tab:/, '');

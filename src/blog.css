@@ -789,6 +789,7 @@
     line-height: 1;
     text-wrap: balance;
     hyphens: auto;
+    overflow-wrap: break-word;
     margin: 0 0 2rem;
   }
 
@@ -797,6 +798,8 @@
     color: var(--color-muted);
     font-size: 0.95rem;
     font-style: italic;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
 
   .blog-header__updated {
@@ -804,6 +807,12 @@
     margin-block: 0;
     color: var(--color-muted);
     font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .blog-header__reading-time {
+    font-variant-numeric: tabular-nums;
   }
 
   .blog-header__meta {
@@ -836,6 +845,7 @@
     padding: 0.4rem;
     color: var(--color-soft);
     background-color: var(--color-surface-alt);
+    white-space: nowrap;
     border-radius: 4px;
     @supports (corner-shape: squircle) {
       corner-shape: squircle;

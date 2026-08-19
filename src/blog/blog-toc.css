@@ -56,7 +56,7 @@ body:has(.blog-layout__aside) {
    */
   --toc-panel-width: 18rem;
   --toc-panel-gap: 0.5rem; /* space between the rail and the panel */
-  --toc-panel-padding: 1.25rem;
+  --toc-panel-padding: 1rem;
   --toc-panel-radius: 1rem;
   --toc-panel-radius-squircle: 1.75rem;
   --toc-panel-max-height: min(70svh, calc(100svh - 8rem));

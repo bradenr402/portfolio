@@ -246,7 +246,7 @@
     margin: 0 0 1rem;
     font-size: 0.9rem;
     letter-spacing: 0.01em;
-    color: var(--color-faint);
+    color: var(--color-muted);
   }
 
   .til-entry__title {

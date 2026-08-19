@@ -350,7 +350,7 @@
       vertical-align: super;
       line-height: 0;
 
-      color: var(--color-faint);
+      color: var(--color-muted);
       transition: color var(--sidenote-transition);
     }
   }
@@ -365,7 +365,7 @@
 
     font-size: calc(var(--sidenote-body-scale) * 1em);
 
-    opacity: 0.4;
+    opacity: 0.6;
     filter: grayscale(0.5);
 
     transition: var(--sidenote-transition);

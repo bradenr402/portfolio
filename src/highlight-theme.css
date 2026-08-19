@@ -3,3 +3,14 @@
 
 /* Dark theme when the user prefers dark mode */
 @import 'highlight.js/styles/github-dark.min.css' (prefers-color-scheme: dark);
+
+/*
+ * The vendored GitHub dark theme renders markup headings at #1f6feb, which is
+ * only 4.1:1 against the code block background it actually sits on. #388bfd is
+ * the next step up GitHub's own blue ramp and clears 4.5:1 (5.7:1).
+ */
+@media (prefers-color-scheme: dark) {
+  .hljs-section {
+    color: #388bfd;
+  }
+}

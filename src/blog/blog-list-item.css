@@ -38,8 +38,8 @@
   .blog-list-item {
     margin: 0;
     transition: opacity var(--hover-transition);
-    border-radius: 0.5rem;
 
+    border-radius: 0.5rem;
     @supports (corner-shape: squircle) {
       corner-shape: squircle;
       border-radius: 1rem;

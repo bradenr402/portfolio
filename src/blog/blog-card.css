@@ -82,7 +82,7 @@
       align-self: stretch;
 
       margin-block: calc(-1 * var(--blog-card-padding));
-      margin-right: calc(-1 * var(--blog-card-padding));
+      margin-inline-end: calc(-1 * var(--blog-card-padding));
 
       @media (max-width: 32rem) {
         margin: 0;
@@ -92,7 +92,7 @@
 
     .blog-card__content {
       @media (max-width: 32rem) {
-        padding-left: var(--blog-card-padding);
+        padding-inline-start: var(--blog-card-padding);
         padding-bottom: var(--blog-card-padding);
       }
     }
@@ -104,11 +104,11 @@
       align-self: stretch;
 
       margin-block: calc(-1 * var(--blog-card-padding));
-      margin-right: calc(-1 * var(--blog-card-padding));
-      margin-left: auto;
+      margin-inline-end: calc(-1 * var(--blog-card-padding));
+      margin-inline-start: auto;
 
       padding: 0 1.75rem;
-      border-left: var(--hairline) solid var(--color-border-light);
+      border-inline-start: var(--hairline) solid var(--color-border-light);
       background: light-dark(
         var(--color-bg),
         color-mix(in oklch, var(--color-surface) 90%, var(--color-bg))

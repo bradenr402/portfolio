@@ -151,21 +151,20 @@ img {
   border-top-width: var(--hairline);
 }
 
-@utility border-r-hairline {
-  border-right-width: var(--hairline);
+@utility border-e-hairline {
+  border-inline-end-width: var(--hairline);
 }
 
 @utility border-b-hairline {
   border-bottom-width: var(--hairline);
 }
 
-@utility border-l-hairline {
-  border-left-width: var(--hairline);
+@utility border-s-hairline {
+  border-inline-start-width: var(--hairline);
 }
 
 @utility border-x-hairline {
-  border-left-width: var(--hairline);
-  border-right-width: var(--hairline);
+  border-inline-width: var(--hairline);
 }
 
 @utility border-y-hairline {
@@ -214,8 +213,8 @@ img {
   &::after {
     width: 0.75em;
     height: 0.75em;
-    margin-left: 0;
-    margin-right: -0.15em;
+    margin-inline-start: 0;
+    margin-inline-end: -0.15em;
     vertical-align: text-top;
   }
 }
@@ -228,7 +227,7 @@ img {
     display: inline-block;
     width: 1em;
     height: 1em;
-    margin-right: 0.2em;
+    margin-inline-end: 0.2em;
     margin-bottom: 0.05em;
     vertical-align: text-bottom;
 
@@ -256,7 +255,7 @@ img {
     display: inline-block;
     width: 1em;
     height: 1em;
-    margin-left: 0.2em;
+    margin-inline-start: 0.2em;
     vertical-align: text-bottom;
 
     background-color: var(--color-faint);
@@ -343,14 +342,14 @@ img {
   display: flex;
   align-items: center;
   gap: --spacing(4);
-  margin-left: var(--half-logo-size);
-  padding-left: var(--logo-size);
+  margin-inline-start: var(--half-logo-size);
+  padding-inline-start: var(--logo-size);
 
   /* Vertical line */
   &::before {
     content: '';
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     top: 0;
     width: 1px;
     height: calc(50% - var(--half-logo-size) * tan(var(--angle)) - 1px);
@@ -368,7 +367,7 @@ img {
   &::after {
     content: '';
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     top: calc(50% - var(--half-logo-size) * tan(var(--angle)) - 2px);
     width: calc((var(--logo-size) * 0.75) / cos(var(--angle)));
     height: 1px;

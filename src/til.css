@@ -36,13 +36,13 @@
 
   .til-list {
     position: relative;
-    border-left: 1px dashed var(--color-border-light);
     max-width: min(var(--content-width), 100%);
     margin-inline: auto;
+    border-inline-start: 1px dashed var(--color-border-light);
 
-    padding-left: 1rem;
+    padding-inline-start: 1rem;
     @media (min-width: 48rem) {
-      padding-left: 1.5rem;
+      padding-inline-start: 1.5rem;
     }
   }
 
@@ -63,7 +63,7 @@
 
     position: absolute;
     top: 0;
-    left: calc((var(--dot-size) + 1px) / -2);
+    inset-inline-start: calc((var(--dot-size) + 1px) / -2);
     z-index: 1;
 
     width: var(--dot-size);

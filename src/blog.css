@@ -87,17 +87,17 @@
   .blog-updates__list {
     list-style: none;
     padding: 0;
-    padding-left: 0.875rem;
+    padding-inline-start: 0.875rem;
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    border-left: 1px dashed var(--color-border);
+    border-inline-start: 1px dashed var(--color-border);
   }
 
   .blog-update {
     position: relative;
-    padding-left: 0.25rem;
+    padding-inline-start: 0.25rem;
     margin: 0;
     font-size: 0.85rem;
     line-height: 1.45;
@@ -107,7 +107,7 @@
 
       content: '';
       position: absolute;
-      left: calc(-0.875rem - (var(--dot-size) + 1px) / 2);
+      inset-inline-start: calc(-0.875rem - (var(--dot-size) + 1px) / 2);
       top: 0.55em;
       width: var(--dot-size);
       height: var(--dot-size);
@@ -117,7 +117,7 @@
 
     ul {
       margin-block: 0.15rem !important;
-      margin-left: 0.3rem !important;
+      margin-inline-start: 0.3rem !important;
     }
 
     li {
@@ -239,7 +239,7 @@
     }
 
     .anchor-icon {
-      margin-left: 0.25rem;
+      margin-inline-start: 0.25rem;
       color: var(--color-muted);
 
       &::after {
@@ -337,7 +337,7 @@
 
     &::after {
       display: inline-block; /* Keep the underline from extending under the number */
-      margin-left: 0.35ch;
+      margin-inline-start: 0.35ch;
 
       font-size: calc(var(--sidenote-number-scale) * 1em);
       font-variant-numeric: tabular-nums;
@@ -372,14 +372,14 @@
       margin-bottom: var(--sidenote-gutter);
     }
 
-    /* The number floats in the left gutter so every line of text stays aligned */
+    /* The number floats in the start gutter so every line of text stays aligned */
     &::before {
-      float: left;
+      float: inline-start;
       width: var(--sidenote-gutter);
-      margin-left: calc(-1 * var(--sidenote-gutter));
+      margin-inline-start: calc(-1 * var(--sidenote-gutter));
       margin-top: 0.25em;
-      padding-right: 1ch;
-      text-align: right;
+      padding-inline-end: 1ch;
+      text-align: end;
 
       /* Divide out the body scale so the number matches the size of the ref's number */
       font-size: calc(var(--sidenote-number-scale) / var(--sidenote-body-scale) * 1em);
@@ -449,7 +449,7 @@
     display: inline-block;
     width: 0.75em;
     height: 0.75em;
-    margin-right: -0.15em;
+    margin-inline-end: -0.15em;
     vertical-align: text-top;
 
     /* Use SVG as mask, color comes from the link text color */
@@ -475,7 +475,7 @@
     display: inline-block;
     width: 1em;
     height: 1em;
-    margin-right: 0.1em;
+    margin-inline-end: 0.1em;
     vertical-align: text-bottom;
 
     /* Use SVG as mask, color comes from the link text color */
@@ -650,7 +650,7 @@
 
   /* Nested lists */
   :is(ul, ol) :is(ul, ol) {
-    margin-left: 0.5rem;
+    margin-inline-start: 0.5rem;
     margin-block: 0.5rem;
 
     &:has(li:only-child) {
@@ -681,7 +681,7 @@
 
       &::before {
         font-weight: 800;
-        margin-right: 0.5rem;
+        margin-inline-end: 0.5rem;
         color: var(--color-accent);
       }
     }
@@ -839,7 +839,7 @@
     display: inline-block;
     width: 0.8em;
     height: 0.8em;
-    margin-left: -0.08em;
+    margin-inline-start: -0.08em;
     margin-bottom: 0.1em;
     vertical-align: middle;
 
@@ -864,7 +864,7 @@
     position: relative;
     padding: 1rem;
     margin: 1rem 0;
-    margin-left: 0.75rem;
+    margin-inline-start: 0.75rem;
     color: var(--color-soft);
     font-style: italic;
     font-family: var(--font-serif);
@@ -884,7 +884,7 @@
   blockquote cite {
     display: block;
     font-size: 0.875em;
-    text-align: right;
+    text-align: end;
     font-weight: 600;
     font-family: var(--font-sans);
     color: var(--color-text);
@@ -893,7 +893,7 @@
 
     &::before {
       content: '—';
-      margin-right: 0.3rem;
+      margin-inline-end: 0.3rem;
       color: var(--color-faint);
     }
   }
@@ -905,7 +905,7 @@
     font-style: normal;
     font-size: 4em;
     line-height: 0.1em;
-    margin-left: -0.1em;
+    margin-inline-start: -0.1em;
     vertical-align: -0.35em;
   }
 
@@ -916,7 +916,7 @@
     width: 3px;
     border-radius: 9999px;
     position: absolute;
-    left: -12px;
+    inset-inline-start: -12px;
     top: 50%;
     transform: translateY(-50%);
     background: var(--color-blockquote-border);
@@ -992,7 +992,7 @@
     content: '$';
     display: inline;
     color: var(--color-faint);
-    margin-right: 1em;
+    margin-inline-end: 1em;
   }
 
   pre > code {
@@ -1000,7 +1000,7 @@
     padding: 1.1em !important;
 
     /* Space for copy button */
-    padding-right: 3.5em !important;
+    padding-inline-end: 3.5em !important;
 
     overscroll-behavior-x: none;
 
@@ -1080,7 +1080,7 @@
   kbd {
     display: inline-block;
     padding: 0.25em 0.5em;
-    margin-right: 0.1em;
+    margin-inline-end: 0.1em;
     min-width: 2em;
     border: 1px solid var(--color-border);
     border-radius: 0.35em;
@@ -1237,12 +1237,8 @@
     width: 100%;
     min-width: 100%;
     font-size: 0.875rem;
-    text-align: left;
+    text-align: start;
     border-collapse: collapse;
-  }
-
-  html[dir='rtl'] table {
-    text-align: right;
   }
 
   thead {
@@ -1328,14 +1324,14 @@
   /* Sticky first column for tables when the first header cell is marked sticky */
   thead th:first-child.sticky {
     position: sticky;
-    left: 0;
+    inset-inline-start: 0;
     z-index: 2;
     background: var(--color-surface);
   }
 
   thead:has(th:first-child.sticky) + tbody td:first-child {
     position: sticky;
-    left: 0;
+    inset-inline-start: 0;
     z-index: 2;
     background: var(--color-bg);
   }

@@ -17,11 +17,11 @@
    * Matches a direct svg or an svg wrapped in a single container.
    */
   &:has(> svg:first-child, > :first-child > svg) {
-    padding-left: 0.5rem;
+    padding-inline-start: 0.5rem;
   }
 
   &:has(> svg:last-child, > :last-child > svg) {
-    padding-right: 0.5rem;
+    padding-inline-end: 0.5rem;
   }
 
   background: var(--color-bg);
@@ -63,7 +63,7 @@
 
   svg[data-icon="arrow-up-right"] {
     margin-top: 2px;
-    margin-right: 1px;
-    margin-left: -2px;
+    margin-inline-end: 1px;
+    margin-inline-start: -2px;
   }
 }

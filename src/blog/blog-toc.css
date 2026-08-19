@@ -366,7 +366,7 @@ body:has(.blog-layout__aside) {
   .blog-toc {
     position: relative;
     font-size: var(--toc-font-size);
-    text-align: left;
+    text-align: start;
 
     max-height: var(--toc-panel-max-height);
     overflow-y: auto;
@@ -434,25 +434,25 @@ body:has(.blog-layout__aside) {
   }
 
   .blog-toc__item--level-3 > a {
-    padding-left: calc(var(--toc-level-indent) * 1);
+    padding-inline-start: calc(var(--toc-level-indent) * 1);
   }
 
   .blog-toc__item--level-4 > a {
-    padding-left: calc(var(--toc-level-indent) * 2);
+    padding-inline-start: calc(var(--toc-level-indent) * 2);
   }
 
   .blog-toc__item--level-5 > a {
-    padding-left: calc(var(--toc-level-indent) * 3);
+    padding-inline-start: calc(var(--toc-level-indent) * 3);
   }
 
   .blog-toc__item--level-6 > a {
-    padding-left: calc(var(--toc-level-indent) * 4);
+    padding-inline-start: calc(var(--toc-level-indent) * 4);
   }
 
   /* Marker that moves alongside the active item */
   .blog-toc__marker {
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     width: var(--toc-guide-width);
     background: var(--toc-marker-color);
     border-radius: 9999px;

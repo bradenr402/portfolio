@@ -689,7 +689,7 @@
     /* Shared styles for custom list markers */
     &:is(:is(ol, ul):not([class]) > li) {
       display: flex;
-      align-items: flex-start;
+      align-items: start;
 
       &::before {
         font-weight: 800;

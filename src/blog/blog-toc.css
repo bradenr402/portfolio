@@ -207,7 +207,7 @@ body:has(.blog-layout__aside) {
   .blog-toc-rail {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: end;
     gap: var(--toc-dash-gap);
 
     max-height: var(--toc-rail-max-height);

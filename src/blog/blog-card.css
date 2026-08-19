@@ -9,14 +9,14 @@
 
     --shadow-color: 0% 0 0;
     --blog-card-shadow-hover:
-      0 0.1px 0.2px oklch(var(--shadow-color) / 9%),
-      0 0.4px 0.8px -0.5px oklch(var(--shadow-color) / 9%),
-      0 0.7px 1.4px -1.1px oklch(var(--shadow-color) / 8%),
-      0 1.3px 2.6px -1.6px oklch(var(--shadow-color) / 7%),
-      0 2.3px 4.6px -2.1px oklch(var(--shadow-color) / 6%),
-      0 3.9px 7.8px -2.7px oklch(var(--shadow-color) / 5%),
-      0 6.2px 12.4px -3.2px oklch(var(--shadow-color) / 5%),
-      0 9.4px 18.8px -3.7px oklch(var(--shadow-color) / 4%);
+      0 0.1px 0.2px light-dark(oklch(var(--shadow-color) / 9%), transparent),
+      0 0.4px 0.8px -0.5px light-dark(oklch(var(--shadow-color) / 9%), transparent),
+      0 0.7px 1.4px -1.1px light-dark(oklch(var(--shadow-color) / 8%), transparent),
+      0 1.3px 2.6px -1.6px light-dark(oklch(var(--shadow-color) / 7%), transparent),
+      0 2.3px 4.6px -2.1px light-dark(oklch(var(--shadow-color) / 6%), transparent),
+      0 3.9px 7.8px -2.7px light-dark(oklch(var(--shadow-color) / 5%), transparent),
+      0 6.2px 12.4px -3.2px light-dark(oklch(var(--shadow-color) / 5%), transparent),
+      0 9.4px 18.8px -3.7px light-dark(oklch(var(--shadow-color) / 4%), transparent);
 
     --blog-card-thumb-shadow:
       inset 0 0 0 1px oklch(var(--shadow-color) / 8%),
@@ -57,19 +57,12 @@
     scale: 1;
     will-change: scale;
     transition: var(--blog-card-transition-duration) ease-out;
-    transition-property: scale, box-shadow;
-
-    @media (prefers-color-scheme: dark) {
-      transition-property: scale, background, filter;
-    }
+    transition-property: scale, box-shadow, filter;
 
     @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
       &:hover {
         scale: 1.015;
-
-        @media (prefers-color-scheme: light) {
-          box-shadow: var(--blog-card-shadow-hover);
-        }
+        box-shadow: var(--blog-card-shadow-hover);
 
         @media (prefers-color-scheme: dark) {
           filter: brightness(130%);
@@ -77,7 +70,7 @@
       }
 
       &:active {
-        scale: 1.005;
+        scale: 1;
       }
     }
 

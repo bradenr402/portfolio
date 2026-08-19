@@ -12,9 +12,6 @@
 }
 
 @scope (.prose) to (.prose-reset) {
-  /* Enable use of `light-dark()` function */
-  color-scheme: light dark;
-
   /* Variables + base styles */
   :scope {
     /* Colors: defined in theme.css */

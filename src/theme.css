@@ -63,6 +63,9 @@
 
   --radius-5xl: 2.5rem;
 
+  --focus-radius: 0.25rem;
+  --focus-radius-squircle: 0.75rem;
+
   --bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   --spring: linear(

@@ -39,6 +39,16 @@ html[data-theme-switching] *::after {
   }
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--focus-radius);
+  @supports (corner-shape: squircle) {
+    corner-shape: squircle;
+    border-radius: var(--focus-radius-squircle);
+  }
+}
+
 /* Visually hidden until focused, then pinned near the top of the viewport */
 .skip-link {
   position: fixed;

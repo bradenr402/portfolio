@@ -40,15 +40,6 @@
     max-width: var(--max-width);
     margin: 5rem auto;
     padding: 0 var(--horizontal-padding);
-
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* Selection and focus styles scoped to blog content */
-  :focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-    border-radius: 0.25rem;
   }
 
   /* Layout wrapper for post content + Table of Contents */

@@ -59,7 +59,7 @@ body:has(.blog-layout__aside) {
   --toc-panel-padding: 1rem;
   --toc-panel-radius: 1rem;
   --toc-panel-radius-squircle: 1.75rem;
-  --toc-panel-max-height: min(70svh, calc(100svh - 8rem));
+  --toc-panel-max-height: min(60svh, calc(100svh - 8rem));
   --toc-panel-bg: light-dark(
     var(--color-bg),
     color-mix(in oklch, var(--color-surface) 50%, var(--color-bg))

@@ -386,7 +386,7 @@ body:has(.blog-layout__aside) {
     overscroll-behavior: contain;
 
     mask-image: linear-gradient(
-      to bottom,
+      to bottom in oklab,
       transparent 0%,
       black var(--toc-fade-top, 0%),
       black calc(100% - var(--toc-fade-bottom, 0%)),

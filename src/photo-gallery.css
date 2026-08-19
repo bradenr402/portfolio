@@ -185,19 +185,19 @@
     mix-blend-mode: screen;
     background:
       radial-gradient(
-        circle 95px at var(--glare-x) var(--glare-y),
+        circle 95px at var(--glare-x) var(--glare-y) in oklab,
         oklch(1 0 0 / 0.48),
         oklch(1 0 0 / 0.06) 52%,
         oklch(1 0 0 / 0) 84%
       ),
       radial-gradient(
-        circle 200px at var(--glare-x) var(--glare-y),
+        circle 200px at var(--glare-x) var(--glare-y) in oklab,
         oklch(1 0 0 / 0.22),
         oklch(1 0 0 / 0.04) 58%,
         oklch(1 0 0 / 0) 78%
       ),
       radial-gradient(
-        circle 360px at var(--glare-x) var(--glare-y),
+        circle 360px at var(--glare-x) var(--glare-y) in oklab,
         oklch(1 0 0 / 0.1),
         oklch(1 0 0 / 0) 88%
       );

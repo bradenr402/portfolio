@@ -197,7 +197,7 @@
       max-height: var(--max-height);
       overflow: hidden;
 
-      mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-height)), transparent);
+      mask-image: linear-gradient(to bottom in oklab, black calc(100% - var(--fade-height)), transparent);
     }
 
     p:not(:first-child) {

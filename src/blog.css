@@ -536,7 +536,7 @@
     color: var(--color);
 
     background-image: linear-gradient(
-      85deg,
+      85deg in oklch,
       color-mix(in oklch, var(--color), transparent 50%),
       color-mix(in oklch, var(--color), transparent 90%) 4px,
       color-mix(in oklch, var(--color), transparent 72.5%) calc(100% - 4px),
@@ -1168,28 +1168,28 @@
     background:
       /* Shadow Cover LEFT */
       linear-gradient(
-          to right,
+          to right in oklab,
           var(--color-scroll-cover) 30%,
           var(--color-scroll-cover-transparent)
         )
         left center,
       /* Shadow Cover RIGHT */
         linear-gradient(
-          to left,
+          to left in oklab,
           var(--color-scroll-cover) 70%,
           var(--color-scroll-cover-transparent)
         )
         right center,
       /* Shadow LEFT */
         radial-gradient(
-          farthest-side at 0 50%,
+          farthest-side at 0 50% in oklab,
           var(--color-scroll-shadow),
           var(--color-scroll-shadow-transparent)
         )
         left center,
       /* Shadow RIGHT */
         radial-gradient(
-          farthest-side at 100% 50%,
+          farthest-side at 100% 50% in oklab,
           var(--color-scroll-shadow),
           var(--color-scroll-shadow-transparent)
         )
@@ -1372,7 +1372,7 @@
 /* Utility classes */
 .text-fade {
   background: linear-gradient(
-    to right,
+    to right in oklab,
     currentColor -10%,
     color-mix(in oklch, currentColor 30%, transparent) 50%,
     color-mix(in oklch, currentColor 10%, transparent)

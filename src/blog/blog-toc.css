@@ -248,7 +248,8 @@ body:has(.blog-layout__aside) {
     border-radius: 9999px;
     background: var(--toc-dash-color);
 
-    transition: background-color var(--toc-highlight-color-transition);
+    transition: var(--toc-highlight-color-transition);
+    transition-property: background-color, width, height;
   }
 
   .blog-toc-rail__dash--level-2 {
@@ -272,8 +273,10 @@ body:has(.blog-layout__aside) {
   }
 
   .blog-toc-rail__dash--active {
+    width: calc(var(--toc-dash-width) * var(--toc-dash-scale, 1) * 1.3);
+    height: calc(var(--toc-dash-height) * 1.3);
     background: var(--toc-dash-color-active);
-    transition: none;
+    transition-property: width, height;
   }
 
   /*

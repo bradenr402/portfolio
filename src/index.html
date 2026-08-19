@@ -36,13 +36,13 @@
     <div id="wrapper">
       <main
         id="main"
-        class="mx-auto max-w-(--max-width) px-(--horizontal-padding) pb-(--bottom-padding) [--bottom-padding:calc(var(--vertical-padding)*2)] [--top-padding:--spacing(20)] [--vertical-padding:--spacing(12)]"
+        class="rail-layout px-(--horizontal-padding) pb-(--bottom-padding) [--bottom-padding:calc(var(--vertical-padding)*2)] [--top-padding:--spacing(20)] [--vertical-padding:--spacing(12)]"
       >
         <!-- Introduction -->
         <section id="introduction" class="pt-(--top-padding) pb-(--bottom-padding)">
-          <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
-            <div class="max-sm:hidden"></div>
-            <div class="max-sm:hidden"></div>
+          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
+            <div class="max-rail:hidden"></div>
+            <div class="max-rail:hidden"></div>
             <div class="grid gap-y-6 sm:grid-cols-[1fr_auto] sm:gap-x-8 sm:gap-y-4">
               <div class="min-w-0">
                 <h1 class="text-4xl font-bold tracking-tight">
@@ -113,13 +113,13 @@
 
         <!-- Work -->
         <section id="work" class="py-(--vertical-padding)">
-          <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
+          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
             <h2
-              class="text-sm text-subtle max-sm:mb-4 sm:sticky sm:top-2 sm:self-start sm:text-right"
+              class="text-sm text-subtle max-rail:mb-4 rail:sticky rail:top-2 rail:self-start rail:text-right"
             >
               Work
             </h2>
-            <div class="rounded-full bg-(--color-border) max-sm:hidden" aria-hidden="true"></div>
+            <div class="rounded-full bg-(--color-border) max-rail:hidden" aria-hidden="true"></div>
             <div class="space-y-4">
               <div class="[--logo-size:--spacing(5)]">
                 <span class="group inline-flex items-center gap-[calc(var(--logo-size)/2)]">
@@ -154,13 +154,13 @@
 
         <!-- Projects -->
         <section id="projects" class="py-(--vertical-padding)">
-          <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
+          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
             <h2
-              class="text-sm text-subtle max-sm:mb-4 sm:sticky sm:top-2 sm:self-start sm:text-right"
+              class="text-sm text-subtle max-rail:mb-4 rail:sticky rail:top-2 rail:self-start rail:text-right"
             >
               Projects
             </h2>
-            <div class="rounded-full bg-(--color-border) max-sm:hidden" aria-hidden="true"></div>
+            <div class="rounded-full bg-(--color-border) max-rail:hidden" aria-hidden="true"></div>
             <div class="space-y-8">
               <!-- JobJournal -->
               <div>
@@ -228,13 +228,13 @@
 
         <!-- Content -->
         <section id="content" class="py-(--vertical-padding)">
-          <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
+          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
             <h2
-              class="text-sm text-subtle max-sm:mb-4 sm:sticky sm:top-2 sm:self-start sm:text-right"
+              class="text-sm text-subtle max-rail:mb-4 rail:sticky rail:top-2 rail:self-start rail:text-right"
             >
               Content
             </h2>
-            <div class="rounded-full bg-(--color-border) max-sm:hidden" aria-hidden="true"></div>
+            <div class="rounded-full bg-(--color-border) max-rail:hidden" aria-hidden="true"></div>
             <div class="-mt-2">
               <ul class="blog-post-list">
                 {{recentPosts}}
@@ -248,13 +248,13 @@
 
         <!-- Moments -->
         <section id="moments" class="py-(--vertical-padding)">
-          <div class="sm:grid sm:grid-cols-[var(--left-col)_var(--gutter)_1fr] sm:gap-(--main-gap)">
+          <div class="rail:grid rail:grid-cols-[var(--left-col)_var(--gutter)_1fr] rail:gap-(--main-gap)">
             <h2
-              class="text-sm text-subtle max-sm:mb-4 sm:sticky sm:top-2 sm:self-start sm:text-right"
+              class="text-sm text-subtle max-rail:mb-4 rail:sticky rail:top-2 rail:self-start rail:text-right"
             >
               Moments
             </h2>
-            <div class="rounded-full bg-(--color-border) max-sm:hidden" aria-hidden="true"></div>
+            <div class="rounded-full bg-(--color-border) max-rail:hidden" aria-hidden="true"></div>
             <div class="photo-gallery sm:[--gallery-columns:3]">
               <figure
                 class="photo-card [--hover-rotation:-4deg] [--hover-x:-2] [--hover-y:-1] [--initial-rotation:-9deg] [--initial-y:3] [--z:1]"

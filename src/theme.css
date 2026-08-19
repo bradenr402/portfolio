@@ -1,9 +1,21 @@
 @theme {
   --left-col: 4rem;
   --gutter: var(--hairline);
-  --max-width: calc(48rem + var(--left-col) + var(--gutter));
   --main-gap: --spacing(6);
   --horizontal-padding: --spacing(4);
+
+  --content-width: 72ch;
+
+  /* How far the home page's label rail pushes its content column inward:
+     the rail, the hairline gutter and the two grid gaps around them. */
+  --rail-offset: calc(var(--left-col) + var(--gutter) + var(--main-gap) * 2);
+
+  --max-width: calc(var(--content-width) + var(--rail-offset) + var(--horizontal-padding) * 2);
+
+  /* The home page's label rail only appears once the viewport is wide enough to
+     fit it in the margin beside a full-width content column, so that column
+     stays aligned with every other page. Below this the rail stacks instead. */
+  --breakpoint-rail: 55rem;
 
   --underline-thickness: 0.075em;
 

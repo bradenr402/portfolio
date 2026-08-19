@@ -96,6 +96,26 @@ img {
   }
 }
 
+/* Below the rail breakpoint the label rail stacks, so the home page is just a
+   centered content column like every other page. */
+.rail-layout {
+  max-width: calc(var(--content-width) + var(--horizontal-padding) * 2);
+  margin-inline: auto;
+}
+
+/* Once the rail appears it would push the content column right of center, so
+   center the content column itself and let the rail hang into the left margin.
+   The breakpoint (--breakpoint-rail) guarantees there is always room for it. */
+@media (min-width: 55rem) {
+  .rail-layout {
+    max-width: calc(var(--content-width) + var(--rail-offset) + var(--horizontal-padding) * 2);
+    margin-inline-start: calc(
+      50% - var(--content-width) / 2 - var(--rail-offset) - var(--horizontal-padding)
+    );
+    margin-inline-end: auto;
+  }
+}
+
 @layer base {
   html,
   body {

@@ -9,12 +9,14 @@ import initDemoLinks from './helpers/init-demo-links.js';
 import initKeyPressListeners from './helpers/init-key-press-listeners.js';
 import initKonamiCode from './helpers/init-konami-code.js';
 import initPhotoGallery from './helpers/init-photo-gallery.js';
+import initThemeTransitionGuard from './helpers/init-theme-transition-guard.js';
 import initTilTimeline, { initTilContentClipping } from './helpers/init-til.js';
 import markMultilineCodeBlocks from './helpers/mark-multiline-code-blocks.js';
 
 const init = () => {
   initKonamiCode();
   initPhotoGallery();
+  initThemeTransitionGuard();
 
   const { page } = document.body.dataset;
   if (page === 'blog-post') {

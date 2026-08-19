@@ -14,6 +14,17 @@
   color-scheme: light dark;
 }
 
+/* Suppress transitions/animations while the theme is flipping between light
+   and dark (JS toggles this attribute on <html> for the duration of the flip)
+   so the whole page repaints instantly instead of every element easing individually. */
+html[data-theme-switching],
+html[data-theme-switching] *,
+html[data-theme-switching] *::before,
+html[data-theme-switching] *::after {
+  transition: none !important;
+  animation: none !important;
+}
+
 /* Enable keyword animations (matches blog.css) */
 @media (prefers-reduced-motion: no-preference) {
   html {

@@ -100,6 +100,10 @@ export default {
       const alt = frontmatter.image?.alt || '';
       let dimensionsAttrs = '';
 
+      if (image && !alt) {
+        console.warn(`[blog-card] "${filePath}" has an image but no image.alt in frontmatter.`);
+      }
+
       if (image && !/^https?:\/\//.test(image) && !image.startsWith('/')) {
         const dimensions = getImageDimensions(path.resolve(path.dirname(filePath), image));
         if (dimensions) {

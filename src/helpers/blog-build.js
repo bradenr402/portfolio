@@ -75,6 +75,10 @@ function processMarkdown(content, filepath) {
   let imageHeight;
 
   if (image) {
+    if (!alt) {
+      console.warn(`[blog-build] "${filepath}" has an image but no image.alt in frontmatter.`);
+    }
+
     // Read intrinsic dimensions from disk before the src is rewritten to a URL
     if (!image.startsWith('/') && !/^https?:\/\//.test(image)) {
       const dimensions = getImageDimensions(path.resolve(path.dirname(filepath), image));

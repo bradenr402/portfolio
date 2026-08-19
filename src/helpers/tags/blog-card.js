@@ -6,7 +6,7 @@ import path from 'path';
 import { JSDOM } from 'jsdom';
 import formatDate from '../format-date.js';
 import { calculateReadingTime, parseMarkdown } from '../parse-markdown.js';
-import { renderTemplate } from '../utils.js';
+import { getImageDimensions, renderTemplate } from '../utils.js';
 
 const { Tag } = Markdoc;
 
@@ -98,8 +98,14 @@ export default {
       const title = frontmatter.title || path.basename(slug);
       let image = frontmatter.image?.src;
       const alt = frontmatter.image?.alt || '';
+      let dimensionsAttrs = '';
 
       if (image && !/^https?:\/\//.test(image) && !image.startsWith('/')) {
+        const dimensions = getImageDimensions(path.resolve(path.dirname(filePath), image));
+        if (dimensions) {
+          dimensionsAttrs = ` width="${dimensions.width}" height="${dimensions.height}"`;
+        }
+
         const cardDir = path.dirname(slug);
         image = `/blog/${cardDir}/${image}`;
       }
@@ -117,6 +123,7 @@ export default {
         readingTime,
         image: image || '',
         alt,
+        dimensionsAttrs,
         tags: tagsHtml,
       });
 

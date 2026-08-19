@@ -16,6 +16,7 @@ import {
   collapseWhitespace,
   escapeAttribute,
   escapeHtml,
+  getImageDimensions,
   renderTemplate,
 } from './utils.js';
 import formatDate from './format-date.js';
@@ -70,8 +71,19 @@ function processMarkdown(content, filepath) {
 
   const alt = frontmatter.image?.alt;
   let image = frontmatter.image?.src;
+  let imageWidth;
+  let imageHeight;
 
   if (image) {
+    // Read intrinsic dimensions from disk before the src is rewritten to a URL
+    if (!image.startsWith('/') && !/^https?:\/\//.test(image)) {
+      const dimensions = getImageDimensions(path.resolve(path.dirname(filepath), image));
+      if (dimensions) {
+        imageWidth = dimensions.width;
+        imageHeight = dimensions.height;
+      }
+    }
+
     image = resolveBlogImage(image, filepath);
   }
 
@@ -93,6 +105,8 @@ function processMarkdown(content, filepath) {
       ...frontmatter,
       image,
       alt,
+      imageWidth,
+      imageHeight,
       date,
       readingTime,
       headings,
@@ -104,6 +118,8 @@ function normalizePostMetadata(slug, metadata = {}) {
   const title = metadata.title || slug;
   const image = metadata.image || '';
   const alt = metadata.alt || '';
+  const imageWidth = metadata.imageWidth || '';
+  const imageHeight = metadata.imageHeight || '';
   const readingTime = metadata.readingTime || '';
   const datetime = metadata.date || '';
   const displayDate = formatDate(datetime) || datetime;
@@ -117,6 +133,8 @@ function normalizePostMetadata(slug, metadata = {}) {
     datetime,
     image,
     alt,
+    imageWidth,
+    imageHeight,
     readingTime,
     tags,
     updates,
@@ -241,8 +259,19 @@ function getLatestUpdateDate(updates) {
 }
 
 function buildBlogPostPage(partial, template, metadata = null) {
-  const { title, datetime, displayDate, image, alt, readingTime, tags, updates, excerpt } =
-    normalizePostMetadata('', metadata);
+  const {
+    title,
+    datetime,
+    displayDate,
+    image,
+    alt,
+    imageWidth,
+    imageHeight,
+    readingTime,
+    tags,
+    updates,
+    excerpt,
+  } = normalizePostMetadata('', metadata);
 
   // Headings come from metadata (from processMarkdown)
   const headings = metadata?.headings || [];
@@ -281,7 +310,9 @@ function buildBlogPostPage(partial, template, metadata = null) {
     updatedDatetime: latestUpdateDate || '',
     updatedDate: updatedDateHtml,
     headerImage: image
-      ? `<img src="${escapeAttribute(image)}" alt="${escapeAttribute(alt || '')}" fetchpriority="high" />`
+      ? `<img src="${escapeAttribute(image)}" alt="${escapeAttribute(alt || '')}"` +
+        `${imageWidth && imageHeight ? ` width="${imageWidth}" height="${imageHeight}"` : ''}` +
+        ' fetchpriority="high" />'
       : '',
     readingTime: readingTime || '',
     tags: tagsHtml,

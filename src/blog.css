@@ -19,7 +19,6 @@
 
     /* Sizes */
     --line-height: 1.5;
-    --max-width: 56rem;
   }
 
   /* Base styling for the prose/page container */
@@ -30,7 +29,6 @@
     color: var(--color-text);
     background-color: var(--color-bg);
     width: 100%;
-    max-width: var(--max-width);
     margin: 5rem auto;
     padding: 0 var(--horizontal-padding);
   }
@@ -762,8 +760,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 80rem;
-    margin-inline: auto;
     min-width: 0;
   }
 

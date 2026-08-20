@@ -20,8 +20,11 @@ body:has(.blog-layout__aside) {
   --toc-inset-x: 0.5rem; /* distance from the pinned edge */
   --toc-anchor-top: 50svh; /* where the rail's center rests in the viewport */
   --toc-anchor-height: 20rem; /* height of the anchor column */
-  --toc-content-gap: 0.75rem; /* breathing room between the rail and the text */
   --toc-z-index: 20;
+
+  @media (width < 48rem) {
+    --toc-inset-x: 0.2rem;
+  }
 
   /*
    * Rail (collapsed state)
@@ -36,11 +39,24 @@ body:has(.blog-layout__aside) {
   );
   --toc-rail-max-height: calc(100svh - 4rem);
 
+  /* Shrunk once the rail overlays the text rather than sitting beside it */
+  @media (width < 48rem) {
+    --toc-rail-padding-block: 0.4rem;
+    --toc-rail-padding-inline: 0.3rem;
+    --toc-rail-radius: 0.45rem;
+    --toc-rail-radius-squircle: 0.8rem;
+  }
+
   --toc-dash-width: 1rem; /* width at heading level 2 */
   --toc-dash-height: 2px;
   --toc-dash-gap: 0.375rem;
   --toc-dash-color: var(--color-ghost);
   --toc-dash-color-active: var(--color-text);
+
+  @media (width < 48rem) {
+    --toc-dash-width: 0.6875rem;
+    --toc-dash-gap: 0.275rem;
+  }
 
   /* Width multiplier per heading level */
   --toc-dash-ratio: 1.425;
@@ -106,17 +122,25 @@ body:has(.blog-layout__aside) {
   --toc-panel-scale-out: 0.985;
 
   --toc-rail-transition: 100ms;
+  --toc-rail-press-transition: 200ms ease-out;
+
+  /*
+   * Peek (below 48rem)
+   *
+   * The rail retreats on scroll down and returns on scroll up.
+   */
+  --toc-rail-peek-out: 100ms ease-in;
+  --toc-rail-peek-in: var(--ease-spring);
+
+  /* Resting position while retreated: its own width plus the inset, to clear the edge */
+  --toc-rail-idle-shift: calc(100% + var(--toc-inset-x));
+  --toc-rail-idle-opacity: 0.3;
 
   --toc-highlight-position-transition: 100ms;
   --toc-highlight-color-transition: 50ms;
 
-  /*
-   * Derived from the values above
-   */
+  /* Derived from the values above */
   --toc-rail-size: calc(var(--toc-dash-width) + 2 * var(--toc-rail-padding-inline));
-
-  /* Total room the rail needs, measured from the viewport edge */
-  --toc-content-clearance: calc(var(--toc-inset-x) + var(--toc-rail-size) + var(--toc-content-gap));
 
   /* Everything between the panel's outer edge and just past the viewport */
   --toc-panel-offscreen: calc(
@@ -125,43 +149,16 @@ body:has(.blog-layout__aside) {
 }
 
 /*
- * Derived from the tokens above; nothing here changes to flip sides.
- *
- * `--toc-bleed-*` is the gap between an edge of `.blog-layout` and the same
- * edge of the viewport, which the sidebar uses to escape the content column.
+ * `--toc-side-dir` mirrors everything that points sideways. `--toc-bleed` is
+ * the gap between an edge of `.blog-layout` and the same edge of the viewport,
+ * which the sidebar uses to escape the content column.
  */
 .prose:has(.blog-layout__aside) {
   --toc-side-dir: 1; /* 1 = right, -1 = left */
-  --toc-clearance-start: 0px;
-  --toc-clearance-end: var(--toc-content-clearance);
+  --toc-bleed: calc((100vw - 100%) / 2);
 
   @container style(--toc-side: left) {
     --toc-side-dir: -1;
-    --toc-clearance-start: var(--toc-content-clearance);
-    --toc-clearance-end: 0px;
-  }
-
-  /* Only pad the content in once the column gets close to the rail */
-  --toc-pad-start: var(--horizontal-padding);
-  --toc-pad-end: var(--horizontal-padding);
-
-  @media (width < 64rem) {
-    --toc-pad-start: max(var(--horizontal-padding), var(--toc-clearance-start));
-    --toc-pad-end: max(var(--horizontal-padding), var(--toc-clearance-end));
-  }
-
-  --toc-pad-skew: calc((var(--toc-pad-end) - var(--toc-pad-start)) / 2);
-  --toc-bleed-start: calc((100vw - 100%) / 2 - var(--toc-pad-skew));
-  --toc-bleed-end: calc((100vw - 100%) / 2 + var(--toc-pad-skew));
-}
-
-/* Keep the post clear of the rail, and pull the header back out to full width */
-.prose:has(.blog-layout__aside) {
-  padding-inline: var(--toc-pad-start) var(--toc-pad-end);
-
-  .blog-header-wrapper {
-    margin-inline: calc(var(--horizontal-padding) - var(--toc-pad-start))
-      calc(var(--horizontal-padding) - var(--toc-pad-end));
   }
 }
 
@@ -182,7 +179,7 @@ body:has(.blog-layout__aside) {
 
     height: var(--toc-anchor-height);
     margin-block-start: calc(-1 * var(--toc-rail-padding-block));
-    margin-inline-end: calc(var(--toc-inset-x) - var(--toc-bleed-end));
+    margin-inline-end: calc(var(--toc-inset-x) - var(--toc-bleed));
 
     display: grid;
     align-content: center;
@@ -196,14 +193,12 @@ body:has(.blog-layout__aside) {
 
     @container style(--toc-side: left) {
       margin-inline-end: 0;
-      margin-inline-start: calc(var(--toc-inset-x) - var(--toc-bleed-start));
+      margin-inline-start: calc(var(--toc-inset-x) - var(--toc-bleed));
       justify-items: start;
     }
   }
 
-  /*
-   * Rail
-   */
+  /* Rail */
   .blog-toc-rail {
     display: flex;
     flex-direction: column;
@@ -235,7 +230,7 @@ body:has(.blog-layout__aside) {
     @media (prefers-reduced-motion: no-preference) {
       transition:
         background-color var(--toc-rail-transition),
-        scale 200ms ease-out;
+        scale var(--toc-rail-press-transition);
     }
 
     /* The rail only picks up a surface while hovered or while it is open */
@@ -253,6 +248,53 @@ body:has(.blog-layout__aside) {
       &:active {
         scale: calc(var(--toc-side-dir) * 0.97) 0.97;
       }
+    }
+
+    @media (width < 48rem) {
+      /* Overlaying the text, it needs a surface of its own to read against */
+      background: color-mix(in oklch, var(--color-bg) 88%, transparent);
+
+      /* Keep it on its own layer so the peek runs off the main thread */
+      will-change: transform, opacity;
+
+      /* `hidden` would clip the hit target out of hit-testing, not just paint */
+      overflow: visible;
+      position: relative;
+
+      /* ~24px of dashes is under the ~44px minimum; grow inward from the edge */
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        translate: 0 -50%;
+        width: max(100%, 48px);
+        height: max(100%, 48px);
+      }
+    }
+  }
+
+  /*
+   * Peek states, driven by `data-toc-peek` from `init-blog-toc.js`.
+   *
+   * Keyframes and `translate3d` rather than a transition and `translate`:
+   * WebKit only accelerates the `transform` shorthand, and iOS drops
+   * unaccelerated transitions mid-scroll — exactly when these fire.
+   */
+  @media (width < 48rem) and (prefers-reduced-motion: no-preference) {
+    :scope[data-toc-peek='idle'] .blog-toc-rail {
+      transform: translate3d(calc(var(--toc-side-dir) * var(--toc-rail-idle-shift)), 0, 0);
+      opacity: var(--toc-rail-idle-opacity);
+      animation: blog-toc-rail-peek-out var(--toc-rail-peek-out);
+
+      /* Off-screen, its hit target would still eat taps meant for links */
+      &::before {
+        display: none;
+      }
+    }
+
+    :scope[data-toc-peek='active'] .blog-toc-rail {
+      animation: blog-toc-rail-peek-in var(--toc-rail-peek-in);
     }
   }
 
@@ -274,19 +316,15 @@ body:has(.blog-layout__aside) {
   .blog-toc-rail__dash--level-2 {
     --toc-dash-scale: var(--toc-dash-scale-2);
   }
-
   .blog-toc-rail__dash--level-3 {
     --toc-dash-scale: var(--toc-dash-scale-3);
   }
-
   .blog-toc-rail__dash--level-4 {
     --toc-dash-scale: var(--toc-dash-scale-4);
   }
-
   .blog-toc-rail__dash--level-5 {
     --toc-dash-scale: var(--toc-dash-scale-5);
   }
-
   .blog-toc-rail__dash--level-6 {
     --toc-dash-scale: var(--toc-dash-scale-6);
   }
@@ -298,11 +336,7 @@ body:has(.blog-layout__aside) {
     transition-property: width, height;
   }
 
-  /*
-   * Panel
-   *
-   * Sits beside the rail and centered on it: both center in the anchor column.
-   */
+  /* Panel */
   .blog-toc-panel {
     position: absolute;
     top: 50%;
@@ -321,12 +355,15 @@ body:has(.blog-layout__aside) {
           var(--horizontal-padding)
       )
     );
-    padding: var(--toc-panel-padding);
+    max-height: var(--toc-panel-max-height);
+    flex-direction: column;
     pointer-events: auto;
 
+    padding: var(--toc-panel-padding);
     background: var(--toc-panel-bg);
     border: var(--hairline) solid var(--toc-panel-border-color);
     box-shadow: var(--toc-panel-shadow);
+
     border-radius: var(--toc-panel-radius);
     @supports (corner-shape: squircle) {
       corner-shape: squircle;
@@ -343,25 +380,22 @@ body:has(.blog-layout__aside) {
     /* Own layer, so the panel does not repaint while mobile chrome resizes */
     will-change: translate, scale, opacity, filter;
 
-    transition:
-      opacity var(--toc-transition-out),
-      filter var(--toc-transition-out),
-      translate var(--toc-transition-out),
-      scale var(--toc-transition-out),
-      display var(--toc-transition-out) allow-discrete;
+    transition: var(--toc-transition-out);
+    transition-property: opacity, filter, translate, scale, display;
+    transition-behavior: allow-discrete;
   }
 
   :scope[data-toc-open='true'] .blog-toc-panel {
-    display: block;
+    display: flex;
     opacity: 1;
     scale: 1;
     filter: blur(0);
     translate: 0 -50%;
 
     /* Only the slide is animated on the way in */
-    transition:
-      translate var(--toc-transition-in),
-      display var(--toc-transition-in) allow-discrete;
+    transition: var(--toc-transition-in);
+    transition-property: translate, display;
+    transition-behavior: allow-discrete;
 
     /* Entry state */
     @starting-style {
@@ -369,9 +403,6 @@ body:has(.blog-layout__aside) {
     }
   }
 
-  /*
-   * Title + list
-   */
   .blog-toc__title {
     margin: 0;
     padding-bottom: var(--toc-title-spacing);
@@ -396,7 +427,7 @@ body:has(.blog-layout__aside) {
     font-size: var(--toc-font-size);
     text-align: start;
 
-    max-height: var(--toc-panel-max-height);
+    min-height: 0; /* lets it shrink past its content inside the flex panel */
     overflow-y: auto;
     overscroll-behavior: contain;
 
@@ -436,24 +467,24 @@ body:has(.blog-layout__aside) {
   .blog-toc__item {
     position: relative;
     margin: 0;
-  }
 
-  .blog-toc__item > a {
-    display: block;
-    width: 100%;
-    padding-block: var(--toc-item-padding-block);
-    line-height: var(--toc-line-height);
-    text-decoration: none;
-    text-wrap: pretty;
-    overflow-wrap: break-word;
+    > a {
+      display: block;
+      width: 100%;
+      padding-block: var(--toc-item-padding-block);
+      line-height: var(--toc-line-height);
+      text-decoration: none;
+      text-wrap: pretty;
+      overflow-wrap: break-word;
 
-    color: var(--toc-link-color);
-    transition: color var(--toc-highlight-color-transition);
+      color: var(--toc-link-color);
+      transition: color var(--toc-highlight-color-transition);
 
-    @media (hover: hover) {
-      &:hover {
-        color: var(--toc-link-color-active);
-        transition: none;
+      @media (hover: hover) {
+        &:hover {
+          color: var(--toc-link-color-active);
+          transition: none;
+        }
       }
     }
   }
@@ -466,15 +497,12 @@ body:has(.blog-layout__aside) {
   .blog-toc__item--level-3 > a {
     padding-inline-start: calc(var(--toc-level-indent) * 1);
   }
-
   .blog-toc__item--level-4 > a {
     padding-inline-start: calc(var(--toc-level-indent) * 2);
   }
-
   .blog-toc__item--level-5 > a {
     padding-inline-start: calc(var(--toc-level-indent) * 3);
   }
-
   .blog-toc__item--level-6 > a {
     padding-inline-start: calc(var(--toc-level-indent) * 4);
   }
@@ -536,5 +564,20 @@ body:has(.blog-layout__aside) {
   100% {
     --toc-fade-top: 5%;
     --toc-fade-bottom: 0%;
+  }
+}
+
+/* Only `from`; the implicit `to` resolves to the rail's own resting state */
+@keyframes blog-toc-rail-peek-out {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes blog-toc-rail-peek-in {
+  from {
+    transform: translate3d(calc(var(--toc-side-dir) * var(--toc-rail-idle-shift)), 0, 0);
+    opacity: var(--toc-rail-idle-opacity);
   }
 }

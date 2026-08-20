@@ -1,5 +1,14 @@
 const VIEWPORT_LINE_RATIO = 0.25;
 
+// Distance from the top of the page within which the rail always stays out
+const PEEK_WAKE_NEAR_TOP = 80;
+
+// Ignore scroll jitter smaller than this before changing the rail's state
+const PEEK_DELTA_THRESHOLD = 3;
+
+// Below this the rail overlays the text instead of sitting beside it; matches blog-toc.css
+const OVERLAY_LAYOUT = '(width < 48rem)';
+
 function getViewportHeight() {
   return window.innerHeight || document.documentElement.clientHeight || 0;
 }
@@ -75,7 +84,32 @@ function scrollToHeading(target) {
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function handleTocClick(linkById, activeState, marker, railById, event) {
+function setPeek(next, aside, peekState) {
+  if (peekState.value === next) return;
+  peekState.value = next;
+  aside.setAttribute('data-toc-peek', next);
+}
+
+// Retreats the rail on scroll down and brings it back on scroll up. Direction is
+// the one part CSS cannot express; the motion itself lives in blog-toc.css.
+function updatePeekFromScroll(aside, peekState) {
+  if (!aside) return;
+
+  const y = window.scrollY;
+  const delta = y - peekState.lastY;
+  peekState.lastY = y;
+
+  // Never retreat while the panel is open, or before you have left the top
+  if (aside.getAttribute('data-toc-open') === 'true' || y < PEEK_WAKE_NEAR_TOP) {
+    setPeek('active', aside, peekState);
+    return;
+  }
+
+  if (delta > PEEK_DELTA_THRESHOLD) setPeek('idle', aside, peekState);
+  else if (delta < -PEEK_DELTA_THRESHOLD) setPeek('active', aside, peekState);
+}
+
+function handleTocClick(linkById, activeState, marker, railById, closePanel, event) {
   const { target } = event;
   const link = target.closest?.('a');
   if (!link) return;
@@ -94,6 +128,9 @@ function handleTocClick(linkById, activeState, marker, railById, event) {
   window.history.replaceState(null, '', `#${id}`);
 
   setActive(id, linkById, activeState, marker, railById);
+
+  // Where the panel sits over the text, reading the heading means getting it out of the way
+  if (window.matchMedia(OVERLAY_LAYOUT).matches) closePanel();
 }
 
 export default function initBlogToc() {
@@ -155,10 +192,15 @@ export default function initBlogToc() {
   nav.appendChild(marker);
 
   const activeState = { value: null };
+  // Starts active without writing the attribute, so the rail does not animate in on load
+  const peekState = { value: 'active', lastY: window.scrollY };
+
+  const wakePeek = () => setPeek('active', aside, peekState);
 
   const openPanel = () => {
     aside.setAttribute('data-toc-open', 'true');
     rail.setAttribute('aria-expanded', 'true');
+    wakePeek();
 
     const link = linkById.get(activeState.value);
     moveMarker(link?.parentElement, marker);
@@ -169,8 +211,16 @@ export default function initBlogToc() {
     rail.setAttribute('aria-expanded', 'false');
   };
 
-  const handleScroll = () =>
-    updateActiveFromScroll(headings, linkById, activeState, marker, railById);
+  // Scroll events can outpace paint, so coalesce to one update per frame
+  let scrollFrame = 0;
+  const handleScroll = () => {
+    if (scrollFrame) return;
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = 0;
+      updateActiveFromScroll(headings, linkById, activeState, marker, railById);
+      updatePeekFromScroll(aside, peekState);
+    });
+  };
   const handleResize = () => {
     updateActiveFromScroll(headings, linkById, activeState, marker, railById);
     if (activeState.value) {
@@ -179,7 +229,14 @@ export default function initBlogToc() {
       moveMarker(item, marker);
     }
   };
-  const handleClick = handleTocClick.bind(null, linkById, activeState, marker, railById);
+  const handleClick = handleTocClick.bind(
+    null,
+    linkById,
+    activeState,
+    marker,
+    railById,
+    closePanel,
+  );
 
   window.addEventListener('scroll', handleScroll, { passive: true });
   window.addEventListener('resize', handleResize);
@@ -199,6 +256,14 @@ export default function initBlogToc() {
       if (aside.getAttribute('data-toc-open') === 'true') closePanel();
       else openPanel();
     });
+
+    aside.addEventListener('focusin', wakePeek);
+
+    // Hover only: on touch `pointerenter` fires with `pointerdown`, and sliding the
+    // rail back under a finger moves it out from under the eventual `pointerup`
+    if (window.matchMedia('(hover: hover)').matches) {
+      aside.addEventListener('pointerenter', wakePeek);
+    }
 
     document.addEventListener('click', (event) => {
       if (aside.getAttribute('data-toc-open') !== 'true') return;

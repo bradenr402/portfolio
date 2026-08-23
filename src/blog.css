@@ -113,7 +113,7 @@
       background: var(--color-accent);
     }
 
-    ul {
+    :is(ol, ul) {
       margin-block: 0.15rem !important;
       margin-inline-start: 0.3rem !important;
     }

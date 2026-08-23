@@ -413,6 +413,10 @@ body:has(.blog-layout__aside) {
     letter-spacing: 0.03em;
 
     a {
+      display: inline-block;
+      width: 100%;
+
+      /* Revert prose link styles */
       text-decoration: none;
       @media (hover: hover) {
         &:hover {

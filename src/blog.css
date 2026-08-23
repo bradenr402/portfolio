@@ -127,7 +127,7 @@
       }
 
       &::before {
-        color: var(--color-faint) !important;
+        color: var(--color-weak) !important;
       }
     }
   }

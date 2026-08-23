@@ -15,15 +15,15 @@ updates:
       - Revised the explanation to reflect that the `::selection` styles now live in the global stylesheet instead of the blog stylesheet.
 
   - date: 2026-06-29
-    description: Updated the [Tables](#tables) section with a more detailed explanation of the Markdoc table syntax.
+    description: Updated [Tables](#tables) with a more detailed explanation of the Markdoc table syntax.
 
   - date: 2026-08-04
     description: Updated `.blog` and `.blog-reset` class references to `.prose` and `.prose-reset`, respectively.
 
   - date: 2026-08-07
     description: |-
-      - Added the [Sidenotes](#sidenotes) section under [Custom Components](#custom-components).
-      - Added notes on build-time validation to the [Blog Card](#blog-card) and [Sidenotes](#sidenotes) sections.
+      - Added [Sidenotes](#sidenotes) under [Custom Components](#custom-components).
+      - Added notes on build-time validation to [Blog Card](#blog-card) and [Sidenotes](#sidenotes).
 
   - date: 2026-08-10
     description: Removed `gray-matter` from [The Stack](#the-stack)—Markdoc now handles frontmatter parsing, with [js-yaml](https://github.com/nodeca/js-yaml) decoding the YAML.

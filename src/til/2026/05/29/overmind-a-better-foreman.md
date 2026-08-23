@@ -33,10 +33,10 @@ web: bin/rails server -b 0.0.0.0 -p 3001
 css: bin/rails tailwindcss:watch
 ```
 
-You get `web` and `css` windows, switchable with the usual `tmux` bindings. {% sidenote-ref label="tmux-prefix" %}To detach{% /sidenote-ref %} without killing anything, hit your tmux prefix and then <kbd>d</kbd> (<kbd>Ctrl</kbd>+<kbd>b</kbd>, <kbd>d</kbd>).
+You get `web` and `css` windows, switchable with the usual `tmux` bindings. {% sidenote-ref label="tmux-prefix" %}To detach{% /sidenote-ref %} without killing anything, hit your tmux prefix and then <kbd>D</kbd> (<kbd>Ctrl</kbd>+<kbd>B</kbd>, <kbd>D</kbd>).
 
 {% sidenote label="tmux-prefix" %}
-If you’re already inside `tmux`, the outer session intercepts your prefix, so use <kbd>Ctrl</kbd>+<kbd>b</kbd>, <kbd>Ctrl</kbd>+<kbd>b</kbd>, <kbd>d</kbd> to detach only from the Overmind session.
+If you’re already inside `tmux`, the outer session intercepts your prefix, so use <kbd>Ctrl</kbd>+<kbd>B</kbd>, <kbd>Ctrl</kbd>+<kbd>B</kbd>, <kbd>D</kbd> to detach only from the Overmind session.
 {% /sidenote %}
 
 You can also attach to a single process whenever you need to:

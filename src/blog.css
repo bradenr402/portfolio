@@ -526,6 +526,12 @@
     font-style: normal;
   }
 
+  s {
+    color: var(--color-faint);
+    text-decoration: line-through var(--color-text);
+    text-decoration-thickness: var(--underline-thickness);
+  }
+
   mark {
     /* Use negative margins to offset the padding and prevent layout shifts when the highlight is applied */
     padding: 0.1em 0.1em 0.15em 0.2em;

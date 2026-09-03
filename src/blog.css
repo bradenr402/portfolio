@@ -887,8 +887,16 @@
   /* Blockquotes */
   blockquote {
     position: relative;
-    padding: 1rem;
-    margin: 1rem 0;
+    padding: 1em;
+
+    margin: 0;
+    &:not(:first-child) {
+      margin-top: 1em;
+    }
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+
     margin-inline-start: 0.75rem;
     color: var(--color-soft);
     font-style: italic;

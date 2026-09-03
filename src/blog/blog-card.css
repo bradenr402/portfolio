@@ -27,12 +27,18 @@
   }
 
   .blog-card {
+    &:not(:has(.blog-card__thumb)) {
+      @media (width > 32rem) {
+        --blog-card-padding: 1rem;
+      }
+    }
+
     position: relative;
     display: flex;
     align-items: center;
     gap: var(--blog-card-gap);
 
-    @media (max-width: 32rem) {
+    @media (width <= 32rem) {
       flex-direction: column;
       align-items: start;
     }
@@ -81,19 +87,34 @@
       width: 100%;
       align-self: stretch;
 
-      margin-block: calc(-1 * var(--blog-card-padding));
-      margin-inline-end: calc(-1 * var(--blog-card-padding));
+      @media (width <= 32rem) {
+        margin-block: calc(-1 * var(--blog-card-padding));
+        margin-inline-end: calc(-1 * var(--blog-card-padding));
+      }
 
-      @media (max-width: 32rem) {
+      @media (width <= 32rem) {
         margin: 0;
-        align-items: end;
+        gap: var(--blog-card-gap);
+        .blog-card:has(.blog-card__thumb) & {
+          align-items: end;
+        }
+        .blog-card:not(:has(.blog-card__thumb)) & {
+          align-items: center;
+        }
       }
     }
 
     .blog-card__content {
-      @media (max-width: 32rem) {
-        padding-inline-start: var(--blog-card-padding);
-        padding-bottom: var(--blog-card-padding);
+      .blog-card:has(.blog-card__thumb) & {
+        @media (width <= 32rem) {
+          padding-inline-start: var(--blog-card-padding);
+          padding-block-end: var(--blog-card-padding);
+        }
+      }
+      .blog-card:not(:has(.blog-card__thumb)) & {
+        @media (width <= 32rem) {
+          padding-inline-start: var(--blog-card-padding);
+        }
       }
     }
 
@@ -131,9 +152,13 @@
         }
       }
 
-      @media (max-width: 32rem) {
+      @media (width <= 32rem) {
         padding: 1.25rem;
-        margin: calc(var(--blog-card-padding) - var(--blog-card-gap)) 0 0;
+        margin: 0;
+        .blog-card:has(.blog-card__thumb) & {
+          margin-block-start: calc(var(--blog-card-padding) - var(--blog-card-gap));
+        }
+
         border: var(--hairline) solid
           color-mix(in oklch, var(--color-border) 50%, var(--color-border-light));
 
@@ -185,13 +210,13 @@
 
     .blog-card__thumb {
       --max-width: 8rem;
-      @media (max-width: 32rem) {
+      @media (width <= 32rem) {
         --max-width: none;
       }
 
       .blog-card:has(.blog-post__tag) & {
         --max-width: 12rem;
-        @media (max-width: 32rem) {
+        @media (width <= 32rem) {
           --max-width: none;
         }
       }

@@ -9,6 +9,7 @@ import initDemoLinks from './helpers/init-demo-links.js';
 import initKeyPressListeners from './helpers/init-key-press-listeners.js';
 import initKonamiCode from './helpers/init-konami-code.js';
 import initPhotoGallery from './helpers/init-photo-gallery.js';
+import initTableScrollShadows from './helpers/init-table-scroll-shadows.js';
 import initThemeTransitionGuard from './helpers/init-theme-transition-guard.js';
 import initTilTimeline, { initTilContentClipping } from './helpers/init-til.js';
 import markMultilineCodeBlocks from './helpers/mark-multiline-code-blocks.js';
@@ -25,6 +26,7 @@ const init = () => {
     initCopyLinkButton();
     initDemoLinks();
     initKeyPressListeners();
+    initTableScrollShadows();
     markMultilineCodeBlocks();
   }
   if (page === 'til-index') {
@@ -35,6 +37,7 @@ const init = () => {
   if (page === 'til-entry') {
     initCodeCopyButtons();
     initKeyPressListeners();
+    initTableScrollShadows();
     markMultilineCodeBlocks();
   }
 };

@@ -1253,8 +1253,19 @@
       animation-fill-mode: both;
     }
 
+    /* A table that fits has no scroll timeline to animate against, so the
+       shadows would otherwise sit frozen in their fill state. `.is-not-scrollable`
+       is set by init-table-scroll-shadows.js; the negative form means the
+       shadows still appear if that script never runs. */
+    .table-wrapper.is-not-scrollable::before,
+    .table-wrapper.is-not-scrollable::after {
+      display: none;
+    }
+
     .table-wrapper::before {
-      inset-inline-start: var(--hairline);
+      /* Offset past a sticky first column so the shadow falls on the content
+         scrolling underneath it, not on the frozen column itself. */
+      inset-inline-start: calc(var(--hairline) + var(--table-sticky-inline-size, 0px));
       background: radial-gradient(
         farthest-side at 0 50% in oklab,
         var(--color-scroll-shadow),

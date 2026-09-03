@@ -2,43 +2,43 @@ export default function initTableScrollShadows() {
   const wrappers = Array.from(document.querySelectorAll('.table-wrapper'));
   if (!wrappers.length) return;
 
+  // Skip no-op writes: dirtying layout inside a ResizeObserver callback re-triggers it
+  const setProperty = (element, property, value) => {
+    if (element.style.getPropertyValue(property) === value) return;
+    element.style.setProperty(property, value);
+  };
+
   const update = (wrapper) => {
     const scroller = wrapper.querySelector('.table-scroll');
-    if (!scroller) return;
 
-    // The scroll-driven edge shadows sit on an inactive timeline when there is
-    // no scrollable overflow, which leaves them stuck in their fill state
-    // instead of hidden. Flag the wrapper so the CSS can opt out entirely.
+    // With no overflow the scroll timeline is inactive and the shadows freeze in their fill state
     const isScrollable = scroller.scrollWidth - scroller.clientWidth > 1;
     wrapper.classList.toggle('is-not-scrollable', !isScrollable);
 
-    // A sticky first column is painted above the scrolling content, so the
-    // leading shadow has to begin where that column ends. Otherwise it falls
-    // across the frozen column rather than the content sliding underneath it.
+    // Start the leading shadow after a sticky first column so it falls on the content, not the column
     const stickyCell = scroller.querySelector('thead th:first-child.sticky');
     const stickyInlineSize = stickyCell ? stickyCell.getBoundingClientRect().width : 0;
-    wrapper.style.setProperty('--table-sticky-inline-size', `${stickyInlineSize}px`);
+    setProperty(wrapper, '--table-sticky-inline-size', `${stickyInlineSize}px`);
   };
 
-  const observer = new ResizeObserver((entries) => {
-    entries.forEach(({ target }) => {
-      const wrapper = target.closest('.table-wrapper');
-      if (wrapper) update(wrapper);
+  let frame = null;
+  const scheduleUpdate = () => {
+    if (frame !== null) return;
+
+    frame = requestAnimationFrame(() => {
+      frame = null;
+      wrappers.forEach(update);
     });
-  });
+  };
+
+  const observer = new ResizeObserver(scheduleUpdate);
 
   wrappers.forEach((wrapper) => {
     update(wrapper);
 
-    // Watch both the scroll port and the table itself: the first catches
-    // viewport resizes, the second catches content reflowing (late fonts,
-    // images loading) without the port changing size.
+    // The scroller catches viewport resizes; the table catches content reflow (late fonts, images)
     const scroller = wrapper.querySelector('.table-scroll');
-    if (!scroller) return;
-
     observer.observe(scroller);
-
-    const table = scroller.querySelector('table');
-    if (table) observer.observe(table);
+    observer.observe(scroller.querySelector('table'));
   });
 }

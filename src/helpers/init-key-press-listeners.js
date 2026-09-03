@@ -9,6 +9,13 @@ export default function initKeyPressListeners() {
     cmd: 'metaKey',
     command: 'metaKey',
 
+    '❖': 'metaKey',
+    '⊞': 'metaKey',
+    super: 'metaKey',
+    win: 'metaKey',
+    windows: 'metaKey',
+    meta: 'metaKey',
+
     '⌥': 'altKey',
     alt: 'altKey',
     option: 'altKey',

@@ -385,7 +385,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 ````md {% process=false %}
 {% table %}
 
-- Capability {% .sticky %}
+- Capability
 - Markdown supports?
 - Markdoc supports?
 - Notes
@@ -447,7 +447,7 @@ Here’s an example of how I would write a complex table with Markdoc syntax, re
 
 {% table %}
 
-- Capability {% .sticky %}
+- Capability
 - Markdown supports?
 - Markdoc supports?
 - Notes

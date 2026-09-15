@@ -534,6 +534,9 @@
   }
 
   mark {
+    font-style: italic;
+    font-family: var(--font-serif);
+
     /* Use negative margins to offset the padding and prevent layout shifts when the highlight is applied */
     padding: 0.1em 0.1em 0.15em 0.2em;
     margin: -0.1em -0.1em -0.15em -0.2em;

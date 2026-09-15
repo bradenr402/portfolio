@@ -519,6 +519,7 @@
   em,
   cite {
     font-style: italic;
+    font-family: var(--font-serif);
   }
 
   /* Reverse italics inside blockquotes */
